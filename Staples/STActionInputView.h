@@ -8,14 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class STActionInputView;
+
 @protocol STActionInputViewDelegate <NSObject>
 
-- (void)actionInputViewDelegate
+- (void)actionInputView:(STActionInputView *)actionInputView didSelectItem:(NSString *)item;
 
 @end
 
 @interface STActionInputView : UIView
 
 - (id)initWithButtonItems:(NSArray *)buttonItems;
+
+@property (nonatomic) id<STActionInputViewDelegate> delegate;
 
 @end
