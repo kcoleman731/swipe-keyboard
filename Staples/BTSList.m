@@ -1,14 +1,13 @@
 //
-//  ViewController.h
+//  BTSList.m
 //  Staples
 //
 //  Created by Kevin Coleman on 8/18/16.
 //  Copyright © 2016 Mesh. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BTSList.h"
 
-@interface ViewController : UIViewController
+@implementation BTSList
 
 @end
-

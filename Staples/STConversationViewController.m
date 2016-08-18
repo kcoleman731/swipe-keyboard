@@ -10,7 +10,7 @@
 #import "STActionInputView.h"
 #import "STMultipleActionInputView.h"
 
-@interface STConversationViewController ()<STActionInputViewDelegate>
+@interface STConversationViewController ()<STActionInputViewDelegate, ATLConversationViewControllerDataSource>
 
 @end
 
@@ -32,20 +32,40 @@
 
 - (void)actionInputView:(STActionInputView *)actionInputView didSelectItem:(NSString *)item
 {
-    NSLog(@"Text %@", item);
-    LYRMessagePart *messagePart = [LYRMessagePart messagePartWithText:item];
     NSError *error;
+    if (!self.conversation) {
+        LYRConversationOptions *options = [LYRConversationOptions new];
+        options.distinctByParticipants = NO;
+        LYRConversation *conversation = [self.layerClient newConversationWithParticipants:[NSSet setWithObject:@"2"] options:options error:&error];
+        if (!conversation) {
+            NSLog(@"Failed to build conversatio with error: %@", error);
+            return;
+        }
+        [self setConversation:conversation];
+    }
+    LYRMessagePart *messagePart = [LYRMessagePart messagePartWithText:item];
     LYRMessage *message = [self.layerClient newMessageWithParts:@[messagePart] options:nil error:&error];
     if (!message) {
         NSLog(@"Failed to build message with error: %@", error);
         return;
     }
-    BOOL success = [self.conversation sendMessage:message error:&error];
-    if (!success) {
-        NSLog(@"Failed to send message with error: %@", error);
-        return;
-    }
+   [self sendMessage:message];
     NSLog(@"Message sent!");
+}
+
+- (id<ATLParticipant>)conversationViewController:(ATLConversationViewController *)conversationViewController participantForIdentity:(LYRIdentity *)identity
+{
+    return nil;
+}
+
+- (NSAttributedString *)conversationViewController:(ATLConversationViewController *)conversationViewController attributedStringForDisplayOfDate:(NSDate *)date
+{
+    return [[NSAttributedString alloc] initWithString:@"test"];
+}
+
+- (NSAttributedString *)conversationViewController:(ATLConversationViewController *)conversationViewController attributedStringForDisplayOfRecipientStatus:(NSDictionary *)recipientStatus
+{
+    return [[NSAttributedString alloc] initWithString:@"read"];
 }
 
 @end

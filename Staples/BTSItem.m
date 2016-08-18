@@ -1,14 +1,13 @@
 //
-//  ViewController.h
+//  BTSItem.m
 //  Staples
 //
 //  Created by Kevin Coleman on 8/18/16.
 //  Copyright © 2016 Mesh. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BTSItem.h"
 
-@interface ViewController : UIViewController
+@implementation BTSItem
 
 @end
-
