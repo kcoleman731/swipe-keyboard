@@ -58,6 +58,14 @@ NSUInteger const STCornerRadius = 2;
     return self;
 }
 
+- (void)updateSelectionItems:(NSArray *)selectionItems
+{
+    [self.button1 setTitle:(NSString *)selectionItems[0] forState:UIControlStateNormal];
+    [self.button2 setTitle:(NSString *)selectionItems[1] forState:UIControlStateNormal];
+    [self.button3 setTitle:(NSString *)selectionItems[2] forState:UIControlStateNormal];
+    [self.button4 setTitle:(NSString *)selectionItems[3] forState:UIControlStateNormal];
+}
+
 - (void)buttonTapped:(UIButton *)sender
 {
     if ([self.delegate respondsToSelector:@selector(actionInputView:didSelectItem:)]) {

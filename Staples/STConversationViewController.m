@@ -10,6 +10,10 @@
 #import "STActionInputView.h"
 #import "STMultipleActionInputView.h"
 
+@interface STConversationViewController ()<STActionInputViewDelegate>
+
+@end
+
 @implementation STConversationViewController
 
 - (void)viewDidLoad
@@ -26,10 +30,22 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 }
 
-- (void)keyboardWillShow:(NSNotification *)notification
+- (void)actionInputView:(STActionInputView *)actionInputView didSelectItem:(NSString *)item
 {
-    CGRect keyboardRect = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    keyboardRect = [self.view convertRect:keyboardRect fromView:nil]; //this is it!
+    NSLog(@"Text %@", item);
+    LYRMessagePart *messagePart = [LYRMessagePart messagePartWithText:item];
+    NSError *error;
+    LYRMessage *message = [self.layerClient newMessageWithParts:@[messagePart] options:nil error:&error];
+    if (!message) {
+        NSLog(@"Failed to build message with error: %@", error);
+        return;
+    }
+    BOOL success = [self.conversation sendMessage:message error:&error];
+    if (!success) {
+        NSLog(@"Failed to send message with error: %@", error);
+        return;
+    }
+    NSLog(@"Message sent!");
 }
 
 @end

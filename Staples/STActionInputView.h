@@ -30,11 +30,17 @@
 @interface STActionInputView : UIView
 
 /**
- @abstract Initiliazes an `STActionInputView`.
- @param buttonItems An `NSArray` of `NSString` objects representing the selection items to be displayed in the input view.
+ @abstract Initialiazes an `STActionInputView`.
+ @param selectionItems An `NSArray` of `NSString` objects representing the selection items to be displayed in the input view.
  @return An initialized `STActionInputView`.
  */
-- (id)initWithButtonItems:(NSArray *)buttonItems;
+- (id)initWithSelectionItems:(NSArray *)selectionItems;
+
+/**
+ @abstract Updates the selectionItems for the reciever.
+ @param selectionItems An `NSArray` of `NSString` objects representing the selection items to be displayed in the input view.
+ */
+- (void)updateSelectionItems:(NSArray *)selectionItems;
 
 /**
  @abstract The delegate object for the input view.
