@@ -25,7 +25,7 @@ NSUInteger const STPickerRowHeight = 52;
 NSUInteger const STBorderWidth = 2;
 NSUInteger const STCornerRadius = 2;
 
-- (id)initWithButtonItems:(NSArray *)buttonItems
+- (id)initWithSelectionItems:(NSArray *)selectionItems
 {
     self = [super init];
     if (self) {
@@ -37,19 +37,19 @@ NSUInteger const STCornerRadius = 2;
         self.clipsToBounds = YES;
         self.backgroundColor = [UIColor blueColor];
         
-        _button1 = [STActionButton initWithTitle:(NSString *)buttonItems[0]];
+        _button1 = [STActionButton initWithTitle:(NSString *)selectionItems[0]];
         [_button1 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_button1];
         
-        _button2 = [STActionButton initWithTitle:(NSString *)buttonItems[1]];
+        _button2 = [STActionButton initWithTitle:(NSString *)selectionItems[1]];
         [_button2 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_button2];
         
-        _button3 = [STActionButton initWithTitle:(NSString *)buttonItems[2]];
+        _button3 = [STActionButton initWithTitle:(NSString *)selectionItems[2]];
         [_button3 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_button3];
         
-        _button4 = [STActionButton initWithTitle:(NSString *)buttonItems[3]];
+        _button4 = [STActionButton initWithTitle:(NSString *)selectionItems[3]];
         [_button4 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_button4];
         
