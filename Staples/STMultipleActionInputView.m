@@ -18,11 +18,13 @@
 
 @implementation STMultipleActionInputView
 
+#pragma mark Initializers
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self commonInitWithTitles:nil];
+        [self commonInitWithItems:nil];
     }
     return self;
 }
@@ -31,84 +33,47 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self commonInitWithTitles:nil];
+        [self commonInitWithItems:nil];
     }
     return self;
 }
 
-- (instancetype)initWithButtonTitles:(NSArray *)titles
+- (instancetype)initWithSelectionItems:(NSArray *)items
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        [self commonInitWithTitles:titles];
+        [self commonInitWithItems:items];
     }
     return self;
 }
 
-- (void)commonInitWithTitles:(NSArray *)titles
+- (void)commonInitWithItems:(NSArray *)items
 {
-    [self layoutScrollViewWithTitles:titles];
-    [self layoutPagingIndicatorView];
-}
-
-- (void)layoutScrollViewWithTitles:(NSArray *)titles
-{
-    self.inputScrollView = [[STMultipleActionInputScrollView alloc] initWithButtonTitles:titles];
+    self.inputScrollView = [[STMultipleActionInputScrollView alloc] initWithSelectionItems:items];
     self.inputScrollView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.inputScrollView.tintColor = self.tintColor;
     self.inputScrollView.delegate = self;
+    self.inputScrollView.actionInputScrollViewDelegate = self;
     [self addSubview:self.inputScrollView];
     
-    // Layout Constraints
-    NSLayoutConstraint *midLayoutConstraint = [NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
-    
-    [self addConstraints:@[bottomConstraint, midLayoutConstraint, heightConstraint, widthConstraint]];
-}
-
-- (void)layoutPagingIndicatorView
-{
     self.pageControl = [[UIPageControl alloc] init];
     self.pageControl.translatesAutoresizingMaskIntoConstraints = false;
-    self.pageControl.tintColor = self.tintColor;
     self.pageControl.numberOfPages = self.inputScrollView.numberOfPages;
+    self.pageControl.pageIndicatorTintColor = [UIColor colorWithRed:217.0f/255.0f green:217.0f/255.0f blue:217.0f/255.0f alpha:1.0];
+    self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:118.0f/255.0f green:170.0f/255.0f blue:227.0f/255.0f alpha:1.0];
     [self addSubview:self.pageControl];
     
-    // Layout Constraints
-    NSLayoutConstraint *midLayoutConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:30.0];
-    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0];
-    
-    [self addConstraints:@[bottomConstraint, midLayoutConstraint, heightConstraint, widthConstraint]];
+    [self configureLayoutConstraints];
 }
 
-/**
- *  Override for setting tint
- */
+#pragma mark Selection Item Configuration
 
-- (void)setTintColor:(UIColor *)tintColor
+- (void)setSelectionItems:(NSArray <NSString *> *)items
 {
-    [super setTintColor:tintColor];
-    self.pageControl.tintColor = tintColor;
-    self.inputScrollView.tintColor = tintColor;
-}
-
-/**
- *  Setter for titles
- */
-
-- (void)setOptionTitles:(NSArray <NSString *> *)optionTitles
-{
-    [self.inputScrollView setOptionTitles:optionTitles];
+    [self.inputScrollView setSelectionItems:items];
     self.pageControl.numberOfPages = self.inputScrollView.numberOfPages;
 }
 
-/**
- *  UIScrollView Delegate
- */
+#pragma mark Scroll View Delegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
@@ -116,13 +81,28 @@
     self.pageControl.currentPage = page;
 }
 
-/**
- *  STMultipleActionScrollViewDelegate
- */
+#pragma mark STMultipleActionScrollViewDelegate
 - (void)actionInputScrollView:(STMultipleActionInputScrollView *)actionInputView didSelectItem:(NSString *)item
 {
-    [self.delegate actionInputView:self didSelectItem:item];
+    [self.delegate multipleActionInputView:self didSelectItem:item];
     [self sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
+#pragma mark Auto Layout
+
+- (void)configureLayoutConstraints
+{
+    // Input Scroll View Constraints
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0]];
+    
+    // Page Control Constraints
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:30.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0]];
 }
 
 @end

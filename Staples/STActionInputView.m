@@ -30,11 +30,12 @@ NSUInteger const STCornerRadius = 6;
     self = [super init];
     if (self) {
         
-        self.layer.borderColor = [UIColor blueColor].CGColor;
+        UIColor *blue = [UIColor colorWithRed:118.0f/255.0f green:170.0f/255.0f blue:227.0f/255.0f alpha:1.0];
+        self.layer.borderColor = blue.CGColor;
         self.layer.borderWidth = STBorderWidth;
         self.layer.cornerRadius = STCornerRadius;
         self.clipsToBounds = YES;
-        self.backgroundColor = [UIColor blueColor];
+        self.backgroundColor = blue;
         
         _button1 = [STActionButton initWithTitle:(NSString *)selectionItems[0]];
         [_button1 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -59,14 +60,6 @@ NSUInteger const STCornerRadius = 6;
 {
     [super layoutSubviews];
     [self configureAutoLayoutConstraints];
-}
-
-- (void)updateSelectionItems:(NSArray *)selectionItems
-{
-    [self.button1 setTitle:(NSString *)selectionItems[0] forState:UIControlStateNormal];
-    [self.button2 setTitle:(NSString *)selectionItems[1] forState:UIControlStateNormal];
-    [self.button3 setTitle:(NSString *)selectionItems[2] forState:UIControlStateNormal];
-    [self.button4 setTitle:(NSString *)selectionItems[3] forState:UIControlStateNormal];
 }
 
 - (void)buttonTapped:(UIButton *)sender

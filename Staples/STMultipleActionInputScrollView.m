@@ -19,15 +19,13 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
 
 @implementation STMultipleActionInputScrollView
 
-/**
- *  Init / Common Init
- */
+#pragma mark Initializers
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self commonInitWithOptionTitles:nil];
+        [self commonInitWithOptionItems:nil];
     }
     return self;
 }
@@ -36,67 +34,50 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self commonInitWithOptionTitles:nil];
+        [self commonInitWithOptionItems:nil];
     }
     return self;
 }
 
-- (instancetype)initWithButtonTitles:(NSArray *)titles
+- (instancetype)initWithSelectionItems:(NSArray *)items
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        [self commonInitWithOptionTitles:titles];
+        [self commonInitWithOptionItems:items];
     }
     return self;
 }
 
-- (void)commonInitWithOptionTitles:(NSArray *)titles
+- (void)commonInitWithOptionItems:(NSArray *)items
 {
     // Init iVars
     self.inputViews = @[];
-    [self setOptionTitles:titles];
+    [self setSelectionItems:items];
+    self.backgroundColor = [UIColor whiteColor];
     
     // Configure scrollview and layout input views
-    [self configureScrollView];
-}
-
-- (void)configureScrollView
-{
-    // Assume we only are fitting 4 titles per pane
     self.pagingEnabled                  = YES;
     self.showsHorizontalScrollIndicator = NO;
 }
 
-/**
- *  Override for setting tint
- */
+#pragma mark Selection Item Configuration
 
-- (void)setTintColor:(UIColor *)tintColor
-{
-    [super setTintColor:tintColor];
-    for (STActionInputView *actionInputView in self.inputViews) {
-        actionInputView.tintColor = tintColor;
-    }
-}
-
-/**
- *  Setting Titles / Sub-Action Views
- */
-- (void)setOptionTitles:(NSArray <NSString *> *)optionTitles
+- (void)setSelectionItems:(NSArray <NSString *> *)items
 {
     // Remove any existing
     [self removeAllExistingActionViews];
     
     // Init Action Pages
-    NSInteger pages = optionTitles.count / MAX_OPTIONS_PER_PAGE;
+    NSInteger pages = items.count / MAX_OPTIONS_PER_PAGE;
     NSMutableArray *actionViews = [[NSMutableArray alloc] init];
     for (int i = 0; i < pages; i++) {
+        
         // Create action input view w/ subsection of titles
         NSInteger begIdx                   = i * MAX_OPTIONS_PER_PAGE;
-        BOOL idxCanHandleAllOptions        = optionTitles.count >= begIdx + MAX_OPTIONS_PER_PAGE;
-        NSInteger length                   = idxCanHandleAllOptions ? MAX_OPTIONS_PER_PAGE : optionTitles.count - MAX_OPTIONS_PER_PAGE;
+        BOOL idxCanHandleAllOptions        = items.count >= begIdx + MAX_OPTIONS_PER_PAGE;
+        NSInteger length                   = idxCanHandleAllOptions ? MAX_OPTIONS_PER_PAGE : items.count - MAX_OPTIONS_PER_PAGE;
         NSRange subRange                   = NSMakeRange(begIdx, length);
-        NSArray *subSectionOfTitles        = [optionTitles subarrayWithRange:subRange];
+        NSArray *subSectionOfTitles        = [items subarrayWithRange:subRange];
         
         STActionInputView *actionInputView = [[STActionInputView alloc] initWithSelectionItems:subSectionOfTitles];
         actionInputView.tintColor          = self.tintColor;
@@ -120,13 +101,11 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
     self.inputViews = @[];
 }
 
-/**
- *  ScrollView Layout sizing
- */
+#pragma mark View Layout
+
 - (void)layoutSubviews
 {
-    // Hooking here to setup the proper paging based on
-    // the number of input views.
+    // Hooking here to setup the proper paging based on the number of input views.
     [super layoutSubviews];
     [self configureScrollableArea];
     [self layoutInputViews];
@@ -154,21 +133,18 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
     }
 }
 
-/**
- *  Number of pages
- */
+#pragma mark Page Count
+
 - (NSInteger)numberOfPages
 {
     return self.inputViews.count;
 }
 
-/**
- *  STActionInputViewDelegate
- */
+#pragma mark STActionInputViewDelegate
 
 - (void)actionInputView:(STActionInputView *)actionInputView didSelectItem:(NSString *)item
 {
-    [self.actionScrollViewDelegate actionInputScrollView:self didSelectItem:item];
+    [self.actionInputScrollViewDelegate actionInputScrollView:self didSelectItem:item];
 }
 
 @end

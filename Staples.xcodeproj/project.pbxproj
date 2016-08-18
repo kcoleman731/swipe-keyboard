@@ -15,7 +15,6 @@
 		D620156C1D663EB100EAA772 /* STMultipleActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8492C1D663623002C34D2 /* STMultipleActionInputView.m */; };
 		D69761711D660AEE00F3369F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761701D660AEE00F3369F /* main.m */; };
 		D69761741D660AEE00F3369F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761731D660AEE00F3369F /* AppDelegate.m */; };
-		D69761771D660AEE00F3369F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761761D660AEE00F3369F /* ViewController.m */; };
 		D697617A1D660AEE00F3369F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69761781D660AEE00F3369F /* Main.storyboard */; };
 		D697617C1D660AEE00F3369F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D697617B1D660AEE00F3369F /* Assets.xcassets */; };
 		D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D697617D1D660AEE00F3369F /* LaunchScreen.storyboard */; };
@@ -42,8 +41,6 @@
 		D69761701D660AEE00F3369F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D69761721D660AEE00F3369F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D69761731D660AEE00F3369F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D69761751D660AEE00F3369F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D69761761D660AEE00F3369F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D69761791D660AEE00F3369F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D697617B1D660AEE00F3369F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D697617E1D660AEE00F3369F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -132,8 +129,6 @@
 				D697618A1D66162C00F3369F /* STActionInputView.m */,
 				D697618C1D66183C00F3369F /* STActionButton.h */,
 				D697618D1D66183C00F3369F /* STActionButton.m */,
-				D69761751D660AEE00F3369F /* ViewController.h */,
-				D69761761D660AEE00F3369F /* ViewController.m */,
 				D69761781D660AEE00F3369F /* Main.storyboard */,
 				D697617B1D660AEE00F3369F /* Assets.xcassets */,
 				D697617D1D660AEE00F3369F /* LaunchScreen.storyboard */,
@@ -274,7 +269,6 @@
 			files = (
 				D620156C1D663EB100EAA772 /* STMultipleActionInputView.m in Sources */,
 				D697618E1D66183C00F3369F /* STActionButton.m in Sources */,
-				D69761771D660AEE00F3369F /* ViewController.m in Sources */,
 				D69761741D660AEE00F3369F /* AppDelegate.m in Sources */,
 				34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */,
 				D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */,

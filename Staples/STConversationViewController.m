@@ -10,7 +10,7 @@
 #import "STActionInputView.h"
 #import "STMultipleActionInputView.h"
 
-@interface STConversationViewController ()<STActionInputViewDelegate, ATLConversationViewControllerDataSource>
+@interface STConversationViewController () <STMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource>
 
 @end
 
@@ -20,13 +20,15 @@
 {
     [super viewDidLoad];
     
-    STMultipleActionInputView *multiOptionSelectionView = [[STMultipleActionInputView alloc] initWithButtonTitles:@[@"Track My Shipment", @"Order New Supplies", @"Reorder Last Shipment", @"Scan School Supplies List", @"Track My Shipment", @"Order New Supplies", @"Reorder Last Shipment", @"Scan School Supplies List"]];
+    self.dataSource = self;
     
+    STMultipleActionInputView *multiOptionSelectionView = [[STMultipleActionInputView alloc] initWithSelectionItems:[self selectionItems]];
     multiOptionSelectionView.frame = CGRectMake(0, 0, 320, 280);
+    multiOptionSelectionView.delegate = self;
     self.messageInputToolbar.textInputView.inputView = multiOptionSelectionView;
 }
 
-- (void)actionInputView:(STActionInputView *)actionInputView didSelectItem:(NSString *)item
+- (void)multipleActionInputView:(STMultipleActionInputView *)multipleActionInputView didSelectItem:(NSString *)item
 {
     NSError *error;
     if (!self.conversation) {
@@ -56,12 +58,19 @@
 
 - (NSAttributedString *)conversationViewController:(ATLConversationViewController *)conversationViewController attributedStringForDisplayOfDate:(NSDate *)date
 {
-    return [[NSAttributedString alloc] initWithString:@"test"];
+    return [[NSAttributedString alloc] initWithString:@"Today 2:30PM"];
 }
 
 - (NSAttributedString *)conversationViewController:(ATLConversationViewController *)conversationViewController attributedStringForDisplayOfRecipientStatus:(NSDictionary *)recipientStatus
 {
-    return [[NSAttributedString alloc] initWithString:@"read"];
+    return [[NSAttributedString alloc] initWithString:@"Sent"];
+}
+
+- (NSArray *)selectionItems
+{
+    return @[@"Track My Shipment", @"Order New Supplies", @"Reorder Last Shipment",
+             @"Scan School Supplies List", @"Option 1", @"Option 2",
+             @"Option 3", @"Option 4"];
 }
 
 @end

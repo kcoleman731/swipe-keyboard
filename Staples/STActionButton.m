@@ -24,7 +24,8 @@
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         [self setTitle:title forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        UIColor *blue = [UIColor colorWithRed:118.0f/255.0f green:170.0f/255.0f blue:227.0f/255.0f alpha:1.0];
+        [self setTitleColor:blue forState:UIControlStateNormal];
     }
     return self;
 }
