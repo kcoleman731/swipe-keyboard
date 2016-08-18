@@ -217,8 +217,6 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 </string>
-			<key>License</key>
-			<string>Apache2</string>
 			<key>Title</key>
 			<string>Atlas</string>
 			<key>Type</key>
@@ -262,8 +260,6 @@ If You comply with this agreement, You have the rights below.
   
   b. claims for breach of contract, breach of warranty, guarantee or condition, strict liability, negligence, or other tort to the extent permitted by applicable law.
 </string>
-			<key>License</key>
-			<string>Commercial</string>
 			<key>Title</key>
 			<string>LayerKit</string>
 			<key>Type</key>

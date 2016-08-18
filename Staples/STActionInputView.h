@@ -10,7 +10,7 @@
 
 @protocol STActionInputViewDelegate <NSObject>
 
-- (void)actionInputViewDelegate
+- (void)actionInputViewDelegate;
 
 @end
 
