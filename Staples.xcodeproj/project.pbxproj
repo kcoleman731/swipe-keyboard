@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		3414E0202F8AD103A56840B2 /* Pods_Staples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCAFA925975ACD65020CCDD /* Pods_Staples.framework */; };
 		34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A849291D6621AB002C34D2 /* STMultipleActionInputScrollView.m */; };
-		34A8492D1D663623002C34D2 /* STMultipleActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8492C1D663623002C34D2 /* STMultipleActionInputView.m */; };
 		D62015651D663B0500EAA772 /* BTSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D62015641D663B0500EAA772 /* BTSItem.m */; };
 		D62015681D663B4D00EAA772 /* BTSItemPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = D62015671D663B4D00EAA772 /* BTSItemPrice.m */; };
 		D620156B1D663BFD00EAA772 /* BTSList.m in Sources */ = {isa = PBXBuildFile; fileRef = D620156A1D663BFD00EAA772 /* BTSList.m */; };
+		D620156C1D663EB100EAA772 /* STMultipleActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8492C1D663623002C34D2 /* STMultipleActionInputView.m */; };
 		D69761711D660AEE00F3369F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761701D660AEE00F3369F /* main.m */; };
 		D69761741D660AEE00F3369F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761731D660AEE00F3369F /* AppDelegate.m */; };
 		D69761771D660AEE00F3369F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761761D660AEE00F3369F /* ViewController.m */; };
@@ -232,7 +232,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C0CF2103DB4CACEA24B64885 /* [CP] Copy Pods Resources */ = {
@@ -272,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D620156C1D663EB100EAA772 /* STMultipleActionInputView.m in Sources */,
 				D697618E1D66183C00F3369F /* STActionButton.m in Sources */,
 				D69761771D660AEE00F3369F /* ViewController.m in Sources */,
 				D69761741D660AEE00F3369F /* AppDelegate.m in Sources */,

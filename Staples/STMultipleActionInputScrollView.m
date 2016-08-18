@@ -97,7 +97,8 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
         NSInteger length                   = idxCanHandleAllOptions ? MAX_OPTIONS_PER_PAGE : optionTitles.count - MAX_OPTIONS_PER_PAGE;
         NSRange subRange                   = NSMakeRange(begIdx, length);
         NSArray *subSectionOfTitles        = [optionTitles subarrayWithRange:subRange];
-        STActionInputView *actionInputView = [[STActionInputView alloc] initWithButtonItems:subSectionOfTitles];
+        
+        STActionInputView *actionInputView = [[STActionInputView alloc] initWithSelectionItems:subSectionOfTitles];
         actionInputView.tintColor          = self.tintColor;
         actionInputView.delegate           = self;
         
@@ -156,7 +157,6 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
 /**
  *  Number of pages
  */
-
 - (NSInteger)numberOfPages
 {
     return self.inputViews.count;
