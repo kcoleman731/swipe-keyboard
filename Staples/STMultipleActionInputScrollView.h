@@ -16,12 +16,12 @@
 @protocol STMultipleActionInputScrollViewDelegate <NSObject>
 
 /**
- Notifies the receiver that an item has been selected.
+ Notifies the receiver that an title has been selected.
  
  @param actionInputScrollView The `STMultipleActionInputScrollView` instance.
- @param item The selection item that was selected.
+ @param item The selection title that was selected.
  */
-- (void)actionInputScrollView:(STMultipleActionInputScrollView *)actionInputScrollView didSelectItem:(NSString *)item;
+- (void)actionInputScrollView:(STMultipleActionInputScrollView *)actionInputScrollView didSelectTitle:(NSString *)title;
 
 @end
 
@@ -40,16 +40,16 @@
  
  @param items An array of `NSStrings` representing the titles to be displayed for each selection.
  */
-- (instancetype)initWithSelectionItems:(NSArray *)items;
+- (instancetype)initWithSelectionTitles:(NSArray *)titles;
 
 /**
  Sets the selection items for the view.
  
  @param titles An array of `NSStrings` representing the titles to be displayed for each selection.
  
- @discussion Setting selection items will remove any existing items from the view.
+ @discussion Setting selection titles will remove any existing titles from the view.
  */
-- (void)setSelectionItems:(NSArray <NSString *> *)items;
+- (void)setSelectionTitles:(NSArray <NSString *> *)titles;
 
 /**
  *  Return the number of scrollable pages for the scroll view

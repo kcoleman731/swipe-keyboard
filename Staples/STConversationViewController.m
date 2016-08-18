@@ -22,13 +22,13 @@
     
     self.dataSource = self;
     
-    STMultipleActionInputView *multiOptionSelectionView = [[STMultipleActionInputView alloc] initWithSelectionItems:[self selectionItems]];
+    STMultipleActionInputView *multiOptionSelectionView = [[STMultipleActionInputView alloc] initWithSelectionTitles:[self selectionItems]];
     multiOptionSelectionView.frame = CGRectMake(0, 0, 320, 280);
     multiOptionSelectionView.delegate = self;
     self.messageInputToolbar.textInputView.inputView = multiOptionSelectionView;
 }
 
-- (void)multipleActionInputView:(STMultipleActionInputView *)multipleActionInputView didSelectItem:(NSString *)item
+- (void)multipleActionInputView:(STMultipleActionInputView *)multipleActionInputView didSelectTitle:(NSString *)title
 {
     NSError *error;
     if (!self.conversation) {
@@ -41,7 +41,7 @@
         }
         [self setConversation:conversation];
     }
-    LYRMessagePart *messagePart = [LYRMessagePart messagePartWithText:item];
+    LYRMessagePart *messagePart = [LYRMessagePart messagePartWithText:title];
     LYRMessage *message = [self.layerClient newMessageWithParts:@[messagePart] options:nil error:&error];
     if (!message) {
         NSLog(@"Failed to build message with error: %@", error);

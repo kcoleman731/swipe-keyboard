@@ -25,7 +25,7 @@ NSUInteger const STPickerRowHeight = 52;
 NSUInteger const STBorderWidth = 2;
 NSUInteger const STCornerRadius = 6;
 
-- (id)initWithSelectionItems:(NSArray *)selectionItems
+- (id)initWithSelectionTitles:(NSArray *)titles
 {
     self = [super init];
     if (self) {
@@ -37,19 +37,19 @@ NSUInteger const STCornerRadius = 6;
         self.clipsToBounds = YES;
         self.backgroundColor = blue;
         
-        _button1 = [STActionButton initWithTitle:(NSString *)selectionItems[0]];
+        _button1 = [STActionButton initWithTitle:(NSString *)titles[0]];
         [_button1 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_button1];
         
-        _button2 = [STActionButton initWithTitle:(NSString *)selectionItems[1]];
+        _button2 = [STActionButton initWithTitle:(NSString *)titles[1]];
         [_button2 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_button2];
         
-        _button3 = [STActionButton initWithTitle:(NSString *)selectionItems[2]];
+        _button3 = [STActionButton initWithTitle:(NSString *)titles[2]];
         [_button3 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_button3];
         
-        _button4 = [STActionButton initWithTitle:(NSString *)selectionItems[3]];
+        _button4 = [STActionButton initWithTitle:(NSString *)titles[3]];
         [_button4 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_button4];
     }
@@ -64,8 +64,8 @@ NSUInteger const STCornerRadius = 6;
 
 - (void)buttonTapped:(UIButton *)sender
 {
-    if ([self.delegate respondsToSelector:@selector(actionInputView:didSelectItem:)]) {
-        [self.delegate actionInputView:self didSelectItem:sender.titleLabel.text];
+    if ([self.delegate respondsToSelector:@selector(actionInputView:didSelectTitle:)]) {
+        [self.delegate actionInputView:self didSelectTitle:sender.titleLabel.text];
     }
 }
 

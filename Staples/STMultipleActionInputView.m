@@ -24,7 +24,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self commonInitWithItems:nil];
+        [self commonInitWithTitles:nil];
     }
     return self;
 }
@@ -33,23 +33,23 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self commonInitWithItems:nil];
+        [self commonInitWithTitles:nil];
     }
     return self;
 }
 
-- (instancetype)initWithSelectionItems:(NSArray *)items
+- (instancetype)initWithSelectionTitles:(NSArray *)titles
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        [self commonInitWithItems:items];
+        [self commonInitWithTitles:titles];
     }
     return self;
 }
 
-- (void)commonInitWithItems:(NSArray *)items
+- (void)commonInitWithTitles:(NSArray *)titles
 {
-    self.inputScrollView = [[STMultipleActionInputScrollView alloc] initWithSelectionItems:items];
+    self.inputScrollView = [[STMultipleActionInputScrollView alloc] initWithSelectionTitles:titles];
     self.inputScrollView.translatesAutoresizingMaskIntoConstraints = NO;
     self.inputScrollView.delegate = self;
     self.inputScrollView.actionInputScrollViewDelegate = self;
@@ -67,9 +67,9 @@
 
 #pragma mark Selection Item Configuration
 
-- (void)setSelectionItems:(NSArray <NSString *> *)items
+- (void)setSelectionTitles:(NSArray <NSString *> *)titles
 {
-    [self.inputScrollView setSelectionItems:items];
+    [self.inputScrollView setSelectionTitles:titles];
     self.pageControl.numberOfPages = self.inputScrollView.numberOfPages;
 }
 
@@ -82,9 +82,9 @@
 }
 
 #pragma mark STMultipleActionScrollViewDelegate
-- (void)actionInputScrollView:(STMultipleActionInputScrollView *)actionInputView didSelectItem:(NSString *)item
+- (void)actionInputScrollView:(STMultipleActionInputScrollView *)actionInputView didSelectTitle:(NSString *)title
 {
-    [self.delegate multipleActionInputView:self didSelectItem:item];
+    [self.delegate multipleActionInputView:self didSelectTitle:title];
     [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 

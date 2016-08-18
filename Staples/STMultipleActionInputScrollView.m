@@ -25,7 +25,7 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self commonInitWithOptionItems:nil];
+        [self commonInitWithOptionTitles:nil];
     }
     return self;
 }
@@ -34,25 +34,25 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self commonInitWithOptionItems:nil];
+        [self commonInitWithOptionTitles:nil];
     }
     return self;
 }
 
-- (instancetype)initWithSelectionItems:(NSArray *)items
+- (instancetype)initWithSelectionTitles:(NSArray *)titles
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        [self commonInitWithOptionItems:items];
+        [self commonInitWithOptionTitles:titles];
     }
     return self;
 }
 
-- (void)commonInitWithOptionItems:(NSArray *)items
+- (void)commonInitWithOptionTitles:(NSArray *)titles
 {
     // Init iVars
     self.inputViews = @[];
-    [self setSelectionItems:items];
+    [self setSelectionTitles:titles];
     self.backgroundColor = [UIColor whiteColor];
     
     // Configure scrollview and layout input views
@@ -62,24 +62,24 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
 
 #pragma mark Selection Item Configuration
 
-- (void)setSelectionItems:(NSArray <NSString *> *)items
+- (void)setSelectionTitles:(NSArray <NSString *> *)titles
 {
     // Remove any existing
     [self removeAllExistingActionViews];
     
     // Init Action Pages
-    NSInteger pages = items.count / MAX_OPTIONS_PER_PAGE;
+    NSInteger pages = titles.count / MAX_OPTIONS_PER_PAGE;
     NSMutableArray *actionViews = [[NSMutableArray alloc] init];
     for (int i = 0; i < pages; i++) {
         
         // Create action input view w/ subsection of titles
         NSInteger begIdx                   = i * MAX_OPTIONS_PER_PAGE;
-        BOOL idxCanHandleAllOptions        = items.count >= begIdx + MAX_OPTIONS_PER_PAGE;
-        NSInteger length                   = idxCanHandleAllOptions ? MAX_OPTIONS_PER_PAGE : items.count - MAX_OPTIONS_PER_PAGE;
+        BOOL idxCanHandleAllOptions        = titles.count >= begIdx + MAX_OPTIONS_PER_PAGE;
+        NSInteger length                   = idxCanHandleAllOptions ? MAX_OPTIONS_PER_PAGE : titles.count - MAX_OPTIONS_PER_PAGE;
         NSRange subRange                   = NSMakeRange(begIdx, length);
-        NSArray *subSectionOfTitles        = [items subarrayWithRange:subRange];
+        NSArray *subSectionOfTitles        = [titles subarrayWithRange:subRange];
         
-        STActionInputView *actionInputView = [[STActionInputView alloc] initWithSelectionItems:subSectionOfTitles];
+        STActionInputView *actionInputView = [[STActionInputView alloc] initWithSelectionTitles:subSectionOfTitles];
         actionInputView.tintColor          = self.tintColor;
         actionInputView.delegate           = self;
         
@@ -142,9 +142,9 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
 
 #pragma mark STActionInputViewDelegate
 
-- (void)actionInputView:(STActionInputView *)actionInputView didSelectItem:(NSString *)item
+- (void)actionInputView:(STActionInputView *)actionInputView didSelectTitle:(NSString *)title
 {
-    [self.actionInputScrollViewDelegate actionInputScrollView:self didSelectItem:item];
+    [self.actionInputScrollViewDelegate actionInputScrollView:self didSelectTitle:title];
 }
 
 @end

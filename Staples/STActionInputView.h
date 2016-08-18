@@ -19,9 +19,9 @@
  Notifies the receiver that an item has been selected.
  
  @param actionInputView The `STActionInputView` instance.
- @param item The selection item that was selected.
+ @param item The selection title that was selected.
  */
-- (void)actionInputView:(STActionInputView *)actionInputView didSelectItem:(NSString *)item;
+- (void)actionInputView:(STActionInputView *)actionInputView didSelectTitle:(NSString *)title;
 
 @end
 
@@ -38,10 +38,10 @@
 /**
  Initialiazes an `STActionInputView`.
  
- @param items An `NSArray` of `NSString` objects representing the selection items to be displayed in the input view.
+ @param items An `NSArray` of `NSString` objects representing the selection titles to be displayed in the input view.
  
  @return An initialized `STActionInputView`.
  */
-- (id)initWithSelectionItems:(NSArray <NSString *> *)items;
+- (id)initWithSelectionTitles:(NSArray <NSString *> *)titles;
 
 @end
