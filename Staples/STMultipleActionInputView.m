@@ -7,27 +7,22 @@
 //
 
 #import "STMultipleActionInputView.h"
-#import "STActionInputView.h"
+#import "STMultipleActionInputScrollView.h"
 
-static const int MAX_OPTIONS_PER_PAGE = 4;
+@interface STMultipleActionInputView () <STMultipleActionInputScrollViewDelegate, UIScrollViewDelegate>
 
-@interface STMultipleActionInputView()
-
-@property (nonatomic, strong) NSArray <STActionInputView *> *inputViews;
+@property (nonatomic, strong) STMultipleActionInputScrollView *inputScrollView;
+@property (nonatomic, strong) UIPageControl *pageControl;
 
 @end
 
 @implementation STMultipleActionInputView
 
-/**
- *  Init / Common Init
- */
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self commonInitWithOptionTitles:nil];
+        [self commonInitWithTitles:nil];
     }
     return self;
 }
@@ -36,7 +31,7 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self commonInitWithOptionTitles:nil];
+        [self commonInitWithTitles:nil];
     }
     return self;
 }
@@ -45,105 +40,89 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        [self commonInitWithOptionTitles:titles];
+        [self commonInitWithTitles:titles];
     }
     return self;
 }
 
-- (void)commonInitWithOptionTitles:(NSArray *)titles
+- (void)commonInitWithTitles:(NSArray *)titles
 {
-#warning REMOVE 
-    self.backgroundColor = [UIColor greenColor];
-    
-    // Init iVars
-    self.inputViews = @[];
-    [self setOptionTitles:titles];
-    
-    // Configure scrollview and layout input views
-    [self configureScrollView];
+    [self layoutScrollViewWithTitles:titles];
     [self layoutPagingIndicatorView];
 }
 
-- (void)configureScrollView
+- (void)layoutScrollViewWithTitles:(NSArray *)titles
 {
-    // Assume we only are fitting 4 titles per pane
-    self.pagingEnabled = YES;
+    self.inputScrollView = [[STMultipleActionInputScrollView alloc] initWithButtonTitles:titles];
+    self.inputScrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.inputScrollView.tintColor = self.tintColor;
+    self.inputScrollView.delegate = self;
+    [self addSubview:self.inputScrollView];
+    
+    // Layout Constraints
+    NSLayoutConstraint *midLayoutConstraint = [NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
+    
+    [self addConstraints:@[bottomConstraint, midLayoutConstraint, heightConstraint, widthConstraint]];
 }
 
 - (void)layoutPagingIndicatorView
-
-/**
- *  Setting Titles / Sub-Action Views
- */
-- (void)setOptionTitles:(NSArray<NSString *> *)optionTitles
 {
-    // Remove any existing
-    [self removeAllExistingActionViews];
+    self.pageControl = [[UIPageControl alloc] init];
+    self.pageControl.translatesAutoresizingMaskIntoConstraints = false;
+    self.pageControl.tintColor = self.tintColor;
+    self.pageControl.numberOfPages = self.inputScrollView.numberOfPages;
+    [self addSubview:self.pageControl];
     
-    // Init Action Pages
-    NSInteger pages = optionTitles.count / MAX_OPTIONS_PER_PAGE;
-    NSMutableArray *actionViews = [[NSMutableArray alloc] init];
-    for (int i = 0; i < pages; i++) {
-        // Create action input view w/ subsection of titles
-        NSInteger begIdx                   = i * MAX_OPTIONS_PER_PAGE;
-        BOOL idxCanHandleAllOptions        = optionTitles.count >= begIdx + MAX_OPTIONS_PER_PAGE;
-        NSInteger length                   = idxCanHandleAllOptions ? MAX_OPTIONS_PER_PAGE : optionTitles.count - MAX_OPTIONS_PER_PAGE;
-        NSRange subRange                   = NSMakeRange(begIdx, length);
-        NSArray *subSectionOfTitles        = [optionTitles subarrayWithRange:subRange];
-        STActionInputView *actionInputView = [[STActionInputView alloc] initWithButtonItems:subSectionOfTitles];
-        
-        // Setup layout
-        [self addSubview:actionInputView];
-        [actionViews addObject:actionInputView];
-    }
+    // Layout Constraints
+    NSLayoutConstraint *midLayoutConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:30.0];
+    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0];
     
-    // Set Input Views and Call a layout
-    self.inputViews = [actionViews copy];
-    [self setNeedsLayout];
-}
-
-- (void)removeAllExistingActionViews
-{
-    for (STActionInputView *inputView in self.inputViews) {
-        [inputView removeFromSuperview];
-    }
-    self.inputViews = @[];
+    [self addConstraints:@[bottomConstraint, midLayoutConstraint, heightConstraint, widthConstraint]];
 }
 
 /**
- *  ScrollView Layout sizing
+ *  Override for setting tint
  */
-- (void)layoutSubviews
+
+- (void)setTintColor:(UIColor *)tintColor
 {
-    // Hooking here to setup the proper paging based on
-    // the number of input views.
-    [super layoutSubviews];
-    [self configureScrollableArea];
-    [self layoutInputViews];
+    [super setTintColor:tintColor];
+    self.pageControl.tintColor = tintColor;
+    self.inputScrollView.tintColor = tintColor;
 }
 
-- (void)configureScrollableArea
+/**
+ *  Setter for titles
+ */
+
+- (void)setOptionTitles:(NSArray <NSString *> *)optionTitles
 {
-    NSInteger pages  = self.inputViews.count;
-    CGFloat width    = pages * self.bounds.size.width;
-    self.contentSize = CGSizeMake(width, self.bounds.size.height);
+    [self.inputScrollView setOptionTitles:optionTitles];
+    self.pageControl.numberOfPages = self.inputScrollView.numberOfPages;
 }
 
-- (void)layoutInputViews
+/**
+ *  UIScrollView Delegate
+ */
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    const CGFloat ACTION_VIEW_INSET = 10.0;
-    for (int i = 0; i < self.inputViews.count; i++) {
-        // Generate inset rect based on page
-        CGFloat pageBegIdx     = self.frame.size.width * i;
-        CGRect inputViewRect   = CGRectMake(pageBegIdx, 0.0, self.frame.size.width, self.frame.size.height);
-        inputViewRect          = CGRectInset(inputViewRect, ACTION_VIEW_INSET, ACTION_VIEW_INSET * 2.0);
-        inputViewRect.origin.y = ACTION_VIEW_INSET;
-        
-        STActionInputView *inputView = self.inputViews[i];
-        [inputView setFrame:inputViewRect];
-    }
+    NSInteger page = scrollView.contentOffset.x / scrollView.frame.size.width;
+    self.pageControl.currentPage = page;
 }
 
-- (void)actionViewWa
+/**
+ *  STMultipleActionScrollViewDelegate
+ */
+- (void)actionInputScrollView:(STMultipleActionInputScrollView *)actionInputView didSelectItem:(NSString *)item
+{
+    [self.delegate actionInputView:self didSelectItem:item];
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
+}
 
 @end

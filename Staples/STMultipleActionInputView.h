@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class STMultipleActionInputView;
+
 @protocol STMultipleActionInputViewDelegate <NSObject>
 
-- (void)actionWasHitWithTitle:(NSString *)title;
+- (void)actionInputView:(STMultipleActionInputView *)actionInputView didSelectItem:(NSString *)item;
 
 @end
 
-@interface STMultipleActionInputView : UIScrollView
+@interface STMultipleActionInputView : UIControl
 
-@property (nonatomic, weak) id <STMultipleActionInputViewDelegate> delgate;
+@property (nonatomic, weak) id <STMultipleActionInputViewDelegate> delegate;
 
 /**
  *  Convenience Init
@@ -26,6 +28,6 @@
 /**
  *  Setting Titles / Sub-Action Views
  */
-- (void)setOptionTitles:(NSArray<NSString *> *)optionTitles;
+- (void)setOptionTitles:(NSArray <NSString *> *)optionTitles;
 
 @end

@@ -20,6 +20,6 @@
 
 - (id)initWithButtonItems:(NSArray *)buttonItems;
 
-@property (nonatomic) id<STActionInputViewDelegate> delegate;
+@property (nonatomic, weak) id<STActionInputViewDelegate> delegate;
 
 @end
