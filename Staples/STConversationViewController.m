@@ -11,7 +11,7 @@
 #import "STMultipleActionInputView.h"
 #import "STMessageInputToolbar.h"
 
-@interface STConversationViewController () <STMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource>
+@interface STConversationViewController () <STMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource, STMessageInputToolbarDelegate>
 
 @end
 
@@ -23,10 +23,6 @@
     
     self.dataSource = self;
     
-    STMultipleActionInputView *multiOptionSelectionView = [[STMultipleActionInputView alloc] initWithSelectionTitles:[self selectionItems]];
-    multiOptionSelectionView.frame = CGRectMake(0, 0, 320, 280);
-    multiOptionSelectionView.delegate = self;
-    self.messageInputToolbar.textInputView.inputView = multiOptionSelectionView;
 }
 
 - (void)multipleActionInputView:(STMultipleActionInputView *)multipleActionInputView didSelectTitle:(NSString *)title
@@ -76,7 +72,18 @@
 
 - (ATLMessageInputToolbar *)initializeMessageInputToolbar
 {
-    return [STMessageInputToolbar new];
+    STMessageInputToolbar *toolbar = [STMessageInputToolbar new];
+    toolbar.customDelegate = self;
+    return toolbar;
+}
+
+- (void)messageInputToolbar:(STMessageInputToolbar *)messageInputToolbar didTapListAccessoryButton:(UIButton *)listAccessoryButton
+{
+    STMultipleActionInputView *multiOptionSelectionView = [[STMultipleActionInputView alloc] initWithSelectionTitles:[self selectionItems]];
+    multiOptionSelectionView.frame = CGRectMake(0, 0, 320, 280);
+    multiOptionSelectionView.delegate = self;
+    messageInputToolbar.textInputView.inputView = multiOptionSelectionView;
+    [messageInputToolbar.textInputView becomeFirstResponder];
 }
 
 @end
