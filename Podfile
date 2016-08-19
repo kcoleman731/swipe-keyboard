@@ -6,5 +6,7 @@ target 'Staples' do
   use_frameworks!
 
   pod 'Atlas'
+  pod 'SDWebImage', '~> 3.8.1'
+  pod 'EDColor', '~> 1.0.0'
 
 end
