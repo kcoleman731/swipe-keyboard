@@ -9,6 +9,7 @@
 #import "STConversationViewController.h"
 #import "STActionInputView.h"
 #import "STMultipleActionInputView.h"
+#import "STMessageInputToolbar.h"
 
 @interface STConversationViewController () <STMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource>
 
@@ -71,6 +72,11 @@
     return @[@"Track My Shipment", @"Order New Supplies", @"Reorder Last Shipment",
              @"Scan School Supplies List", @"Option 1", @"Option 2",
              @"Option 3", @"Option 4"];
+}
+
+- (ATLMessageInputToolbar *)initializeMessageInputToolbar
+{
+    return [STMessageInputToolbar new];
 }
 
 @end

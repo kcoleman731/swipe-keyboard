@@ -21,6 +21,7 @@
 		D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761871D660FBA00F3369F /* STConversationViewController.m */; };
 		D697618B1D66162C00F3369F /* STActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D697618A1D66162C00F3369F /* STActionInputView.m */; };
 		D697618E1D66183C00F3369F /* STActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D697618D1D66183C00F3369F /* STActionButton.m */; };
+		D6F858821D677F290027F195 /* STMessageInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F858811D677F290027F195 /* STMessageInputToolbar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		D697618A1D66162C00F3369F /* STActionInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STActionInputView.m; sourceTree = "<group>"; };
 		D697618C1D66183C00F3369F /* STActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STActionButton.h; sourceTree = "<group>"; };
 		D697618D1D66183C00F3369F /* STActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STActionButton.m; sourceTree = "<group>"; };
+		D6F858801D677F290027F195 /* STMessageInputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMessageInputToolbar.h; sourceTree = "<group>"; };
+		D6F858811D677F290027F195 /* STMessageInputToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMessageInputToolbar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				D69761731D660AEE00F3369F /* AppDelegate.m */,
 				D69761861D660FBA00F3369F /* STConversationViewController.h */,
 				D69761871D660FBA00F3369F /* STConversationViewController.m */,
+				D6F858801D677F290027F195 /* STMessageInputToolbar.h */,
+				D6F858811D677F290027F195 /* STMessageInputToolbar.m */,
 				34A849281D6621AB002C34D2 /* STMultipleActionInputScrollView.h */,
 				34A849291D6621AB002C34D2 /* STMultipleActionInputScrollView.m */,
 				34A8492B1D663623002C34D2 /* STMultipleActionInputView.h */,
@@ -273,6 +278,7 @@
 				34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */,
 				D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */,
 				D62015681D663B4D00EAA772 /* BTSItemPrice.m in Sources */,
+				D6F858821D677F290027F195 /* STMessageInputToolbar.m in Sources */,
 				D69761711D660AEE00F3369F /* main.m in Sources */,
 				D62015651D663B0500EAA772 /* BTSItem.m in Sources */,
 				D620156B1D663BFD00EAA772 /* BTSList.m in Sources */,
