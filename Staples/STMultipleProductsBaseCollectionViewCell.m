@@ -60,6 +60,7 @@ NSString *const STMultipleProductsBaseCollectionViewCellId = @"STMultipleProduct
     self.collectionView.delegate = self.collectionViewLayout;
     self.collectionView.collectionViewLayout = self.collectionViewLayout;
     self.collectionView.backgroundColor = [UIColor clearColor];
+    self.collectionView.showsHorizontalScrollIndicator = NO;
     [self addSubview:self.collectionView];
     [self addCollecitonViewConstraints];
 }
