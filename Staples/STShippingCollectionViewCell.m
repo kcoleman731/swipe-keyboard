@@ -20,7 +20,6 @@ NSString *const STShippingCollectionViewCellReuseIdentifier = @"STShippingCollec
     self.view.layer.borderColor = STLightGrayColor().CGColor;
     self.view.layer.cornerRadius = 4;
     self.view.layer.borderWidth = 2;
-    self.view.layer.shadowRadius = 2;
     self.view.clipsToBounds = YES;
     self.seperator.backgroundColor = STLightGrayColor();
     

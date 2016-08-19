@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Atlas/Atlas.h>
-
+#import "STCellContainerView.h"
 @interface STShippingCollectionViewCell : UICollectionViewCell
 
-@property (strong, nonatomic) IBOutlet UIView *view;
+@property (strong, nonatomic) IBOutlet STCellContainerView *view;
 @property (strong, nonatomic) IBOutlet UILabel *orderNumberLabel;
 @property (strong, nonatomic) IBOutlet UILabel *priceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *itemLabel;
