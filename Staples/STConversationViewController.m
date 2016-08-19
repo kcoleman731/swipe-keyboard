@@ -25,6 +25,8 @@ NSString *const STShippingCell = @"Shipping Cell";
 NSString *const STShippingCellMimeType = @"json/shipping";
 
 NSString *const STItemCell = @"Item Cell";
+NSString *const STItemCellMimeType = @"json/item";
+
 NSString *const STOptionCell = @"Option Cell";
 
 - (void)viewDidLoad
@@ -34,15 +36,12 @@ NSString *const STOptionCell = @"Option Cell";
     self.dataSource = self;
     self.delegate = self;
     
-    LYRConversationOptions *options = [LYRConversationOptions new];
-    options.distinctByParticipants = NO;
-    NSError *error;
-    LYRConversation *conversation = [self.layerClient newConversationWithParticipants:[NSSet setWithObject:@"2"] options:options error:&error];
-    if (!conversation) {
-        NSLog(@"Failed to build conversatio with error: %@", error);
-    }
-    [self setConversation:conversation];
+    [self createNewConversation];
+    [self configureCollectionViewCells];
+}
 
+- (void)configureCollectionViewCells
+{
     UINib *nib = [UINib nibWithNibName:@"STAddressCollectionViewCell"  bundle:[NSBundle mainBundle]];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:[STAddressCollectionViewCell reuseIdentifier]];
     
@@ -54,9 +53,13 @@ NSString *const STOptionCell = @"Option Cell";
 {
     NSError *error;
     LYRMessagePart *messagePart;
-    if ([title isEqualToString:STAddressCell]) {
+    if ([title isEqualToString:STItemCell]) {
+    
+    }else if ([title isEqualToString:STAddressCell]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeAddressInfo] options:NSJSONWritingPrettyPrinted error:nil];
         messagePart = [LYRMessagePart messagePartWithMIMEType:STAddressCellMimeType data:data];
+    }else if ([title isEqualToString:STShippingCell]) {
+        
     }
     
     LYRMessage *message = [self.layerClient newMessageWithParts:@[messagePart] options:nil error:&error];
@@ -73,7 +76,11 @@ NSString *const STOptionCell = @"Option Cell";
 - (CGFloat)conversationViewController:(ATLConversationViewController *)viewController heightForMessage:(LYRMessage *)message withCellWidth:(CGFloat)cellWidth
 {
     LYRMessagePart *part = message.parts[0];
-    if ([part.MIMEType isEqualToString:STAddressCellMimeType]) {
+    if ([part.MIMEType isEqualToString:STItemCellMimeType]) {
+        return 260;
+    }else if ([part.MIMEType isEqualToString:STAddressCellMimeType]) {
+        return 260;
+    }else if ([part.MIMEType isEqualToString:STShippingCellMimeType]) {
         return 260;
     }
     return 200;
@@ -84,8 +91,12 @@ NSString *const STOptionCell = @"Option Cell";
 - (nullable NSString *)conversationViewController:(ATLConversationViewController *)viewController reuseIdentifierForMessage:(LYRMessage *)message
 {
     LYRMessagePart *part = message.parts[0];
-    if ([part.MIMEType isEqualToString:STAddressCellMimeType]) {
+    if ([part.MIMEType isEqualToString:STItemCellMimeType]) {
+        return @"";
+    }else if ([part.MIMEType isEqualToString:STAddressCellMimeType]) {
         return [STAddressCollectionViewCell reuseIdentifier];
+    }else if ([part.MIMEType isEqualToString:STShippingCellMimeType]) {
+        return @"";
     }
     return @"";
 }
@@ -119,6 +130,20 @@ NSString *const STOptionCell = @"Option Cell";
     multiOptionSelectionView.delegate = self;
     messageInputToolbar.textInputView.inputView = multiOptionSelectionView;
     [messageInputToolbar.textInputView becomeFirstResponder];
+}
+
+#pragma mark - FAKE DATA SHIIIT
+
+- (void)createNewConversation
+{
+    LYRConversationOptions *options = [LYRConversationOptions new];
+    options.distinctByParticipants = NO;
+    NSError *error;
+    LYRConversation *conversation = [self.layerClient newConversationWithParticipants:[NSSet setWithObject:@"2"] options:options error:&error];
+    if (!conversation) {
+        NSLog(@"Failed to build conversatio with error: %@", error);
+    }
+    [self setConversation:conversation];
 }
 
 - (NSArray *)selectionItems
