@@ -34,15 +34,33 @@ IB_DESIGNABLE
 
 - (void)awakeFromNib
 {
+    [self configureUI];
     [self configureAddButton];
+}
+
+- (void)configureUI
+{
+    self.clipsToBounds = NO;
+    self.contentView.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor whiteColor];
+    self.layer.cornerRadius = 10.0;
+    self.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.layer.shadowRadius = 2.0;
+    self.layer.shadowOpacity = 0.4;
+    self.layer.shadowOffset = CGSizeMake(0.0, 0.0);
 }
 
 - (void)configureAddButton
 {
     self.addToCartButton.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.addToCartButton.layer.shadowOpacity = 0.7f;
-    self.addToCartButton.layer.shadowRadius = 5.0;
-    self.addToCartButton.layer.shadowOffset = CGSizeMake(5.0, 5.0);
+    self.addToCartButton.layer.shadowOpacity = 0.6f;
+    self.addToCartButton.layer.shadowRadius = 2.0;
+    self.addToCartButton.layer.shadowOffset = CGSizeMake(2.0, 2.0);
+}
+
++ (NSString *)reuseIdentifier
+{
+    return STMultipleProductsCollectionViewCellId;
 }
 
 #pragma mark - Product Setter

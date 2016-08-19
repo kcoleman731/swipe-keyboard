@@ -9,11 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "STMultipleProductsCollectionViewCell.h"
 #import "STProductItem.h"
+#import "ATLMessagePresenting.h"
 
-@interface STMultipleProductsBaseCollectionViewCell : UICollectionViewCell
+@interface STMultipleProductsBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
 @property (nonatomic, weak) id <STMultipleProductsCollectionViewCellDelegate> productDelegate;
 
+/**
+ *  Reuse Identifier
+ */
++ (NSString *)reuseIdentifier;
+
+/**
+ *  Product Items Setter
+ */
 - (void)setProducts:(NSArray <STProductItem *> *)items;
 
 @end

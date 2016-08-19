@@ -10,6 +10,8 @@
 #import "STMultipleProductsBaseCollectionViewCellDataSource.h"
 #import "STMultipleProductsCollectionViewLayout.h"
 
+NSString *const STMultipleProductsBaseCollectionViewCellId = @"STMultipleProductsBaseCollectionViewCellId";
+
 @interface STMultipleProductsBaseCollectionViewCell () <UICollectionViewDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -50,11 +52,14 @@
 
 - (void)layoutCollectionView
 {
-    self.collectionView = [[UICollectionView alloc] init];
     self.collectionViewLayout = [[STMultipleProductsCollectionViewLayout alloc] init];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.collectionViewLayout];
+    self.collectionView.contentInset = UIEdgeInsetsMake(0.0, 16.0, 0.0, 0.0);
+    self.collectionView.contentOffset = CGPointMake(16.0, 0.0);
     self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.collectionView.delegate = self;
+    self.collectionView.delegate = self.collectionViewLayout;
     self.collectionView.collectionViewLayout = self.collectionViewLayout;
+    self.collectionView.backgroundColor = [UIColor clearColor];
     [self addSubview:self.collectionView];
     [self addCollecitonViewConstraints];
 }
@@ -63,6 +68,11 @@
 {
     self.dataSource = [[STMultipleProductsBaseCollectionViewCellDataSource alloc] initWithCollectionView:self.collectionView];
     self.collectionView.dataSource = self.dataSource;
+}
+
++ (NSString *)reuseIdentifier
+{
+    return STMultipleProductsBaseCollectionViewCellId;
 }
 
 #pragma mark - Setter For Data
@@ -74,7 +84,32 @@
 
 #pragma mark - Collection View Delegate Calls
 
+#pragma mark - ATLMessagePresenting
 
+- (void)presentMessage:(LYRMessage *)message
+{
+    LYRMessagePart *part = message.parts[0];
+    NSArray *data = [NSJSONSerialization JSONObjectWithData:part.data options:NSJSONReadingAllowFragments error:nil];
+    NSMutableArray *products = [[NSMutableArray alloc] init];
+    for (NSDictionary *dataDict in data) {
+        STProductItem *item = [[STProductItem alloc] initWithDictionaryPayload:dataDict];
+        [products addObject:item];
+    }
+    
+    // Set the decoded products
+    [self setProducts:[products copy]];
+}
+
+- (void)updateWithSender:(nullable id<ATLParticipant>)sender
+{
+    // ???
+}
+
+
+- (void)shouldDisplayAvatarItem:(BOOL)shouldDisplayAvatarItem
+{
+    // ??
+}
 
 #pragma mark - NSLayoutConstraints For UI
 

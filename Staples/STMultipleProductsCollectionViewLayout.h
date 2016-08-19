@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface STMultipleProductsCollectionViewLayout : UICollectionViewFlowLayout
+@interface STMultipleProductsCollectionViewLayout : UICollectionViewFlowLayout <UICollectionViewDelegateFlowLayout>
 
 @end

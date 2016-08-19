@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "STProductItem.h"
 
-NSString *const STMultipleProductsCollectionViewCellId;
 
 @class STMultipleProductsCollectionViewCell;
 
@@ -25,6 +24,14 @@ NSString *const STMultipleProductsCollectionViewCellId;
 @property (readonly, nonatomic, strong) STProductItem *item;
 @property (nonatomic, weak) id <STMultipleProductsCollectionViewCellDelegate> delegate;
 
+/**
+ *  Reuse Identifier
+ */
++ (NSString *)reuseIdentifier;
+
+/**
+ *  Product Items Setter
+ */
 - (void)setProductItem:(STProductItem *)item;
 
 @end

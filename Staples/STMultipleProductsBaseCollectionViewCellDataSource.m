@@ -41,7 +41,7 @@
 - (void)registerCell
 {
     UINib *collectionNib = [UINib nibWithNibName:@"STMultipleProductsCollectionViewCell" bundle:[NSBundle mainBundle]];
-    [self.collectionView registerNib:collectionNib forCellWithReuseIdentifier:STMultipleProductsCollectionViewCellId];
+    [self.collectionView registerNib:collectionNib forCellWithReuseIdentifier:[STMultipleProductsCollectionViewCell reuseIdentifier]];
 }
 
 #pragma mark - Setter for data
@@ -61,7 +61,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:STMultipleProductsCollectionViewCellId forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[STMultipleProductsCollectionViewCell reuseIdentifier] forIndexPath:indexPath];
     
     // customize
     return cell;

@@ -33,4 +33,11 @@
     self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(collectionView.bounds.size.width * 0.9f, collectionView.bounds.size.height * 0.9f);
+}
+
 @end

@@ -11,6 +11,7 @@
 #import "STMultipleActionInputView.h"
 #import "STMessageInputToolbar.h"
 #import "STAddressCollectionViewCell.h"
+#import "STMultipleProductsBaseCollectionViewCell.h"
 
 @interface STConversationViewController () <STMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource, ATLConversationViewControllerDelegate, STMessageInputToolbarDelegate>
 
@@ -44,6 +45,7 @@ NSString *const STOptionCell = @"Option Cell";
 {
     UINib *nib = [UINib nibWithNibName:@"STAddressCollectionViewCell"  bundle:[NSBundle mainBundle]];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:[STAddressCollectionViewCell reuseIdentifier]];
+    [self.collectionView registerClass:[STMultipleProductsBaseCollectionViewCell class] forCellWithReuseIdentifier:[STMultipleProductsBaseCollectionViewCell reuseIdentifier]];
     
     [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STAddressCollectionViewCell class]]] setTextColor:[UIColor grayColor]];
     [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STAddressCollectionViewCell class]]] setFont:[UIFont systemFontOfSize:12 weight:UIFontWeightRegular]];
@@ -54,7 +56,8 @@ NSString *const STOptionCell = @"Option Cell";
     NSError *error;
     LYRMessagePart *messagePart;
     if ([title isEqualToString:STItemCell]) {
-    
+        NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeProductInfo] options:NSJSONWritingPrettyPrinted error:nil];
+        messagePart = [LYRMessagePart messagePartWithMIMEType:STItemCellMimeType data:data];
     }else if ([title isEqualToString:STAddressCell]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeAddressInfo] options:NSJSONWritingPrettyPrinted error:nil];
         messagePart = [LYRMessagePart messagePartWithMIMEType:STAddressCellMimeType data:data];
@@ -77,7 +80,7 @@ NSString *const STOptionCell = @"Option Cell";
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:STItemCellMimeType]) {
-        return 260;
+        return 140;
     }else if ([part.MIMEType isEqualToString:STAddressCellMimeType]) {
         return 260;
     }else if ([part.MIMEType isEqualToString:STShippingCellMimeType]) {
@@ -92,7 +95,7 @@ NSString *const STOptionCell = @"Option Cell";
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:STItemCellMimeType]) {
-        return @"";
+        return [STMultipleProductsBaseCollectionViewCell reuseIdentifier];
     }else if ([part.MIMEType isEqualToString:STAddressCellMimeType]) {
         return [STAddressCollectionViewCell reuseIdentifier];
     }else if ([part.MIMEType isEqualToString:STShippingCellMimeType]) {
@@ -157,5 +160,19 @@ NSString *const STOptionCell = @"Option Cell";
              STAddressStreet : @"1776 Sacramento St, #704",
              STAddressCity: @"San Francisco, CA, 94109"};
 }
+
+- (NSArray *)fakeProductInfo
+{
+    NSMutableArray *products = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 50; i++) {
+        [products addObject:@{
+                              @"price" : @"$20.99",
+                              @"title" : @"Staples Multiuse Copy Paper, 8 1/2\" x 11\", 8-Ream Case",
+                              @"pic" : @"http://quill.scene7.com/is/image/Quill/s0854503_s7?$img320$"
+                              }];
+    }
+    return [products copy];
+}
+
 
 @end

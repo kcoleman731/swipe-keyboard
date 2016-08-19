@@ -104,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				3486CD0C1D679E700041E2F7 /* Base Collection View Cell */,
-				3486CD0B1D679E6B0041E2F7 /* Item Cell */,
+				3486CD0B1D679E6B0041E2F7 /* Product Cell */,
 			);
 			name = STMultipleProductsCollectionViewCell;
 			sourceTree = "<group>";
@@ -125,14 +125,14 @@
 			name = STMultipleProductsTableViewCell;
 			sourceTree = "<group>";
 		};
-		3486CD0B1D679E6B0041E2F7 /* Item Cell */ = {
+		3486CD0B1D679E6B0041E2F7 /* Product Cell */ = {
 			isa = PBXGroup;
 			children = (
 				3486CD021D677A730041E2F7 /* STMultipleProductsCollectionViewCell.xib */,
 				3486CD081D6783B10041E2F7 /* STMultipleProductsCollectionViewCell.h */,
 				3486CD091D6783B10041E2F7 /* STMultipleProductsCollectionViewCell.m */,
 			);
-			name = "Item Cell";
+			name = "Product Cell";
 			sourceTree = "<group>";
 		};
 		3486CD0C1D679E700041E2F7 /* Base Collection View Cell */ = {
@@ -225,8 +225,11 @@
 		D697616E1D660AEE00F3369F /* Staples */ = {
 			isa = PBXGroup;
 			children = (
+				D636E3A81D67A88100B9FEBB /* STUtilities.h */,
+				D636E3A91D67A88100B9FEBB /* STUtilities.m */,
+				D6F858831D6786480027F195 /* Cells */,
+				D62015621D663AE200EAA772 /* Model */,
 				3486CD061D677B8A0041E2F7 /* Assets */,
-				3486CD011D6779130041E2F7 /* STMultipleProductsCollectionViewCell */,
 				D69761721D660AEE00F3369F /* AppDelegate.h */,
 				D69761731D660AEE00F3369F /* AppDelegate.m */,
 				D69761861D660FBA00F3369F /* STConversationViewController.h */,
@@ -261,6 +264,7 @@
 		D6F858831D6786480027F195 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				3486CD011D6779130041E2F7 /* STMultipleProductsCollectionViewCell */,
 				D636E3AB1D67A9DE00B9FEBB /* STShippingCollectionViewCell.h */,
 				D636E3AC1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m */,
 				D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */,
@@ -334,6 +338,7 @@
 				D6F858881D6786840027F195 /* STAddressCollectionViewCell.xib in Resources */,
 				D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */,
 				D697617C1D660AEE00F3369F /* Assets.xcassets in Resources */,
+				D636E3AF1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib in Resources */,
 				3486CD031D677A730041E2F7 /* STMultipleProductsCollectionViewCell.xib in Resources */,
 				3486CD051D677B880041E2F7 /* s0854503_s7.jpg in Resources */,
 				D697617A1D660AEE00F3369F /* Main.storyboard in Resources */,
@@ -355,7 +360,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C0CF2103DB4CACEA24B64885 /* [CP] Copy Pods Resources */ = {
@@ -398,17 +403,20 @@
 				D6F858861D67866E0027F195 /* STAddressCollectionViewCell.m in Sources */,
 				D620156C1D663EB100EAA772 /* STMultipleActionInputView.m in Sources */,
 				D697618E1D66183C00F3369F /* STActionButton.m in Sources */,
-				D69761771D660AEE00F3369F /* ViewController.m in Sources */,
 				3486CD0A1D6783B10041E2F7 /* STMultipleProductsCollectionViewCell.m in Sources */,
 				3486CD1B1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m in Sources */,
 				D69761741D660AEE00F3369F /* AppDelegate.m in Sources */,
 				34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */,
 				D636E3AD1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m in Sources */,
 				D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */,
-				34A8492D1D663623002C34D2 /* STMultipleActionInputView.m in Sources */,
+				D62015681D663B4D00EAA772 /* BTSItemPrice.m in Sources */,
+				D6F858821D677F290027F195 /* STMessageInputToolbar.m in Sources */,
 				3486CD131D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.m in Sources */,
 				3486CD171D67A4790041E2F7 /* STProductItem.m in Sources */,
 				D69761711D660AEE00F3369F /* main.m in Sources */,
+				D62015651D663B0500EAA772 /* BTSItem.m in Sources */,
+				D636E3AA1D67A88100B9FEBB /* STUtilities.m in Sources */,
+				D620156B1D663BFD00EAA772 /* BTSList.m in Sources */,
 				3486CD0F1D679E9A0041E2F7 /* STMultipleProductsBaseCollectionViewCell.m in Sources */,
 				D697618B1D66162C00F3369F /* STActionInputView.m in Sources */,
 			);

@@ -16,19 +16,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="s0854503_s7.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="p56-sH-M1x">
-                        <rect key="frame" x="16" y="16" width="99" height="98"/>
+                        <rect key="frame" x="8" y="16" width="99" height="98"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="p56-sH-M1x" secondAttribute="height" multiplier="1:1" constant="1" id="ySC-j7-qqk"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Staples Multiuse Copy Paper, 8 1/2&quot; x 11&quot;, 8-Ream Case" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aE-Nx-xq0">
-                        <rect key="frame" x="145" y="20" width="151" height="49"/>
+                        <rect key="frame" x="123" y="20" width="173" height="49"/>
                         <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
                         <color key="textColor" red="0.31321638822555542" green="0.28456756472587585" blue="0.28425759077072144" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$20.99" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CA-L6-u0q">
-                        <rect key="frame" x="145" y="97" width="49" height="18"/>
+                        <rect key="frame" x="123" y="97" width="49" height="18"/>
                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="16"/>
                         <color key="textColor" red="0.29640400409698486" green="0.28134962916374207" blue="0.28116142749786377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -48,13 +48,13 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="enF-m1-n6U" secondAttribute="trailing" constant="8" id="5cH-ry-24O"/>
                 <constraint firstItem="0CA-L6-u0q" firstAttribute="leading" secondItem="1aE-Nx-xq0" secondAttribute="leading" id="N4d-hn-Dve"/>
-                <constraint firstItem="p56-sH-M1x" firstAttribute="leading" secondItem="huT-aa-6sx" secondAttribute="leading" constant="16" id="PfR-Cj-ZNj"/>
+                <constraint firstItem="p56-sH-M1x" firstAttribute="leading" secondItem="huT-aa-6sx" secondAttribute="leading" constant="8" id="PfR-Cj-ZNj"/>
                 <constraint firstItem="p56-sH-M1x" firstAttribute="top" secondItem="huT-aa-6sx" secondAttribute="top" constant="16" id="bsd-jz-zaz"/>
                 <constraint firstAttribute="trailing" secondItem="1aE-Nx-xq0" secondAttribute="trailing" constant="24" id="dze-pF-m4J"/>
                 <constraint firstAttribute="bottom" secondItem="p56-sH-M1x" secondAttribute="bottom" constant="16" id="lXc-HP-F8l"/>
                 <constraint firstAttribute="bottom" secondItem="enF-m1-n6U" secondAttribute="bottom" constant="8" id="q5e-ay-Y5g"/>
                 <constraint firstItem="1aE-Nx-xq0" firstAttribute="top" secondItem="huT-aa-6sx" secondAttribute="top" constant="20" id="uGJ-ad-JDD"/>
-                <constraint firstItem="1aE-Nx-xq0" firstAttribute="leading" secondItem="p56-sH-M1x" secondAttribute="trailing" constant="30" id="zwa-5O-P5X"/>
+                <constraint firstItem="1aE-Nx-xq0" firstAttribute="leading" secondItem="p56-sH-M1x" secondAttribute="trailing" constant="16" id="zwa-5O-P5X"/>
                 <constraint firstAttribute="bottom" secondItem="0CA-L6-u0q" secondAttribute="bottom" constant="15" id="zwb-Jf-Q6o"/>
             </constraints>
             <connections>

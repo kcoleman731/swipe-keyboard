@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface STProductItem : NSObject
+@interface STProductItem : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *picURL;
 @property (nonatomic, strong) NSString *price;
+
+// Convenience Init
+- (instancetype)initWithDictionaryPayload:(NSDictionary *)payload;
 
 @end

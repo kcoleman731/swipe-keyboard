@@ -8,7 +8,7 @@
 
 #import "STShippingCollectionViewCell.h"
 
-NSString *const STAddressCollectionViewCellReuseIdentifier = @"STAddressCollectionViewCellReuseIdentifier";
+NSString *const STShippingCollectionViewCellReuseIdentifier = @"STShippingCollectionViewCellReuseIdentifier";
 
 @implementation STShippingCollectionViewCell
 
@@ -19,7 +19,7 @@ NSString *const STAddressCollectionViewCellReuseIdentifier = @"STAddressCollecti
 
 + (NSString *)reuseIdentifier
 {
-    return STAddressCollectionViewCellReuseIdentifier;
+    return STShippingCollectionViewCellReuseIdentifier;
 }
 
 - (void)presentMessage:(LYRMessage *)message
