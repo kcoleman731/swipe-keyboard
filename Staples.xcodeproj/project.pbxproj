@@ -13,6 +13,9 @@
 		D62015681D663B4D00EAA772 /* BTSItemPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = D62015671D663B4D00EAA772 /* BTSItemPrice.m */; };
 		D620156B1D663BFD00EAA772 /* BTSList.m in Sources */ = {isa = PBXBuildFile; fileRef = D620156A1D663BFD00EAA772 /* BTSList.m */; };
 		D620156C1D663EB100EAA772 /* STMultipleActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8492C1D663623002C34D2 /* STMultipleActionInputView.m */; };
+		D636E3AA1D67A88100B9FEBB /* STUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D636E3A91D67A88100B9FEBB /* STUtilities.m */; };
+		D636E3AD1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D636E3AC1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m */; };
+		D636E3AF1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */; };
 		D69761711D660AEE00F3369F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761701D660AEE00F3369F /* main.m */; };
 		D69761741D660AEE00F3369F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761731D660AEE00F3369F /* AppDelegate.m */; };
 		D697617A1D660AEE00F3369F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69761781D660AEE00F3369F /* Main.storyboard */; };
@@ -21,6 +24,9 @@
 		D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761871D660FBA00F3369F /* STConversationViewController.m */; };
 		D697618B1D66162C00F3369F /* STActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D697618A1D66162C00F3369F /* STActionInputView.m */; };
 		D697618E1D66183C00F3369F /* STActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D697618D1D66183C00F3369F /* STActionButton.m */; };
+		D6F858821D677F290027F195 /* STMessageInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F858811D677F290027F195 /* STMessageInputToolbar.m */; };
+		D6F858861D67866E0027F195 /* STAddressCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F858851D67866E0027F195 /* STAddressCollectionViewCell.m */; };
+		D6F858881D6786840027F195 /* STAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6F858871D6786840027F195 /* STAddressCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +43,11 @@
 		D62015671D663B4D00EAA772 /* BTSItemPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSItemPrice.m; sourceTree = "<group>"; };
 		D62015691D663BFD00EAA772 /* BTSList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTSList.h; sourceTree = "<group>"; };
 		D620156A1D663BFD00EAA772 /* BTSList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSList.m; sourceTree = "<group>"; };
+		D636E3A81D67A88100B9FEBB /* STUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STUtilities.h; sourceTree = "<group>"; };
+		D636E3A91D67A88100B9FEBB /* STUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STUtilities.m; sourceTree = "<group>"; };
+		D636E3AB1D67A9DE00B9FEBB /* STShippingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STShippingCollectionViewCell.h; sourceTree = "<group>"; };
+		D636E3AC1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STShippingCollectionViewCell.m; sourceTree = "<group>"; };
+		D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STShippingCollectionViewCell.xib; sourceTree = "<group>"; };
 		D697616C1D660AEE00F3369F /* Staples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69761701D660AEE00F3369F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D69761721D660AEE00F3369F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +62,11 @@
 		D697618A1D66162C00F3369F /* STActionInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STActionInputView.m; sourceTree = "<group>"; };
 		D697618C1D66183C00F3369F /* STActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STActionButton.h; sourceTree = "<group>"; };
 		D697618D1D66183C00F3369F /* STActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STActionButton.m; sourceTree = "<group>"; };
+		D6F858801D677F290027F195 /* STMessageInputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMessageInputToolbar.h; sourceTree = "<group>"; };
+		D6F858811D677F290027F195 /* STMessageInputToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMessageInputToolbar.m; sourceTree = "<group>"; };
+		D6F858841D67866E0027F195 /* STAddressCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAddressCollectionViewCell.h; sourceTree = "<group>"; };
+		D6F858851D67866E0027F195 /* STAddressCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAddressCollectionViewCell.m; sourceTree = "<group>"; };
+		D6F858871D6786840027F195 /* STAddressCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STAddressCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,11 +132,16 @@
 		D697616E1D660AEE00F3369F /* Staples */ = {
 			isa = PBXGroup;
 			children = (
+				D636E3A81D67A88100B9FEBB /* STUtilities.h */,
+				D636E3A91D67A88100B9FEBB /* STUtilities.m */,
+				D6F858831D6786480027F195 /* Cells */,
 				D62015621D663AE200EAA772 /* Model */,
 				D69761721D660AEE00F3369F /* AppDelegate.h */,
 				D69761731D660AEE00F3369F /* AppDelegate.m */,
 				D69761861D660FBA00F3369F /* STConversationViewController.h */,
 				D69761871D660FBA00F3369F /* STConversationViewController.m */,
+				D6F858801D677F290027F195 /* STMessageInputToolbar.h */,
+				D6F858811D677F290027F195 /* STMessageInputToolbar.m */,
 				34A849281D6621AB002C34D2 /* STMultipleActionInputScrollView.h */,
 				34A849291D6621AB002C34D2 /* STMultipleActionInputScrollView.m */,
 				34A8492B1D663623002C34D2 /* STMultipleActionInputView.h */,
@@ -144,6 +165,19 @@
 				D69761701D660AEE00F3369F /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D6F858831D6786480027F195 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D636E3AB1D67A9DE00B9FEBB /* STShippingCollectionViewCell.h */,
+				D636E3AC1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m */,
+				D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */,
+				D6F858841D67866E0027F195 /* STAddressCollectionViewCell.h */,
+				D6F858851D67866E0027F195 /* STAddressCollectionViewCell.m */,
+				D6F858871D6786840027F195 /* STAddressCollectionViewCell.xib */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,8 +240,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6F858881D6786840027F195 /* STAddressCollectionViewCell.xib in Resources */,
 				D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */,
 				D697617C1D660AEE00F3369F /* Assets.xcassets in Resources */,
+				D636E3AF1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib in Resources */,
 				D697617A1D660AEE00F3369F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,14 +303,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6F858861D67866E0027F195 /* STAddressCollectionViewCell.m in Sources */,
 				D620156C1D663EB100EAA772 /* STMultipleActionInputView.m in Sources */,
 				D697618E1D66183C00F3369F /* STActionButton.m in Sources */,
 				D69761741D660AEE00F3369F /* AppDelegate.m in Sources */,
 				34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */,
+				D636E3AD1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m in Sources */,
 				D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */,
 				D62015681D663B4D00EAA772 /* BTSItemPrice.m in Sources */,
+				D6F858821D677F290027F195 /* STMessageInputToolbar.m in Sources */,
 				D69761711D660AEE00F3369F /* main.m in Sources */,
 				D62015651D663B0500EAA772 /* BTSItem.m in Sources */,
+				D636E3AA1D67A88100B9FEBB /* STUtilities.m in Sources */,
 				D620156B1D663BFD00EAA772 /* BTSList.m in Sources */,
 				D697618B1D66162C00F3369F /* STActionInputView.m in Sources */,
 			);
