@@ -11,6 +11,8 @@
 #import "STMultipleActionInputView.h"
 #import "STMessageInputToolbar.h"
 #import "STAddressCollectionViewCell.h"
+#import "STShippingCollectionViewCell.h"
+#import "STUtilities.h"
 #import "STMultipleProductsBaseCollectionViewCell.h"
 
 @interface STConversationViewController () <STMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource, ATLConversationViewControllerDelegate, STMessageInputToolbarDelegate>
@@ -46,9 +48,17 @@ NSString *const STOptionCell = @"Option Cell";
     UINib *nib = [UINib nibWithNibName:@"STAddressCollectionViewCell"  bundle:[NSBundle mainBundle]];
     [self.collectionView registerNib:nib forCellWithReuseIdentifier:[STAddressCollectionViewCell reuseIdentifier]];
     [self.collectionView registerClass:[STMultipleProductsBaseCollectionViewCell class] forCellWithReuseIdentifier:[STMultipleProductsBaseCollectionViewCell reuseIdentifier]];
+    UINib *addressNib = [UINib nibWithNibName:@"STAddressCollectionViewCell"  bundle:[NSBundle mainBundle]];
+    [self.collectionView registerNib:addressNib forCellWithReuseIdentifier:[STAddressCollectionViewCell reuseIdentifier]];
     
-    [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STAddressCollectionViewCell class]]] setTextColor:[UIColor grayColor]];
+    UINib *shipNib = [UINib nibWithNibName:@"STShippingCollectionViewCell"  bundle:[NSBundle mainBundle]];
+    [self.collectionView registerNib:shipNib forCellWithReuseIdentifier:[STShippingCollectionViewCell reuseIdentifier]];
+    
+    [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STAddressCollectionViewCell class]]] setTextColor:[UIColor darkGrayColor]];
     [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STAddressCollectionViewCell class]]] setFont:[UIFont systemFontOfSize:12 weight:UIFontWeightRegular]];
+    
+    [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STShippingCollectionViewCell class]]] setTextColor:[UIColor darkGrayColor]];
+    [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STShippingCollectionViewCell class]]] setFont:[UIFont systemFontOfSize:12 weight:UIFontWeightRegular]];
 }
 
 - (void)multipleActionInputView:(STMultipleActionInputView *)multipleActionInputView didSelectTitle:(NSString *)title
@@ -62,7 +72,10 @@ NSString *const STOptionCell = @"Option Cell";
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeAddressInfo] options:NSJSONWritingPrettyPrinted error:nil];
         messagePart = [LYRMessagePart messagePartWithMIMEType:STAddressCellMimeType data:data];
     }else if ([title isEqualToString:STShippingCell]) {
-        
+        NSMutableDictionary *orderInfo = [[self fakeOrderInfo] mutableCopy];
+        [orderInfo addEntriesFromDictionary:[self fakeAddressInfo]];
+        NSData *data = [NSJSONSerialization dataWithJSONObject:orderInfo options:NSJSONWritingPrettyPrinted error:nil];
+        messagePart = [LYRMessagePart messagePartWithMIMEType:STShippingCellMimeType data:data];
     }
     
     LYRMessage *message = [self.layerClient newMessageWithParts:@[messagePart] options:nil error:&error];
@@ -84,7 +97,7 @@ NSString *const STOptionCell = @"Option Cell";
     }else if ([part.MIMEType isEqualToString:STAddressCellMimeType]) {
         return 260;
     }else if ([part.MIMEType isEqualToString:STShippingCellMimeType]) {
-        return 260;
+        return 220;
     }
     return 200;
 }
@@ -99,7 +112,7 @@ NSString *const STOptionCell = @"Option Cell";
     }else if ([part.MIMEType isEqualToString:STAddressCellMimeType]) {
         return [STAddressCollectionViewCell reuseIdentifier];
     }else if ([part.MIMEType isEqualToString:STShippingCellMimeType]) {
-        return @"";
+        return [STShippingCollectionViewCell reuseIdentifier];
     }
     return @"";
 }
@@ -129,7 +142,7 @@ NSString *const STOptionCell = @"Option Cell";
 - (void)messageInputToolbar:(STMessageInputToolbar *)messageInputToolbar didTapListAccessoryButton:(UIButton *)listAccessoryButton
 {
     STMultipleActionInputView *multiOptionSelectionView = [[STMultipleActionInputView alloc] initWithSelectionTitles:[self selectionItems]];
-    multiOptionSelectionView.frame = CGRectMake(0, 0, 320, 280);
+    multiOptionSelectionView.frame = CGRectMake(0, 0, 320, 240);
     multiOptionSelectionView.delegate = self;
     messageInputToolbar.textInputView.inputView = multiOptionSelectionView;
     [messageInputToolbar.textInputView becomeFirstResponder];
@@ -159,6 +172,13 @@ NSString *const STOptionCell = @"Option Cell";
     return @{STAddressName : @"Kevin Coleman",
              STAddressStreet : @"1776 Sacramento St, #704",
              STAddressCity: @"San Francisco, CA, 94109"};
+}
+
+- (NSDictionary *)fakeOrderInfo
+{
+    return @{STOrderNumberKey : @"Order Number: 123459853734",
+             STOrderPriceKey : @"$20.99",
+             STOrderItemKey: @"1 Item | ETA: 7/26/2016"};
 }
 
 - (NSArray *)fakeProductInfo
