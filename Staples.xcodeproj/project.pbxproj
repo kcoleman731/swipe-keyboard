@@ -23,6 +23,7 @@
 		D636E3AA1D67A88100B9FEBB /* STUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D636E3A91D67A88100B9FEBB /* STUtilities.m */; };
 		D636E3AD1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D636E3AC1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m */; };
 		D636E3AF1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */; };
+		D636E3B21D67C42D00B9FEBB /* STCellContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D636E3B11D67C42D00B9FEBB /* STCellContainerView.m */; };
 		D69761711D660AEE00F3369F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761701D660AEE00F3369F /* main.m */; };
 		D69761741D660AEE00F3369F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761731D660AEE00F3369F /* AppDelegate.m */; };
 		D697617A1D660AEE00F3369F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69761781D660AEE00F3369F /* Main.storyboard */; };
@@ -67,6 +68,8 @@
 		D636E3AB1D67A9DE00B9FEBB /* STShippingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STShippingCollectionViewCell.h; sourceTree = "<group>"; };
 		D636E3AC1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STShippingCollectionViewCell.m; sourceTree = "<group>"; };
 		D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STShippingCollectionViewCell.xib; sourceTree = "<group>"; };
+		D636E3B01D67C42D00B9FEBB /* STCellContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCellContainerView.h; sourceTree = "<group>"; };
+		D636E3B11D67C42D00B9FEBB /* STCellContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCellContainerView.m; sourceTree = "<group>"; };
 		D697616C1D660AEE00F3369F /* Staples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69761701D660AEE00F3369F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D69761721D660AEE00F3369F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 				D636E3AB1D67A9DE00B9FEBB /* STShippingCollectionViewCell.h */,
 				D636E3AC1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m */,
 				D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */,
+				D636E3B01D67C42D00B9FEBB /* STCellContainerView.h */,
+				D636E3B11D67C42D00B9FEBB /* STCellContainerView.m */,
 				D6F858841D67866E0027F195 /* STAddressCollectionViewCell.h */,
 				D6F858851D67866E0027F195 /* STAddressCollectionViewCell.m */,
 				D6F858871D6786840027F195 /* STAddressCollectionViewCell.xib */,
@@ -360,7 +365,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C0CF2103DB4CACEA24B64885 /* [CP] Copy Pods Resources */ = {
@@ -405,6 +410,7 @@
 				D697618E1D66183C00F3369F /* STActionButton.m in Sources */,
 				3486CD0A1D6783B10041E2F7 /* STMultipleProductsCollectionViewCell.m in Sources */,
 				3486CD1B1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m in Sources */,
+				D636E3B21D67C42D00B9FEBB /* STCellContainerView.m in Sources */,
 				D69761741D660AEE00F3369F /* AppDelegate.m in Sources */,
 				34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */,
 				D636E3AD1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m in Sources */,

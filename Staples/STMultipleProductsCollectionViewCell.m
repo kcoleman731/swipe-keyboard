@@ -9,6 +9,7 @@
 #import "STMultipleProductsCollectionViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "EDColor.h"
+#import "STUtilities.h"
 
 // Cell ID
 NSString *const STMultipleProductsCollectionViewCellId = @"STMultipleProductsCollectionViewCellId";
@@ -44,17 +45,22 @@ IB_DESIGNABLE
     self.contentView.backgroundColor = [UIColor clearColor];
     self.backgroundColor = [UIColor whiteColor];
     self.layer.cornerRadius = 10.0;
-    self.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.layer.shadowRadius = 2.0;
-    self.layer.shadowOpacity = 0.4;
-    self.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+    self.layer.borderColor = STLightGrayColor().CGColor;
+    self.layer.cornerRadius = 4;
+    self.layer.borderWidth = 2;
+    self.clipsToBounds = YES;
+    
+//    self.layer.shadowColor = [[UIColor blackColor] CGColor];
+//    self.layer.shadowRadius = 2.0;
+//    self.layer.shadowOpacity = 0.4;
+//    self.layer.shadowOffset = CGSizeMake(0.0, 0.0);
 }
 
 - (void)configureAddButton
 {
     self.addToCartButton.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.addToCartButton.layer.shadowOpacity = 0.6f;
-    self.addToCartButton.layer.shadowRadius = 2.0;
+    self.addToCartButton.layer.shadowOpacity = 0.3f;
+    self.addToCartButton.layer.shadowRadius = 1.0;
     self.addToCartButton.layer.shadowOffset = CGSizeMake(2.0, 2.0);
 }
 
@@ -108,7 +114,7 @@ IB_DESIGNABLE
     /**
      *  Draw Triangle
      */
-    const CGFloat rightTriangleLegWidth = 40.0;
+    const CGFloat rightTriangleLegWidth = 32.0;
     
     // Generate ctrl pts
     CGPoint firstPoint = CGPointMake(rect.origin.x + rect.size.width, 0.0);
@@ -134,7 +140,7 @@ IB_DESIGNABLE
      */
     
     // Attrs
-    UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
+    UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
     
     UIColor *textColor = [UIColor whiteColor];
     NSDictionary *stringAttrs = @{NSFontAttributeName : font, NSForegroundColorAttributeName : textColor};

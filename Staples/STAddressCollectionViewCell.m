@@ -9,12 +9,6 @@
 #import "STAddressCollectionViewCell.h"
 #import "STUtilities.h"
 
-NSString *const STAddressName = @"STAddressName";
-NSString *const STAddressStreet = @"STAddressStreet";
-NSString *const STAddressCity = @"STAddressCity";
-NSString *const STAddressLon = @"STAddressLon";
-NSString *const STAddressLat = @"STAddressLat";
-
 NSString *const STAddressCollectionViewCellReuseIdentifier = @"STAddressCollectionViewCellReuseIdentifier";
 
 @implementation STAddressCollectionViewCell
@@ -24,7 +18,7 @@ NSString *const STAddressCollectionViewCellReuseIdentifier = @"STAddressCollecti
     [super awakeFromNib];
     self.view.layer.borderColor = STLightGrayColor().CGColor;
     self.view.layer.cornerRadius = 4;
-    self.view.layer.borderWidth = 1;
+    self.view.layer.borderWidth = 2;
     self.view.layer.shadowRadius = 2;
     self.view.clipsToBounds = YES;
     
@@ -36,6 +30,8 @@ NSString *const STAddressCollectionViewCellReuseIdentifier = @"STAddressCollecti
     return STAddressCollectionViewCellReuseIdentifier;
 }
 
+#pragma mark - ATLMessagePresenting
+
 - (void)presentMessage:(LYRMessage *)message
 {
     LYRMessagePart *part = message.parts[0];
@@ -45,9 +41,14 @@ NSString *const STAddressCollectionViewCellReuseIdentifier = @"STAddressCollecti
     self.addressCity.text = data[STAddressCity];
     
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(37.79154, -122.42211);
-    MKCoordinateSpan span = MKCoordinateSpanMake(0.05, 0.05);
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
     MKCoordinateRegion region = MKCoordinateRegionMake(coordinate, span);
     [self.mapView setRegion:region];
+    
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    [annotation setCoordinate:coordinate];
+    [annotation setTitle:@"Kevin"]; //You can set the subtitle too
+    [self.mapView addAnnotation:annotation];
 }
 
 - (void)updateWithSender:(nullable id<ATLParticipant>)sender

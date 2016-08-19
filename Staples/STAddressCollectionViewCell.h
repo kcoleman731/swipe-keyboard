@@ -10,12 +10,6 @@
 #import <MapKit/MapKit.h>
 #import <Atlas/Atlas.h>
 
-extern NSString *const STAddressName;
-extern NSString *const STAddressStreet;
-extern NSString *const STAddressCity;
-extern NSString *const STAddressLon;
-extern NSString *const STAddressLat;
-
 @interface STAddressCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
 @property (strong, nonatomic) IBOutlet UIView *view;
