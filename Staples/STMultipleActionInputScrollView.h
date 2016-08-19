@@ -10,25 +10,46 @@
 
 @class STMultipleActionInputScrollView;
 
+/**
+ The `STMultipleActionInputScrollViewDelegate` notifies its receiver when a selection has been made.
+ */
 @protocol STMultipleActionInputScrollViewDelegate <NSObject>
 
-- (void)actionInputScrollView:(STMultipleActionInputScrollView *)actionInputView didSelectItem:(NSString *)item;
+/**
+ Notifies the receiver that an title has been selected.
+ 
+ @param actionInputScrollView The `STMultipleActionInputScrollView` instance.
+ @param item The selection title that was selected.
+ */
+- (void)actionInputScrollView:(STMultipleActionInputScrollView *)actionInputScrollView didSelectTitle:(NSString *)title;
 
 @end
 
+/**
+ The `STMultipleActionInputScrollView` provides for displaying multiple `STActionInputViews`.
+ */
 @interface STMultipleActionInputScrollView : UIScrollView
 
-@property (nonatomic, weak) id <STMultipleActionInputScrollViewDelegate> actionScrollViewDelegate;
+/**
+ The delegate for the instance.
+ */
+@property (nonatomic, weak) id <STMultipleActionInputScrollViewDelegate> actionInputScrollViewDelegate;
 
 /**
- *  Convenience Init
+ Initailizes an `STMultipleActionInputScrollView`.
+ 
+ @param items An array of `NSStrings` representing the titles to be displayed for each selection.
  */
-- (instancetype)initWithButtonTitles:(NSArray *)titles;
+- (instancetype)initWithSelectionTitles:(NSArray *)titles;
 
 /**
- *  Setting Titles / Sub-Action Views
+ Sets the selection items for the view.
+ 
+ @param titles An array of `NSStrings` representing the titles to be displayed for each selection.
+ 
+ @discussion Setting selection titles will remove any existing titles from the view.
  */
-- (void)setOptionTitles:(NSArray <NSString *> *)optionTitles;
+- (void)setSelectionTitles:(NSArray <NSString *> *)titles;
 
 /**
  *  Return the number of scrollable pages for the scroll view

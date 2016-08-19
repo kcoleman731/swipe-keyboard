@@ -16,16 +16,24 @@
 		3486CD171D67A4790041E2F7 /* STProductItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD161D67A4790041E2F7 /* STProductItem.m */; };
 		3486CD1B1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD1A1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m */; };
 		34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A849291D6621AB002C34D2 /* STMultipleActionInputScrollView.m */; };
-		34A8492D1D663623002C34D2 /* STMultipleActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8492C1D663623002C34D2 /* STMultipleActionInputView.m */; };
+		D62015651D663B0500EAA772 /* BTSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D62015641D663B0500EAA772 /* BTSItem.m */; };
+		D62015681D663B4D00EAA772 /* BTSItemPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = D62015671D663B4D00EAA772 /* BTSItemPrice.m */; };
+		D620156B1D663BFD00EAA772 /* BTSList.m in Sources */ = {isa = PBXBuildFile; fileRef = D620156A1D663BFD00EAA772 /* BTSList.m */; };
+		D620156C1D663EB100EAA772 /* STMultipleActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8492C1D663623002C34D2 /* STMultipleActionInputView.m */; };
+		D636E3AA1D67A88100B9FEBB /* STUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D636E3A91D67A88100B9FEBB /* STUtilities.m */; };
+		D636E3AD1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D636E3AC1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m */; };
+		D636E3AF1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */; };
 		D69761711D660AEE00F3369F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761701D660AEE00F3369F /* main.m */; };
 		D69761741D660AEE00F3369F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761731D660AEE00F3369F /* AppDelegate.m */; };
-		D69761771D660AEE00F3369F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761761D660AEE00F3369F /* ViewController.m */; };
 		D697617A1D660AEE00F3369F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69761781D660AEE00F3369F /* Main.storyboard */; };
 		D697617C1D660AEE00F3369F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D697617B1D660AEE00F3369F /* Assets.xcassets */; };
 		D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D697617D1D660AEE00F3369F /* LaunchScreen.storyboard */; };
 		D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761871D660FBA00F3369F /* STConversationViewController.m */; };
 		D697618B1D66162C00F3369F /* STActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D697618A1D66162C00F3369F /* STActionInputView.m */; };
 		D697618E1D66183C00F3369F /* STActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D697618D1D66183C00F3369F /* STActionButton.m */; };
+		D6F858821D677F290027F195 /* STMessageInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F858811D677F290027F195 /* STMessageInputToolbar.m */; };
+		D6F858861D67866E0027F195 /* STAddressCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F858851D67866E0027F195 /* STAddressCollectionViewCell.m */; };
+		D6F858881D6786840027F195 /* STAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6F858871D6786840027F195 /* STAddressCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,12 +56,21 @@
 		3BFBB829A1CF8E97CB27CEF3 /* Pods-Staples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staples.release.xcconfig"; path = "Pods/Target Support Files/Pods-Staples/Pods-Staples.release.xcconfig"; sourceTree = "<group>"; };
 		7BCAFA925975ACD65020CCDD /* Pods_Staples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Staples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B72ABA2CB0359A53DA8545 /* Pods-Staples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Staples/Pods-Staples.debug.xcconfig"; sourceTree = "<group>"; };
+		D62015631D663B0500EAA772 /* BTSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTSItem.h; sourceTree = "<group>"; };
+		D62015641D663B0500EAA772 /* BTSItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSItem.m; sourceTree = "<group>"; };
+		D62015661D663B4D00EAA772 /* BTSItemPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTSItemPrice.h; sourceTree = "<group>"; };
+		D62015671D663B4D00EAA772 /* BTSItemPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSItemPrice.m; sourceTree = "<group>"; };
+		D62015691D663BFD00EAA772 /* BTSList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTSList.h; sourceTree = "<group>"; };
+		D620156A1D663BFD00EAA772 /* BTSList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSList.m; sourceTree = "<group>"; };
+		D636E3A81D67A88100B9FEBB /* STUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STUtilities.h; sourceTree = "<group>"; };
+		D636E3A91D67A88100B9FEBB /* STUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STUtilities.m; sourceTree = "<group>"; };
+		D636E3AB1D67A9DE00B9FEBB /* STShippingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STShippingCollectionViewCell.h; sourceTree = "<group>"; };
+		D636E3AC1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STShippingCollectionViewCell.m; sourceTree = "<group>"; };
+		D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STShippingCollectionViewCell.xib; sourceTree = "<group>"; };
 		D697616C1D660AEE00F3369F /* Staples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69761701D660AEE00F3369F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D69761721D660AEE00F3369F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D69761731D660AEE00F3369F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D69761751D660AEE00F3369F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D69761761D660AEE00F3369F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D69761791D660AEE00F3369F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D697617B1D660AEE00F3369F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D697617E1D660AEE00F3369F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,6 +81,11 @@
 		D697618A1D66162C00F3369F /* STActionInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STActionInputView.m; sourceTree = "<group>"; };
 		D697618C1D66183C00F3369F /* STActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STActionButton.h; sourceTree = "<group>"; };
 		D697618D1D66183C00F3369F /* STActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STActionButton.m; sourceTree = "<group>"; };
+		D6F858801D677F290027F195 /* STMessageInputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMessageInputToolbar.h; sourceTree = "<group>"; };
+		D6F858811D677F290027F195 /* STMessageInputToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMessageInputToolbar.m; sourceTree = "<group>"; };
+		D6F858841D67866E0027F195 /* STAddressCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAddressCollectionViewCell.h; sourceTree = "<group>"; };
+		D6F858851D67866E0027F195 /* STAddressCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STAddressCollectionViewCell.m; sourceTree = "<group>"; };
+		D6F858871D6786840027F195 /* STAddressCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STAddressCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +191,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D62015621D663AE200EAA772 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D62015691D663BFD00EAA772 /* BTSList.h */,
+				D620156A1D663BFD00EAA772 /* BTSList.m */,
+				D62015631D663B0500EAA772 /* BTSItem.h */,
+				D62015641D663B0500EAA772 /* BTSItem.m */,
+				D62015661D663B4D00EAA772 /* BTSItemPrice.h */,
+				D62015671D663B4D00EAA772 /* BTSItemPrice.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		D69761631D660AEE00F3369F = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +231,8 @@
 				D69761731D660AEE00F3369F /* AppDelegate.m */,
 				D69761861D660FBA00F3369F /* STConversationViewController.h */,
 				D69761871D660FBA00F3369F /* STConversationViewController.m */,
+				D6F858801D677F290027F195 /* STMessageInputToolbar.h */,
+				D6F858811D677F290027F195 /* STMessageInputToolbar.m */,
 				34A849281D6621AB002C34D2 /* STMultipleActionInputScrollView.h */,
 				34A849291D6621AB002C34D2 /* STMultipleActionInputScrollView.m */,
 				34A8492B1D663623002C34D2 /* STMultipleActionInputView.h */,
@@ -204,8 +241,6 @@
 				D697618A1D66162C00F3369F /* STActionInputView.m */,
 				D697618C1D66183C00F3369F /* STActionButton.h */,
 				D697618D1D66183C00F3369F /* STActionButton.m */,
-				D69761751D660AEE00F3369F /* ViewController.h */,
-				D69761761D660AEE00F3369F /* ViewController.m */,
 				D69761781D660AEE00F3369F /* Main.storyboard */,
 				D697617B1D660AEE00F3369F /* Assets.xcassets */,
 				D697617D1D660AEE00F3369F /* LaunchScreen.storyboard */,
@@ -221,6 +256,19 @@
 				D69761701D660AEE00F3369F /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D6F858831D6786480027F195 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D636E3AB1D67A9DE00B9FEBB /* STShippingCollectionViewCell.h */,
+				D636E3AC1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m */,
+				D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */,
+				D6F858841D67866E0027F195 /* STAddressCollectionViewCell.h */,
+				D6F858851D67866E0027F195 /* STAddressCollectionViewCell.m */,
+				D6F858871D6786840027F195 /* STAddressCollectionViewCell.xib */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6F858881D6786840027F195 /* STAddressCollectionViewCell.xib in Resources */,
 				D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */,
 				D697617C1D660AEE00F3369F /* Assets.xcassets in Resources */,
 				3486CD031D677A730041E2F7 /* STMultipleProductsCollectionViewCell.xib in Resources */,
@@ -306,7 +355,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C0CF2103DB4CACEA24B64885 /* [CP] Copy Pods Resources */ = {
@@ -346,12 +395,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6F858861D67866E0027F195 /* STAddressCollectionViewCell.m in Sources */,
+				D620156C1D663EB100EAA772 /* STMultipleActionInputView.m in Sources */,
 				D697618E1D66183C00F3369F /* STActionButton.m in Sources */,
 				D69761771D660AEE00F3369F /* ViewController.m in Sources */,
 				3486CD0A1D6783B10041E2F7 /* STMultipleProductsCollectionViewCell.m in Sources */,
 				3486CD1B1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m in Sources */,
 				D69761741D660AEE00F3369F /* AppDelegate.m in Sources */,
 				34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */,
+				D636E3AD1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m in Sources */,
 				D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */,
 				34A8492D1D663623002C34D2 /* STMultipleActionInputView.m in Sources */,
 				3486CD131D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.m in Sources */,

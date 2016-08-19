@@ -10,24 +10,45 @@
 
 @class STMultipleActionInputView;
 
+/**
+ The `STMultipleActionInputViewDelegate` notifies its receiver when a selection has been made.
+ */
 @protocol STMultipleActionInputViewDelegate <NSObject>
 
-- (void)actionInputView:(STMultipleActionInputView *)actionInputView didSelectItem:(NSString *)item;
+/**
+ Notifies the receiver that an item has been selected.
+ 
+ @param multipleActionInputView The `STMultipleActionInputView` instance.
+ @param item The selection item that was selected.
+ */
+- (void)multipleActionInputView:(STMultipleActionInputView *)multipleActionInputView didSelectTitle:(NSString *)title;
 
 @end
 
+/**
+ The `STMultipleActionInputView` provides for displaying a scroll view will multiple `STActionInputViews` in place of a keyboard.
+ */
 @interface STMultipleActionInputView : UIControl
 
+/**
+ The delegate for the instance.
+ */
 @property (nonatomic, weak) id <STMultipleActionInputViewDelegate> delegate;
 
 /**
- *  Convenience Init
+ Initailizes an `STMultipleActionInputView`.
+ 
+ @param items An array of `NSStrings` representing the titles to be displayed for each selection.
  */
-- (instancetype)initWithButtonTitles:(NSArray *)titles;
+- (instancetype)initWithSelectionTitles:(NSArray *)titles;
 
 /**
- *  Setting Titles / Sub-Action Views
+ Sets the selection titles for the view.
+ 
+ @param items An array of `NSStrings` representing the titles to be displayed for each selection.
+ 
+ @discussion Setting selection titles will remove any existing titles from the view.
  */
-- (void)setOptionTitles:(NSArray <NSString *> *)optionTitles;
+- (void)setSelectionTitles:(NSArray <NSString *> *)titles;
 
 @end
