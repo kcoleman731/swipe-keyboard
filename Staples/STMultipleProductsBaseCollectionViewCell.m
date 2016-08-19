@@ -12,7 +12,7 @@
 
 NSString *const STMultipleProductsBaseCollectionViewCellId = @"STMultipleProductsBaseCollectionViewCellId";
 
-@interface STMultipleProductsBaseCollectionViewCell () <UICollectionViewDelegate>
+@interface STMultipleProductsBaseCollectionViewCell () <UICollectionViewDelegate, STMultipleProductsCollectionViewCellDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) STMultipleProductsBaseCollectionViewCellDataSource *dataSource;
@@ -67,7 +67,8 @@ NSString *const STMultipleProductsBaseCollectionViewCellId = @"STMultipleProduct
 
 - (void)configureDataSource
 {
-    self.dataSource = [[STMultipleProductsBaseCollectionViewCellDataSource alloc] initWithCollectionView:self.collectionView];
+    self.dataSource = [[STMultipleProductsBaseCollectionViewCellDataSource alloc] initWithCollectionView:self.collectionView
+                                                                                            cellDelegate:self];
     self.collectionView.dataSource = self.dataSource;
 }
 
@@ -110,6 +111,18 @@ NSString *const STMultipleProductsBaseCollectionViewCellId = @"STMultipleProduct
 - (void)shouldDisplayAvatarItem:(BOOL)shouldDisplayAvatarItem
 {
     // ??
+}
+
+#pragma mark - STMultipleProductsCollectionViewCellDelegate Calls
+
+- (void)productCell:(STMultipleProductsCollectionViewCell *)cell addButtonWasPressedWithProduct:(STProductItem *)item
+{
+    [self.productDelegate productCell:cell addButtonWasPressedWithProduct:item];
+}
+
+- (void)productCell:(STMultipleProductsCollectionViewCell *)cell infoButtonWasPressedWithProduct:(STProductItem *)item
+{
+    [self.productDelegate productCell:cell infoButtonWasPressedWithProduct:item];
 }
 
 #pragma mark - NSLayoutConstraints For UI

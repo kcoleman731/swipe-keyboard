@@ -123,7 +123,6 @@ IB_DESIGNABLE
     [bezPath closePath];
     
     // Set Color
-#warning TEMP
     UIColor *lavaRed = [UIColor colorWithHexString:@"CE0B24"];
     [lavaRed setFill];
     

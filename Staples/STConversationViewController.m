@@ -168,7 +168,7 @@ NSString *const STOptionCell = @"Option Cell";
         [products addObject:@{
                               @"price" : @"$20.99",
                               @"title" : @"Staples Multiuse Copy Paper, 8 1/2\" x 11\", 8-Ream Case",
-                              @"pic" : @"http://quill.scene7.com/is/image/Quill/s0854503_s7?$img320$"
+                              @"pic" : @"https://www.staples-3p.com/s7/is/image/Staples/s0854503_sc7?$splssku$"
                               }];
     }
     return [products copy];

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "STProductItem.h"
+#import "STMultipleProductsCollectionViewCell.h"
 
 #pragma mark - Temp Model
 
@@ -22,7 +23,8 @@
 
 #pragma mark - Init
 
-- (instancetype)initWithCollectionView:(UICollectionView *)collectionView;
+- (instancetype)initWithCollectionView:(UICollectionView *)collectionView
+                          cellDelegate:(id <STMultipleProductsCollectionViewCellDelegate>)delgate;
 
 // Setter for product data
 - (void)setProducts:(NSArray<STProductItem *> *)items;
