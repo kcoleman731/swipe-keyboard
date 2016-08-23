@@ -35,5 +35,4 @@
  */
 - (void)setProductItem:(STProductItem *)item;
 
-
 @end

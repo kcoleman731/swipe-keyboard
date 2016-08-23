@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <Atlas/Atlas.h>
 #import "STProductCollectionViewCell.h"
+#import "STItemCollectionViewCell.h"
 #import "STProductItem.h"
 
-extern NSString *const STMultipleProductsBaseCollectionViewCellTitle;
-extern NSString *const STMultipleProductsBaseCollectionViewCellMimeType;
+extern NSString *const STMultipleProductBaseCollectionViewCellTitle;
+extern NSString *const STMultipleProductBaseCollectionViewCellMimeType;
 
 @interface STMultipleProductBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
