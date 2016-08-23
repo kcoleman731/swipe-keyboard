@@ -9,6 +9,8 @@
 #import "STAddressCollectionViewCell.h"
 #import "STUtilities.h"
 
+NSString *const STAddressCollectionViewCellTitle= @"Address Cell";
+NSString *const STAddressCollectionViewCellMimeType = @"json/address";
 NSString *const STAddressCollectionViewCellReuseIdentifier = @"STAddressCollectionViewCellReuseIdentifier";
 
 @implementation STAddressCollectionViewCell
@@ -28,6 +30,11 @@ NSString *const STAddressCollectionViewCellReuseIdentifier = @"STAddressCollecti
 + (NSString *)reuseIdentifier
 {
     return STAddressCollectionViewCellReuseIdentifier;
+}
+
++ (CGFloat)cellHeight
+{
+    return 260;
 }
 
 #pragma mark - ATLMessagePresenting

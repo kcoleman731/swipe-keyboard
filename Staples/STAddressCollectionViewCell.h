@@ -10,6 +10,9 @@
 #import <MapKit/MapKit.h>
 #import <Atlas/Atlas.h>
 
+extern NSString *const STAddressCollectionViewCellTitle;
+extern NSString *const STAddressCollectionViewCellMimeType;
+
 @interface STAddressCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
 @property (strong, nonatomic) IBOutlet UIView *view;
@@ -23,5 +26,7 @@
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 + (NSString *)reuseIdentifier;
+
++ (CGFloat)cellHeight;
 
 @end

@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <Atlas/Atlas.h>
 #import "STCellContainerView.h"
+
+extern NSString *const STShippingCollectionViewCellTitle;
+extern NSString *const STShippingCollectionViewCellMimeType;
+
 @interface STShippingCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) IBOutlet STCellContainerView *view;
@@ -22,5 +26,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *addressCityLabel;
 
 + (NSString *)reuseIdentifier;
+
++ (CGFloat)cellHeight;
 
 @end
