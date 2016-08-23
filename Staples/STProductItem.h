@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *picURL;
 @property (nonatomic, strong) NSString *price;
+@property (nonatomic, strong) NSString *count;
 
 // Convenience Init
 - (instancetype)initWithDictionaryPayload:(NSDictionary *)payload;
