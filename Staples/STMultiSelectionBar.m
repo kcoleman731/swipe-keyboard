@@ -8,6 +8,7 @@
 
 #import "STMultiSelectionBar.h"
 #import "STInvertedButton.h"
+#import "STMultiSelectionBarBevelView.h"
 
 @interface STMultiSelectionBar()
 
@@ -16,7 +17,7 @@
 @property (nonatomic, strong) STInvertedButton *rightButton;
 
 // Bevel
-@property (nonatomic, strong) CAShapeLayer *bevel;
+@property (nonatomic, strong) STMultiSelectionBarBevelView *bevel;
 
 @end
 
@@ -54,53 +55,32 @@
 {
     // Left Button
     self.leftButton = [[STInvertedButton alloc] init];
-    [self.leftButton setTitleColor:self.leftButton.tintColor forState:UIControlStateHighlighted];
+    [self.leftButton setTitleColor:self.leftButton.tintColor forState:UIControlStateNormal];
     [self.leftButton addTarget:self action:@selector(leftButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [self.leftButton.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
     self.leftButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.leftButton];
 
     // Right Button
     self.rightButton = [[STInvertedButton alloc] init];
-    [self.rightButton setTitleColor:self.rightButton.tintColor forState:UIControlStateHighlighted];
+    [self.rightButton setTitleColor:self.rightButton.tintColor forState:UIControlStateNormal];
     [self.rightButton addTarget:self action:@selector(rightButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightButton.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
     self.rightButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.rightButton];
+    
+    [self addConstraintsForLeftButton];
+    [self addConstraintsForRightButton];
 }
 
 - (void)constructBevel
 {
-    // Making a 'T' Bevel
-    UIBezierPath *bezPath = [UIBezierPath bezierPathWithRect:CGRectMake(0.0f, 0.0f, 100.0f, 100.0f)];
-    
-    // Horiz
-    [bezPath moveToPoint:CGPointMake(0.0f, 0.0f)];
-    [bezPath addLineToPoint:CGPointMake(100.0f, 0.0f)];
-    [bezPath closePath];
-    
-    // Vert
-    [bezPath moveToPoint:CGPointMake(50.0f, 0.0f)];
-    [bezPath addLineToPoint:CGPointMake(50.0f, 100.0f)];
-    [bezPath closePath];
-    
     // Paint and close path
-    self.bevel             = [[CAShapeLayer alloc] init];
-    self.bevel.path        = [bezPath CGPath];
-    self.bevel.lineWidth   = 1.0;
-    self.bevel.strokeColor = self.tintColor.CGColor;
-    [self.layer addSublayer:self.bevel];
-}
-
-#pragma mark - Layout
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    [self layoutBevel];
-}
-
-- (void)layoutBevel
-{
-    self.bevel.frame = self.bounds;
+    self.bevel                        = [[STMultiSelectionBarBevelView alloc] initWithFrame:self.bounds];
+    self.bevel.backgroundColor        = [UIColor clearColor];
+    self.bevel.userInteractionEnabled = NO;
+    self.bevel.autoresizingMask       = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self addSubview:self.bevel];
 }
 
 #pragma mark - Tint Override
@@ -108,7 +88,7 @@
 - (void)setTintColor:(UIColor *)tintColor
 {
     [super setTintColor:tintColor];
-    self.bevel.strokeColor     = [tintColor CGColor];
+    self.bevel.tintColor       = tintColor;
     self.leftButton.tintColor  = tintColor;
     self.rightButton.tintColor = tintColor;
     [self.leftButton setTitleColor:tintColor forState:UIControlStateHighlighted];

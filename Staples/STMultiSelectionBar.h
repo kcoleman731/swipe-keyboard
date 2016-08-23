@@ -19,9 +19,11 @@
 
 @interface STMultiSelectionBar : UIControl
 
-
-
 // Selection Delegate
 @property (nonatomic, weak) id <STMultiSelectionBarDelegate> delegate;
+
+// Setters for Title
+- (void)setLeftSelectionTitle:(NSString *)leftSelectionTitle
+          rightSelectionTitle:(NSString *)rightSelectionTitle;
 
 @end

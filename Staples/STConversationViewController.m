@@ -16,8 +16,13 @@
 #import "STMultipleProductBaseCollectionViewCell.h"
 #import "STReward.h"
 #import "STRewardCollectionViewCell.h"
+#import "STMultiSelectionBar.h"
 
-@interface STConversationViewController () <STMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource, ATLConversationViewControllerDelegate, STMessageInputToolbarDelegate>
+@interface STConversationViewController () <STMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource, ATLConversationViewControllerDelegate, STMessageInputToolbarDelegate, STMultiSelectionBarDelegate>
+
+// Multi Selection UI and Constraint
+@property (nonatomic, strong) STMultiSelectionBar *multiSelectionBar;
+@property (nonnull, strong) NSLayoutConstraint *muliSelectionBarBottomConstraint;
 
 @end
 
@@ -34,6 +39,15 @@ NSString *const STOptionCell = @"Option Cell";
     
     [self createNewConversation];
     [self configureCollectionViewCells];
+    [self layoutMultiSelectionBar];
+    [self registerForNotifications];
+}
+
+- (void)registerForNotifications
+{
+    // Register for keyboard notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowOrHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowOrHide:) name:UIKeyboardWillShowNotification object:nil];
 }
 
 - (void)configureCollectionViewCells
@@ -58,6 +72,16 @@ NSString *const STOptionCell = @"Option Cell";
 
     [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STShippingCollectionViewCell class]]] setTextColor:[UIColor darkGrayColor]];
     [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STShippingCollectionViewCell class]]] setFont:[UIFont systemFontOfSize:12 weight:UIFontWeightRegular]];
+}
+
+- (void)layoutMultiSelectionBar
+{
+    self.multiSelectionBar = [[STMultiSelectionBar alloc] init];
+    self.multiSelectionBar.delegate = self;
+    self.multiSelectionBar.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.multiSelectionBar setLeftSelectionTitle:@"Continue Shopping" rightSelectionTitle:@"Checkout"];
+    [self.view addSubview:self.multiSelectionBar];
+    [self addConstraintsToSelectionBar];
 }
 
 - (void)multipleActionInputView:(STMultipleActionInputView *)multipleActionInputView didSelectTitle:(NSString *)title
@@ -212,5 +236,50 @@ NSString *const STOptionCell = @"Option Cell";
     return [products copy];
 }
 
+#pragma mark - Constraints
+
+- (void)addConstraintsToSelectionBar
+{
+    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:44.0f];
+    
+    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0f];
+    
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0f];
+    
+    self.muliSelectionBarBottomConstraint = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0f];
+    
+    [self.view addConstraints:@[leading, height, trailing, self.muliSelectionBarBottomConstraint]];
+}
+
+#pragma mark - STMultiSelectionToolbar
+
+- (void)multiSelectionBar:(STMultiSelectionBar *)bar leftSelectionHitWithTitle:(NSString *)title
+{
+    
+}
+
+- (void)multiSelectionBar:(STMultiSelectionBar *)bar rightSelectionHitWithTitle:(NSString *)title
+{
+    
+}
+
+#pragma mark - Keyboard Notifications
+
+- (void)keyboardWillShowOrHide:(NSNotification *)note
+{
+    NSDictionary *info           = [note userInfo];
+    NSTimeInterval duration      = [info[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationOptions curve = [info[UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
+    CGRect inputViewEndFrame     = [info[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:duration
+                          delay:0
+                        options:curve | UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         self.muliSelectionBarBottomConstraint.constant = -inputViewEndFrame.size.height;
+                         [self.view layoutIfNeeded];
+                     }
+                     completion:nil];
+}
 
 @end

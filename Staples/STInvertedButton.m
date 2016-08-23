@@ -15,9 +15,11 @@
                           delay:0.0f
                         options:UIViewAnimationOptionBeginFromCurrentState animations:^{
                             if (highlighted) {
-                                self.backgroundColor = self.tintColor;
+                                self.backgroundColor = [self.tintColor colorWithAlphaComponent:0.8f];
+                                self.titleLabel.textColor = [UIColor whiteColor];
                             } else {
                                 self.backgroundColor = [UIColor whiteColor];
+                                self.titleLabel.textColor = self.tintColor;
                             }
                         }
                      completion:nil];

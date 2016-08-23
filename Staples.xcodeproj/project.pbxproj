@@ -18,6 +18,7 @@
 		34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A849291D6621AB002C34D2 /* STMultipleActionInputScrollView.m */; };
 		34A8A4AD1D6CB87300245773 /* STInvertedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8A4AC1D6CB87300245773 /* STInvertedButton.m */; };
 		34A8A4B31D6CB96100245773 /* STMultiSelectionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8A4B21D6CB96100245773 /* STMultiSelectionBar.m */; };
+		34A8A4B71D6CD6CE00245773 /* STMultiSelectionBarBevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8A4B61D6CD6CE00245773 /* STMultiSelectionBarBevelView.m */; };
 		620E15FA3F1DD1FB26C366C1 /* Pods_StaplesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */; };
 		D620156C1D663EB100EAA772 /* STMultipleActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8492C1D663623002C34D2 /* STMultipleActionInputView.m */; };
 		D636E3AA1D67A88100B9FEBB /* STUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D636E3A91D67A88100B9FEBB /* STUtilities.m */; };
@@ -77,6 +78,8 @@
 		34A8A4AC1D6CB87300245773 /* STInvertedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STInvertedButton.m; sourceTree = "<group>"; };
 		34A8A4B11D6CB96100245773 /* STMultiSelectionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMultiSelectionBar.h; sourceTree = "<group>"; };
 		34A8A4B21D6CB96100245773 /* STMultiSelectionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMultiSelectionBar.m; sourceTree = "<group>"; };
+		34A8A4B51D6CD6CE00245773 /* STMultiSelectionBarBevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMultiSelectionBarBevelView.h; sourceTree = "<group>"; };
+		34A8A4B61D6CD6CE00245773 /* STMultiSelectionBarBevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMultiSelectionBarBevelView.m; sourceTree = "<group>"; };
 		3BFBB829A1CF8E97CB27CEF3 /* Pods-Staples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staples.release.xcconfig"; path = "Pods/Target Support Files/Pods-Staples/Pods-Staples.release.xcconfig"; sourceTree = "<group>"; };
 		4D990FC6DACC7B0851AC14C9 /* Pods-StaplesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaplesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StaplesTests/Pods-StaplesTests.release.xcconfig"; sourceTree = "<group>"; };
 		7BCAFA925975ACD65020CCDD /* Pods_Staples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Staples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,6 +221,7 @@
 		34A8A4A91D6CB81A00245773 /* STMultiSelectionBar */ = {
 			isa = PBXGroup;
 			children = (
+				34A8A4B41D6CD66900245773 /* STMultiSelectionBarBevelView */,
 				34A8A4AA1D6CB86300245773 /* STInvertedButton */,
 				34A8A4B11D6CB96100245773 /* STMultiSelectionBar.h */,
 				34A8A4B21D6CB96100245773 /* STMultiSelectionBar.m */,
@@ -232,6 +236,15 @@
 				34A8A4AC1D6CB87300245773 /* STInvertedButton.m */,
 			);
 			name = STInvertedButton;
+			sourceTree = "<group>";
+		};
+		34A8A4B41D6CD66900245773 /* STMultiSelectionBarBevelView */ = {
+			isa = PBXGroup;
+			children = (
+				34A8A4B51D6CD6CE00245773 /* STMultiSelectionBarBevelView.h */,
+				34A8A4B61D6CD6CE00245773 /* STMultiSelectionBarBevelView.m */,
+			);
+			name = STMultiSelectionBarBevelView;
 			sourceTree = "<group>";
 		};
 		5D7BC486E268FE80EA4B3D58 /* Pods */ = {
@@ -652,6 +665,7 @@
 				34A8A4B31D6CB96100245773 /* STMultiSelectionBar.m in Sources */,
 				D636E3B21D67C42D00B9FEBB /* STCellContainerView.m in Sources */,
 				D69761741D660AEE00F3369F /* AppDelegate.m in Sources */,
+				34A8A4B71D6CD6CE00245773 /* STMultiSelectionBarBevelView.m in Sources */,
 				34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */,
 				D636E3AD1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m in Sources */,
 				D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */,

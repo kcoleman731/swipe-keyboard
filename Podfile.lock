@@ -3,6 +3,7 @@ PODS:
     - LayerKit (>= 0.22.0)
   - EDColor (1.0.0)
   - LayerKit (0.22.0)
+  - Reveal-iOS-SDK (1.6.2)
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
@@ -10,14 +11,16 @@ PODS:
 DEPENDENCIES:
   - Atlas
   - EDColor (~> 1.0.0)
+  - Reveal-iOS-SDK (~> 1.6.2)
   - SDWebImage (~> 3.8.1)
 
 SPEC CHECKSUMS:
   Atlas: 201d37a7b90a2ba717e666bf417ca2c5d104dd31
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
   LayerKit: dc3f45305bd0d520e5a586247d93c6e03b803ccd
+  Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
 
-PODFILE CHECKSUM: 31a97ed7f2c07c3dc7232956fb812d55da217736
+PODFILE CHECKSUM: 74beed6b5f41ea7b65dfa31899fae94dc0b86d58
 
 COCOAPODS: 1.0.1
