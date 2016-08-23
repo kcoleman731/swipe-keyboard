@@ -6,15 +6,15 @@
 //  Copyright © 2016 Mesh. All rights reserved.
 //
 
-#import "STMultipleProductsBaseCollectionViewCell.h"
+#import "STMultipleProductBaseCollectionViewCell.h"
 #import "STMultipleProductsBaseCollectionViewCellDataSource.h"
 #import "STMultipleProductsCollectionViewLayout.h"
 
-NSString *const STMultipleProductsBaseCollectionViewCellTitle = @"Product Cell";
-NSString *const STMultipleProductsBaseCollectionViewCellMimeType = @"json/product";
-NSString *const STMultipleProductsBaseCollectionViewCellId = @"STMultipleProductsBaseCollectionViewCellId";
+NSString *const STMultipleProductBaseCollectionViewCellTitle = @"Product Cell";
+NSString *const STMultipleProductBaseCollectionViewCellMimeType = @"json/product";
+NSString *const STMultipleProductBaseCollectionViewCellId = @"STMultipleProductBaseCollectionViewCellId";
 
-@interface STMultipleProductsBaseCollectionViewCell () <UICollectionViewDelegate, STMultipleProductsCollectionViewCellDelegate>
+@interface STMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, STMultipleProductsCollectionViewCellDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) STMultipleProductsBaseCollectionViewCellDataSource *dataSource;
@@ -22,7 +22,7 @@ NSString *const STMultipleProductsBaseCollectionViewCellId = @"STMultipleProduct
 
 @end
 
-@implementation STMultipleProductsBaseCollectionViewCell
+@implementation STMultipleProductBaseCollectionViewCell
 
 #pragma mark - Initializers / Common Init
 
@@ -64,35 +64,25 @@ NSString *const STMultipleProductsBaseCollectionViewCellId = @"STMultipleProduct
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.showsHorizontalScrollIndicator = NO;
     [self addSubview:self.collectionView];
+    
     [self addCollecitonViewConstraints];
 }
 
 - (void)configureDataSource
 {
-    self.dataSource = [[STMultipleProductsBaseCollectionViewCellDataSource alloc] initWithCollectionView:self.collectionView
-                                                                                            cellDelegate:self];
+    self.dataSource = [[STMultipleProductsBaseCollectionViewCellDataSource alloc] initWithCollectionView:self.collectionView cellDelegate:self];
     self.collectionView.dataSource = self.dataSource;
 }
 
 + (NSString *)reuseIdentifier
 {
-    return STMultipleProductsBaseCollectionViewCellId;
+    return STMultipleProductBaseCollectionViewCellId;
 }
-
 
 + (CGFloat)cellHeight
 {
     return 140;
 }
-
-#pragma mark - Setter For Data
-
-- (void)setProducts:(NSArray <STProductItem *> *)items
-{
-    [self.dataSource setProducts:items];
-}
-
-#pragma mark - Collection View Delegate Calls
 
 #pragma mark - ATLMessagePresenting
 
@@ -107,14 +97,13 @@ NSString *const STMultipleProductsBaseCollectionViewCellId = @"STMultipleProduct
     }
     
     // Set the decoded products
-    [self setProducts:[products copy]];
+    [self.dataSource setProducts:[products copy]];
 }
 
 - (void)updateWithSender:(nullable id<ATLParticipant>)sender
 {
     // ???
 }
-
 
 - (void)shouldDisplayAvatarItem:(BOOL)shouldDisplayAvatarItem
 {
@@ -123,12 +112,12 @@ NSString *const STMultipleProductsBaseCollectionViewCellId = @"STMultipleProduct
 
 #pragma mark - STMultipleProductsCollectionViewCellDelegate Calls
 
-- (void)productCell:(STMultipleProductsCollectionViewCell *)cell addButtonWasPressedWithProduct:(STProductItem *)item
+- (void)productCell:(STProductCollectionViewCell *)cell addButtonWasPressedWithProduct:(STProductItem *)item
 {
     [self.productDelegate productCell:cell addButtonWasPressedWithProduct:item];
 }
 
-- (void)productCell:(STMultipleProductsCollectionViewCell *)cell infoButtonWasPressedWithProduct:(STProductItem *)item
+- (void)productCell:(STProductCollectionViewCell *)cell infoButtonWasPressedWithProduct:(STProductItem *)item
 {
     [self.productDelegate productCell:cell infoButtonWasPressedWithProduct:item];
 }

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "STProductItem.h"
-#import "STMultipleProductsCollectionViewCell.h"
+#import "STProductCollectionViewCell.h"
 
 #pragma mark - Temp Model
 

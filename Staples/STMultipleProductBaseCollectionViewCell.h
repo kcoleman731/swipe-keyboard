@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Atlas/Atlas.h>
-#import "STMultipleProductsCollectionViewCell.h"
+#import "STProductCollectionViewCell.h"
 #import "STProductItem.h"
 
 extern NSString *const STMultipleProductsBaseCollectionViewCellTitle;
 extern NSString *const STMultipleProductsBaseCollectionViewCellMimeType;
 
-@interface STMultipleProductsBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
+@interface STMultipleProductBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
 @property (nonatomic, weak) id <STMultipleProductsCollectionViewCellDelegate> productDelegate;
 
@@ -23,12 +23,9 @@ extern NSString *const STMultipleProductsBaseCollectionViewCellMimeType;
  */
 + (NSString *)reuseIdentifier;
 
-+ (CGFloat)cellHeight;
-
 /**
- *  Product Items Setter
+ *  Cell Height
  */
-- (void)setProducts:(NSArray <STProductItem *> *)items;
-
++ (CGFloat)cellHeight;
 
 @end

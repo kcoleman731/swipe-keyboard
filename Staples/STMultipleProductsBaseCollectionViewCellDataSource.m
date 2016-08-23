@@ -42,7 +42,7 @@
 - (void)registerCell
 {
     UINib *collectionNib = [UINib nibWithNibName:@"STMultipleProductsCollectionViewCell" bundle:[NSBundle mainBundle]];
-    [self.collectionView registerNib:collectionNib forCellWithReuseIdentifier:[STMultipleProductsCollectionViewCell reuseIdentifier]];
+    [self.collectionView registerNib:collectionNib forCellWithReuseIdentifier:[STProductCollectionViewCell reuseIdentifier]];
 }
 
 #pragma mark - Setter for data
@@ -62,14 +62,12 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    STMultipleProductsCollectionViewCell *cell = (STMultipleProductsCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:[STMultipleProductsCollectionViewCell reuseIdentifier] forIndexPath:indexPath];
+    STProductCollectionViewCell *cell = (STProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:[STProductCollectionViewCell reuseIdentifier] forIndexPath:indexPath];
     STProductItem *item = self.productItems[indexPath.row];
     [cell setProductItem:item];
     cell.delegate = self.cellDelegate;
     
     return cell;
 }
-
-
 
 @end

@@ -82,6 +82,11 @@
     }] resume];
 }
 
+- (void)getConversations:(void(^)(NSString *conversationID, NSError *error))completion
+{
+    
+}
+
 - (void)createConversation:(void(^)(NSString *conversationID, NSError *error))completion
 {
     NSString *URLString = [NSString stringWithFormat:@"https://api.layer.com/apps/%@/conversations", self.appID];

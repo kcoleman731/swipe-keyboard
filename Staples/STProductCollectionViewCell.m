@@ -6,15 +6,15 @@
 //  Copyright © 2016 Mesh. All rights reserved.
 //
 
-#import "STMultipleProductsCollectionViewCell.h"
+#import "STProductCollectionViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "EDColor.h"
 #import "STUtilities.h"
 
 // Cell ID
-NSString *const STMultipleProductsCollectionViewCellId = @"STMultipleProductsCollectionViewCellId";
+NSString *const STProductCollectionViewCellId = @"STProductCollectionViewCellId";
 
-@interface STMultipleProductsCollectionViewCell ()
+@interface STProductCollectionViewCell ()
 
 // Model
 @property (nonatomic, strong) STProductItem *item;
@@ -29,7 +29,7 @@ NSString *const STMultipleProductsCollectionViewCellId = @"STMultipleProductsCol
 
 IB_DESIGNABLE
 
-@implementation STMultipleProductsCollectionViewCell
+@implementation STProductCollectionViewCell
 
 #pragma mark - Layout / Init
 

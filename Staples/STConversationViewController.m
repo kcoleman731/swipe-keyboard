@@ -13,7 +13,7 @@
 #import "STAddressCollectionViewCell.h"
 #import "STShippingCollectionViewCell.h"
 #import "STUtilities.h"
-#import "STMultipleProductsBaseCollectionViewCell.h"
+#import "STMultipleProductBaseCollectionViewCell.h"
 #import "STReward.h"
 #import "STRewardCollectionViewCell.h"
 
@@ -95,7 +95,7 @@ NSString *const STOptionCell = @"Option Cell";
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:STMultipleProductsBaseCollectionViewCellMimeType]) {
-        return [STMultipleProductsBaseCollectionViewCell cellHeight];
+        return [STMultipleProductBaseCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:STAddressCollectionViewCellMimeType]) {
         return [STAddressCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:STShippingCollectionViewCellMimeType]) {
@@ -112,7 +112,7 @@ NSString *const STOptionCell = @"Option Cell";
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:STMultipleProductsBaseCollectionViewCellMimeType]) {
-        return [STMultipleProductsBaseCollectionViewCell reuseIdentifier];
+        return [STMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:STAddressCollectionViewCellMimeType]) {
         return [STAddressCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:STShippingCollectionViewCellMimeType]) {

@@ -8,28 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		3414E0202F8AD103A56840B2 /* Pods_Staples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCAFA925975ACD65020CCDD /* Pods_Staples.framework */; };
-		3486CD031D677A730041E2F7 /* STMultipleProductsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3486CD021D677A730041E2F7 /* STMultipleProductsCollectionViewCell.xib */; };
+		3486CD031D677A730041E2F7 /* STProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3486CD021D677A730041E2F7 /* STProductCollectionViewCell.xib */; };
 		3486CD051D677B880041E2F7 /* s0854503_s7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3486CD041D677B880041E2F7 /* s0854503_s7.jpg */; };
-		3486CD0A1D6783B10041E2F7 /* STMultipleProductsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD091D6783B10041E2F7 /* STMultipleProductsCollectionViewCell.m */; };
-		3486CD0F1D679E9A0041E2F7 /* STMultipleProductsBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD0E1D679E990041E2F7 /* STMultipleProductsBaseCollectionViewCell.m */; };
+		3486CD0A1D6783B10041E2F7 /* STProductCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD091D6783B10041E2F7 /* STProductCollectionViewCell.m */; };
+		3486CD0F1D679E9A0041E2F7 /* STMultipleProductBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD0E1D679E990041E2F7 /* STMultipleProductBaseCollectionViewCell.m */; };
 		3486CD131D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD121D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.m */; };
 		3486CD171D67A4790041E2F7 /* STProductItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD161D67A4790041E2F7 /* STProductItem.m */; };
 		3486CD1B1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD1A1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m */; };
 		34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A849291D6621AB002C34D2 /* STMultipleActionInputScrollView.m */; };
 		620E15FA3F1DD1FB26C366C1 /* Pods_StaplesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */; };
-		D62015651D663B0500EAA772 /* BTSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D62015641D663B0500EAA772 /* BTSItem.m */; };
-		D62015681D663B4D00EAA772 /* BTSItemPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = D62015671D663B4D00EAA772 /* BTSItemPrice.m */; };
-		D620156B1D663BFD00EAA772 /* BTSList.m in Sources */ = {isa = PBXBuildFile; fileRef = D620156A1D663BFD00EAA772 /* BTSList.m */; };
 		D620156C1D663EB100EAA772 /* STMultipleActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8492C1D663623002C34D2 /* STMultipleActionInputView.m */; };
 		D636E3AA1D67A88100B9FEBB /* STUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D636E3A91D67A88100B9FEBB /* STUtilities.m */; };
 		D636E3AD1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D636E3AC1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m */; };
 		D636E3AF1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */; };
 		D636E3B21D67C42D00B9FEBB /* STCellContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D636E3B11D67C42D00B9FEBB /* STCellContainerView.m */; };
 		D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71BC1D6B7482005F2546 /* STLayerService.m */; };
-		D65F71D71D6BA25F005F2546 /* STLayerServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71D61D6BA25F005F2546 /* STLayerServiceTest.m */; };
 		D65F71DC1D6BB4C5005F2546 /* STRewardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71DA1D6BB4C5005F2546 /* STRewardCollectionViewCell.m */; };
 		D65F71DF1D6BB6EF005F2546 /* STRewardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65F71DE1D6BB6EF005F2546 /* STRewardCollectionViewCell.xib */; };
 		D65F71E31D6BB8B9005F2546 /* STReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71E21D6BB8B9005F2546 /* STReward.m */; };
+		D68FEF051D6BFC75006AEFC6 /* STReorderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68FEF031D6BFC75006AEFC6 /* STReorderCollectionViewCell.m */; };
+		D68FEF061D6BFC75006AEFC6 /* STReorderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68FEF041D6BFC75006AEFC6 /* STReorderCollectionViewCell.xib */; };
+		D68FEF0B1D6C059C006AEFC6 /* STItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68FEF091D6C059C006AEFC6 /* STItemCollectionViewCell.m */; };
+		D68FEF0C1D6C059C006AEFC6 /* STItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68FEF0A1D6C059C006AEFC6 /* STItemCollectionViewCell.xib */; };
 		D69761711D660AEE00F3369F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761701D660AEE00F3369F /* main.m */; };
 		D69761741D660AEE00F3369F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761731D660AEE00F3369F /* AppDelegate.m */; };
 		D697617A1D660AEE00F3369F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69761781D660AEE00F3369F /* Main.storyboard */; };
@@ -38,6 +38,7 @@
 		D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761871D660FBA00F3369F /* STConversationViewController.m */; };
 		D697618B1D66162C00F3369F /* STActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D697618A1D66162C00F3369F /* STActionInputView.m */; };
 		D697618E1D66183C00F3369F /* STActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D697618D1D66183C00F3369F /* STActionButton.m */; };
+		D6CFC3AC1D6BF69E00F3F2F1 /* STLayerServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D6CFC3AB1D6BF69E00F3F2F1 /* STLayerServiceTest.m */; };
 		D6F858821D677F290027F195 /* STMessageInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F858811D677F290027F195 /* STMessageInputToolbar.m */; };
 		D6F858861D67866E0027F195 /* STAddressCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F858851D67866E0027F195 /* STAddressCollectionViewCell.m */; };
 		D6F858881D6786840027F195 /* STAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6F858871D6786840027F195 /* STAddressCollectionViewCell.xib */; };
@@ -54,12 +55,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3486CD021D677A730041E2F7 /* STMultipleProductsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STMultipleProductsCollectionViewCell.xib; sourceTree = "<group>"; };
+		3486CD021D677A730041E2F7 /* STProductCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STProductCollectionViewCell.xib; sourceTree = "<group>"; };
 		3486CD041D677B880041E2F7 /* s0854503_s7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = s0854503_s7.jpg; sourceTree = "<group>"; };
-		3486CD081D6783B10041E2F7 /* STMultipleProductsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMultipleProductsCollectionViewCell.h; sourceTree = "<group>"; };
-		3486CD091D6783B10041E2F7 /* STMultipleProductsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMultipleProductsCollectionViewCell.m; sourceTree = "<group>"; };
-		3486CD0D1D679E990041E2F7 /* STMultipleProductsBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMultipleProductsBaseCollectionViewCell.h; sourceTree = "<group>"; };
-		3486CD0E1D679E990041E2F7 /* STMultipleProductsBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMultipleProductsBaseCollectionViewCell.m; sourceTree = "<group>"; };
+		3486CD081D6783B10041E2F7 /* STProductCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STProductCollectionViewCell.h; sourceTree = "<group>"; };
+		3486CD091D6783B10041E2F7 /* STProductCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STProductCollectionViewCell.m; sourceTree = "<group>"; };
+		3486CD0D1D679E990041E2F7 /* STMultipleProductBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMultipleProductBaseCollectionViewCell.h; sourceTree = "<group>"; };
+		3486CD0E1D679E990041E2F7 /* STMultipleProductBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMultipleProductBaseCollectionViewCell.m; sourceTree = "<group>"; };
 		3486CD111D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMultipleProductsBaseCollectionViewCellDataSource.h; sourceTree = "<group>"; };
 		3486CD121D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMultipleProductsBaseCollectionViewCellDataSource.m; sourceTree = "<group>"; };
 		3486CD151D67A4790041E2F7 /* STProductItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STProductItem.h; sourceTree = "<group>"; };
@@ -76,12 +77,6 @@
 		9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StaplesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B72ABA2CB0359A53DA8545 /* Pods-Staples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Staples/Pods-Staples.debug.xcconfig"; sourceTree = "<group>"; };
 		D5B93285FFEE36FC4B96057A /* Pods-StaplesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaplesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StaplesTests/Pods-StaplesTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D62015631D663B0500EAA772 /* BTSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTSItem.h; sourceTree = "<group>"; };
-		D62015641D663B0500EAA772 /* BTSItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSItem.m; sourceTree = "<group>"; };
-		D62015661D663B4D00EAA772 /* BTSItemPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTSItemPrice.h; sourceTree = "<group>"; };
-		D62015671D663B4D00EAA772 /* BTSItemPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSItemPrice.m; sourceTree = "<group>"; };
-		D62015691D663BFD00EAA772 /* BTSList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTSList.h; sourceTree = "<group>"; };
-		D620156A1D663BFD00EAA772 /* BTSList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSList.m; sourceTree = "<group>"; };
 		D636E3A81D67A88100B9FEBB /* STUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STUtilities.h; sourceTree = "<group>"; };
 		D636E3A91D67A88100B9FEBB /* STUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STUtilities.m; sourceTree = "<group>"; };
 		D636E3AB1D67A9DE00B9FEBB /* STShippingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STShippingCollectionViewCell.h; sourceTree = "<group>"; };
@@ -92,14 +87,18 @@
 		D65F71BB1D6B7482005F2546 /* STLayerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLayerService.h; sourceTree = "<group>"; };
 		D65F71BC1D6B7482005F2546 /* STLayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLayerService.m; sourceTree = "<group>"; };
 		D65F71CB1D6BA164005F2546 /* StaplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StaplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D65F71CD1D6BA164005F2546 /* StaplesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StaplesTests.m; sourceTree = "<group>"; };
 		D65F71CF1D6BA164005F2546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D65F71D61D6BA25F005F2546 /* STLayerServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STLayerServiceTest.m; path = ../STLayerServiceTest.m; sourceTree = "<group>"; };
 		D65F71D91D6BB4C5005F2546 /* STRewardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRewardCollectionViewCell.h; sourceTree = "<group>"; };
 		D65F71DA1D6BB4C5005F2546 /* STRewardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRewardCollectionViewCell.m; sourceTree = "<group>"; };
 		D65F71DE1D6BB6EF005F2546 /* STRewardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STRewardCollectionViewCell.xib; sourceTree = "<group>"; };
 		D65F71E11D6BB8B9005F2546 /* STReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STReward.h; sourceTree = "<group>"; };
 		D65F71E21D6BB8B9005F2546 /* STReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STReward.m; sourceTree = "<group>"; };
+		D68FEF021D6BFC75006AEFC6 /* STReorderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STReorderCollectionViewCell.h; sourceTree = "<group>"; };
+		D68FEF031D6BFC75006AEFC6 /* STReorderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STReorderCollectionViewCell.m; sourceTree = "<group>"; };
+		D68FEF041D6BFC75006AEFC6 /* STReorderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STReorderCollectionViewCell.xib; sourceTree = "<group>"; };
+		D68FEF081D6C059C006AEFC6 /* STItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STItemCollectionViewCell.h; sourceTree = "<group>"; };
+		D68FEF091D6C059C006AEFC6 /* STItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STItemCollectionViewCell.m; sourceTree = "<group>"; };
+		D68FEF0A1D6C059C006AEFC6 /* STItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		D697616C1D660AEE00F3369F /* Staples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69761701D660AEE00F3369F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D69761721D660AEE00F3369F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 		D697618A1D66162C00F3369F /* STActionInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STActionInputView.m; sourceTree = "<group>"; };
 		D697618C1D66183C00F3369F /* STActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STActionButton.h; sourceTree = "<group>"; };
 		D697618D1D66183C00F3369F /* STActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STActionButton.m; sourceTree = "<group>"; };
+		D6CFC3AB1D6BF69E00F3F2F1 /* STLayerServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLayerServiceTest.m; sourceTree = "<group>"; };
 		D6F858801D677F290027F195 /* STMessageInputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMessageInputToolbar.h; sourceTree = "<group>"; };
 		D6F858811D677F290027F195 /* STMessageInputToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMessageInputToolbar.m; sourceTree = "<group>"; };
 		D6F858841D67866E0027F195 /* STAddressCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAddressCollectionViewCell.h; sourceTree = "<group>"; };
@@ -141,14 +141,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3486CD011D6779130041E2F7 /* STMultipleProductsCollectionViewCell */ = {
+		3486CD011D6779130041E2F7 /* STMultipleProductCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				D68FEF071D6C0578006AEFC6 /* Item Cell */,
 				3486CD071D677B8F0041E2F7 /* Assets */,
 				3486CD0C1D679E700041E2F7 /* Base Collection View Cell */,
 				3486CD0B1D679E6B0041E2F7 /* Product Cell */,
 			);
-			name = STMultipleProductsCollectionViewCell;
+			name = STMultipleProductCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		3486CD071D677B8F0041E2F7 /* Assets */ = {
@@ -162,9 +163,9 @@
 		3486CD0B1D679E6B0041E2F7 /* Product Cell */ = {
 			isa = PBXGroup;
 			children = (
-				3486CD021D677A730041E2F7 /* STMultipleProductsCollectionViewCell.xib */,
-				3486CD081D6783B10041E2F7 /* STMultipleProductsCollectionViewCell.h */,
-				3486CD091D6783B10041E2F7 /* STMultipleProductsCollectionViewCell.m */,
+				3486CD021D677A730041E2F7 /* STProductCollectionViewCell.xib */,
+				3486CD081D6783B10041E2F7 /* STProductCollectionViewCell.h */,
+				3486CD091D6783B10041E2F7 /* STProductCollectionViewCell.m */,
 			);
 			name = "Product Cell";
 			sourceTree = "<group>";
@@ -175,8 +176,8 @@
 				3486CD181D67A9D70041E2F7 /* Collection View Layout */,
 				3486CD141D67A46E0041E2F7 /* Stubbed Model */,
 				3486CD101D679E9F0041E2F7 /* Data Source */,
-				3486CD0D1D679E990041E2F7 /* STMultipleProductsBaseCollectionViewCell.h */,
-				3486CD0E1D679E990041E2F7 /* STMultipleProductsBaseCollectionViewCell.m */,
+				3486CD0D1D679E990041E2F7 /* STMultipleProductBaseCollectionViewCell.h */,
+				3486CD0E1D679E990041E2F7 /* STMultipleProductBaseCollectionViewCell.m */,
 			);
 			name = "Base Collection View Cell";
 			sourceTree = "<group>";
@@ -226,19 +227,6 @@
 				9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D62015621D663AE200EAA772 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D62015691D663BFD00EAA772 /* BTSList.h */,
-				D620156A1D663BFD00EAA772 /* BTSList.m */,
-				D62015631D663B0500EAA772 /* BTSItem.h */,
-				D62015641D663B0500EAA772 /* BTSItem.m */,
-				D62015661D663B4D00EAA772 /* BTSItemPrice.h */,
-				D62015671D663B4D00EAA772 /* BTSItemPrice.m */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		D65F71BE1D6B7A0D005F2546 /* STAddressCollectionViewCell */ = {
@@ -306,8 +294,7 @@
 		D65F71CC1D6BA164005F2546 /* StaplesTests */ = {
 			isa = PBXGroup;
 			children = (
-				D65F71D61D6BA25F005F2546 /* STLayerServiceTest.m */,
-				D65F71CD1D6BA164005F2546 /* StaplesTests.m */,
+				D6CFC3AB1D6BF69E00F3F2F1 /* STLayerServiceTest.m */,
 				D65F71CF1D6BA164005F2546 /* Info.plist */,
 			);
 			path = StaplesTests;
@@ -331,6 +318,26 @@
 				D65F71E21D6BB8B9005F2546 /* STReward.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		D68FEF011D6BFC4B006AEFC6 /* STReorderCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D68FEF021D6BFC75006AEFC6 /* STReorderCollectionViewCell.h */,
+				D68FEF031D6BFC75006AEFC6 /* STReorderCollectionViewCell.m */,
+				D68FEF041D6BFC75006AEFC6 /* STReorderCollectionViewCell.xib */,
+			);
+			name = STReorderCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		D68FEF071D6C0578006AEFC6 /* Item Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D68FEF081D6C059C006AEFC6 /* STItemCollectionViewCell.h */,
+				D68FEF091D6C059C006AEFC6 /* STItemCollectionViewCell.m */,
+				D68FEF0A1D6C059C006AEFC6 /* STItemCollectionViewCell.xib */,
+			);
+			name = "Item Cell";
 			sourceTree = "<group>";
 		};
 		D69761631D660AEE00F3369F = {
@@ -360,7 +367,6 @@
 				D65F71C21D6B7A6C005F2546 /* STMessageInputToolbar */,
 				D65F71C11D6B7A3B005F2546 /* STMultipleActionInputView */,
 				D6F858831D6786480027F195 /* Cells */,
-				D62015621D663AE200EAA772 /* Model */,
 				D69761721D660AEE00F3369F /* AppDelegate.h */,
 				D69761731D660AEE00F3369F /* AppDelegate.m */,
 				D69761861D660FBA00F3369F /* STConversationViewController.h */,
@@ -388,11 +394,12 @@
 		D6F858831D6786480027F195 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D68FEF011D6BFC4B006AEFC6 /* STReorderCollectionViewCell */,
 				D65F71D81D6BB4A1005F2546 /* STRewardCollectionViewCell */,
 				D65F71C01D6B7A27005F2546 /* Shared */,
 				D65F71BF1D6B7A17005F2546 /* STShippingCollectionViewCell */,
 				D65F71BE1D6B7A0D005F2546 /* STAddressCollectionViewCell */,
-				3486CD011D6779130041E2F7 /* STMultipleProductsCollectionViewCell */,
+				3486CD011D6779130041E2F7 /* STMultipleProductCollectionViewCell */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -490,12 +497,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D68FEF061D6BFC75006AEFC6 /* STReorderCollectionViewCell.xib in Resources */,
 				D6F858881D6786840027F195 /* STAddressCollectionViewCell.xib in Resources */,
 				D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */,
 				D65F71DF1D6BB6EF005F2546 /* STRewardCollectionViewCell.xib in Resources */,
+				D68FEF0C1D6C059C006AEFC6 /* STItemCollectionViewCell.xib in Resources */,
 				D697617C1D660AEE00F3369F /* Assets.xcassets in Resources */,
 				D636E3AF1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib in Resources */,
-				3486CD031D677A730041E2F7 /* STMultipleProductsCollectionViewCell.xib in Resources */,
+				3486CD031D677A730041E2F7 /* STProductCollectionViewCell.xib in Resources */,
 				3486CD051D677B880041E2F7 /* s0854503_s7.jpg in Resources */,
 				D697617A1D660AEE00F3369F /* Main.storyboard in Resources */,
 			);
@@ -601,7 +610,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D65F71D71D6BA25F005F2546 /* STLayerServiceTest.m in Sources */,
+				D6CFC3AC1D6BF69E00F3F2F1 /* STLayerServiceTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,24 +621,23 @@
 				D6F858861D67866E0027F195 /* STAddressCollectionViewCell.m in Sources */,
 				D620156C1D663EB100EAA772 /* STMultipleActionInputView.m in Sources */,
 				D697618E1D66183C00F3369F /* STActionButton.m in Sources */,
-				3486CD0A1D6783B10041E2F7 /* STMultipleProductsCollectionViewCell.m in Sources */,
+				3486CD0A1D6783B10041E2F7 /* STProductCollectionViewCell.m in Sources */,
 				3486CD1B1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m in Sources */,
 				D636E3B21D67C42D00B9FEBB /* STCellContainerView.m in Sources */,
 				D69761741D660AEE00F3369F /* AppDelegate.m in Sources */,
 				34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */,
 				D636E3AD1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m in Sources */,
 				D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */,
-				D62015681D663B4D00EAA772 /* BTSItemPrice.m in Sources */,
 				D6F858821D677F290027F195 /* STMessageInputToolbar.m in Sources */,
 				3486CD131D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.m in Sources */,
 				3486CD171D67A4790041E2F7 /* STProductItem.m in Sources */,
 				D65F71E31D6BB8B9005F2546 /* STReward.m in Sources */,
 				D69761711D660AEE00F3369F /* main.m in Sources */,
-				D62015651D663B0500EAA772 /* BTSItem.m in Sources */,
+				D68FEF051D6BFC75006AEFC6 /* STReorderCollectionViewCell.m in Sources */,
 				D636E3AA1D67A88100B9FEBB /* STUtilities.m in Sources */,
-				D620156B1D663BFD00EAA772 /* BTSList.m in Sources */,
 				D65F71DC1D6BB4C5005F2546 /* STRewardCollectionViewCell.m in Sources */,
-				3486CD0F1D679E9A0041E2F7 /* STMultipleProductsBaseCollectionViewCell.m in Sources */,
+				D68FEF0B1D6C059C006AEFC6 /* STItemCollectionViewCell.m in Sources */,
+				3486CD0F1D679E9A0041E2F7 /* STMultipleProductBaseCollectionViewCell.m in Sources */,
 				D697618B1D66162C00F3369F /* STActionInputView.m in Sources */,
 				D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */,
 			);
