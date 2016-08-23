@@ -9,14 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <Atlas/Atlas.h>
 #import "STProductCollectionViewCell.h"
+#import "STItemCollectionViewCell.h"
 #import "STProductItem.h"
 
-extern NSString *const STMultipleProductsBaseCollectionViewCellTitle;
-extern NSString *const STMultipleProductsBaseCollectionViewCellMimeType;
+extern NSString *const STMultipleProductBaseCollectionViewCellTitle;
+extern NSString *const STMultipleProductBaseCollectionViewCellMimeType;
 
 @interface STMultipleProductBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
-@property (nonatomic, weak) id <STMultipleProductsCollectionViewCellDelegate> productDelegate;
+@property (nonatomic, weak) id <STProductCollectionViewCellDelegate> productDelegate;
 
 /**
  *  Reuse Identifier

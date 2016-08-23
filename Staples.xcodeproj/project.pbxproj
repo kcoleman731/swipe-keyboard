@@ -12,7 +12,6 @@
 		3486CD051D677B880041E2F7 /* s0854503_s7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3486CD041D677B880041E2F7 /* s0854503_s7.jpg */; };
 		3486CD0A1D6783B10041E2F7 /* STProductCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD091D6783B10041E2F7 /* STProductCollectionViewCell.m */; };
 		3486CD0F1D679E9A0041E2F7 /* STMultipleProductBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD0E1D679E990041E2F7 /* STMultipleProductBaseCollectionViewCell.m */; };
-		3486CD131D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD121D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.m */; };
 		3486CD171D67A4790041E2F7 /* STProductItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD161D67A4790041E2F7 /* STProductItem.m */; };
 		3486CD1B1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD1A1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m */; };
 		34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A849291D6621AB002C34D2 /* STMultipleActionInputScrollView.m */; };
@@ -61,8 +60,6 @@
 		3486CD091D6783B10041E2F7 /* STProductCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STProductCollectionViewCell.m; sourceTree = "<group>"; };
 		3486CD0D1D679E990041E2F7 /* STMultipleProductBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMultipleProductBaseCollectionViewCell.h; sourceTree = "<group>"; };
 		3486CD0E1D679E990041E2F7 /* STMultipleProductBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMultipleProductBaseCollectionViewCell.m; sourceTree = "<group>"; };
-		3486CD111D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMultipleProductsBaseCollectionViewCellDataSource.h; sourceTree = "<group>"; };
-		3486CD121D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMultipleProductsBaseCollectionViewCellDataSource.m; sourceTree = "<group>"; };
 		3486CD151D67A4790041E2F7 /* STProductItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STProductItem.h; sourceTree = "<group>"; };
 		3486CD161D67A4790041E2F7 /* STProductItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STProductItem.m; sourceTree = "<group>"; };
 		3486CD191D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMultipleProductsCollectionViewLayout.h; sourceTree = "<group>"; };
@@ -144,10 +141,11 @@
 		3486CD011D6779130041E2F7 /* STMultipleProductCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D68FEF071D6C0578006AEFC6 /* Item Cell */,
-				3486CD071D677B8F0041E2F7 /* Assets */,
-				3486CD0C1D679E700041E2F7 /* Base Collection View Cell */,
-				3486CD0B1D679E6B0041E2F7 /* Product Cell */,
+				D68FEF071D6C0578006AEFC6 /* STItemCollectionViewCell */,
+				3486CD0B1D679E6B0041E2F7 /* STProductCollectionViewCell */,
+				3486CD181D67A9D70041E2F7 /* Collection View Layout */,
+				3486CD0D1D679E990041E2F7 /* STMultipleProductBaseCollectionViewCell.h */,
+				3486CD0E1D679E990041E2F7 /* STMultipleProductBaseCollectionViewCell.m */,
 			);
 			name = STMultipleProductCollectionViewCell;
 			sourceTree = "<group>";
@@ -160,44 +158,23 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
-		3486CD0B1D679E6B0041E2F7 /* Product Cell */ = {
+		3486CD0B1D679E6B0041E2F7 /* STProductCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				3486CD021D677A730041E2F7 /* STProductCollectionViewCell.xib */,
 				3486CD081D6783B10041E2F7 /* STProductCollectionViewCell.h */,
 				3486CD091D6783B10041E2F7 /* STProductCollectionViewCell.m */,
 			);
-			name = "Product Cell";
+			name = STProductCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		3486CD0C1D679E700041E2F7 /* Base Collection View Cell */ = {
-			isa = PBXGroup;
-			children = (
-				3486CD181D67A9D70041E2F7 /* Collection View Layout */,
-				3486CD141D67A46E0041E2F7 /* Stubbed Model */,
-				3486CD101D679E9F0041E2F7 /* Data Source */,
-				3486CD0D1D679E990041E2F7 /* STMultipleProductBaseCollectionViewCell.h */,
-				3486CD0E1D679E990041E2F7 /* STMultipleProductBaseCollectionViewCell.m */,
-			);
-			name = "Base Collection View Cell";
-			sourceTree = "<group>";
-		};
-		3486CD101D679E9F0041E2F7 /* Data Source */ = {
-			isa = PBXGroup;
-			children = (
-				3486CD111D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.h */,
-				3486CD121D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.m */,
-			);
-			name = "Data Source";
-			sourceTree = "<group>";
-		};
-		3486CD141D67A46E0041E2F7 /* Stubbed Model */ = {
+		3486CD141D67A46E0041E2F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				3486CD151D67A4790041E2F7 /* STProductItem.h */,
 				3486CD161D67A4790041E2F7 /* STProductItem.m */,
 			);
-			name = "Stubbed Model";
+			name = Model;
 			sourceTree = "<group>";
 		};
 		3486CD181D67A9D70041E2F7 /* Collection View Layout */ = {
@@ -330,14 +307,23 @@
 			name = STReorderCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		D68FEF071D6C0578006AEFC6 /* Item Cell */ = {
+		D68FEF071D6C0578006AEFC6 /* STItemCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				D68FEF081D6C059C006AEFC6 /* STItemCollectionViewCell.h */,
 				D68FEF091D6C059C006AEFC6 /* STItemCollectionViewCell.m */,
 				D68FEF0A1D6C059C006AEFC6 /* STItemCollectionViewCell.xib */,
 			);
-			name = "Item Cell";
+			name = STItemCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		D68FEF151D6CBA32006AEFC6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D65F71C21D6B7A6C005F2546 /* STMessageInputToolbar */,
+				D65F71C11D6B7A3B005F2546 /* STMultipleActionInputView */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		D69761631D660AEE00F3369F = {
@@ -363,9 +349,10 @@
 		D697616E1D660AEE00F3369F /* Staples */ = {
 			isa = PBXGroup;
 			children = (
+				D68FEF151D6CBA32006AEFC6 /* Views */,
+				3486CD141D67A46E0041E2F7 /* Model */,
+				3486CD071D677B8F0041E2F7 /* Assets */,
 				D65F71C31D6B7A7D005F2546 /* Utilities */,
-				D65F71C21D6B7A6C005F2546 /* STMessageInputToolbar */,
-				D65F71C11D6B7A3B005F2546 /* STMultipleActionInputView */,
 				D6F858831D6786480027F195 /* Cells */,
 				D69761721D660AEE00F3369F /* AppDelegate.h */,
 				D69761731D660AEE00F3369F /* AppDelegate.m */,
@@ -629,7 +616,6 @@
 				D636E3AD1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m in Sources */,
 				D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */,
 				D6F858821D677F290027F195 /* STMessageInputToolbar.m in Sources */,
-				3486CD131D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.m in Sources */,
 				3486CD171D67A4790041E2F7 /* STProductItem.m in Sources */,
 				D65F71E31D6BB8B9005F2546 /* STReward.m in Sources */,
 				D69761711D660AEE00F3369F /* main.m in Sources */,

@@ -34,4 +34,5 @@
  *  Product Items Setter
  */
 - (void)setProductItem:(STProductItem *)item;
+
 @end

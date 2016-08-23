@@ -49,11 +49,6 @@ IB_DESIGNABLE
     self.layer.cornerRadius = 4;
     self.layer.borderWidth = 2;
     self.clipsToBounds = YES;
-    
-//    self.layer.shadowColor = [[UIColor blackColor] CGColor];
-//    self.layer.shadowRadius = 2.0;
-//    self.layer.shadowOpacity = 0.4;
-//    self.layer.shadowOffset = CGSizeMake(0.0, 0.0);
 }
 
 - (void)configureAddButton
@@ -66,7 +61,7 @@ IB_DESIGNABLE
 
 + (NSString *)reuseIdentifier
 {
-    return STMultipleProductsCollectionViewCellId;
+    return STProductCollectionViewCellId;
 }
 
 #pragma mark - Product Setter

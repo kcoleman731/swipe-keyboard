@@ -39,7 +39,7 @@ NSString *const STOptionCell = @"Option Cell";
 - (void)configureCollectionViewCells
 {
     // Product Call
-    [self.collectionView registerClass:[STMultipleProductsBaseCollectionViewCell class] forCellWithReuseIdentifier:[STMultipleProductsBaseCollectionViewCell reuseIdentifier]];
+    [self.collectionView registerClass:[STMultipleProductBaseCollectionViewCell class] forCellWithReuseIdentifier:[STMultipleProductBaseCollectionViewCell reuseIdentifier]];
     
     // Reward Cell
     UINib *rewardCellNib = [UINib nibWithNibName:@"STRewardCollectionViewCell"  bundle:[NSBundle mainBundle]];
@@ -64,9 +64,9 @@ NSString *const STOptionCell = @"Option Cell";
 {
     NSError *error;
     LYRMessagePart *messagePart;
-    if ([title isEqualToString:STMultipleProductsBaseCollectionViewCellTitle]) {
+    if ([title isEqualToString:STMultipleProductBaseCollectionViewCellTitle]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeProductInfo] options:NSJSONWritingPrettyPrinted error:nil];
-        messagePart = [LYRMessagePart messagePartWithMIMEType:STMultipleProductsBaseCollectionViewCellMimeType data:data];
+        messagePart = [LYRMessagePart messagePartWithMIMEType:STMultipleProductBaseCollectionViewCellMimeType data:data];
     } else if ([title isEqualToString:STAddressCollectionViewCellTitle]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeAddressInfo] options:NSJSONWritingPrettyPrinted error:nil];
         messagePart = [LYRMessagePart messagePartWithMIMEType:STAddressCollectionViewCellMimeType data:data];
@@ -94,7 +94,7 @@ NSString *const STOptionCell = @"Option Cell";
 - (CGFloat)conversationViewController:(ATLConversationViewController *)viewController heightForMessage:(LYRMessage *)message withCellWidth:(CGFloat)cellWidth
 {
     LYRMessagePart *part = message.parts[0];
-    if ([part.MIMEType isEqualToString:STMultipleProductsBaseCollectionViewCellMimeType]) {
+    if ([part.MIMEType isEqualToString:STMultipleProductBaseCollectionViewCellMimeType]) {
         return [STMultipleProductBaseCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:STAddressCollectionViewCellMimeType]) {
         return [STAddressCollectionViewCell cellHeight];
@@ -111,7 +111,7 @@ NSString *const STOptionCell = @"Option Cell";
 - (nullable NSString *)conversationViewController:(ATLConversationViewController *)viewController reuseIdentifierForMessage:(LYRMessage *)message
 {
     LYRMessagePart *part = message.parts[0];
-    if ([part.MIMEType isEqualToString:STMultipleProductsBaseCollectionViewCellMimeType]) {
+    if ([part.MIMEType isEqualToString:STMultipleProductBaseCollectionViewCellMimeType]) {
         return [STMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:STAddressCollectionViewCellMimeType]) {
         return [STAddressCollectionViewCell reuseIdentifier];
@@ -170,7 +170,7 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (NSArray *)selectionItems
 {
-    return @[STMultipleProductsBaseCollectionViewCellTitle, STAddressCollectionViewCellTitle, STShippingCollectionViewCellTitle , STRewardCollectionViewCellTitle];
+    return @[STMultipleProductBaseCollectionViewCellTitle, STAddressCollectionViewCellTitle, STShippingCollectionViewCellTitle , STRewardCollectionViewCellTitle];
 }
 
 - (NSDictionary *)fakeAddressInfo
