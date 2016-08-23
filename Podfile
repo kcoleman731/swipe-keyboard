@@ -8,6 +8,7 @@ target 'Staples' do
   pod 'Atlas'
   pod 'SDWebImage', '~> 3.8.1'
   pod 'EDColor', '~> 1.0.0'
+  pod 'Reveal-iOS-SDK', '~> 1.6.2'
 
 end
 

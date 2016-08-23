@@ -16,7 +16,7 @@ extern NSString *const STMultipleProductsBaseCollectionViewCellMimeType;
 
 @interface STMultipleProductBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
-@property (nonatomic, weak) id <STMultipleProductsCollectionViewCellDelegate> productDelegate;
+@property (nonatomic, weak) id <STProductCollectionViewCellDelegate> productDelegate;
 
 /**
  *  Reuse Identifier

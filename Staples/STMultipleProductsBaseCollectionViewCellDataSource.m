@@ -8,11 +8,13 @@
 
 #import "STMultipleProductsBaseCollectionViewCellDataSource.h"
 
+
+
 @interface STMultipleProductsBaseCollectionViewCellDataSource ()
 
 @property (nonatomic, strong) NSString *cellReuseIdentifier;
 @property (nonatomic, weak) UICollectionView *collectionView;
-@property (nonatomic, weak) id <STMultipleProductsCollectionViewCellDelegate> cellDelegate;
+@property (nonatomic, weak) id <STProductCollectionViewCellDelegate> cellDelegate;
 @property (nonatomic, strong) NSArray<STProductItem *> *productItems;
 
 @end
@@ -22,7 +24,7 @@
 #pragma mark - Init / Common Init
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView
-                          cellDelegate:(id <STMultipleProductsCollectionViewCellDelegate>)delgate
+                          cellDelegate:(id <STProductCollectionViewCellDelegate>)delgate
 {
     self = [super init];
     if (self) {
@@ -35,7 +37,7 @@
 
 - (void)commonInit
 {
-    // Register Cell
+//     Register Cell
     [self registerCell];
 }
 

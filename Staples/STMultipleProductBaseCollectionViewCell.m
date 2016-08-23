@@ -10,11 +10,11 @@
 #import "STMultipleProductsBaseCollectionViewCellDataSource.h"
 #import "STMultipleProductsCollectionViewLayout.h"
 
-NSString *const STMultipleProductBaseCollectionViewCellTitle = @"Product Cell";
-NSString *const STMultipleProductBaseCollectionViewCellMimeType = @"json/product";
+NSString *const STMultipleProductsBaseCollectionViewCellTitle = @"Product Cell";
+NSString *const STMultipleProductsBaseCollectionViewCellMimeType = @"json/product";
 NSString *const STMultipleProductBaseCollectionViewCellId = @"STMultipleProductBaseCollectionViewCellId";
 
-@interface STMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, STMultipleProductsCollectionViewCellDelegate>
+@interface STMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, STProductCollectionViewCellDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) STMultipleProductsBaseCollectionViewCellDataSource *dataSource;

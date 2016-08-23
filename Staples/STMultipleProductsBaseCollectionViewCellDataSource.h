@@ -24,7 +24,7 @@
 #pragma mark - Init
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView
-                          cellDelegate:(id <STMultipleProductsCollectionViewCellDelegate>)delgate;
+                          cellDelegate:(id <STProductCollectionViewCellDelegate>)delgate;
 
 // Setter for product data
 - (void)setProducts:(NSArray<STProductItem *> *)items;
