@@ -18,5 +18,5 @@ Pod::Spec.new do |s|
   s.dependency                  'LayerKit', '>= 0.22.0'
   s.dependency                  'Atlas', '>= 0.22.0'
   s.dependency                  'EDColor', '~> 1.0.1'
-  s.dependency                  'SDWebImage', '~> 3.8.1''
+  s.dependency                  'SDWebImage', '~> 3.8.1'
 end
