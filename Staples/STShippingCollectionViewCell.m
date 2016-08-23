@@ -9,6 +9,8 @@
 #import "STShippingCollectionViewCell.h"
 #import "STUtilities.h"
 
+NSString *const STShippingCollectionViewCellTitle = @"Shipping Cell";
+NSString *const STShippingCollectionViewCellMimeType = @"json/shipping";
 NSString *const STShippingCollectionViewCellReuseIdentifier = @"STShippingCollectionViewCellReuseIdentifier";
 
 @implementation STShippingCollectionViewCell
@@ -29,10 +31,14 @@ NSString *const STShippingCollectionViewCellReuseIdentifier = @"STShippingCollec
     self.itemLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightThin];
 }
 
-
 + (NSString *)reuseIdentifier
 {
     return STShippingCollectionViewCellReuseIdentifier;
+}
+
++ (CGFloat)cellHeight
+{
+    return 220;
 }
 
 #pragma mark - ATLMessagePresenting

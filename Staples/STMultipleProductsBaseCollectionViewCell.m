@@ -10,6 +10,8 @@
 #import "STMultipleProductsBaseCollectionViewCellDataSource.h"
 #import "STMultipleProductsCollectionViewLayout.h"
 
+NSString *const STMultipleProductsBaseCollectionViewCellTitle = @"Product Cell";
+NSString *const STMultipleProductsBaseCollectionViewCellMimeType = @"json/product";
 NSString *const STMultipleProductsBaseCollectionViewCellId = @"STMultipleProductsBaseCollectionViewCellId";
 
 @interface STMultipleProductsBaseCollectionViewCell () <UICollectionViewDelegate, STMultipleProductsCollectionViewCellDelegate>
@@ -75,6 +77,12 @@ NSString *const STMultipleProductsBaseCollectionViewCellId = @"STMultipleProduct
 + (NSString *)reuseIdentifier
 {
     return STMultipleProductsBaseCollectionViewCellId;
+}
+
+
++ (CGFloat)cellHeight
+{
+    return 140;
 }
 
 #pragma mark - Setter For Data

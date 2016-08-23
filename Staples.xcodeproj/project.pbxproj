@@ -16,6 +16,7 @@
 		3486CD171D67A4790041E2F7 /* STProductItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD161D67A4790041E2F7 /* STProductItem.m */; };
 		3486CD1B1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD1A1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m */; };
 		34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A849291D6621AB002C34D2 /* STMultipleActionInputScrollView.m */; };
+		620E15FA3F1DD1FB26C366C1 /* Pods_StaplesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */; };
 		D62015651D663B0500EAA772 /* BTSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D62015641D663B0500EAA772 /* BTSItem.m */; };
 		D62015681D663B4D00EAA772 /* BTSItemPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = D62015671D663B4D00EAA772 /* BTSItemPrice.m */; };
 		D620156B1D663BFD00EAA772 /* BTSList.m in Sources */ = {isa = PBXBuildFile; fileRef = D620156A1D663BFD00EAA772 /* BTSList.m */; };
@@ -24,6 +25,11 @@
 		D636E3AD1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D636E3AC1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m */; };
 		D636E3AF1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */; };
 		D636E3B21D67C42D00B9FEBB /* STCellContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D636E3B11D67C42D00B9FEBB /* STCellContainerView.m */; };
+		D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71BC1D6B7482005F2546 /* STLayerService.m */; };
+		D65F71D71D6BA25F005F2546 /* STLayerServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71D61D6BA25F005F2546 /* STLayerServiceTest.m */; };
+		D65F71DC1D6BB4C5005F2546 /* STRewardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71DA1D6BB4C5005F2546 /* STRewardCollectionViewCell.m */; };
+		D65F71DF1D6BB6EF005F2546 /* STRewardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65F71DE1D6BB6EF005F2546 /* STRewardCollectionViewCell.xib */; };
+		D65F71E31D6BB8B9005F2546 /* STReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71E21D6BB8B9005F2546 /* STReward.m */; };
 		D69761711D660AEE00F3369F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761701D660AEE00F3369F /* main.m */; };
 		D69761741D660AEE00F3369F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761731D660AEE00F3369F /* AppDelegate.m */; };
 		D697617A1D660AEE00F3369F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69761781D660AEE00F3369F /* Main.storyboard */; };
@@ -36,6 +42,16 @@
 		D6F858861D67866E0027F195 /* STAddressCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F858851D67866E0027F195 /* STAddressCollectionViewCell.m */; };
 		D6F858881D6786840027F195 /* STAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6F858871D6786840027F195 /* STAddressCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D65F71D01D6BA164005F2546 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D69761641D660AEE00F3369F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D697616B1D660AEE00F3369F;
+			remoteInfo = Staples;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3486CD021D677A730041E2F7 /* STMultipleProductsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STMultipleProductsCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -55,8 +71,11 @@
 		34A8492B1D663623002C34D2 /* STMultipleActionInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMultipleActionInputView.h; sourceTree = "<group>"; };
 		34A8492C1D663623002C34D2 /* STMultipleActionInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMultipleActionInputView.m; sourceTree = "<group>"; };
 		3BFBB829A1CF8E97CB27CEF3 /* Pods-Staples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staples.release.xcconfig"; path = "Pods/Target Support Files/Pods-Staples/Pods-Staples.release.xcconfig"; sourceTree = "<group>"; };
+		4D990FC6DACC7B0851AC14C9 /* Pods-StaplesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaplesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StaplesTests/Pods-StaplesTests.release.xcconfig"; sourceTree = "<group>"; };
 		7BCAFA925975ACD65020CCDD /* Pods_Staples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Staples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StaplesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B72ABA2CB0359A53DA8545 /* Pods-Staples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Staples/Pods-Staples.debug.xcconfig"; sourceTree = "<group>"; };
+		D5B93285FFEE36FC4B96057A /* Pods-StaplesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaplesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StaplesTests/Pods-StaplesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D62015631D663B0500EAA772 /* BTSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTSItem.h; sourceTree = "<group>"; };
 		D62015641D663B0500EAA772 /* BTSItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTSItem.m; sourceTree = "<group>"; };
 		D62015661D663B4D00EAA772 /* BTSItemPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTSItemPrice.h; sourceTree = "<group>"; };
@@ -70,6 +89,17 @@
 		D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STShippingCollectionViewCell.xib; sourceTree = "<group>"; };
 		D636E3B01D67C42D00B9FEBB /* STCellContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCellContainerView.h; sourceTree = "<group>"; };
 		D636E3B11D67C42D00B9FEBB /* STCellContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCellContainerView.m; sourceTree = "<group>"; };
+		D65F71BB1D6B7482005F2546 /* STLayerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLayerService.h; sourceTree = "<group>"; };
+		D65F71BC1D6B7482005F2546 /* STLayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLayerService.m; sourceTree = "<group>"; };
+		D65F71CB1D6BA164005F2546 /* StaplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StaplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D65F71CD1D6BA164005F2546 /* StaplesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StaplesTests.m; sourceTree = "<group>"; };
+		D65F71CF1D6BA164005F2546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D65F71D61D6BA25F005F2546 /* STLayerServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STLayerServiceTest.m; path = ../STLayerServiceTest.m; sourceTree = "<group>"; };
+		D65F71D91D6BB4C5005F2546 /* STRewardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRewardCollectionViewCell.h; sourceTree = "<group>"; };
+		D65F71DA1D6BB4C5005F2546 /* STRewardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRewardCollectionViewCell.m; sourceTree = "<group>"; };
+		D65F71DE1D6BB6EF005F2546 /* STRewardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STRewardCollectionViewCell.xib; sourceTree = "<group>"; };
+		D65F71E11D6BB8B9005F2546 /* STReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STReward.h; sourceTree = "<group>"; };
+		D65F71E21D6BB8B9005F2546 /* STReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STReward.m; sourceTree = "<group>"; };
 		D697616C1D660AEE00F3369F /* Staples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69761701D660AEE00F3369F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D69761721D660AEE00F3369F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -92,6 +122,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D65F71C81D6BA164005F2546 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				620E15FA3F1DD1FB26C366C1 /* Pods_StaplesTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D69761691D660AEE00F3369F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -106,26 +144,19 @@
 		3486CD011D6779130041E2F7 /* STMultipleProductsCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				3486CD071D677B8F0041E2F7 /* Assets */,
 				3486CD0C1D679E700041E2F7 /* Base Collection View Cell */,
 				3486CD0B1D679E6B0041E2F7 /* Product Cell */,
 			);
 			name = STMultipleProductsCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		3486CD061D677B8A0041E2F7 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				3486CD071D677B8F0041E2F7 /* STMultipleProductsTableViewCell */,
-			);
-			name = Assets;
-			sourceTree = "<group>";
-		};
-		3486CD071D677B8F0041E2F7 /* STMultipleProductsTableViewCell */ = {
+		3486CD071D677B8F0041E2F7 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
 				3486CD041D677B880041E2F7 /* s0854503_s7.jpg */,
 			);
-			name = STMultipleProductsTableViewCell;
+			name = Assets;
 			sourceTree = "<group>";
 		};
 		3486CD0B1D679E6B0041E2F7 /* Product Cell */ = {
@@ -182,6 +213,8 @@
 			children = (
 				C2B72ABA2CB0359A53DA8545 /* Pods-Staples.debug.xcconfig */,
 				3BFBB829A1CF8E97CB27CEF3 /* Pods-Staples.release.xcconfig */,
+				D5B93285FFEE36FC4B96057A /* Pods-StaplesTests.debug.xcconfig */,
+				4D990FC6DACC7B0851AC14C9 /* Pods-StaplesTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -190,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				7BCAFA925975ACD65020CCDD /* Pods_Staples.framework */,
+				9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -207,38 +241,38 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		D69761631D660AEE00F3369F = {
+		D65F71BE1D6B7A0D005F2546 /* STAddressCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D697616E1D660AEE00F3369F /* Staples */,
-				D697616D1D660AEE00F3369F /* Products */,
-				5D7BC486E268FE80EA4B3D58 /* Pods */,
-				CA827BFF73C5DF49B48F4351 /* Frameworks */,
+				D6F858841D67866E0027F195 /* STAddressCollectionViewCell.h */,
+				D6F858851D67866E0027F195 /* STAddressCollectionViewCell.m */,
+				D6F858871D6786840027F195 /* STAddressCollectionViewCell.xib */,
 			);
+			name = STAddressCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		D697616D1D660AEE00F3369F /* Products */ = {
+		D65F71BF1D6B7A17005F2546 /* STShippingCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D697616C1D660AEE00F3369F /* Staples.app */,
+				D636E3AB1D67A9DE00B9FEBB /* STShippingCollectionViewCell.h */,
+				D636E3AC1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m */,
+				D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */,
 			);
-			name = Products;
+			name = STShippingCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		D697616E1D660AEE00F3369F /* Staples */ = {
+		D65F71C01D6B7A27005F2546 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				D636E3A81D67A88100B9FEBB /* STUtilities.h */,
-				D636E3A91D67A88100B9FEBB /* STUtilities.m */,
-				D6F858831D6786480027F195 /* Cells */,
-				D62015621D663AE200EAA772 /* Model */,
-				3486CD061D677B8A0041E2F7 /* Assets */,
-				D69761721D660AEE00F3369F /* AppDelegate.h */,
-				D69761731D660AEE00F3369F /* AppDelegate.m */,
-				D69761861D660FBA00F3369F /* STConversationViewController.h */,
-				D69761871D660FBA00F3369F /* STConversationViewController.m */,
-				D6F858801D677F290027F195 /* STMessageInputToolbar.h */,
-				D6F858811D677F290027F195 /* STMessageInputToolbar.m */,
+				D636E3B01D67C42D00B9FEBB /* STCellContainerView.h */,
+				D636E3B11D67C42D00B9FEBB /* STCellContainerView.m */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		D65F71C11D6B7A3B005F2546 /* STMultipleActionInputView */ = {
+			isa = PBXGroup;
+			children = (
 				34A849281D6621AB002C34D2 /* STMultipleActionInputScrollView.h */,
 				34A849291D6621AB002C34D2 /* STMultipleActionInputScrollView.m */,
 				34A8492B1D663623002C34D2 /* STMultipleActionInputView.h */,
@@ -247,6 +281,92 @@
 				D697618A1D66162C00F3369F /* STActionInputView.m */,
 				D697618C1D66183C00F3369F /* STActionButton.h */,
 				D697618D1D66183C00F3369F /* STActionButton.m */,
+			);
+			name = STMultipleActionInputView;
+			sourceTree = "<group>";
+		};
+		D65F71C21D6B7A6C005F2546 /* STMessageInputToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				D6F858801D677F290027F195 /* STMessageInputToolbar.h */,
+				D6F858811D677F290027F195 /* STMessageInputToolbar.m */,
+			);
+			name = STMessageInputToolbar;
+			sourceTree = "<group>";
+		};
+		D65F71C31D6B7A7D005F2546 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				D636E3A81D67A88100B9FEBB /* STUtilities.h */,
+				D636E3A91D67A88100B9FEBB /* STUtilities.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		D65F71CC1D6BA164005F2546 /* StaplesTests */ = {
+			isa = PBXGroup;
+			children = (
+				D65F71D61D6BA25F005F2546 /* STLayerServiceTest.m */,
+				D65F71CD1D6BA164005F2546 /* StaplesTests.m */,
+				D65F71CF1D6BA164005F2546 /* Info.plist */,
+			);
+			path = StaplesTests;
+			sourceTree = "<group>";
+		};
+		D65F71D81D6BB4A1005F2546 /* STRewardCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D65F71E01D6BB8AB005F2546 /* Model */,
+				D65F71D91D6BB4C5005F2546 /* STRewardCollectionViewCell.h */,
+				D65F71DA1D6BB4C5005F2546 /* STRewardCollectionViewCell.m */,
+				D65F71DE1D6BB6EF005F2546 /* STRewardCollectionViewCell.xib */,
+			);
+			name = STRewardCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		D65F71E01D6BB8AB005F2546 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D65F71E11D6BB8B9005F2546 /* STReward.h */,
+				D65F71E21D6BB8B9005F2546 /* STReward.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D69761631D660AEE00F3369F = {
+			isa = PBXGroup;
+			children = (
+				D697616E1D660AEE00F3369F /* Staples */,
+				5D7BC486E268FE80EA4B3D58 /* Pods */,
+				D65F71CC1D6BA164005F2546 /* StaplesTests */,
+				CA827BFF73C5DF49B48F4351 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D697616D1D660AEE00F3369F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D697616C1D660AEE00F3369F /* Staples.app */,
+				D65F71CB1D6BA164005F2546 /* StaplesTests.xctest */,
+			);
+			name = Products;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		D697616E1D660AEE00F3369F /* Staples */ = {
+			isa = PBXGroup;
+			children = (
+				D65F71C31D6B7A7D005F2546 /* Utilities */,
+				D65F71C21D6B7A6C005F2546 /* STMessageInputToolbar */,
+				D65F71C11D6B7A3B005F2546 /* STMultipleActionInputView */,
+				D6F858831D6786480027F195 /* Cells */,
+				D62015621D663AE200EAA772 /* Model */,
+				D69761721D660AEE00F3369F /* AppDelegate.h */,
+				D69761731D660AEE00F3369F /* AppDelegate.m */,
+				D69761861D660FBA00F3369F /* STConversationViewController.h */,
+				D69761871D660FBA00F3369F /* STConversationViewController.m */,
+				D65F71BB1D6B7482005F2546 /* STLayerService.h */,
+				D65F71BC1D6B7482005F2546 /* STLayerService.m */,
 				D69761781D660AEE00F3369F /* Main.storyboard */,
 				D697617B1D660AEE00F3369F /* Assets.xcassets */,
 				D697617D1D660AEE00F3369F /* LaunchScreen.storyboard */,
@@ -259,6 +379,7 @@
 		D697616F1D660AEE00F3369F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D697616D1D660AEE00F3369F /* Products */,
 				D69761701D660AEE00F3369F /* main.m */,
 			);
 			name = "Supporting Files";
@@ -267,15 +388,11 @@
 		D6F858831D6786480027F195 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D65F71D81D6BB4A1005F2546 /* STRewardCollectionViewCell */,
+				D65F71C01D6B7A27005F2546 /* Shared */,
+				D65F71BF1D6B7A17005F2546 /* STShippingCollectionViewCell */,
+				D65F71BE1D6B7A0D005F2546 /* STAddressCollectionViewCell */,
 				3486CD011D6779130041E2F7 /* STMultipleProductsCollectionViewCell */,
-				D636E3AB1D67A9DE00B9FEBB /* STShippingCollectionViewCell.h */,
-				D636E3AC1D67A9DE00B9FEBB /* STShippingCollectionViewCell.m */,
-				D636E3AE1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib */,
-				D636E3B01D67C42D00B9FEBB /* STCellContainerView.h */,
-				D636E3B11D67C42D00B9FEBB /* STCellContainerView.m */,
-				D6F858841D67866E0027F195 /* STAddressCollectionViewCell.h */,
-				D6F858851D67866E0027F195 /* STAddressCollectionViewCell.m */,
-				D6F858871D6786840027F195 /* STAddressCollectionViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -283,6 +400,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D65F71CA1D6BA164005F2546 /* StaplesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D65F71D21D6BA164005F2546 /* Build configuration list for PBXNativeTarget "StaplesTests" */;
+			buildPhases = (
+				CB462ABE9D1461AB86496C49 /* [CP] Check Pods Manifest.lock */,
+				D65F71C71D6BA164005F2546 /* Sources */,
+				D65F71C81D6BA164005F2546 /* Frameworks */,
+				D65F71C91D6BA164005F2546 /* Resources */,
+				5479A5B29B71754A497795F8 /* [CP] Embed Pods Frameworks */,
+				EA6D105EE6E7ED08B73D2B63 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D65F71D11D6BA164005F2546 /* PBXTargetDependency */,
+			);
+			name = StaplesTests;
+			productName = StaplesTests;
+			productReference = D65F71CB1D6BA164005F2546 /* StaplesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D697616B1D660AEE00F3369F /* Staples */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D69761831D660AEE00F3369F /* Build configuration list for PBXNativeTarget "Staples" */;
@@ -312,6 +450,10 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Mesh;
 				TargetAttributes = {
+					D65F71CA1D6BA164005F2546 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = D697616B1D660AEE00F3369F;
+					};
 					D697616B1D660AEE00F3369F = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
@@ -331,17 +473,26 @@
 			projectRoot = "";
 			targets = (
 				D697616B1D660AEE00F3369F /* Staples */,
+				D65F71CA1D6BA164005F2546 /* StaplesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D65F71C91D6BA164005F2546 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D697616A1D660AEE00F3369F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				D6F858881D6786840027F195 /* STAddressCollectionViewCell.xib in Resources */,
 				D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */,
+				D65F71DF1D6BB6EF005F2546 /* STRewardCollectionViewCell.xib in Resources */,
 				D697617C1D660AEE00F3369F /* Assets.xcassets in Resources */,
 				D636E3AF1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib in Resources */,
 				3486CD031D677A730041E2F7 /* STMultipleProductsCollectionViewCell.xib in Resources */,
@@ -353,6 +504,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5479A5B29B71754A497795F8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StaplesTests/Pods-StaplesTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9E663FEA58CED5434D20F0D9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -383,6 +549,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Staples/Pods-Staples-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CB462ABE9D1461AB86496C49 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		CE9025D03C9C1CE94159D463 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,9 +579,32 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Staples/Pods-Staples-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EA6D105EE6E7ED08B73D2B63 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StaplesTests/Pods-StaplesTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D65F71C71D6BA164005F2546 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D65F71D71D6BA25F005F2546 /* STLayerServiceTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D69761681D660AEE00F3369F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -419,16 +623,27 @@
 				D6F858821D677F290027F195 /* STMessageInputToolbar.m in Sources */,
 				3486CD131D679EB50041E2F7 /* STMultipleProductsBaseCollectionViewCellDataSource.m in Sources */,
 				3486CD171D67A4790041E2F7 /* STProductItem.m in Sources */,
+				D65F71E31D6BB8B9005F2546 /* STReward.m in Sources */,
 				D69761711D660AEE00F3369F /* main.m in Sources */,
 				D62015651D663B0500EAA772 /* BTSItem.m in Sources */,
 				D636E3AA1D67A88100B9FEBB /* STUtilities.m in Sources */,
 				D620156B1D663BFD00EAA772 /* BTSList.m in Sources */,
+				D65F71DC1D6BB4C5005F2546 /* STRewardCollectionViewCell.m in Sources */,
 				3486CD0F1D679E9A0041E2F7 /* STMultipleProductsBaseCollectionViewCell.m in Sources */,
 				D697618B1D66162C00F3369F /* STActionInputView.m in Sources */,
+				D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D65F71D11D6BA164005F2546 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D697616B1D660AEE00F3369F /* Staples */;
+			targetProxy = D65F71D01D6BA164005F2546 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D69761781D660AEE00F3369F /* Main.storyboard */ = {
@@ -450,6 +665,39 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D65F71D31D6BA164005F2546 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5B93285FFEE36FC4B96057A /* Pods-StaplesTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Atlas\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/EDColor\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SDWebImage\"",
+					"\"${PODS_ROOT}/LayerKit\"",
+				);
+				INFOPLIST_FILE = StaplesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mesh.StaplesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Staples.app/Staples";
+			};
+			name = Debug;
+		};
+		D65F71D41D6BA164005F2546 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D990FC6DACC7B0851AC14C9 /* Pods-StaplesTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = StaplesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mesh.StaplesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Staples.app/Staples";
+			};
+			name = Release;
+		};
 		D69761811D660AEE00F3369F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -538,6 +786,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Staples/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mesh.Staples;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -550,6 +799,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Staples/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mesh.Staples;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -559,6 +809,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D65F71D21D6BA164005F2546 /* Build configuration list for PBXNativeTarget "StaplesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D65F71D31D6BA164005F2546 /* Debug */,
+				D65F71D41D6BA164005F2546 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D69761671D660AEE00F3369F /* Build configuration list for PBXProject "Staples" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

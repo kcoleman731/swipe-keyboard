@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Atlas/Atlas.h>
 #import "STMultipleProductsCollectionViewCell.h"
 #import "STProductItem.h"
-#import "ATLMessagePresenting.h"
+
+extern NSString *const STMultipleProductsBaseCollectionViewCellTitle;
+extern NSString *const STMultipleProductsBaseCollectionViewCellMimeType;
 
 @interface STMultipleProductsBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
@@ -20,9 +23,12 @@
  */
 + (NSString *)reuseIdentifier;
 
++ (CGFloat)cellHeight;
+
 /**
  *  Product Items Setter
  */
 - (void)setProducts:(NSArray <STProductItem *> *)items;
+
 
 @end
