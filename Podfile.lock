@@ -1,0 +1,23 @@
+PODS:
+  - Atlas (1.0.26):
+    - LayerKit (>= 0.22.0)
+  - EDColor (1.0.0)
+  - LayerKit (0.22.0)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
+
+DEPENDENCIES:
+  - Atlas
+  - EDColor (~> 1.0.0)
+  - SDWebImage (~> 3.8.1)
+
+SPEC CHECKSUMS:
+  Atlas: 201d37a7b90a2ba717e666bf417ca2c5d104dd31
+  EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
+  LayerKit: dc3f45305bd0d520e5a586247d93c6e03b803ccd
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+
+PODFILE CHECKSUM: 31a97ed7f2c07c3dc7232956fb812d55da217736
+
+COCOAPODS: 1.1.0.beta.1
