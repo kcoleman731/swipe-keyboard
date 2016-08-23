@@ -39,7 +39,7 @@ NSString *const STOptionCell = @"Option Cell";
 - (void)configureCollectionViewCells
 {
     // Product Call
-    [self.collectionView registerClass:[STMultipleProductsBaseCollectionViewCell class] forCellWithReuseIdentifier:[STMultipleProductsBaseCollectionViewCell reuseIdentifier]];
+    [self.collectionView registerClass:[STMultipleProductBaseCollectionViewCell class] forCellWithReuseIdentifier:[STMultipleProductBaseCollectionViewCell reuseIdentifier]];
     
     // Reward Cell
     UINib *rewardCellNib = [UINib nibWithNibName:@"STRewardCollectionViewCell"  bundle:[NSBundle mainBundle]];

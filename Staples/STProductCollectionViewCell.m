@@ -66,7 +66,7 @@ IB_DESIGNABLE
 
 + (NSString *)reuseIdentifier
 {
-    return STMultipleProductsCollectionViewCellId;
+    return STProductCollectionViewCellId;
 }
 
 #pragma mark - Product Setter

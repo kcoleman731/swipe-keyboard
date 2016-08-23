@@ -16,6 +16,8 @@
 		3486CD171D67A4790041E2F7 /* STProductItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD161D67A4790041E2F7 /* STProductItem.m */; };
 		3486CD1B1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3486CD1A1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m */; };
 		34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A849291D6621AB002C34D2 /* STMultipleActionInputScrollView.m */; };
+		34A8A4AD1D6CB87300245773 /* STInvertedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8A4AC1D6CB87300245773 /* STInvertedButton.m */; };
+		34A8A4B31D6CB96100245773 /* STMultiSelectionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8A4B21D6CB96100245773 /* STMultiSelectionBar.m */; };
 		620E15FA3F1DD1FB26C366C1 /* Pods_StaplesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */; };
 		D620156C1D663EB100EAA772 /* STMultipleActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A8492C1D663623002C34D2 /* STMultipleActionInputView.m */; };
 		D636E3AA1D67A88100B9FEBB /* STUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D636E3A91D67A88100B9FEBB /* STUtilities.m */; };
@@ -71,6 +73,10 @@
 		34A849291D6621AB002C34D2 /* STMultipleActionInputScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMultipleActionInputScrollView.m; sourceTree = "<group>"; };
 		34A8492B1D663623002C34D2 /* STMultipleActionInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMultipleActionInputView.h; sourceTree = "<group>"; };
 		34A8492C1D663623002C34D2 /* STMultipleActionInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMultipleActionInputView.m; sourceTree = "<group>"; };
+		34A8A4AB1D6CB87300245773 /* STInvertedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STInvertedButton.h; sourceTree = "<group>"; };
+		34A8A4AC1D6CB87300245773 /* STInvertedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STInvertedButton.m; sourceTree = "<group>"; };
+		34A8A4B11D6CB96100245773 /* STMultiSelectionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMultiSelectionBar.h; sourceTree = "<group>"; };
+		34A8A4B21D6CB96100245773 /* STMultiSelectionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMultiSelectionBar.m; sourceTree = "<group>"; };
 		3BFBB829A1CF8E97CB27CEF3 /* Pods-Staples.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staples.release.xcconfig"; path = "Pods/Target Support Files/Pods-Staples/Pods-Staples.release.xcconfig"; sourceTree = "<group>"; };
 		4D990FC6DACC7B0851AC14C9 /* Pods-StaplesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaplesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StaplesTests/Pods-StaplesTests.release.xcconfig"; sourceTree = "<group>"; };
 		7BCAFA925975ACD65020CCDD /* Pods_Staples.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Staples.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +213,25 @@
 				3486CD1A1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m */,
 			);
 			name = "Collection View Layout";
+			sourceTree = "<group>";
+		};
+		34A8A4A91D6CB81A00245773 /* STMultiSelectionBar */ = {
+			isa = PBXGroup;
+			children = (
+				34A8A4AA1D6CB86300245773 /* STInvertedButton */,
+				34A8A4B11D6CB96100245773 /* STMultiSelectionBar.h */,
+				34A8A4B21D6CB96100245773 /* STMultiSelectionBar.m */,
+			);
+			name = STMultiSelectionBar;
+			sourceTree = "<group>";
+		};
+		34A8A4AA1D6CB86300245773 /* STInvertedButton */ = {
+			isa = PBXGroup;
+			children = (
+				34A8A4AB1D6CB87300245773 /* STInvertedButton.h */,
+				34A8A4AC1D6CB87300245773 /* STInvertedButton.m */,
+			);
+			name = STInvertedButton;
 			sourceTree = "<group>";
 		};
 		5D7BC486E268FE80EA4B3D58 /* Pods */ = {
@@ -363,6 +388,7 @@
 		D697616E1D660AEE00F3369F /* Staples */ = {
 			isa = PBXGroup;
 			children = (
+				34A8A4A91D6CB81A00245773 /* STMultiSelectionBar */,
 				D65F71C31D6B7A7D005F2546 /* Utilities */,
 				D65F71C21D6B7A6C005F2546 /* STMessageInputToolbar */,
 				D65F71C11D6B7A3B005F2546 /* STMultipleActionInputView */,
@@ -540,7 +566,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C0CF2103DB4CACEA24B64885 /* [CP] Copy Pods Resources */ = {
@@ -570,7 +596,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CE9025D03C9C1CE94159D463 /* [CP] Embed Pods Frameworks */ = {
@@ -623,6 +649,7 @@
 				D697618E1D66183C00F3369F /* STActionButton.m in Sources */,
 				3486CD0A1D6783B10041E2F7 /* STProductCollectionViewCell.m in Sources */,
 				3486CD1B1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m in Sources */,
+				34A8A4B31D6CB96100245773 /* STMultiSelectionBar.m in Sources */,
 				D636E3B21D67C42D00B9FEBB /* STCellContainerView.m in Sources */,
 				D69761741D660AEE00F3369F /* AppDelegate.m in Sources */,
 				34A8492A1D6621AB002C34D2 /* STMultipleActionInputScrollView.m in Sources */,
@@ -634,6 +661,7 @@
 				D65F71E31D6BB8B9005F2546 /* STReward.m in Sources */,
 				D69761711D660AEE00F3369F /* main.m in Sources */,
 				D68FEF051D6BFC75006AEFC6 /* STReorderCollectionViewCell.m in Sources */,
+				34A8A4AD1D6CB87300245773 /* STInvertedButton.m in Sources */,
 				D636E3AA1D67A88100B9FEBB /* STUtilities.m in Sources */,
 				D65F71DC1D6BB4C5005F2546 /* STRewardCollectionViewCell.m in Sources */,
 				D68FEF0B1D6C059C006AEFC6 /* STItemCollectionViewCell.m in Sources */,
