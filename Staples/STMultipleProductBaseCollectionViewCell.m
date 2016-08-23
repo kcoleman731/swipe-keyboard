@@ -142,6 +142,16 @@ typedef NS_ENUM(NSInteger, STCellType) {
     [self.productDelegate productCell:cell infoButtonWasPressedWithProduct:item];
 }
 
+- (void)ItemCell:(STItemCollectionViewCell *)cell addButtonWasPressedWithItem:(STProductItem *)item
+{
+    //
+}
+
+- (void)ItemCell:(STItemCollectionViewCell *)cell infoButtonWasPressedWithItem:(STProductItem *)item
+{
+    //
+}
+
 #pragma mark - NSLayoutConstraints For UI
 
 - (void)addCollecitonViewConstraints
