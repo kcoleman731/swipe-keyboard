@@ -16,6 +16,7 @@
 #import "STMultipleProductBaseCollectionViewCell.h"
 #import "STReward.h"
 #import "STRewardCollectionViewCell.h"
+#import "STReorderCollectionViewCell.h"
 
 @interface STConversationViewController () <STMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource, ATLConversationViewControllerDelegate, STMessageInputToolbarDelegate>
 
@@ -39,7 +40,11 @@ NSString *const STOptionCell = @"Option Cell";
 - (void)configureCollectionViewCells
 {
     // Product Call
-    [self.collectionView registerClass:[STMultipleProductsBaseCollectionViewCell class] forCellWithReuseIdentifier:[STMultipleProductsBaseCollectionViewCell reuseIdentifier]];
+    [self.collectionView registerClass:[STMultipleProductBaseCollectionViewCell class] forCellWithReuseIdentifier:[STMultipleProductBaseCollectionViewCell reuseIdentifier]];
+    
+    // Reorder Cell
+    UINib *reorderCellNib = [UINib nibWithNibName:@"STReorderCollectionViewCell"  bundle:[NSBundle mainBundle]];
+    [self.collectionView registerNib:reorderCellNib forCellWithReuseIdentifier:[STReorderCollectionViewCell reuseIdentifier]];
     
     // Reward Cell
     UINib *rewardCellNib = [UINib nibWithNibName:@"STRewardCollectionViewCell"  bundle:[NSBundle mainBundle]];
@@ -64,9 +69,9 @@ NSString *const STOptionCell = @"Option Cell";
 {
     NSError *error;
     LYRMessagePart *messagePart;
-    if ([title isEqualToString:STMultipleProductsBaseCollectionViewCellTitle]) {
+    if ([title isEqualToString:STMultipleProductBaseCollectionViewCellTitle]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeProductInfo] options:NSJSONWritingPrettyPrinted error:nil];
-        messagePart = [LYRMessagePart messagePartWithMIMEType:STMultipleProductsBaseCollectionViewCellMimeType data:data];
+        messagePart = [LYRMessagePart messagePartWithMIMEType:STMultipleProductBaseCollectionViewCellMimeType data:data];
     } else if ([title isEqualToString:STAddressCollectionViewCellTitle]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeAddressInfo] options:NSJSONWritingPrettyPrinted error:nil];
         messagePart = [LYRMessagePart messagePartWithMIMEType:STAddressCollectionViewCellMimeType data:data];
@@ -78,6 +83,9 @@ NSString *const STOptionCell = @"Option Cell";
     } else if ([title isEqualToString:STRewardCollectionViewCellTitle]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeRewardInfo] options:NSJSONWritingPrettyPrinted error:nil];
         messagePart = [LYRMessagePart messagePartWithMIMEType:STRewardCollectionViewCellMimeType data:data];
+    } else if ([title isEqualToString:STReorderCollectionViewCellTitle]) {
+        NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeProductInfo] options:NSJSONWritingPrettyPrinted error:nil];
+        messagePart = [LYRMessagePart messagePartWithMIMEType:STReorderCollectionViewCellMimeType data:data];
     }
     
     LYRMessage *message = [self.layerClient newMessageWithParts:@[messagePart] options:nil error:&error];
@@ -94,7 +102,7 @@ NSString *const STOptionCell = @"Option Cell";
 - (CGFloat)conversationViewController:(ATLConversationViewController *)viewController heightForMessage:(LYRMessage *)message withCellWidth:(CGFloat)cellWidth
 {
     LYRMessagePart *part = message.parts[0];
-    if ([part.MIMEType isEqualToString:STMultipleProductsBaseCollectionViewCellMimeType]) {
+    if ([part.MIMEType isEqualToString:STMultipleProductBaseCollectionViewCellMimeType]) {
         return [STMultipleProductBaseCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:STAddressCollectionViewCellMimeType]) {
         return [STAddressCollectionViewCell cellHeight];
@@ -102,6 +110,8 @@ NSString *const STOptionCell = @"Option Cell";
         return [STShippingCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:STRewardCollectionViewCellMimeType]) {
         return [STRewardCollectionViewCell cellHeight];
+    } else if ([part.MIMEType isEqualToString:STReorderCollectionViewCellMimeType]) {
+        return [STReorderCollectionViewCell cellHeight];
     }
     return 0;
 }
@@ -111,7 +121,7 @@ NSString *const STOptionCell = @"Option Cell";
 - (nullable NSString *)conversationViewController:(ATLConversationViewController *)viewController reuseIdentifierForMessage:(LYRMessage *)message
 {
     LYRMessagePart *part = message.parts[0];
-    if ([part.MIMEType isEqualToString:STMultipleProductsBaseCollectionViewCellMimeType]) {
+    if ([part.MIMEType isEqualToString:STMultipleProductBaseCollectionViewCellMimeType]) {
         return [STMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:STAddressCollectionViewCellMimeType]) {
         return [STAddressCollectionViewCell reuseIdentifier];
@@ -119,6 +129,8 @@ NSString *const STOptionCell = @"Option Cell";
         return [STShippingCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:STRewardCollectionViewCellMimeType]) {
         return [STRewardCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:STReorderCollectionViewCellMimeType]) {
+        return [STReorderCollectionViewCell reuseIdentifier];
     }
     return @"";
 }
@@ -170,7 +182,7 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (NSArray *)selectionItems
 {
-    return @[STMultipleProductsBaseCollectionViewCellTitle, STAddressCollectionViewCellTitle, STShippingCollectionViewCellTitle , STRewardCollectionViewCellTitle];
+    return @[STMultipleProductBaseCollectionViewCellTitle, STAddressCollectionViewCellTitle, STShippingCollectionViewCellTitle , STReorderCollectionViewCellTitle, STRewardCollectionViewCellTitle];
 }
 
 - (NSDictionary *)fakeAddressInfo
@@ -206,7 +218,8 @@ NSString *const STOptionCell = @"Option Cell";
         [products addObject:@{
                               @"price" : @"$20.99",
                               @"title" : @"Staples Multiuse Copy Paper, 8 1/2\" x 11\", 8-Ream Case",
-                              @"pic" : @"https://www.staples-3p.com/s7/is/image/Staples/s0854503_sc7?$splssku$"
+                              @"pic" : @"https://www.staples-3p.com/s7/is/image/Staples/s0854503_sc7?$splssku$",
+                              @"count" : @"1",
                               }];
     }
     return [products copy];

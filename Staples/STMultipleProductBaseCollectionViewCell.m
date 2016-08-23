@@ -7,18 +7,23 @@
 //
 
 #import "STMultipleProductBaseCollectionViewCell.h"
-#import "STMultipleProductsBaseCollectionViewCellDataSource.h"
 #import "STMultipleProductsCollectionViewLayout.h"
 
 NSString *const STMultipleProductBaseCollectionViewCellTitle = @"Product Cell";
 NSString *const STMultipleProductBaseCollectionViewCellMimeType = @"json/product";
 NSString *const STMultipleProductBaseCollectionViewCellId = @"STMultipleProductBaseCollectionViewCellId";
 
-@interface STMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, STMultipleProductsCollectionViewCellDelegate>
+typedef NS_ENUM(NSInteger, STCellType) {
+    STCellTypeProduct = 0,
+    STCellTypeItem = 1,
+};
+
+@interface STMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource, STProductCollectionViewCellDelegate, STItemCollectionViewCellDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) STMultipleProductsBaseCollectionViewCellDataSource *dataSource;
 @property (nonatomic, strong) STMultipleProductsCollectionViewLayout *collectionViewLayout;
+@property (nonatomic, strong) NSArray *products;
+@property (nonatomic) STCellType cellType;
 
 @end
 
@@ -48,8 +53,12 @@ NSString *const STMultipleProductBaseCollectionViewCellId = @"STMultipleProductB
 {
     self.contentView.backgroundColor = [UIColor clearColor];
     [self layoutCollectionView];
-    [self configureDataSource];
     
+    UINib *productNib = [UINib nibWithNibName:@"STProductCollectionViewCell" bundle:[NSBundle mainBundle]];
+    [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[STProductCollectionViewCell reuseIdentifier]];
+    
+    UINib *itemNib = [UINib nibWithNibName:@"STItemCollectionViewCell" bundle:[NSBundle mainBundle]];
+    [self.collectionView registerNib:itemNib forCellWithReuseIdentifier:[STItemCollectionViewCell reuseIdentifier]];
 }
 
 - (void)layoutCollectionView
@@ -60,18 +69,13 @@ NSString *const STMultipleProductBaseCollectionViewCellId = @"STMultipleProductB
     self.collectionView.contentOffset = CGPointMake(16.0, 0.0);
     self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     self.collectionView.delegate = self.collectionViewLayout;
+    self.collectionView.dataSource = self;
     self.collectionView.collectionViewLayout = self.collectionViewLayout;
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.showsHorizontalScrollIndicator = NO;
     [self addSubview:self.collectionView];
     
     [self addCollecitonViewConstraints];
-}
-
-- (void)configureDataSource
-{
-    self.dataSource = [[STMultipleProductsBaseCollectionViewCellDataSource alloc] initWithCollectionView:self.collectionView cellDelegate:self];
-    self.collectionView.dataSource = self.dataSource;
 }
 
 + (NSString *)reuseIdentifier
@@ -81,7 +85,24 @@ NSString *const STMultipleProductBaseCollectionViewCellId = @"STMultipleProductB
 
 + (CGFloat)cellHeight
 {
-    return 140;
+    return 260;
+}
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.products.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *reuseIdentifier = [STItemCollectionViewCell reuseIdentifier];
+    STItemCollectionViewCell *cell = (STItemCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    STProductItem *item = self.products[indexPath.row];
+    [cell setProductItem:item];
+    cell.delegate = self;
+    return cell;
 }
 
 #pragma mark - ATLMessagePresenting
@@ -95,9 +116,8 @@ NSString *const STMultipleProductBaseCollectionViewCellId = @"STMultipleProductB
         STProductItem *item = [[STProductItem alloc] initWithDictionaryPayload:dataDict];
         [products addObject:item];
     }
-    
-    // Set the decoded products
-    [self.dataSource setProducts:[products copy]];
+    self.products = products;
+    [self.collectionView reloadData];
 }
 
 - (void)updateWithSender:(nullable id<ATLParticipant>)sender
@@ -126,11 +146,10 @@ NSString *const STMultipleProductBaseCollectionViewCellId = @"STMultipleProductB
 
 - (void)addCollecitonViewConstraints
 {
-    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
-    [self addConstraints:@[top, left, right, bottom]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0]];
 }
 
 @end

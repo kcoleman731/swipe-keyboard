@@ -7,12 +7,113 @@
 //
 
 #import "STReorderCollectionViewCell.h"
+#import "STMultipleProductsCollectionViewLayout.h"
+#import "STReorderItemCollectionViewCell.h"
+#import "STUtilities.h"
+
+NSString *const STReorderCollectionViewCellTitle= @"Reorder Cell";
+NSString *const STReorderCollectionViewCellMimeType = @"json/reorder";
+NSString *const STReorderCollectionViewCellReuseIdentifier = @"STReorderCollectionViewCellReuseIdentifier";
+
+@interface STReorderCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (strong, nonatomic) NSArray *products;
+@property (strong, nonatomic) IBOutlet UIView *view;
+@property (strong, nonatomic) IBOutlet UILabel *orderNumberLabel;
+@property (strong, nonatomic) IBOutlet UICollectionView *itemCollectionView;
+@property (strong, nonatomic) IBOutlet UILabel *seeAllOrdersLabel;
+@property (strong, nonatomic) IBOutlet UIButton *orderButton;
+@property (strong, nonatomic) IBOutlet UIButton *pastOrdersButton;
+@property (strong, nonatomic) UICollectionViewLayout *collectionViewLayout;
+
+@end
 
 @implementation STReorderCollectionViewCell
 
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
     [super awakeFromNib];
-    // Initialization code
+    [self commonInit];
+}
+
++ (NSString *)reuseIdentifier
+{
+    return STReorderCollectionViewCellReuseIdentifier;
+}
+
++ (CGFloat)cellHeight
+{
+    return 260;
+}
+
+- (void)commonInit
+{
+    self.view.layer.borderColor = STLightGrayColor().CGColor;
+    self.view.layer.cornerRadius = 4;
+    self.view.layer.borderWidth = 2;
+    self.view.clipsToBounds = YES;
+
+    [self layoutCollectionView];
+    
+    UINib *itemNib = [UINib nibWithNibName:@"STReorderItemCollectionViewCell" bundle:[NSBundle mainBundle]];
+    [self.itemCollectionView registerNib:itemNib forCellWithReuseIdentifier:[STReorderItemCollectionViewCell reuseIdentifier]];
+    [self.orderButton setTitle:@"Add entire order to cart" forState:UIControlStateNormal];
+    [self.pastOrdersButton setTitle:@"See past orders" forState:UIControlStateNormal];
+}
+
+- (void)layoutCollectionView
+{
+    self.collectionViewLayout = [[STMultipleProductsCollectionViewLayout alloc] init];
+    self.itemCollectionView.collectionViewLayout = self.collectionViewLayout;
+    self.itemCollectionView.contentInset = UIEdgeInsetsMake(0.0, 16.0, 0.0, 0.0);
+    self.itemCollectionView.contentOffset = CGPointMake(16.0, 0.0);
+    self.itemCollectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.itemCollectionView.delegate = self.collectionViewLayout;
+    self.itemCollectionView.dataSource = self;
+    self.itemCollectionView.backgroundColor = [UIColor clearColor];
+    self.itemCollectionView.showsHorizontalScrollIndicator = NO;
+}
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.products.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *reuseIdentifier = [STReorderItemCollectionViewCell reuseIdentifier];
+    STReorderItemCollectionViewCell *cell = (STReorderItemCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    STProductItem *item = self.products[indexPath.row];
+    [cell setProductItem:item];
+    return cell;
+}
+
+#pragma mark - ATLMessagePresenting
+
+- (void)presentMessage:(LYRMessage *)message
+{
+    LYRMessagePart *part = message.parts[0];
+    NSArray *data = [NSJSONSerialization JSONObjectWithData:part.data options:NSJSONReadingAllowFragments error:nil];
+    NSMutableArray *products = [[NSMutableArray alloc] init];
+    for (NSDictionary *dataDict in data) {
+        STProductItem *item = [[STProductItem alloc] initWithDictionaryPayload:dataDict];
+        [products addObject:item];
+    }
+    self.products = products;
+    [self.itemCollectionView reloadData];
+    self.orderNumberLabel.text = @"Order #1289349874353";
+}
+
+- (void)updateWithSender:(nullable id<ATLParticipant>)sender
+{
+    // ???
+}
+
+- (void)shouldDisplayAvatarItem:(BOOL)shouldDisplayAvatarItem
+{
+    // ??
 }
 
 @end
