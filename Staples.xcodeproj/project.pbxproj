@@ -29,6 +29,8 @@
 		D68FEF061D6BFC75006AEFC6 /* STReorderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68FEF041D6BFC75006AEFC6 /* STReorderCollectionViewCell.xib */; };
 		D68FEF0B1D6C059C006AEFC6 /* STItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68FEF091D6C059C006AEFC6 /* STItemCollectionViewCell.m */; };
 		D68FEF0C1D6C059C006AEFC6 /* STItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68FEF0A1D6C059C006AEFC6 /* STItemCollectionViewCell.xib */; };
+		D68FEF1A1D6CC470006AEFC6 /* STReorderItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68FEF191D6CC470006AEFC6 /* STReorderItemCollectionViewCell.m */; };
+		D68FEF1C1D6CC57F006AEFC6 /* STReorderItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68FEF1B1D6CC57F006AEFC6 /* STReorderItemCollectionViewCell.xib */; };
 		D69761711D660AEE00F3369F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761701D660AEE00F3369F /* main.m */; };
 		D69761741D660AEE00F3369F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761731D660AEE00F3369F /* AppDelegate.m */; };
 		D697617A1D660AEE00F3369F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69761781D660AEE00F3369F /* Main.storyboard */; };
@@ -96,6 +98,9 @@
 		D68FEF081D6C059C006AEFC6 /* STItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STItemCollectionViewCell.h; sourceTree = "<group>"; };
 		D68FEF091D6C059C006AEFC6 /* STItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STItemCollectionViewCell.m; sourceTree = "<group>"; };
 		D68FEF0A1D6C059C006AEFC6 /* STItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		D68FEF181D6CC470006AEFC6 /* STReorderItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STReorderItemCollectionViewCell.h; sourceTree = "<group>"; };
+		D68FEF191D6CC470006AEFC6 /* STReorderItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STReorderItemCollectionViewCell.m; sourceTree = "<group>"; };
+		D68FEF1B1D6CC57F006AEFC6 /* STReorderItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STReorderItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		D697616C1D660AEE00F3369F /* Staples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69761701D660AEE00F3369F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D69761721D660AEE00F3369F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -300,6 +305,7 @@
 		D68FEF011D6BFC4B006AEFC6 /* STReorderCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				D68FEF171D6CC456006AEFC6 /* STReorderItemCollectionViewCell */,
 				D68FEF021D6BFC75006AEFC6 /* STReorderCollectionViewCell.h */,
 				D68FEF031D6BFC75006AEFC6 /* STReorderCollectionViewCell.m */,
 				D68FEF041D6BFC75006AEFC6 /* STReorderCollectionViewCell.xib */,
@@ -324,6 +330,16 @@
 				D65F71C11D6B7A3B005F2546 /* STMultipleActionInputView */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		D68FEF171D6CC456006AEFC6 /* STReorderItemCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D68FEF181D6CC470006AEFC6 /* STReorderItemCollectionViewCell.h */,
+				D68FEF191D6CC470006AEFC6 /* STReorderItemCollectionViewCell.m */,
+				D68FEF1B1D6CC57F006AEFC6 /* STReorderItemCollectionViewCell.xib */,
+			);
+			name = STReorderItemCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		D69761631D660AEE00F3369F = {
@@ -493,6 +509,7 @@
 				D636E3AF1D67A9EC00B9FEBB /* STShippingCollectionViewCell.xib in Resources */,
 				3486CD031D677A730041E2F7 /* STProductCollectionViewCell.xib in Resources */,
 				3486CD051D677B880041E2F7 /* s0854503_s7.jpg in Resources */,
+				D68FEF1C1D6CC57F006AEFC6 /* STReorderItemCollectionViewCell.xib in Resources */,
 				D697617A1D660AEE00F3369F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -607,6 +624,7 @@
 			files = (
 				D6F858861D67866E0027F195 /* STAddressCollectionViewCell.m in Sources */,
 				D620156C1D663EB100EAA772 /* STMultipleActionInputView.m in Sources */,
+				D68FEF1A1D6CC470006AEFC6 /* STReorderItemCollectionViewCell.m in Sources */,
 				D697618E1D66183C00F3369F /* STActionButton.m in Sources */,
 				3486CD0A1D6783B10041E2F7 /* STProductCollectionViewCell.m in Sources */,
 				3486CD1B1D67A9F40041E2F7 /* STMultipleProductsCollectionViewLayout.m in Sources */,
