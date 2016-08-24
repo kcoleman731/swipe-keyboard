@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mesh. All rights reserved.
 //
 
-#import "STRewardCollectionViewCell.h"
+#import "STARewardCollectionViewCell.h"
 #import "STReward.h"
 #import "STUtilities.h"
 
@@ -14,11 +14,11 @@ NSString *const STRewardCollectionViewCellTitle= @"Reward Cell";
 NSString *const STRewardCollectionViewCellMimeType = @"json/reward";
 NSString *const STRewardCollectionViewCellReuseIdentifier = @"STRewardCollectionViewCellReuseIdentifier";
 
-@interface STRewardCollectionViewCell () <ATLMessagePresenting>
+@interface STARewardCollectionViewCell () <ATLMessagePresenting>
 
 @end
 
-@implementation STRewardCollectionViewCell
+@implementation STARewardCollectionViewCell
 
 - (void)awakeFromNib
 {
