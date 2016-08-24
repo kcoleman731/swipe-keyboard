@@ -7,6 +7,7 @@
 //
 
 #import "STMessageInputToolbar.h"
+#import "STMultipleActionInputView.h"
 
 extern NSString *const ATLMessageInputToolbarCameraButton;
 
@@ -44,13 +45,14 @@ static CGFloat const ATLButtonHeight = 28.0f;
     self = [super init];
     if (self) {
         NSBundle *resourcesBundle = ATLResourcesBundle();
-        self.listAccessoryButtonImage = [UIImage imageNamed:@"location_dark" inBundle:resourcesBundle compatibleWithTraitCollection:nil];
         
+        // Messages
+        self.listAccessoryButtonImage = [UIImage imageNamed:@"location_dark" inBundle:resourcesBundle compatibleWithTraitCollection:nil];
         self.listAccessoryButton = [[UIButton alloc] init];
         self.listAccessoryButton.contentMode = UIViewContentModeScaleAspectFit;
         [self.listAccessoryButton setImage:self.listAccessoryButtonImage forState:UIControlStateNormal];
         [self.listAccessoryButton addTarget:self action:@selector(listButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.listAccessoryButton];
+        [self addSubview:self.listAccessoryButton];        
     }
     return self;
 }
