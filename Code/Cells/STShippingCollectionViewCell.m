@@ -10,7 +10,6 @@
 #import "STUtilities.h"
 
 NSString *const STShippingCollectionViewCellTitle = @"Shipping Cell";
-NSString *const STShippingCollectionViewCellMimeType = @"json/shipping";
 NSString *const STShippingCollectionViewCellReuseIdentifier = @"STShippingCollectionViewCellReuseIdentifier";
 
 @implementation STShippingCollectionViewCell
@@ -43,17 +42,33 @@ NSString *const STShippingCollectionViewCellReuseIdentifier = @"STShippingCollec
 
 #pragma mark - ATLMessagePresenting
 
+NSString *const STMessagePartShipmentTrackingListKey = @"shippmentTrackingList";
+
 - (void)presentMessage:(LYRMessage *)message
 {
     LYRMessagePart *part = message.parts[0];
-    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:part.data options:NSJSONReadingAllowFragments error:nil];
+    NSError *error;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:part.data options:NSJSONReadingAllowFragments error:&error];
+    if (error) {
+        // Handle the error;
+    }
     
-    self.orderNumberLabel.attributedText = [self attributedTextForOrderNumber:data[STOrderNumberKey]];
-    self.priceLabel.text = data[STOrderPriceKey];
-    self.itemLabel.text = data[STOrderItemKey];
-    self.addressNameLabel.text = data[STAddressName];
-    self.addressStreetLabel.text = data[STAddressStreet];
-    self.addressCityLabel.text = data[STAddressCity];
+    NSDictionary *data = json[STMessagePartDataKey];
+    NSArray *shipmentJSON = data[STMessagePartShipmentTrackingListKey];
+    
+    NSMutableArray *shipments = [[NSMutableArray alloc] init];
+    for (NSDictionary *shipmentData in shipmentJSON) {
+        STShipment *shipment = [STShipment shipmentWithData:shipmentData];
+        [shipments addObject:shipment];
+    }
+    
+    STShipment *shiment = shipments[0];
+    self.orderNumberLabel.attributedText = [self attributedTextForOrderNumber:shiment.orderNumber];
+//    self.priceLabel.text = // No price in body
+//    self.itemLabel.text = data[STOrderItemKey]; // Create quantity and ETA label.
+    self.addressNameLabel.text = @"Kevin Coleman";
+    self.addressStreetLabel.text = @"1776 Sacramento Street";
+    self.addressCityLabel.text = @"San Francisco, CA, 94109";
 }
 
 - (void)updateWithSender:(nullable id<ATLParticipant>)sender

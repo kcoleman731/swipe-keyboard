@@ -98,7 +98,7 @@ NSString *const STReorderCollectionViewCellReuseIdentifier = @"STReorderCollecti
     NSArray *data = [NSJSONSerialization JSONObjectWithData:part.data options:NSJSONReadingAllowFragments error:nil];
     NSMutableArray *products = [[NSMutableArray alloc] init];
     for (NSDictionary *dataDict in data) {
-        STProductItem *item = [[STProductItem alloc] initWithDictionaryPayload:dataDict];
+        STProductItem *item = [STProductItem productWithData:dataDict];
         [products addObject:item];
     }
     self.products = products;

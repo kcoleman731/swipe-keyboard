@@ -72,9 +72,9 @@ IB_DESIGNABLE
     self.item = item;
     
     // Set UI
-    self.productDescriptionLabel.text = item.title;
-    self.priceLabel.text = item.price;
-    [self setProductImageURL:item.picURL];
+    self.productDescriptionLabel.text = item.name;
+    self.priceLabel.text = item.price.price;
+    [self setProductImageURL:item.imageURL];
 }
 
 /**

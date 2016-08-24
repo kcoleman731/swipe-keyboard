@@ -11,7 +11,6 @@
 #import "STUtilities.h"
 
 NSString *const STRewardCollectionViewCellTitle= @"Reward Cell";
-NSString *const STRewardCollectionViewCellMimeType = @"json/reward";
 NSString *const STRewardCollectionViewCellReuseIdentifier = @"STRewardCollectionViewCellReuseIdentifier";
 
 @interface STARewardCollectionViewCell () <ATLMessagePresenting>
@@ -42,14 +41,32 @@ NSString *const STRewardCollectionViewCellReuseIdentifier = @"STRewardCollection
     return 260;
 }
 
+NSString *const STMessagePartRewardListKey = @"rewardslistItems";
+
 - (void)presentMessage:(LYRMessage *)message
 {
-    STReward *reward = [STReward rewardWithMessage:message];
+    LYRMessagePart *part = message.parts[0];
+    NSError *error;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:part.data options:NSJSONReadingAllowFragments error:&error];
+    if (error) {
+        // Handle the error;
+    }
+    
+    NSDictionary *data = json[STMessagePartDataKey];
+    NSArray *rewardsJSON = data[STMessagePartDataKey];
+    
+    NSMutableArray *rewards = [[NSMutableArray alloc] init];
+    for (NSDictionary *rewardJSON in rewardsJSON) {
+        STReward *reward = [STReward rewardWithData:rewardJSON];
+        [rewards addObject:reward];
+    }
+    
+    STReward *reward = rewards[0];
     self.titleLabel.text = reward.title;
     self.nameLabel.text = reward.name;
     self.memberTypeLabel.text = reward.memberType;
     self.ammountLabel.text = reward.ammount;
-    self.rewardTypeLabel.text = reward.type;
+    //self.rewardTypeLabel.text = reward.type;
     self.barcodeNumber.text = reward.barcodeNumber;
     
     self.barcodeImage.layer.borderColor = [UIColor grayColor].CGColor;

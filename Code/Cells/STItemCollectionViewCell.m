@@ -54,10 +54,10 @@ NSString *const STItemCollectionViewCellReuseIdentifier = @"STItemCollectionView
     self.item = item;
     
     // Set UI
-    self.descriptionLabel.text = item.title;
-    self.priceLabel.text = item.price;
+    self.descriptionLabel.text = item.name;
+    self.priceLabel.text = item.price.price;
     self.deliveryLabel.text = @"Pick Up Today";
-    [self setProductImageURL:item.picURL];
+    [self setProductImageURL:item.imageURL];
 }
 
 /**

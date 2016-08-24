@@ -13,7 +13,6 @@
 #import "STProductItem.h"
 
 extern NSString *const STMultipleProductBaseCollectionViewCellTitle;
-extern NSString *const STMultipleProductBaseCollectionViewCellMimeType;
 
 @interface STMultipleProductBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 

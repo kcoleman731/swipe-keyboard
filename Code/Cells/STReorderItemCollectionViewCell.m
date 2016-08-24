@@ -30,8 +30,8 @@ NSString *const STReorderItemCollectionViewCellReuseIdentifier = @"STReorderItem
 - (void)setProductItem:(STProductItem *)item
 {
     _item = item;
-    self.itemCount.text = item.count;
-    [self setProductImageURL:item.picURL];
+    self.itemCount.text = item.quatity;
+    [self setProductImageURL:item.imageURL];
 }
 
 /**
