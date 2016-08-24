@@ -15,7 +15,7 @@
 #import "STUtilities.h"
 #import "STMultipleProductBaseCollectionViewCell.h"
 #import "STReward.h"
-#import "STRewardCollectionViewCell.h"
+#import "STARewardCollectionViewCell.h"
 #import "STReorderCollectionViewCell.h"
 #import "STMultiSelectionBar.h"
 
@@ -61,8 +61,8 @@ NSString *const STOptionCell = @"Option Cell";
     [self.collectionView registerNib:reorderCellNib forCellWithReuseIdentifier:[STReorderCollectionViewCell reuseIdentifier]];
     
     // Reward Cell
-    UINib *rewardCellNib = [UINib nibWithNibName:@"STRewardCollectionViewCell"  bundle:[NSBundle mainBundle]];
-    [self.collectionView registerNib:rewardCellNib forCellWithReuseIdentifier:[STRewardCollectionViewCell reuseIdentifier]];
+    UINib *rewardCellNib = [UINib nibWithNibName:@"STARewardCollectionViewCell"  bundle:[NSBundle mainBundle]];
+    [self.collectionView registerNib:rewardCellNib forCellWithReuseIdentifier:[STARewardCollectionViewCell reuseIdentifier]];
     
     // Address Cell
     UINib *addressCellNib = [UINib nibWithNibName:@"STAddressCollectionViewCell"  bundle:[NSBundle mainBundle]];
@@ -133,7 +133,7 @@ NSString *const STOptionCell = @"Option Cell";
     } else if ([part.MIMEType isEqualToString:STShippingCollectionViewCellMimeType]) {
         return [STShippingCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:STRewardCollectionViewCellMimeType]) {
-        return [STRewardCollectionViewCell cellHeight];
+        return [STARewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:STReorderCollectionViewCellMimeType]) {
         return [STReorderCollectionViewCell cellHeight];
     }
@@ -152,7 +152,7 @@ NSString *const STOptionCell = @"Option Cell";
     } else if ([part.MIMEType isEqualToString:STShippingCollectionViewCellMimeType]) {
         return [STShippingCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:STRewardCollectionViewCellMimeType]) {
-        return [STRewardCollectionViewCell reuseIdentifier];
+        return [STARewardCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:STReorderCollectionViewCellMimeType]) {
         return [STReorderCollectionViewCell reuseIdentifier];
     }

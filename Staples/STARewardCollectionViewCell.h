@@ -13,7 +13,7 @@ extern NSString *const STRewardCollectionViewCellTitle;
 extern NSString *const STRewardCollectionViewCellMimeType;
 extern NSString *const STRewardCollectionViewCellReuseIdentifier;
 
-@interface STRewardCollectionViewCell : UICollectionViewCell
+@interface STARewardCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) IBOutlet UIView *view;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;

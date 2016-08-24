@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.requires_arc                = true
   s.source_files                = 'Code/**/*.{h,m}'
   s.public_header_files         = 'Code/**/*.h'
-  s.ios.resource_bundle         = { 'StaplesResources' => 'Assets/*' }
+  s.ios.resource_bundle         = { 'StaplesResources' => 'Code/**/*.xib',  }
   s.ios.frameworks              = %w{ UIKit }
   s.ios.deployment_target       = '8.0'
 

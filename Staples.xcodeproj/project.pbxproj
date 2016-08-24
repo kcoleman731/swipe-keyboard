@@ -21,8 +21,8 @@
 		D68FEF351D6CE52E006AEFC6 /* STShippingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68FEF331D6CE52E006AEFC6 /* STShippingCollectionViewCell.m */; };
 		D68FEF361D6CE52E006AEFC6 /* STShippingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68FEF341D6CE52E006AEFC6 /* STShippingCollectionViewCell.xib */; };
 		D68FEF391D6CE536006AEFC6 /* STCellContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D68FEF381D6CE536006AEFC6 /* STCellContainerView.m */; };
-		D68FEF3D1D6CE543006AEFC6 /* STRewardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68FEF3B1D6CE543006AEFC6 /* STRewardCollectionViewCell.m */; };
-		D68FEF3E1D6CE543006AEFC6 /* STRewardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68FEF3C1D6CE543006AEFC6 /* STRewardCollectionViewCell.xib */; };
+		D68FEF3D1D6CE543006AEFC6 /* STARewardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68FEF3B1D6CE543006AEFC6 /* STARewardCollectionViewCell.m */; };
+		D68FEF3E1D6CE543006AEFC6 /* STARewardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68FEF3C1D6CE543006AEFC6 /* STARewardCollectionViewCell.xib */; };
 		D68FEF431D6CE553006AEFC6 /* STProductItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D68FEF401D6CE553006AEFC6 /* STProductItem.m */; };
 		D68FEF441D6CE553006AEFC6 /* STReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D68FEF421D6CE553006AEFC6 /* STReward.m */; };
 		D68FEF481D6CE56C006AEFC6 /* STReorderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68FEF461D6CE56C006AEFC6 /* STReorderCollectionViewCell.m */; };
@@ -87,9 +87,9 @@
 		D68FEF341D6CE52E006AEFC6 /* STShippingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STShippingCollectionViewCell.xib; sourceTree = "<group>"; };
 		D68FEF371D6CE536006AEFC6 /* STCellContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STCellContainerView.h; sourceTree = "<group>"; };
 		D68FEF381D6CE536006AEFC6 /* STCellContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STCellContainerView.m; sourceTree = "<group>"; };
-		D68FEF3A1D6CE543006AEFC6 /* STRewardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRewardCollectionViewCell.h; sourceTree = "<group>"; };
-		D68FEF3B1D6CE543006AEFC6 /* STRewardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRewardCollectionViewCell.m; sourceTree = "<group>"; };
-		D68FEF3C1D6CE543006AEFC6 /* STRewardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STRewardCollectionViewCell.xib; sourceTree = "<group>"; };
+		D68FEF3A1D6CE543006AEFC6 /* STARewardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STARewardCollectionViewCell.h; sourceTree = "<group>"; };
+		D68FEF3B1D6CE543006AEFC6 /* STARewardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STARewardCollectionViewCell.m; sourceTree = "<group>"; };
+		D68FEF3C1D6CE543006AEFC6 /* STARewardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STARewardCollectionViewCell.xib; sourceTree = "<group>"; };
 		D68FEF3F1D6CE553006AEFC6 /* STProductItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STProductItem.h; sourceTree = "<group>"; };
 		D68FEF401D6CE553006AEFC6 /* STProductItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STProductItem.m; sourceTree = "<group>"; };
 		D68FEF411D6CE553006AEFC6 /* STReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STReward.h; sourceTree = "<group>"; };
@@ -325,14 +325,14 @@
 			path = StaplesTests;
 			sourceTree = "<group>";
 		};
-		D65F71D81D6BB4A1005F2546 /* STRewardCollectionViewCell */ = {
+		D65F71D81D6BB4A1005F2546 /* STARewardCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D68FEF3A1D6CE543006AEFC6 /* STRewardCollectionViewCell.h */,
-				D68FEF3B1D6CE543006AEFC6 /* STRewardCollectionViewCell.m */,
-				D68FEF3C1D6CE543006AEFC6 /* STRewardCollectionViewCell.xib */,
+				D68FEF3A1D6CE543006AEFC6 /* STARewardCollectionViewCell.h */,
+				D68FEF3B1D6CE543006AEFC6 /* STARewardCollectionViewCell.m */,
+				D68FEF3C1D6CE543006AEFC6 /* STARewardCollectionViewCell.xib */,
 			);
-			name = STRewardCollectionViewCell;
+			name = STARewardCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		D68FEF011D6BFC4B006AEFC6 /* STReorderCollectionViewCell */ = {
@@ -441,7 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				D68FEF011D6BFC4B006AEFC6 /* STReorderCollectionViewCell */,
-				D65F71D81D6BB4A1005F2546 /* STRewardCollectionViewCell */,
+				D65F71D81D6BB4A1005F2546 /* STARewardCollectionViewCell */,
 				D65F71C01D6B7A27005F2546 /* Shared */,
 				D65F71BF1D6B7A17005F2546 /* STShippingCollectionViewCell */,
 				D65F71BE1D6B7A0D005F2546 /* STAddressCollectionViewCell */,
@@ -549,7 +549,7 @@
 				D68FEF491D6CE56C006AEFC6 /* STReorderCollectionViewCell.xib in Resources */,
 				D68FEF311D6CE524006AEFC6 /* STAddressCollectionViewCell.xib in Resources */,
 				D68FEF271D6CE50D006AEFC6 /* STProductCollectionViewCell.xib in Resources */,
-				D68FEF3E1D6CE543006AEFC6 /* STRewardCollectionViewCell.xib in Resources */,
+				D68FEF3E1D6CE543006AEFC6 /* STARewardCollectionViewCell.xib in Resources */,
 				D68FEF531D6CE58B006AEFC6 /* s0854503_s7.jpg in Resources */,
 				D68FEF2C1D6CE517006AEFC6 /* STItemCollectionViewCell.xib in Resources */,
 				D697617A1D660AEE00F3369F /* Main.storyboard in Resources */,
@@ -678,7 +678,7 @@
 				D68FEF2B1D6CE517006AEFC6 /* STItemCollectionViewCell.m in Sources */,
 				D68FEF1F1D6CE4E4006AEFC6 /* STMultipleProductBaseCollectionViewCell.m in Sources */,
 				D68FEF5C1D6CE5B4006AEFC6 /* STMultipleActionInputView.m in Sources */,
-				D68FEF3D1D6CE543006AEFC6 /* STRewardCollectionViewCell.m in Sources */,
+				D68FEF3D1D6CE543006AEFC6 /* STARewardCollectionViewCell.m in Sources */,
 				D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */,
 				D68FEF511D6CE583006AEFC6 /* STUtilities.m in Sources */,
 				D68FEF221D6CE4F3006AEFC6 /* STMultipleProductsCollectionViewLayout.m in Sources */,
