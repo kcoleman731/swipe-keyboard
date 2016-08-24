@@ -68,7 +68,7 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
     [self removeAllExistingActionViews];
     
     // Init Action Pages
-    NSInteger pages = (titles.count / MAX_OPTIONS_PER_PAGE) + 1;
+    NSInteger pages = (titles.count / MAX_OPTIONS_PER_PAGE);
     NSMutableArray *actionViews = [[NSMutableArray alloc] init];
     for (int i = 0; i < pages; i++) {
         
