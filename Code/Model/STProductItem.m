@@ -8,16 +8,30 @@
 
 #import "STProductItem.h"
 
+NSString *const STProductListMIMEType = @"application/json+listobject";
+
+NSString *const STProductQuantityKey = @"quantity";
+NSString *const STProductImageURLKey = @"productImage";
+NSString *const STProductSKUNumberKey = @"skuNo";
+NSString *const STProductPriceKey = @"price";
+NSString *const STProductNameKey = @"productName";
+
 @implementation STProductItem
 
-- (instancetype)initWithDictionaryPayload:(NSDictionary *)payload
++ (instancetype)productWithData:(NSDictionary *)data
+{
+    return [[self alloc] initWithData:data];
+}
+
+- (instancetype)initWithData:(NSDictionary *)data;
 {
     self = [super init];
     if (self) {
-        self.picURL = payload[@"pic"];
-        self.price = payload[@"price"];
-        self.title = payload[@"title"];
-        self.count = payload[@"count"];
+        self.quatity = data[STProductQuantityKey];
+        self.imageURL = data[STProductImageURLKey];
+        self.skuNumber = data[STProductSKUNumberKey];
+        self.price = [STPrice priceWithData:data[STProductPriceKey]];
+        self.name = data[STProductNameKey];
     }
     return self;
 }
@@ -26,20 +40,22 @@
 {
     self = [super init];
     if (self) {
-        self.price = [aDecoder decodeObjectForKey:@"price"];
-        self.picURL = [aDecoder decodeObjectForKey:@"pic"];
-        self.title = [aDecoder decodeObjectForKey:@"title"];
-        self.count = [aDecoder decodeObjectForKey:@"count"];
+        self.quatity = [aDecoder decodeObjectForKey:STProductQuantityKey];
+        self.imageURL = [aDecoder decodeObjectForKey:STProductImageURLKey];
+        self.skuNumber = [aDecoder decodeObjectForKey:STProductSKUNumberKey];
+        self.price = [aDecoder decodeObjectForKey:STProductPriceKey];
+        self.name = [aDecoder decodeObjectForKey:STProductNameKey];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.picURL forKey:@"pic"];
-    [aCoder encodeObject:self.title forKey:@"title"];
-    [aCoder encodeObject:self.price forKey:@"price"];
-    [aCoder encodeObject:self.count forKey:@"count"];
+    [aCoder encodeObject:self.quatity forKey:STProductQuantityKey];
+    [aCoder encodeObject:self.imageURL forKey:STProductImageURLKey];
+    [aCoder encodeObject:self.skuNumber forKey:STProductSKUNumberKey];
+    [aCoder encodeObject:self.price forKey:STProductPriceKey];
+    [aCoder encodeObject:self.name forKey:STProductNameKey];
 }
 
 @end

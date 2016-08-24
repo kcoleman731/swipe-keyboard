@@ -28,6 +28,8 @@ NSString *const STAddressCity = @"STAddressCity";
 NSString *const STAddressLon = @"STAddressLon";
 NSString *const STAddressLat = @"STAddressLat";
 
+NSString *const STMessagePartDataKey = @"data";
+
 @implementation STUtilities
 
 @end

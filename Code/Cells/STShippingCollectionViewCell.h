@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <Atlas/Atlas.h>
 #import "STCellContainerView.h"
+#import "STShipment.h"
 
 extern NSString *const STShippingCollectionViewCellTitle;
-extern NSString *const STShippingCollectionViewCellMimeType;
 
 @interface STShippingCollectionViewCell : UICollectionViewCell
 

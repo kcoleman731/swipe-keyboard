@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Atlas/Atlas.h>
+#import "STReward.h"
 
 extern NSString *const STRewardCollectionViewCellTitle;
-extern NSString *const STRewardCollectionViewCellMimeType;
 extern NSString *const STRewardCollectionViewCellReuseIdentifier;
 
 @interface STARewardCollectionViewCell : UICollectionViewCell

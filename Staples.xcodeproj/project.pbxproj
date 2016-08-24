@@ -10,6 +10,7 @@
 		3414E0202F8AD103A56840B2 /* Pods_Staples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCAFA925975ACD65020CCDD /* Pods_Staples.framework */; };
 		620E15FA3F1DD1FB26C366C1 /* Pods_StaplesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */; };
 		D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71BC1D6B7482005F2546 /* STLayerService.m */; };
+		D676C9011D6E2BDD00A09D8B /* STShipment.m in Sources */ = {isa = PBXBuildFile; fileRef = D676C8FF1D6E2BDD00A09D8B /* STShipment.m */; };
 		D695B6741D6E0E2F0087A4D1 /* STReorderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6721D6E0E2F0087A4D1 /* STReorderCollectionViewCell.m */; };
 		D695B6751D6E0E2F0087A4D1 /* STReorderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B6731D6E0E2F0087A4D1 /* STReorderCollectionViewCell.xib */; };
 		D695B6791D6E0E420087A4D1 /* STReorderItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6771D6E0E420087A4D1 /* STReorderItemCollectionViewCell.m */; };
@@ -38,6 +39,7 @@
 		D695B6B71D6E0F100087A4D1 /* STMultipleActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6B61D6E0F100087A4D1 /* STMultipleActionInputView.m */; };
 		D695B6BA1D6E0F180087A4D1 /* STActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6B91D6E0F180087A4D1 /* STActionInputView.m */; };
 		D695B6BD1D6E0F200087A4D1 /* STActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6BC1D6E0F200087A4D1 /* STActionButton.m */; };
+		D695B6C71D6E223F0087A4D1 /* STPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6C61D6E223F0087A4D1 /* STPrice.m */; };
 		D69761711D660AEE00F3369F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761701D660AEE00F3369F /* main.m */; };
 		D69761741D660AEE00F3369F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761731D660AEE00F3369F /* AppDelegate.m */; };
 		D697617A1D660AEE00F3369F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69761781D660AEE00F3369F /* Main.storyboard */; };
@@ -68,6 +70,8 @@
 		D65F71BC1D6B7482005F2546 /* STLayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLayerService.m; sourceTree = "<group>"; };
 		D65F71CB1D6BA164005F2546 /* StaplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StaplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65F71CF1D6BA164005F2546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D676C8FF1D6E2BDD00A09D8B /* STShipment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STShipment.m; path = Code/Model/STShipment.m; sourceTree = SOURCE_ROOT; };
+		D676C9001D6E2BDD00A09D8B /* STShipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STShipment.h; path = Code/Model/STShipment.h; sourceTree = SOURCE_ROOT; };
 		D695B6711D6E0E2F0087A4D1 /* STReorderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STReorderCollectionViewCell.h; path = Code/Cells/STReorderCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		D695B6721D6E0E2F0087A4D1 /* STReorderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STReorderCollectionViewCell.m; path = Code/Cells/STReorderCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		D695B6731D6E0E2F0087A4D1 /* STReorderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STReorderCollectionViewCell.xib; path = Code/Cells/STReorderCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -117,6 +121,8 @@
 		D695B6B91D6E0F180087A4D1 /* STActionInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STActionInputView.m; path = Code/Views/STActionInputView.m; sourceTree = SOURCE_ROOT; };
 		D695B6BB1D6E0F200087A4D1 /* STActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STActionButton.h; path = Code/Views/STActionButton.h; sourceTree = SOURCE_ROOT; };
 		D695B6BC1D6E0F200087A4D1 /* STActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STActionButton.m; path = Code/Views/STActionButton.m; sourceTree = SOURCE_ROOT; };
+		D695B6C51D6E223F0087A4D1 /* STPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STPrice.h; path = Code/Model/STPrice.h; sourceTree = SOURCE_ROOT; };
+		D695B6C61D6E223F0087A4D1 /* STPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STPrice.m; path = Code/Model/STPrice.m; sourceTree = SOURCE_ROOT; };
 		D697616C1D660AEE00F3369F /* Staples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69761701D660AEE00F3369F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D69761721D660AEE00F3369F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -175,6 +181,10 @@
 		3486CD141D67A46E0041E2F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D676C8FF1D6E2BDD00A09D8B /* STShipment.m */,
+				D676C9001D6E2BDD00A09D8B /* STShipment.h */,
+				D695B6C51D6E223F0087A4D1 /* STPrice.h */,
+				D695B6C61D6E223F0087A4D1 /* STPrice.m */,
 				D695B6A01D6E0EC30087A4D1 /* STProductItem.h */,
 				D695B6A11D6E0EC30087A4D1 /* STProductItem.m */,
 				D695B6A21D6E0EC30087A4D1 /* STReward.h */,
@@ -662,6 +672,7 @@
 				D695B6A51D6E0EC30087A4D1 /* STReward.m in Sources */,
 				D695B6791D6E0E420087A4D1 /* STReorderItemCollectionViewCell.m in Sources */,
 				D695B6AB1D6E0EE00087A4D1 /* STMultiSelectionBarBevelView.m in Sources */,
+				D676C9011D6E2BDD00A09D8B /* STShipment.m in Sources */,
 				D695B6741D6E0E2F0087A4D1 /* STReorderCollectionViewCell.m in Sources */,
 				D695B68F1D6E0E800087A4D1 /* STMultipleProductBaseCollectionViewCell.m in Sources */,
 				D695B6B71D6E0F100087A4D1 /* STMultipleActionInputView.m in Sources */,
@@ -673,6 +684,7 @@
 				D695B6B11D6E0EF50087A4D1 /* STMessageInputToolbar.m in Sources */,
 				D695B67E1D6E0E590087A4D1 /* STARewardCollectionViewCell.m in Sources */,
 				D695B6BA1D6E0F180087A4D1 /* STActionInputView.m in Sources */,
+				D695B6C71D6E223F0087A4D1 /* STPrice.m in Sources */,
 				D69761711D660AEE00F3369F /* main.m in Sources */,
 				D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */,
 				D695B6A81D6E0ED40087A4D1 /* STMultiSelectionBar.m in Sources */,

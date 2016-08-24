@@ -95,7 +95,7 @@ NSString *const STOptionCell = @"Option Cell";
     LYRMessagePart *messagePart;
     if ([title isEqualToString:STMultipleProductBaseCollectionViewCellTitle]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeProductInfo] options:NSJSONWritingPrettyPrinted error:nil];
-        messagePart = [LYRMessagePart messagePartWithMIMEType:STMultipleProductBaseCollectionViewCellMimeType data:data];
+        messagePart = [LYRMessagePart messagePartWithMIMEType:STProductListMIMEType data:data];
     } else if ([title isEqualToString:STAddressCollectionViewCellTitle]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeAddressInfo] options:NSJSONWritingPrettyPrinted error:nil];
         messagePart = [LYRMessagePart messagePartWithMIMEType:STAddressCollectionViewCellMimeType data:data];
@@ -106,7 +106,7 @@ NSString *const STOptionCell = @"Option Cell";
         messagePart = [LYRMessagePart messagePartWithMIMEType:STShippingCollectionViewCellMimeType data:data];
     } else if ([title isEqualToString:STRewardCollectionViewCellTitle]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeRewardInfo] options:NSJSONWritingPrettyPrinted error:nil];
-        messagePart = [LYRMessagePart messagePartWithMIMEType:STRewardCollectionViewCellMimeType data:data];
+        messagePart = [LYRMessagePart messagePartWithMIMEType:STARewardCollectionViewCellMimeType data:data];
     } else if ([title isEqualToString:STReorderCollectionViewCellTitle]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeProductInfo] options:NSJSONWritingPrettyPrinted error:nil];
         messagePart = [LYRMessagePart messagePartWithMIMEType:STReorderCollectionViewCellMimeType data:data];
@@ -126,13 +126,13 @@ NSString *const STOptionCell = @"Option Cell";
 - (CGFloat)conversationViewController:(ATLConversationViewController *)viewController heightForMessage:(LYRMessage *)message withCellWidth:(CGFloat)cellWidth
 {
     LYRMessagePart *part = message.parts[0];
-    if ([part.MIMEType isEqualToString:STMultipleProductBaseCollectionViewCellMimeType]) {
+    if ([part.MIMEType isEqualToString:STProductListMIMEType]) {
         return [STMultipleProductBaseCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:STAddressCollectionViewCellMimeType]) {
         return [STAddressCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:STShippingCollectionViewCellMimeType]) {
         return [STShippingCollectionViewCell cellHeight];
-    } else if ([part.MIMEType isEqualToString:STRewardCollectionViewCellMimeType]) {
+    } else if ([part.MIMEType isEqualToString:STARewardCollectionViewCellMimeType]) {
         return [STARewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:STReorderCollectionViewCellMimeType]) {
         return [STReorderCollectionViewCell cellHeight];
@@ -145,13 +145,13 @@ NSString *const STOptionCell = @"Option Cell";
 - (nullable NSString *)conversationViewController:(ATLConversationViewController *)viewController reuseIdentifierForMessage:(LYRMessage *)message
 {
     LYRMessagePart *part = message.parts[0];
-    if ([part.MIMEType isEqualToString:STMultipleProductBaseCollectionViewCellMimeType]) {
+    if ([part.MIMEType isEqualToString:STProductListMIMEType]) {
         return [STMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:STAddressCollectionViewCellMimeType]) {
         return [STAddressCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:STShippingCollectionViewCellMimeType]) {
         return [STShippingCollectionViewCell reuseIdentifier];
-    } else if ([part.MIMEType isEqualToString:STRewardCollectionViewCellMimeType]) {
+    } else if ([part.MIMEType isEqualToString:STARewardCollectionViewCellMimeType]) {
         return [STARewardCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:STReorderCollectionViewCellMimeType]) {
         return [STReorderCollectionViewCell reuseIdentifier];
@@ -235,18 +235,26 @@ NSString *const STOptionCell = @"Option Cell";
              STRewardBarcodeNumberKey: @"#1234567890"};
 }
 
-- (NSArray *)fakeProductInfo
+- (NSDictionary *)fakeProductInfo
 {
     NSMutableArray *products = [[NSMutableArray alloc] init];
     for (int i = 0; i < 50; i++) {
         [products addObject:@{
-                              @"price" : @"$20.99",
-                              @"title" : @"Staples Multiuse Copy Paper, 8 1/2\" x 11\", 8-Ream Case",
-                              @"pic" : @"https://www.staples-3p.com/s7/is/image/Staples/s0854503_sc7?$splssku$",
-                              @"count" : @"1",
-                              }];
+                              @"quantity":@"1",
+                              @"productImage":@"http://www.staples-3p.com/s7/is/image/Staples/s0071040_sc7",
+                              @"skuNo":@"228445",
+                              @"price":@{
+                                    @"unitOfMeasure":@"Dozen",
+                                    @"price":@"16.29",
+                                    @"finalPrice":@"16.29",
+                                    @"displayWasPricing":@"false",
+                                    @"displayRegularPricing":@"false",
+                                    @"buyMoreSaveMoreImage":@"",
+                                },
+                              @"productName":@"Paper Mate&amp;reg; FlairÂ® Felt-Tip Pens, Medium Point, Red, Dozen",
+                            }];
     }
-    return [products copy];
+    return @{@"data": @{ @"listItems" : [products copy]}};
 }
 
 #pragma mark - Constraints
@@ -254,11 +262,8 @@ NSString *const STOptionCell = @"Option Cell";
 - (void)addConstraintsToSelectionBar
 {
     NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:44.0f];
-    
     NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0f];
-    
     NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0f];
-    
     self.muliSelectionBarBottomConstraint = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0f];
     
     [self.view addConstraints:@[leading, height, trailing, self.muliSelectionBarBottomConstraint]];

@@ -8,6 +8,8 @@
 
 #import "STReward.h"
 
+NSString *const STRewardMIMEType = @"application/json+rewardobject";
+
 NSString *const STRewardTitleKey = @"STRewardTitleKey";
 NSString *const STRewardNameKey = @"STRewardNameKey";
 NSString *const STRewardMemberTypeKey = @"STRewardMemberTypeKey";
@@ -19,22 +21,20 @@ NSString *const STRewardBarcodeNumberKey = @"STRewardBarcodeNumberKey";
 
 @implementation STReward
 
-+ (instancetype)rewardWithMessage:(LYRMessage *)message
++ (instancetype)rewardWithData:(NSDictionary *)data
 {
-    return [[self alloc] initWithMessage:message];
+    return [[self alloc] initWithData:data];
 }
 
-- (id)initWithMessage:(LYRMessage *)message
+- (id)initWithData:(NSDictionary *)data
 {
     self = [super init];
     if (self) {
-        LYRMessagePart *part = message.parts[0];
-        NSDictionary *data = [NSJSONSerialization JSONObjectWithData:part.data options:NSJSONReadingAllowFragments error:nil];
         self.title = data[STRewardTitleKey];
         self.name = data[STRewardNameKey];
         self.memberType = data[STRewardMemberTypeKey];
         self.ammount = data[STRewardAmmountKey];
-        self.type = data[STRewardTypeKey];
+        //self.type = data[STRewardTypeKey];
         self.barcodeLink = data[STRewardBarcodeLinkKey];
         self.barcodeNumber = data[STRewardBarcodeNumberKey];
     }

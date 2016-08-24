@@ -8,9 +8,9 @@
 
 #import "STMultipleProductBaseCollectionViewCell.h"
 #import "STMultipleProductsCollectionViewLayout.h"
+#import "STUtilities.h"
 
 NSString *const STMultipleProductBaseCollectionViewCellTitle = @"Product Cell";
-NSString *const STMultipleProductBaseCollectionViewCellMimeType = @"json/product";
 NSString *const STMultipleProductBaseCollectionViewCellId = @"STMultipleProductBaseCollectionViewCellId";
 
 typedef NS_ENUM(NSInteger, STCellType) {
@@ -107,14 +107,30 @@ typedef NS_ENUM(NSInteger, STCellType) {
 
 #pragma mark - ATLMessagePresenting
 
+NSString *const STMessagePartBTSItemsKey = @"btsItems";
+NSString *const STMessagePartListItemsKey = @"listItems";
+
 - (void)presentMessage:(LYRMessage *)message
 {
     LYRMessagePart *part = message.parts[0];
-    NSArray *data = [NSJSONSerialization JSONObjectWithData:part.data options:NSJSONReadingAllowFragments error:nil];
+    NSError *error;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:part.data options:NSJSONReadingAllowFragments error:&error];
+    if (error) {
+        // Handle the error;
+    }
+    
+    NSArray *productJSON;
+    NSDictionary *data = json[STMessagePartDataKey];
+    if (data[STMessagePartBTSItemsKey]) {
+        productJSON = data[STMessagePartBTSItemsKey];
+    } else if (data[STMessagePartListItemsKey]) {
+        productJSON = data[STMessagePartListItemsKey];
+    }
+    
     NSMutableArray *products = [[NSMutableArray alloc] init];
-    for (NSDictionary *dataDict in data) {
-        STProductItem *item = [[STProductItem alloc] initWithDictionaryPayload:dataDict];
-        [products addObject:item];
+    for (NSDictionary *productData in productJSON) {
+        STProductItem *product = [STProductItem productWithData:productData];
+        [products addObject:product];
     }
     self.products = products;
     [self.collectionView reloadData];

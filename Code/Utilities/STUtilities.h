@@ -25,6 +25,10 @@ extern NSString *const STAddressCity;
 extern NSString *const STAddressLon;
 extern NSString *const STAddressLat;
 
+// Message Data Parsing
+
+extern NSString *const STMessagePartDataKey;
+
 @interface STUtilities : NSObject
 
 @end

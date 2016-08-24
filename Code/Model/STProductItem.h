@@ -7,15 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "STPrice.h"
+
+extern NSString *const STProductListMIMEType;
 
 @interface STProductItem : NSObject <NSCoding>
 
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *picURL;
-@property (nonatomic, strong) NSString *price;
-@property (nonatomic, strong) NSString *count;
++ (instancetype)productWithData:(NSDictionary *)data;
 
-// Convenience Init
-- (instancetype)initWithDictionaryPayload:(NSDictionary *)payload;
+@property (nonatomic, strong) NSString *quatity;
+@property (nonatomic, strong) NSString *imageURL;
+@property (nonatomic, strong) NSString *skuNumber;
+@property (nonatomic, strong) STPrice *price;
+@property (nonatomic, strong) NSString *name;
 
 @end
