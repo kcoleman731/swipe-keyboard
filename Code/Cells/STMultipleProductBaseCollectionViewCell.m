@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, STCellType) {
     STCellTypeItem = 1,
 };
 
-@interface STMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource, STProductCollectionViewCellDelegate, STItemCollectionViewCellDelegate>
+@interface STMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource, STSuggestedProductCollectionViewCellDelegate, STItemCollectionViewCellDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) STMultipleProductsCollectionViewLayout *collectionViewLayout;
@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger, STCellType) {
     [self layoutCollectionView];
     
     UINib *productNib = [UINib nibWithNibName:@"STProductCollectionViewCell" bundle:[NSBundle mainBundle]];
-    [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[STProductCollectionViewCell reuseIdentifier]];
+    [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[STSuggestedProductCollectionViewCell reuseIdentifier]];
     
     UINib *itemNib = [UINib nibWithNibName:@"STItemCollectionViewCell" bundle:[NSBundle mainBundle]];
     [self.collectionView registerNib:itemNib forCellWithReuseIdentifier:[STItemCollectionViewCell reuseIdentifier]];
@@ -132,12 +132,12 @@ typedef NS_ENUM(NSInteger, STCellType) {
 
 #pragma mark - STMultipleProductsCollectionViewCellDelegate Calls
 
-- (void)productCell:(STProductCollectionViewCell *)cell addButtonWasPressedWithProduct:(STProductItem *)item
+- (void)productCell:(STSuggestedProductCollectionViewCell *)cell addButtonWasPressedWithProduct:(STProductItem *)item
 {
     [self.productDelegate productCell:cell addButtonWasPressedWithProduct:item];
 }
 
-- (void)productCell:(STProductCollectionViewCell *)cell infoButtonWasPressedWithProduct:(STProductItem *)item
+- (void)productCell:(STSuggestedProductCollectionViewCell *)cell infoButtonWasPressedWithProduct:(STProductItem *)item
 {
     [self.productDelegate productCell:cell infoButtonWasPressedWithProduct:item];
 }

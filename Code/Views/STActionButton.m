@@ -23,6 +23,7 @@
         self.backgroundColor = [UIColor whiteColor];
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         self.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+        self.titleLabel.font = [UIFont systemFontOfSize:16.0 weight:UIFontWeightThin];
         [self setTitle:title forState:UIControlStateNormal];
         UIColor *blue = [UIColor colorWithRed:118.0f/255.0f green:170.0f/255.0f blue:227.0f/255.0f alpha:1.0];
         [self setTitleColor:blue forState:UIControlStateNormal];

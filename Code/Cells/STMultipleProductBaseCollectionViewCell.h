@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Atlas/Atlas.h>
-#import "STProductCollectionViewCell.h"
+#import "STSuggestedProductCollectionViewCell.h"
 #import "STItemCollectionViewCell.h"
 #import "STProductItem.h"
 
@@ -17,7 +17,7 @@ extern NSString *const STMultipleProductBaseCollectionViewCellMimeType;
 
 @interface STMultipleProductBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
-@property (nonatomic, weak) id <STProductCollectionViewCellDelegate> productDelegate;
+@property (nonatomic, weak) id <STSuggestedProductCollectionViewCellDelegate> productDelegate;
 
 /**
  *  Reuse Identifier
