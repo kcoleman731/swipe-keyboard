@@ -68,7 +68,7 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
     [self removeAllExistingActionViews];
     
     // Init Action Pages
-    NSInteger pages = titles.count / MAX_OPTIONS_PER_PAGE;
+    NSInteger pages = (titles.count / MAX_OPTIONS_PER_PAGE);
     NSMutableArray *actionViews = [[NSMutableArray alloc] init];
     for (int i = 0; i < pages; i++) {
         
@@ -120,12 +120,12 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
 
 - (void)layoutInputViews
 {
-    const CGFloat ACTION_VIEW_INSET = 10.0;
+    const CGFloat ACTION_VIEW_INSET = 15.0;
     for (int i = 0; i < self.inputViews.count; i++) {
         // Generate inset rect based on page
         CGFloat pageBegIdx     = self.frame.size.width * i;
         CGRect inputViewRect   = CGRectMake(pageBegIdx, 0.0, self.frame.size.width, self.frame.size.height);
-        inputViewRect          = CGRectInset(inputViewRect, ACTION_VIEW_INSET, ACTION_VIEW_INSET * 2.0);
+        inputViewRect          = CGRectInset(inputViewRect, ACTION_VIEW_INSET, ACTION_VIEW_INSET / 2.0);
         inputViewRect.origin.y = ACTION_VIEW_INSET;
         
         STActionInputView *inputView = self.inputViews[i];

@@ -22,7 +22,7 @@
 @implementation STActionInputView
 
 NSUInteger const STPickerRowHeight = 52;
-NSUInteger const STBorderWidth = 2;
+NSUInteger const STBorderWidth = 1;
 NSUInteger const STCornerRadius = 6;
 
 - (id)initWithSelectionTitles:(NSArray *)titles

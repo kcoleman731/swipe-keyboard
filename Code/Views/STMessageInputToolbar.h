@@ -29,6 +29,6 @@
 /**
  The delegate for the custom subclass.
  */
-@property (nonatomic, weak) id<STMessageInputToolbarDelegate> customDelegate;
+@property (nonatomic, weak) id <STMessageInputToolbarDelegate> customDelegate;
 
 @end

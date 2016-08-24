@@ -8,6 +8,7 @@
 
 #import "STMultipleActionInputView.h"
 #import "STMultipleActionInputScrollView.h"
+#import "EDColor.h"
 
 @interface STMultipleActionInputView () <STMultipleActionInputScrollViewDelegate, UIScrollViewDelegate>
 
@@ -49,6 +50,8 @@
 
 - (void)commonInitWithTitles:(NSArray *)titles
 {
+    self.backgroundColor = [UIColor whiteColor];
+    
     self.inputScrollView = [[STMultipleActionInputScrollView alloc] initWithSelectionTitles:titles];
     self.inputScrollView.translatesAutoresizingMaskIntoConstraints = NO;
     self.inputScrollView.delegate = self;
@@ -59,7 +62,7 @@
     self.pageControl.translatesAutoresizingMaskIntoConstraints = false;
     self.pageControl.numberOfPages = self.inputScrollView.numberOfPages;
     self.pageControl.pageIndicatorTintColor = [UIColor colorWithRed:217.0f/255.0f green:217.0f/255.0f blue:217.0f/255.0f alpha:1.0];
-    self.pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:118.0f/255.0f green:170.0f/255.0f blue:227.0f/255.0f alpha:1.0];
+    self.pageControl.currentPageIndicatorTintColor = self.tintColor;
     [self addSubview:self.pageControl];
     
     [self configureLayoutConstraints];
@@ -94,7 +97,7 @@
 {
     // Input Scroll View Constraints
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-30.0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0]];
     
