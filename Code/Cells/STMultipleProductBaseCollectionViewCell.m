@@ -15,6 +15,7 @@
 NSString *const STMultipleProductBaseCollectionViewCellTitle = @"Product Cell";
 NSString *const STMultipleProductBaseCollectionViewCellId = @"STMultipleProductBaseCollectionViewCellId";
 NSString *const STShipmentSelectedNotification = @"STShipmentSelectedNotification";
+NSString *const STRewardSelectedNotification = @"STRewardSelectedNotification";
 
 typedef NS_ENUM(NSInteger, STCellType) {
     STCellTypeProduct = 0,
@@ -129,7 +130,7 @@ typedef NS_ENUM(NSInteger, STCellType) {
             
             break;
         case STCellTypeRewards:
-           // notification = [NSNotification notificationWithName:STShipmentSelectedNotification object:self.items[indexPath.row]];
+            notification = [NSNotification notificationWithName:STRewardSelectedNotification object:self.items[indexPath.row]];
             
             break;
         case STCellTypeShipping:

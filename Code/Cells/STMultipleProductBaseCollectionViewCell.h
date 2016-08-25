@@ -14,6 +14,7 @@
 
 extern NSString *const STMultipleProductBaseCollectionViewCellTitle;
 extern NSString *const STShipmentSelectedNotification;
+extern NSString *const STRewardSelectedNotificationl;
 
 @interface STMultipleProductBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
