@@ -15,9 +15,10 @@
 #import "STUtilities.h"
 #import "STMultipleProductBaseCollectionViewCell.h"
 #import "STReward.h"
-#import "STARewardCollectionViewCell.h"
+#import "BOTRewardCollectionViewCell.h"
 #import "STReorderCollectionViewCell.h"
 #import "STMultiSelectionBar.h"
+#import "BOTActionCollectionViewCell.h"
 
 @interface STConversationViewController () <STMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource, ATLConversationViewControllerDelegate, STMessageInputToolbarDelegate, STMultiSelectionBarDelegate>
 
@@ -61,22 +62,16 @@ NSString *const STOptionCell = @"Option Cell";
     [self.collectionView registerNib:reorderCellNib forCellWithReuseIdentifier:[STReorderCollectionViewCell reuseIdentifier]];
     
     // Reward Cell
-    UINib *rewardCellNib = [UINib nibWithNibName:@"STARewardCollectionViewCell"  bundle:[NSBundle mainBundle]];
-    [self.collectionView registerNib:rewardCellNib forCellWithReuseIdentifier:[STARewardCollectionViewCell reuseIdentifier]];
+    UINib *rewardCellNib = [UINib nibWithNibName:@"BOTRewardCollectionViewCell"  bundle:[NSBundle mainBundle]];
+    [self.collectionView registerNib:rewardCellNib forCellWithReuseIdentifier:[BOTRewardCollectionViewCell reuseIdentifier]];
     
     // Address Cell
     UINib *addressCellNib = [UINib nibWithNibName:@"STAddressCollectionViewCell"  bundle:[NSBundle mainBundle]];
     [self.collectionView registerNib:addressCellNib forCellWithReuseIdentifier:[STAddressCollectionViewCell reuseIdentifier]];
     
+    [self registerClass:[BOTActionCollectionViewCell class] forMessageCellWithReuseIdentifier:BOTActionCollectionViewCellReuseIdentifier];
     [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STAddressCollectionViewCell class]]] setTextColor:[UIColor darkGrayColor]];
     [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STAddressCollectionViewCell class]]] setFont:[UIFont systemFontOfSize:12 weight:UIFontWeightRegular]];
-    
-    // Shipping Cell
-    UINib *shippingCellNib = [UINib nibWithNibName:@"STShippingCollectionViewCell"  bundle:[NSBundle mainBundle]];
-    [self.collectionView registerNib:shippingCellNib forCellWithReuseIdentifier:[STShippingCollectionViewCell reuseIdentifier]];
-
-    [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STShippingCollectionViewCell class]]] setTextColor:[UIColor darkGrayColor]];
-    [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STShippingCollectionViewCell class]]] setFont:[UIFont systemFontOfSize:12 weight:UIFontWeightRegular]];
 }
 
 - (void)layoutMultiSelectionBar
@@ -100,13 +95,11 @@ NSString *const STOptionCell = @"Option Cell";
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeAddressInfo] options:NSJSONWritingPrettyPrinted error:nil];
         messagePart = [LYRMessagePart messagePartWithMIMEType:STAddressCollectionViewCellMimeType data:data];
     } else if ([title isEqualToString:STShippingCollectionViewCellTitle]) {
-        NSMutableDictionary *orderInfo = [[self fakeOrderInfo] mutableCopy];
-        [orderInfo addEntriesFromDictionary:[self fakeAddressInfo]];
-        NSData *data = [NSJSONSerialization dataWithJSONObject:orderInfo options:NSJSONWritingPrettyPrinted error:nil];
-        messagePart = [LYRMessagePart messagePartWithMIMEType:STShippingCollectionViewCellMimeType data:data];
-    } else if ([title isEqualToString:STRewardCollectionViewCellTitle]) {
+        NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeShipmentInfo] options:NSJSONWritingPrettyPrinted error:nil];
+        messagePart = [LYRMessagePart messagePartWithMIMEType:STShipmentMIMEType data:data];
+    } else if ([title isEqualToString:BOTRewardCollectionViewCellTitle]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeRewardInfo] options:NSJSONWritingPrettyPrinted error:nil];
-        messagePart = [LYRMessagePart messagePartWithMIMEType:STARewardCollectionViewCellMimeType data:data];
+        messagePart = [LYRMessagePart messagePartWithMIMEType:STRewardMIMEType data:data];
     } else if ([title isEqualToString:STReorderCollectionViewCellTitle]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeProductInfo] options:NSJSONWritingPrettyPrinted error:nil];
         messagePart = [LYRMessagePart messagePartWithMIMEType:STReorderCollectionViewCellMimeType data:data];
@@ -123,36 +116,42 @@ NSString *const STOptionCell = @"Option Cell";
 
 #pragma mark - ATLConversationViewControllerDelegate
 
+- (void)conversationViewController:(ATLConversationViewController *)viewController didSelectMessage:(LYRMessage *)message
+{
+    
+}
+
 - (CGFloat)conversationViewController:(ATLConversationViewController *)viewController heightForMessage:(LYRMessage *)message withCellWidth:(CGFloat)cellWidth
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:STProductListMIMEType]) {
-        return [STMultipleProductBaseCollectionViewCell cellHeight];
+        return [STMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
     } else if ([part.MIMEType isEqualToString:STAddressCollectionViewCellMimeType]) {
         return [STAddressCollectionViewCell cellHeight];
-    } else if ([part.MIMEType isEqualToString:STShippingCollectionViewCellMimeType]) {
-        return [STShippingCollectionViewCell cellHeight];
-    } else if ([part.MIMEType isEqualToString:STARewardCollectionViewCellMimeType]) {
-        return [STARewardCollectionViewCell cellHeight];
+    } else if ([part.MIMEType isEqualToString:STShipmentMIMEType]) {
+        return [STMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+    } else if ([part.MIMEType isEqualToString:STRewardMIMEType]) {
+        return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:STReorderCollectionViewCellMimeType]) {
         return [STReorderCollectionViewCell cellHeight];
     }
-    return 0;
+    return 200;
 }
 
 #pragma mark - ATLConversationViewControllerDataSource
 
 - (nullable NSString *)conversationViewController:(ATLConversationViewController *)viewController reuseIdentifierForMessage:(LYRMessage *)message
 {
+    return BOTActionCollectionViewCellReuseIdentifier;
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:STProductListMIMEType]) {
         return [STMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:STAddressCollectionViewCellMimeType]) {
         return [STAddressCollectionViewCell reuseIdentifier];
-    } else if ([part.MIMEType isEqualToString:STShippingCollectionViewCellMimeType]) {
-        return [STShippingCollectionViewCell reuseIdentifier];
-    } else if ([part.MIMEType isEqualToString:STARewardCollectionViewCellMimeType]) {
-        return [STARewardCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:STShipmentMIMEType]) {
+        return [STMultipleProductBaseCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:STRewardMIMEType]) {
+        return [BOTRewardCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:STReorderCollectionViewCellMimeType]) {
         return [STReorderCollectionViewCell reuseIdentifier];
     }
@@ -206,7 +205,7 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (NSArray *)selectionItems
 {
-    return @[STMultipleProductBaseCollectionViewCellTitle, STAddressCollectionViewCellTitle, STShippingCollectionViewCellTitle , STReorderCollectionViewCellTitle, STRewardCollectionViewCellTitle];
+    return @[STMultipleProductBaseCollectionViewCellTitle, STAddressCollectionViewCellTitle, STShippingCollectionViewCellTitle , STReorderCollectionViewCellTitle, BOTRewardCollectionViewCellTitle];
 }
 
 - (NSDictionary *)fakeAddressInfo
@@ -255,6 +254,22 @@ NSString *const STOptionCell = @"Option Cell";
                             }];
     }
     return @{@"data": @{ @"listItems" : [products copy]}};
+}
+
+- (NSDictionary *)fakeShipmentInfo
+{
+    NSMutableArray *products = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 2; i++) {
+        [products addObject:@{
+                              @"boxes" : @"1",
+                              @"deliveryDate" : @"Wed Aug 10 09:56:12 EDT 2016",
+                              @"orderNumber" : @"9742476281",
+                              @"shipmentNumber" : @"117628629",
+                              @"shipmentType" : @"ISP",
+                              @"status" : @"Did not pick up",
+                              }];
+    }
+    return @{@"data": @{ @"shippmentTrackingList" : [products copy]}};
 }
 
 #pragma mark - Constraints

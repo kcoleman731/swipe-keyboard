@@ -9,17 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "STProductItem.h"
 
-@class STSuggestedProductCollectionViewCell;
+@class STProductCollectionViewCell;
 
 @protocol STSuggestedProductCollectionViewCellDelegate
 
-- (void)productCell:(STSuggestedProductCollectionViewCell *)cell addButtonWasPressedWithProduct:(STProductItem *)item;
+- (void)productCell:(STProductCollectionViewCell *)cell addButtonWasPressedWithProduct:(STProductItem *)item;
 
-- (void)productCell:(STSuggestedProductCollectionViewCell *)cell infoButtonWasPressedWithProduct:(STProductItem *)item;
+- (void)productCell:(STProductCollectionViewCell *)cell infoButtonWasPressedWithProduct:(STProductItem *)item;
 
 @end
 
-@interface STSuggestedProductCollectionViewCell : UICollectionViewCell
+@interface STProductCollectionViewCell : UICollectionViewCell
 
 @property (readonly, nonatomic, strong) STProductItem *item;
 
@@ -29,6 +29,11 @@
  *  Reuse Identifier
  */
 + (NSString *)reuseIdentifier;
+
+/**
+ *  Cell Height
+ */
++ (CGFloat)cellHeight;
 
 /**
  *  Product Items Setter

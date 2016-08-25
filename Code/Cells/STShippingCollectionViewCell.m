@@ -18,10 +18,10 @@ NSString *const STShippingCollectionViewCellReuseIdentifier = @"STShippingCollec
 {
     [super awakeFromNib];
     
-    self.view.layer.borderColor = STLightGrayColor().CGColor;
-    self.view.layer.cornerRadius = 4;
-    self.view.layer.borderWidth = 2;
-    self.view.clipsToBounds = YES;
+    self.backgroundView.layer.borderColor = STLightGrayColor().CGColor;
+    self.backgroundView.layer.cornerRadius = 4;
+    self.backgroundView.layer.borderWidth = 2;
+    self.backgroundView.clipsToBounds = YES;
     self.seperator.backgroundColor = STLightGrayColor();
     
     self.deliverToLabel.text = @"Deliver To:";
@@ -42,33 +42,11 @@ NSString *const STShippingCollectionViewCellReuseIdentifier = @"STShippingCollec
 
 #pragma mark - ATLMessagePresenting
 
-NSString *const STMessagePartShipmentTrackingListKey = @"shippmentTrackingList";
+NSString *const STMMessagePartShipmentTrackingListKey = @"shippmentTrackingList";
 
 - (void)presentMessage:(LYRMessage *)message
 {
-    LYRMessagePart *part = message.parts[0];
-    NSError *error;
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:part.data options:NSJSONReadingAllowFragments error:&error];
-    if (error) {
-        // Handle the error;
-    }
     
-    NSDictionary *data = json[STMessagePartDataKey];
-    NSArray *shipmentJSON = data[STMessagePartShipmentTrackingListKey];
-    
-    NSMutableArray *shipments = [[NSMutableArray alloc] init];
-    for (NSDictionary *shipmentData in shipmentJSON) {
-        STShipment *shipment = [STShipment shipmentWithData:shipmentData];
-        [shipments addObject:shipment];
-    }
-    
-    STShipment *shiment = shipments[0];
-    self.orderNumberLabel.attributedText = [self attributedTextForOrderNumber:shiment.orderNumber];
-//    self.priceLabel.text = // No price in body
-//    self.itemLabel.text = data[STOrderItemKey]; // Create quantity and ETA label.
-    self.addressNameLabel.text = @"Kevin Coleman";
-    self.addressStreetLabel.text = @"1776 Sacramento Street";
-    self.addressCityLabel.text = @"San Francisco, CA, 94109";
 }
 
 - (void)updateWithSender:(nullable id<ATLParticipant>)sender

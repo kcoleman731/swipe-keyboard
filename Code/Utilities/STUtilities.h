@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+NSBundle * StaplesUIBundle();
+
 UIColor * STLightGrayColor();
 
 UIColor * STBlueColor();

@@ -16,7 +16,7 @@ extern NSString *const STShipmentMIMEType;
 + (instancetype)shipmentWithData:(NSDictionary *)data;
 
 @property (nonatomic) NSString *status;
-@property (nonatomic) NSDate *deliveryDate;
+@property (nonatomic) NSString *deliveryDate;
 @property (nonatomic) NSString *number;
 @property (nonatomic) NSString *boxCount;
 @property (nonatomic) NSString *type;

@@ -15,7 +15,7 @@ extern NSString *const STShippingCollectionViewCellTitle;
 
 @interface STShippingCollectionViewCell : UICollectionViewCell
 
-@property (strong, nonatomic) IBOutlet STCellContainerView *view;
+@property (strong, nonatomic) IBOutlet STCellContainerView *cellContainerView;
 @property (strong, nonatomic) IBOutlet UILabel *orderNumberLabel;
 @property (strong, nonatomic) IBOutlet UILabel *priceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *itemLabel;

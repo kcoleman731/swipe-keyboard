@@ -15,8 +15,8 @@
 		D695B6751D6E0E2F0087A4D1 /* STReorderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B6731D6E0E2F0087A4D1 /* STReorderCollectionViewCell.xib */; };
 		D695B6791D6E0E420087A4D1 /* STReorderItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6771D6E0E420087A4D1 /* STReorderItemCollectionViewCell.m */; };
 		D695B67A1D6E0E420087A4D1 /* STReorderItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B6781D6E0E420087A4D1 /* STReorderItemCollectionViewCell.xib */; };
-		D695B67E1D6E0E590087A4D1 /* STARewardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B67C1D6E0E590087A4D1 /* STARewardCollectionViewCell.m */; };
-		D695B67F1D6E0E590087A4D1 /* STARewardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B67D1D6E0E590087A4D1 /* STARewardCollectionViewCell.xib */; };
+		D695B67E1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B67C1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.m */; };
+		D695B67F1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B67D1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.xib */; };
 		D695B6821D6E0E610087A4D1 /* STCellContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6811D6E0E610087A4D1 /* STCellContainerView.m */; };
 		D695B6861D6E0E6D0087A4D1 /* STShippingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6841D6E0E6D0087A4D1 /* STShippingCollectionViewCell.m */; };
 		D695B6871D6E0E6D0087A4D1 /* STShippingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B6851D6E0E6D0087A4D1 /* STShippingCollectionViewCell.xib */; };
@@ -25,7 +25,6 @@
 		D695B68F1D6E0E800087A4D1 /* STMultipleProductBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B68E1D6E0E800087A4D1 /* STMultipleProductBaseCollectionViewCell.m */; };
 		D695B6931D6E0E880087A4D1 /* STItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6911D6E0E880087A4D1 /* STItemCollectionViewCell.m */; };
 		D695B6941D6E0E880087A4D1 /* STItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B6921D6E0E880087A4D1 /* STItemCollectionViewCell.xib */; };
-		D695B6981D6E0E960087A4D1 /* STProductCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6961D6E0E960087A4D1 /* STProductCollectionViewCell.m */; };
 		D695B6991D6E0E960087A4D1 /* STProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B6971D6E0E960087A4D1 /* STProductCollectionViewCell.xib */; };
 		D695B69C1D6E0E9F0087A4D1 /* STMultipleProductsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B69B1D6E0E9F0087A4D1 /* STMultipleProductsCollectionViewLayout.m */; };
 		D695B69F1D6E0EB60087A4D1 /* STUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B69E1D6E0EB60087A4D1 /* STUtilities.m */; };
@@ -47,6 +46,10 @@
 		D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D697617D1D660AEE00F3369F /* LaunchScreen.storyboard */; };
 		D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761871D660FBA00F3369F /* STConversationViewController.m */; };
 		D6CFC3AC1D6BF69E00F3F2F1 /* STLayerServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D6CFC3AB1D6BF69E00F3F2F1 /* STLayerServiceTest.m */; };
+		D6EB8AB81D6F4F0E00BF4BE1 /* STProductCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EB8AB71D6F4F0E00BF4BE1 /* STProductCollectionViewCell.m */; };
+		D6EB8ABC1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6EB8AB91D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.xib */; };
+		D6EB8ABD1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EB8ABB1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.m */; };
+		D6EB8AC31D6F914400BF4BE1 /* BOTActionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EB8AC11D6F914400BF4BE1 /* BOTActionCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,9 +81,9 @@
 		D695B6761D6E0E420087A4D1 /* STReorderItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STReorderItemCollectionViewCell.h; path = Code/Cells/STReorderItemCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		D695B6771D6E0E420087A4D1 /* STReorderItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STReorderItemCollectionViewCell.m; path = Code/Cells/STReorderItemCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		D695B6781D6E0E420087A4D1 /* STReorderItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STReorderItemCollectionViewCell.xib; path = Code/Cells/STReorderItemCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
-		D695B67B1D6E0E590087A4D1 /* STARewardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STARewardCollectionViewCell.h; path = Code/Cells/STARewardCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		D695B67C1D6E0E590087A4D1 /* STARewardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STARewardCollectionViewCell.m; path = Code/Cells/STARewardCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		D695B67D1D6E0E590087A4D1 /* STARewardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STARewardCollectionViewCell.xib; path = Code/Cells/STARewardCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D695B67B1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTRewardCollectionViewCell.h; path = Code/Cells/BOTRewardCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		D695B67C1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTRewardCollectionViewCell.m; path = Code/Cells/BOTRewardCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		D695B67D1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTRewardCollectionViewCell.xib; path = Code/Cells/BOTRewardCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
 		D695B6801D6E0E610087A4D1 /* STCellContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STCellContainerView.h; path = Code/Cells/STCellContainerView.h; sourceTree = SOURCE_ROOT; };
 		D695B6811D6E0E610087A4D1 /* STCellContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STCellContainerView.m; path = Code/Cells/STCellContainerView.m; sourceTree = SOURCE_ROOT; };
 		D695B6831D6E0E6D0087A4D1 /* STShippingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STShippingCollectionViewCell.h; path = Code/Cells/STShippingCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -94,8 +97,6 @@
 		D695B6901D6E0E880087A4D1 /* STItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STItemCollectionViewCell.h; path = Code/Cells/STItemCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		D695B6911D6E0E880087A4D1 /* STItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STItemCollectionViewCell.m; path = Code/Cells/STItemCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		D695B6921D6E0E880087A4D1 /* STItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STItemCollectionViewCell.xib; path = Code/Cells/STItemCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
-		D695B6951D6E0E960087A4D1 /* STProductCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STProductCollectionViewCell.h; path = Code/Cells/STProductCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		D695B6961D6E0E960087A4D1 /* STProductCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STProductCollectionViewCell.m; path = Code/Cells/STProductCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		D695B6971D6E0E960087A4D1 /* STProductCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STProductCollectionViewCell.xib; path = Code/Cells/STProductCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
 		D695B69A1D6E0E9F0087A4D1 /* STMultipleProductsCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STMultipleProductsCollectionViewLayout.h; path = Code/Cells/STMultipleProductsCollectionViewLayout.h; sourceTree = SOURCE_ROOT; };
 		D695B69B1D6E0E9F0087A4D1 /* STMultipleProductsCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STMultipleProductsCollectionViewLayout.m; path = Code/Cells/STMultipleProductsCollectionViewLayout.m; sourceTree = SOURCE_ROOT; };
@@ -134,6 +135,13 @@
 		D69761861D660FBA00F3369F /* STConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STConversationViewController.h; sourceTree = "<group>"; };
 		D69761871D660FBA00F3369F /* STConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STConversationViewController.m; sourceTree = "<group>"; };
 		D6CFC3AB1D6BF69E00F3F2F1 /* STLayerServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLayerServiceTest.m; sourceTree = "<group>"; };
+		D6EB8AB61D6F4F0E00BF4BE1 /* STProductCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STProductCollectionViewCell.h; path = Code/Cells/STProductCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		D6EB8AB71D6F4F0E00BF4BE1 /* STProductCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STProductCollectionViewCell.m; path = Code/Cells/STProductCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		D6EB8AB91D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTShipmentTrackingCollectionViewCell.xib; path = Code/Cells/BOTShipmentTrackingCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D6EB8ABA1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTShipmentTrackingCollectionViewCell.h; path = Code/Cells/BOTShipmentTrackingCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		D6EB8ABB1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTShipmentTrackingCollectionViewCell.m; path = Code/Cells/BOTShipmentTrackingCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		D6EB8AC11D6F914400BF4BE1 /* BOTActionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTActionCollectionViewCell.m; path = Code/Cells/BOTActionCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		D6EB8AC21D6F914400BF4BE1 /* BOTActionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTActionCollectionViewCell.h; path = Code/Cells/BOTActionCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +167,7 @@
 		3486CD011D6779130041E2F7 /* STMultipleProductCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				D6EB8AAA1D6F45E400BF4BE1 /* BOTShipmentTrackingCollectionViewCell */,
 				D695B68D1D6E0E800087A4D1 /* STMultipleProductBaseCollectionViewCell.h */,
 				D695B68E1D6E0E800087A4D1 /* STMultipleProductBaseCollectionViewCell.m */,
 				D68FEF071D6C0578006AEFC6 /* STItemCollectionViewCell */,
@@ -171,8 +180,8 @@
 		3486CD0B1D679E6B0041E2F7 /* STProductCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D695B6951D6E0E960087A4D1 /* STProductCollectionViewCell.h */,
-				D695B6961D6E0E960087A4D1 /* STProductCollectionViewCell.m */,
+				D6EB8AB61D6F4F0E00BF4BE1 /* STProductCollectionViewCell.h */,
+				D6EB8AB71D6F4F0E00BF4BE1 /* STProductCollectionViewCell.m */,
 				D695B6971D6E0E960087A4D1 /* STProductCollectionViewCell.xib */,
 			);
 			name = STProductCollectionViewCell;
@@ -327,9 +336,9 @@
 		D65F71D81D6BB4A1005F2546 /* STARewardCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D695B67B1D6E0E590087A4D1 /* STARewardCollectionViewCell.h */,
-				D695B67C1D6E0E590087A4D1 /* STARewardCollectionViewCell.m */,
-				D695B67D1D6E0E590087A4D1 /* STARewardCollectionViewCell.xib */,
+				D695B67B1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.h */,
+				D695B67C1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.m */,
+				D695B67D1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.xib */,
 			);
 			name = STARewardCollectionViewCell;
 			sourceTree = "<group>";
@@ -390,8 +399,8 @@
 		D69761631D660AEE00F3369F = {
 			isa = PBXGroup;
 			children = (
-				D68FEF6C1D6CE5F1006AEFC6 /* Code */,
 				D697616E1D660AEE00F3369F /* Staples */,
+				D68FEF6C1D6CE5F1006AEFC6 /* Code */,
 				5D7BC486E268FE80EA4B3D58 /* Pods */,
 				D65F71CC1D6BA164005F2546 /* StaplesTests */,
 				CA827BFF73C5DF49B48F4351 /* Frameworks */,
@@ -435,9 +444,29 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D6EB8AAA1D6F45E400BF4BE1 /* BOTShipmentTrackingCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D6EB8ABA1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.h */,
+				D6EB8ABB1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.m */,
+				D6EB8AB91D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.xib */,
+			);
+			name = BOTShipmentTrackingCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		D6EB8AC41D6F914700BF4BE1 /* BOTActionCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D6EB8AC21D6F914400BF4BE1 /* BOTActionCollectionViewCell.h */,
+				D6EB8AC11D6F914400BF4BE1 /* BOTActionCollectionViewCell.m */,
+			);
+			name = BOTActionCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		D6F858831D6786480027F195 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D6EB8AC41D6F914700BF4BE1 /* BOTActionCollectionViewCell */,
 				D68FEF011D6BFC4B006AEFC6 /* STReorderCollectionViewCell */,
 				D65F71D81D6BB4A1005F2546 /* STARewardCollectionViewCell */,
 				D65F71C01D6B7A27005F2546 /* Shared */,
@@ -543,10 +572,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */,
-				D695B67F1D6E0E590087A4D1 /* STARewardCollectionViewCell.xib in Resources */,
+				D695B67F1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.xib in Resources */,
 				D695B6751D6E0E2F0087A4D1 /* STReorderCollectionViewCell.xib in Resources */,
 				D697617C1D660AEE00F3369F /* Assets.xcassets in Resources */,
 				D695B68C1D6E0E760087A4D1 /* STAddressCollectionViewCell.xib in Resources */,
+				D6EB8ABC1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.xib in Resources */,
 				D697617A1D660AEE00F3369F /* Main.storyboard in Resources */,
 				D695B6991D6E0E960087A4D1 /* STProductCollectionViewCell.xib in Resources */,
 				D695B67A1D6E0E420087A4D1 /* STReorderItemCollectionViewCell.xib in Resources */,
@@ -676,19 +706,21 @@
 				D695B6741D6E0E2F0087A4D1 /* STReorderCollectionViewCell.m in Sources */,
 				D695B68F1D6E0E800087A4D1 /* STMultipleProductBaseCollectionViewCell.m in Sources */,
 				D695B6B71D6E0F100087A4D1 /* STMultipleActionInputView.m in Sources */,
+				D6EB8ABD1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.m in Sources */,
 				D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */,
 				D695B69C1D6E0E9F0087A4D1 /* STMultipleProductsCollectionViewLayout.m in Sources */,
-				D695B6981D6E0E960087A4D1 /* STProductCollectionViewCell.m in Sources */,
 				D695B69F1D6E0EB60087A4D1 /* STUtilities.m in Sources */,
 				D695B6A41D6E0EC30087A4D1 /* STProductItem.m in Sources */,
 				D695B6B11D6E0EF50087A4D1 /* STMessageInputToolbar.m in Sources */,
-				D695B67E1D6E0E590087A4D1 /* STARewardCollectionViewCell.m in Sources */,
+				D6EB8AB81D6F4F0E00BF4BE1 /* STProductCollectionViewCell.m in Sources */,
+				D695B67E1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.m in Sources */,
 				D695B6BA1D6E0F180087A4D1 /* STActionInputView.m in Sources */,
 				D695B6C71D6E223F0087A4D1 /* STPrice.m in Sources */,
 				D69761711D660AEE00F3369F /* main.m in Sources */,
 				D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */,
 				D695B6A81D6E0ED40087A4D1 /* STMultiSelectionBar.m in Sources */,
 				D695B6AE1D6E0EE90087A4D1 /* STInvertedButton.m in Sources */,
+				D6EB8AC31D6F914400BF4BE1 /* BOTActionCollectionViewCell.m in Sources */,
 				D695B6B41D6E0F080087A4D1 /* STMultipleActionInputScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

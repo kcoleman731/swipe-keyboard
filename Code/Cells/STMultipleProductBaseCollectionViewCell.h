@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Atlas/Atlas.h>
-#import "STSuggestedProductCollectionViewCell.h"
+#import "STProductCollectionViewCell.h"
 #import "STItemCollectionViewCell.h"
 #import "STProductItem.h"
 
 extern NSString *const STMultipleProductBaseCollectionViewCellTitle;
+extern NSString *const STShipmentSelectedNotification;
+extern NSString *const STRewardSelectedNotificationl;
 
 @interface STMultipleProductBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
@@ -26,6 +28,6 @@ extern NSString *const STMultipleProductBaseCollectionViewCellTitle;
 /**
  *  Cell Height
  */
-+ (CGFloat)cellHeight;
++ (CGFloat)cellHeightForMessage:(LYRMessage *)message;
 
 @end
