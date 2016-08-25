@@ -57,18 +57,6 @@ NSString *const STOptionCell = @"Option Cell";
     // Product Call
     [self.collectionView registerClass:[STMultipleProductBaseCollectionViewCell class] forCellWithReuseIdentifier:[STMultipleProductBaseCollectionViewCell reuseIdentifier]];
     
-    // Reorder Cell
-    UINib *reorderCellNib = [UINib nibWithNibName:@"STReorderCollectionViewCell"  bundle:[NSBundle mainBundle]];
-    [self.collectionView registerNib:reorderCellNib forCellWithReuseIdentifier:[STReorderCollectionViewCell reuseIdentifier]];
-    
-    // Reward Cell
-    UINib *rewardCellNib = [UINib nibWithNibName:@"BOTRewardCollectionViewCell"  bundle:[NSBundle mainBundle]];
-    [self.collectionView registerNib:rewardCellNib forCellWithReuseIdentifier:[BOTRewardCollectionViewCell reuseIdentifier]];
-    
-    // Address Cell
-    UINib *addressCellNib = [UINib nibWithNibName:@"STAddressCollectionViewCell"  bundle:[NSBundle mainBundle]];
-    [self.collectionView registerNib:addressCellNib forCellWithReuseIdentifier:[STAddressCollectionViewCell reuseIdentifier]];
-    
     [self registerClass:[BOTActionCollectionViewCell class] forMessageCellWithReuseIdentifier:BOTActionCollectionViewCellReuseIdentifier];
     [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STAddressCollectionViewCell class]]] setTextColor:[UIColor darkGrayColor]];
     [[UILabel appearanceWhenContainedInInstancesOfClasses:@[[STAddressCollectionViewCell class]]] setFont:[UIFont systemFontOfSize:12 weight:UIFontWeightRegular]];
@@ -91,9 +79,6 @@ NSString *const STOptionCell = @"Option Cell";
     if ([title isEqualToString:STMultipleProductBaseCollectionViewCellTitle]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeProductInfo] options:NSJSONWritingPrettyPrinted error:nil];
         messagePart = [LYRMessagePart messagePartWithMIMEType:STProductListMIMEType data:data];
-    } else if ([title isEqualToString:STAddressCollectionViewCellTitle]) {
-        NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeAddressInfo] options:NSJSONWritingPrettyPrinted error:nil];
-        messagePart = [LYRMessagePart messagePartWithMIMEType:STAddressCollectionViewCellMimeType data:data];
     } else if ([title isEqualToString:STShippingCollectionViewCellTitle]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeShipmentInfo] options:NSJSONWritingPrettyPrinted error:nil];
         messagePart = [LYRMessagePart messagePartWithMIMEType:STShipmentMIMEType data:data];
@@ -126,8 +111,6 @@ NSString *const STOptionCell = @"Option Cell";
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:STProductListMIMEType]) {
         return [STMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
-    } else if ([part.MIMEType isEqualToString:STAddressCollectionViewCellMimeType]) {
-        return [STAddressCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:STShipmentMIMEType]) {
         return [STMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
     } else if ([part.MIMEType isEqualToString:STRewardMIMEType]) {
@@ -142,12 +125,9 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (nullable NSString *)conversationViewController:(ATLConversationViewController *)viewController reuseIdentifierForMessage:(LYRMessage *)message
 {
-    return BOTActionCollectionViewCellReuseIdentifier;
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:STProductListMIMEType]) {
         return [STMultipleProductBaseCollectionViewCell reuseIdentifier];
-    } else if ([part.MIMEType isEqualToString:STAddressCollectionViewCellMimeType]) {
-        return [STAddressCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:STShipmentMIMEType]) {
         return [STMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:STRewardMIMEType]) {

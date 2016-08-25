@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, STCellType) {
     STCellTypeRewards = 3,
 };
 
-@interface STMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource, STSuggestedProductCollectionViewCellDelegate, STItemCollectionViewCellDelegate>
+@interface STMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource, STSuggestedProductCollectionViewCellDelegate>
 
 @property (nonatomic) STCellType cellType;
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -63,9 +63,6 @@ typedef NS_ENUM(NSInteger, STCellType) {
     UINib *productNib = [UINib nibWithNibName:@"STProductCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[STProductCollectionViewCell reuseIdentifier]];
     
-    UINib *itemNib = [UINib nibWithNibName:@"STItemCollectionViewCell" bundle:StaplesUIBundle()];
-    [self.collectionView registerNib:itemNib forCellWithReuseIdentifier:[STItemCollectionViewCell reuseIdentifier]];
-    
     UINib *shippingNib = [UINib nibWithNibName:@"BOTShipmentTrackingCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:shippingNib forCellWithReuseIdentifier:[BOTShipmentTrackingCollectionViewCell reuseIdentifier]];
     
@@ -85,7 +82,7 @@ typedef NS_ENUM(NSInteger, STCellType) {
     self.collectionView.collectionViewLayout = self.collectionViewLayout;
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.showsHorizontalScrollIndicator = NO;
-    self.collectionView.userInteractionEnabled = YES;
+
     [self addSubview:self.collectionView];
     
     [self addCollecitonViewConstraints];
@@ -107,6 +104,27 @@ typedef NS_ENUM(NSInteger, STCellType) {
         return [BOTShipmentTrackingCollectionViewCell cellHeight];
     }
     return 260;
+}
+
+#pragma mark - ATLMessagePresenting
+
+- (void)presentMessage:(LYRMessage *)message
+{
+    LYRMessagePart *part = message.parts[0];
+    [self setCellTypeForMessagePart:part];
+    
+    self.items = [self cellItemsForMessagePart:part];
+    [self.collectionView reloadData];
+}
+
+- (void)updateWithSender:(nullable id<ATLParticipant>)sender
+{
+    // Nothing to do.
+}
+
+- (void)shouldDisplayAvatarItem:(BOOL)shouldDisplayAvatarItem
+{
+    // Nothing to do
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -180,27 +198,6 @@ typedef NS_ENUM(NSInteger, STCellType) {
     
     
     return returnCell;
-}
-
-#pragma mark - ATLMessagePresenting
-
-- (void)presentMessage:(LYRMessage *)message
-{
-    LYRMessagePart *part = message.parts[0];
-    [self setCellTypeForMessagePart:part];
-   
-    self.items = [self cellItemsForMessagePart:part];
-    [self.collectionView reloadData];
-}
-
-- (void)updateWithSender:(nullable id<ATLParticipant>)sender
-{
-    // Nothing to do.
-}
-
-- (void)shouldDisplayAvatarItem:(BOOL)shouldDisplayAvatarItem
-{
-    // Nothing to do
 }
 
 #pragma mark - Data Parsing
@@ -281,16 +278,6 @@ NSString *const STMessagePartRewardListKey = @"rewardslistItems";
 - (void)productCell:(STProductCollectionViewCell *)cell infoButtonWasPressedWithProduct:(STProductItem *)item
 {
     [self.productDelegate productCell:cell infoButtonWasPressedWithProduct:item];
-}
-
-- (void)ItemCell:(STItemCollectionViewCell *)cell addButtonWasPressedWithItem:(STProductItem *)item
-{
-    //
-}
-
-- (void)ItemCell:(STItemCollectionViewCell *)cell infoButtonWasPressedWithItem:(STProductItem *)item
-{
-    //
 }
 
 #pragma mark - NSLayoutConstraints For UI
