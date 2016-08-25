@@ -457,8 +457,8 @@
 		D6EB8AC41D6F914700BF4BE1 /* BOTActionCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D6EB8AC11D6F914400BF4BE1 /* BOTActionCollectionViewCell.m */,
 				D6EB8AC21D6F914400BF4BE1 /* BOTActionCollectionViewCell.h */,
+				D6EB8AC11D6F914400BF4BE1 /* BOTActionCollectionViewCell.m */,
 			);
 			name = BOTActionCollectionViewCell;
 			sourceTree = "<group>";
