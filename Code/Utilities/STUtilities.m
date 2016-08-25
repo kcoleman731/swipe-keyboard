@@ -8,6 +8,18 @@
 
 #import "STUtilities.h"
 
+NSBundle * StaplesUIBundle()
+{
+    // CocoaPods resource bundlep
+    NSBundle *bundlePath = [NSBundle bundleWithIdentifier:@"org.cocoapods.staples-chat-ui"];
+    NSString *path = [bundlePath pathForResource:@"StaplesResources" ofType:@"bundle"];
+    NSBundle *resourcesBundle = [NSBundle bundleWithPath:path];
+    if (resourcesBundle) {
+        return resourcesBundle;
+    }
+    return [NSBundle mainBundle];
+}
+
 UIColor * STLightGrayColor()
 {
     return [UIColor colorWithRed:229.0f/255.0f green:229.0f/255.0f blue:229.0f/255.0f alpha:1.0];

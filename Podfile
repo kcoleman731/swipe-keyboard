@@ -9,7 +9,8 @@ target 'Staples' do
   pod 'SDWebImage', '~> 3.8.1'
   pod 'EDColor', '~> 1.0.0'
   pod 'Reveal-iOS-SDK', '~> 1.6.2'
-
+  pod 'ZXingObjC', '~> 3.0'
+  
 end
 
 target 'StaplesTests' do

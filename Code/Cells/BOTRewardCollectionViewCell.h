@@ -10,10 +10,10 @@
 #import <Atlas/Atlas.h>
 #import "STReward.h"
 
-extern NSString *const STRewardCollectionViewCellTitle;
-extern NSString *const STRewardCollectionViewCellReuseIdentifier;
+extern NSString *const BOTRewardCollectionViewCellTitle;
+extern NSString *const BOTRewardCollectionViewCellReuseIdentifier;
 
-@interface STARewardCollectionViewCell : UICollectionViewCell
+@interface BOTRewardCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) IBOutlet UIView *view;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
@@ -24,6 +24,8 @@ extern NSString *const STRewardCollectionViewCellReuseIdentifier;
 @property (strong, nonatomic) IBOutlet UIButton *viewButton;
 @property (strong, nonatomic) IBOutlet UIImageView *barcodeImage;
 @property (strong, nonatomic) IBOutlet UILabel *barcodeNumber;
+
+- (void)setReward:(STReward *)reward;
 
 + (NSString *)reuseIdentifier;
 

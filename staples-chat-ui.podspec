@@ -20,4 +20,5 @@ Pod::Spec.new do |s|
   s.dependency                  'Atlas', '>= 0.22.0'
   s.dependency                  'SDWebImage', '~> 3.8.1'
   s.dependency                  'EDColor', '~> 1.0.0'
+  s.dependency                  'ZXingObjC', '~> 3.0'
 end

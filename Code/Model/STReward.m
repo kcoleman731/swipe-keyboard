@@ -17,7 +17,7 @@ NSString *const STRewardAmmountKey = @"STRewardAmmountKey";
 NSString *const STRewardTypeKey = @"STRewardTypeKey";
 NSString *const STRewardLinkKey = @"STRewardLinkKey";
 NSString *const STRewardBarcodeLinkKey = @"STRewardBarcodeLinkKey";
-NSString *const STRewardBarcodeNumberKey = @"STRewardBarcodeNumberKey";
+NSString *const STRewardBarcodeNumberKey = @"rewardsNumber";
 
 @implementation STReward
 
