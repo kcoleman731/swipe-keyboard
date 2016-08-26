@@ -36,4 +36,22 @@ NSString *const STPriceBuyMoreSaveMoreImageKey = @"buyMoreSaveMoreImage";
     return self;
 }
 
+- (id)objectForKey:(NSString *)key
+{
+    if ([key isEqualToString:STPriceUnitOfMeasuerKey]) {
+        return self.unitOfMeasure;
+    } else if ([key isEqualToString:STPricePriceKey]) {
+        return self.price;
+    } else if ([key isEqualToString:STPriceFinalPriceKey]) {
+        return self.finalPrice;
+    } else if ([key isEqualToString:STPriceDisplayWasPricingKey]) {
+        return @(self.displayWasPricing);
+    } else if ([key isEqualToString:STPriceDisplayRegularPricingKey]) {
+        return @(self.displayRegularPricing);
+    } else if ([key isEqualToString:STPriceBuyMoreSaveMoreImageKey]) {
+        return self.buyMoreSaveMoreImageURL;
+    }
+    return nil;
+}
+
 @end

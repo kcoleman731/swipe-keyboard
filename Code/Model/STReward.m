@@ -10,14 +10,16 @@
 
 NSString *const STRewardMIMEType = @"application/json+rewardobject";
 
-NSString *const STRewardTitleKey = @"STRewardTitleKey";
-NSString *const STRewardNameKey = @"userName";
-NSString *const STRewardMemberTypeKey = @"STRewardMemberTypeKey";
-NSString *const STRewardAmmountKey = @"rewardsTotalAmount";
-NSString *const STRewardTypeKey = @"STRewardTypeKey";
-NSString *const STRewardLinkKey = @"STRewardLinkKey";
-NSString *const STRewardBarcodeLinkKey = @"STRewardBarcodeLinkKey";
-NSString *const STRewardBarcodeNumberKey = @"rewardsNumber";
+NSString *const STRewardAmmountKey = @"amountRewards";
+NSString *const STRewardLastUpdateKey = @"lastUpdate";
+NSString *const STRewardEndsKey = @"rewardsEndDate";
+NSString *const STRewardsMessageKey = @"rewardsMessage";
+NSString *const STRewardsNumberKey = @"rewardsNumber";
+NSString *const STRewardsPromoImageKey = @"rewardsPromoImage";
+NSString *const STRewardsStartDateKey = @"rewardsStartDate";
+NSString *const STRewardsTotalAmountKey = @"rewardsTotalAmount";
+NSString *const STRewardsTypeKey = @"rewardsType";
+NSString *const STRewardsUserNameKey = @"userName";
 
 @implementation STReward
 
@@ -30,13 +32,16 @@ NSString *const STRewardBarcodeNumberKey = @"rewardsNumber";
 {
     self = [super init];
     if (self) {
-        self.title = data[STRewardTitleKey];
-        self.name = data[STRewardNameKey];
-        self.memberType = data[STRewardMemberTypeKey];
-        self.ammount = data[STRewardAmmountKey];
-        //self.type = data[STRewardTypeKey];
-        self.barcodeLink = data[STRewardBarcodeLinkKey];
-        self.barcodeNumber = data[STRewardBarcodeNumberKey];
+        self.amount = data[STRewardAmmountKey];
+        self.lastUpdate = data[STRewardLastUpdateKey];
+        self.endDate = data[STRewardEndsKey];
+        self.message = data[STRewardsMessageKey];
+        self.number = data[STRewardsNumberKey];
+        self.promoImageURL = data[STRewardsPromoImageKey];
+        self.startDate = data[STRewardsStartDateKey];
+        self.totalAmount = data[STRewardsTotalAmountKey];
+        self.type = data[STRewardsTypeKey];
+        self.userName = data[STRewardsUserNameKey];
     }
     return self;
 }

@@ -27,7 +27,7 @@ UIColor * STLightGrayColor()
 
 UIColor * STBlueColor()
 {
-    return [UIColor colorWithRed:118.0f/255.0f green:170.0f/255.0f blue:227.0f/255.0f alpha:1.0];
+    return [UIColor colorWithRed:0/255.0 green:104/255.0 blue:223/255.0 alpha:1.0];
 }
 
 NSString *const STOrderNumberKey = @"STOrderNumberKey";

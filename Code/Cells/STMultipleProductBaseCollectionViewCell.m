@@ -16,6 +16,7 @@ NSString *const BOTMultipleProductBaseCollectionViewCellTitle = @"Product Cell";
 NSString *const BOTMultipleProductBaseCollectionViewCellId = @"BOTMultipleProductBaseCollectionViewCellId";
 
 // NSNotificationKeys
+NSString *const BOTBackToSchoolViewAllSelectedNotification = @"BOTBackToSchoolViewAllSelectedNotification";
 NSString *const BOTBackToSchoolItemSelectedNotification = @"BOTBackToSchoolItemSelectedNotification";
 NSString *const BOTShipmentSelectedNotification = @"BOTShipmentSelectedNotification";
 NSString *const BOTRewardSelectedNotification = @"BOTRewardSelectedNotification";
@@ -33,13 +34,16 @@ typedef NS_ENUM(NSInteger, STCellType) {
     STCellTypeRewards = 2,
 };
 
-@interface STMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource, STSuggestedProductCollectionViewCellDelegate>
+@interface STMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
+@property (nonatomic) LYRMessage *message;
 @property (nonatomic) STCellType cellType;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) STMultipleProductsCollectionViewLayout *collectionViewLayout;
 @property (nonatomic, strong) NSArray *items;
-@property (nonatomic, strong) NSString *btsCellTitle;
+@property (nonatomic, strong) UILabel *btsHeaderLable;
+@property (nonatomic, strong) UIButton *viewAllButton;
+@property (nonatomic, strong) NSLayoutConstraint *topCollectionViewConstraint;
 
 @end
 
@@ -82,6 +86,18 @@ typedef NS_ENUM(NSInteger, STCellType) {
 
 - (void)layoutCollectionView
 {
+    self.btsHeaderLable = [UILabel new];
+    self.btsHeaderLable.font = [UIFont systemFontOfSize:14];
+    self.btsHeaderLable.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.btsHeaderLable];
+    
+    self.viewAllButton = [UIButton new];
+    self.viewAllButton.translatesAutoresizingMaskIntoConstraints = NO;
+    self.viewAllButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.viewAllButton setTitleColor:STBlueColor() forState:UIControlStateNormal];
+    [self.viewAllButton addTarget:self action:@selector(viewAllButtonWasTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.viewAllButton];
+    
     self.collectionViewLayout = [[STMultipleProductsCollectionViewLayout alloc] init];
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.collectionViewLayout];
     self.collectionView.contentInset = UIEdgeInsetsMake(0.0, 16.0, 0.0, 0.0);
@@ -94,7 +110,6 @@ typedef NS_ENUM(NSInteger, STCellType) {
     self.collectionView.showsHorizontalScrollIndicator = NO;
 
     [self addSubview:self.collectionView];
-
     [self addCollecitonViewConstraints];
 }
 
@@ -107,7 +122,7 @@ typedef NS_ENUM(NSInteger, STCellType) {
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:STProductListMIMEType]) {
-        return [STProductCollectionViewCell cellHeight];
+        return [STProductCollectionViewCell cellHeight] + 60;
     } else if ([part.MIMEType isEqualToString:STRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:STShipmentMIMEType]) {
@@ -116,10 +131,25 @@ typedef NS_ENUM(NSInteger, STCellType) {
     return 260;
 }
 
+#pragma mark - Reuse
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    [self.viewAllButton setTitle:@"" forState:UIControlStateNormal];
+    [self.viewAllButton sizeToFit];
+    
+    self.btsHeaderLable.text = @"";
+    [self.btsHeaderLable sizeToFit];
+    
+    self.topCollectionViewConstraint.constant = 0;
+}
+
 #pragma mark - ATLMessagePresenting
 
 - (void)presentMessage:(LYRMessage *)message
 {
+    self.message = message;
     LYRMessagePart *part = message.parts[0];
     [self setCellTypeForMessagePart:part];
 
@@ -238,8 +268,7 @@ typedef NS_ENUM(NSInteger, STCellType) {
         // Parse BTS Title
         NSDictionary *data = json[STMessagePartDataKey];
         NSDictionary *itemsData = data[STMessagePartBTSItemsKey];
-        self.btsCellTitle = itemsData[STMessagePartHeaderTitle];
-
+        
         /// Parse BTS Items
         LYRMessagePart *part = message.parts[1];
         NSDictionary *json = [self parseDataForMessagePart:part];
@@ -249,6 +278,15 @@ typedef NS_ENUM(NSInteger, STCellType) {
             STProductItem *item = [STProductItem productWithData:itemData];
             [items addObject:item];
         }
+        
+        // Update View
+        self.btsHeaderLable.text = itemsData[STMessagePartHeaderTitle];
+        [self.btsHeaderLable sizeToFit];
+        
+        [self.viewAllButton setTitle:@"View All" forState:UIControlStateNormal];
+        [self.viewAllButton sizeToFit];
+        
+        self.topCollectionViewConstraint.constant = 40;
     }
 
     // Parse Reward Data.
@@ -286,23 +324,25 @@ typedef NS_ENUM(NSInteger, STCellType) {
     return json;
 }
 
-#pragma mark - STMultipleProductsCollectionViewCellDelegate Calls
+#pragma mark - BTS View All Button Tap
 
-//- (void)productCell:(STProductCollectionViewCell *)cell addButtonWasPressedWithProduct:(STProductItem *)item
-//{
-//    [self.productDelegate productCell:cell addButtonWasPressedWithProduct:item];
-//}
-//
-//- (void)productCell:(STProductCollectionViewCell *)cell infoButtonWasPressedWithProduct:(STProductItem *)item
-//{
-//    [self.productDelegate productCell:cell infoButtonWasPressedWithProduct:item];
-//}
+- (void)viewAllButtonWasTapped:(UIButton *)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:BOTBackToSchoolViewAllSelectedNotification object:self.items];
+}
 
 #pragma mark - NSLayoutConstraints For UI
 
 - (void)addCollecitonViewConstraints
 {
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btsHeaderLable attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:20.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btsHeaderLable attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:10.0]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewAllButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.btsHeaderLable attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewAllButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:-20.0]];
+    
+    self.topCollectionViewConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
+    [self addConstraint:self.topCollectionViewConstraint];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0]];

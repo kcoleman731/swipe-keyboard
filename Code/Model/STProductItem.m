@@ -58,4 +58,22 @@ NSString *const STProductNameKey = @"productName";
     [aCoder encodeObject:self.name forKey:STProductNameKey];
 }
 
+- (id)objectForKey:(NSString *)key
+{
+    if ([key isEqualToString:STProductPriceKey]) {
+        return self.price;
+    } else if ([key isEqualToString:STProductNameKey]) {
+        return self.name;
+    } else if ([key isEqualToString:STProductQuantityKey]) {
+        return self.quatity;
+    } else if ([key isEqualToString:STProductPriceKey]) {
+        return self.price;
+    } else if ([key isEqualToString:STProductImageURLKey]) {
+        return self.imageURL;
+    } else if ([key isEqualToString:STProductSKUNumberKey]) {
+        return self.skuNumber;
+    }
+    return nil;
+}
+
 @end

@@ -52,12 +52,10 @@ NSString *const BOTActionCollectionViewCellReuseIdentifier = @"BOTActionCollecti
 {
     self.actionButton = [UIButton new];
     [self.actionButton setTitle:@"View My Cart" forState:UIControlStateNormal];
-    [self.actionButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [self.actionButton setTitleColor:STBlueColor() forState:UIControlStateNormal];
     [self.actionButton addTarget:self action:@selector(actionButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
-    self.actionButton.titleLabel.font = [UIFont systemFontOfSize:12];
-    self.actionButton.titleLabel.textColor =  STBlueColor();
-    self.actionButton.contentEdgeInsets = UIEdgeInsetsMake(16, 0, 0, 0);
+    self.actionButton.titleLabel.font = [UIFont systemFontOfSize:14];
     self.actionButton.translatesAutoresizingMaskIntoConstraints = NO;
     self.actionButton.layer.cornerRadius = 4;
     self.actionButton.backgroundColor = [UIColor whiteColor];
@@ -139,8 +137,8 @@ NSString *const BOTBackToSchoolActionKey = @"btsAction";
 
 - (void)configureActionButtonConstraints
 {
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.actionButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:52]];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.actionButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.bubbleView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-16]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.actionButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:36]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.actionButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.bubbleView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.actionButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.bubbleView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0]];
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.actionButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.bubbleView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0]];
 }

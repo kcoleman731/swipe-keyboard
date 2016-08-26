@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHq-MJ-CRT" customClass="STCellContainerView">
-                        <rect key="frame" x="0.0" y="0.0" width="397" height="245"/>
+                        <rect key="frame" x="0.0" y="0.0" width="437" height="245"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ME-1h-SZA">
                                 <rect key="frame" x="20" y="20" width="42" height="21"/>
@@ -113,7 +113,7 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="cHq-MJ-CRT" secondAttribute="trailing" constant="40" id="AYq-Vm-9v5"/>
+                <constraint firstAttribute="trailing" secondItem="cHq-MJ-CRT" secondAttribute="trailing" id="AYq-Vm-9v5"/>
                 <constraint firstItem="cHq-MJ-CRT" firstAttribute="top" secondItem="FpR-3x-btd" secondAttribute="top" id="I7h-1D-z3r"/>
                 <constraint firstAttribute="bottom" secondItem="cHq-MJ-CRT" secondAttribute="bottom" id="WFH-he-Plf"/>
                 <constraint firstItem="cHq-MJ-CRT" firstAttribute="leading" secondItem="FpR-3x-btd" secondAttribute="leading" id="mkO-Hh-UoH"/>
