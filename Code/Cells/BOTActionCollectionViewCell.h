@@ -16,4 +16,6 @@ extern NSString *const BOTActionCollectionViewCellButtonTapped;
 
 - (CGFloat)cellHeightForMessage:(LYRMessage *)message inView:(UIView *)view;
 
++ (NSString *)reuseIdentifier;
+
 @end
