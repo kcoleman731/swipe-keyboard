@@ -49,7 +49,7 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
 
 + (CGFloat)cellHeight
 {
-    return 200;
+    return 180;
 }
 
 - (void)setShipment:(STShipment *)shipment

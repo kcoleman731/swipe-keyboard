@@ -15,6 +15,8 @@ extern NSString *const STProductListMIMEType;
 
 + (instancetype)productWithData:(NSDictionary *)data;
 
+- (id)objectForKey:(NSString *)key;
+
 @property (nonatomic, strong) NSString *quatity;
 @property (nonatomic, strong) NSString *imageURL;
 @property (nonatomic, strong) NSString *skuNumber;

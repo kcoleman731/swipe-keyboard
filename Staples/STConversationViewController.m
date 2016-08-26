@@ -76,7 +76,7 @@ NSString *const STOptionCell = @"Option Cell";
 {
     NSError *error;
     LYRMessagePart *messagePart;
-    if ([title isEqualToString:STMultipleProductBaseCollectionViewCellTitle]) {
+    if ([title isEqualToString:BOTMultipleProductBaseCollectionViewCellTitle]) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:[self fakeProductInfo] options:NSJSONWritingPrettyPrinted error:nil];
         messagePart = [LYRMessagePart messagePartWithMIMEType:STProductListMIMEType data:data];
     } else if ([title isEqualToString:STShippingCollectionViewCellTitle]) {
@@ -185,7 +185,7 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (NSArray *)selectionItems
 {
-    return @[STMultipleProductBaseCollectionViewCellTitle, STAddressCollectionViewCellTitle, STShippingCollectionViewCellTitle , STReorderCollectionViewCellTitle, BOTRewardCollectionViewCellTitle];
+    return @[BOTMultipleProductBaseCollectionViewCellTitle, STAddressCollectionViewCellTitle, STShippingCollectionViewCellTitle , STReorderCollectionViewCellTitle, BOTRewardCollectionViewCellTitle];
 }
 
 - (NSDictionary *)fakeAddressInfo
@@ -204,14 +204,15 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (NSDictionary *)fakeRewardInfo
 {
-    return @{STRewardTitleKey : @"Staples Rewards",
-             STRewardNameKey : @"Kevin Coleman",
-             STRewardMemberTypeKey: @"Plus Member",
-             STRewardAmmountKey: @"$39.97",
-             STRewardTypeKey: @"Redeemable",
-             STRewardLinkKey: @"www.staples.com",
-             STRewardBarcodeLinkKey: @"www.staples.com",
-             STRewardBarcodeNumberKey: @"#1234567890"};
+    return @{};
+//    return @{STRewardTitleKey : @"Staples Rewards",
+//             STRewardNameKey : @"Kevin Coleman",
+//             STRewardMemberTypeKey: @"Plus Member",
+//             STRewardAmmountKey: @"$39.97",
+//             STRewardTypeKey: @"Redeemable",
+//             STRewardLinkKey: @"www.staples.com",
+//             STRewardBarcodeLinkKey: @"www.staples.com",
+//             STRewardBarcodeNumberKey: @"#1234567890"};
 }
 
 - (NSDictionary *)fakeProductInfo

@@ -12,7 +12,12 @@
 #import "STItemCollectionViewCell.h"
 #import "STProductItem.h"
 
-extern NSString *const STMultipleProductBaseCollectionViewCellTitle;
+extern NSString *const BOTMultipleProductBaseCollectionViewCellTitle;
+
+/**
+ * Posted when a `Back To School` View All button is selected. The `object` of the notification will be an array containing the BTS products.
+ */
+extern NSString *const BOTBackToSchoolViewAllSelectedNotification;
 
 /**
  * Posted when a `Back To School` product card is selected. The `object` of the notification will be the cooresponing `Product` object.

@@ -15,7 +15,7 @@
 NSString *const BOTRewardCollectionViewCellTitle= @"Reward Cell";
 NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollectionViewCellReuseIdentifier";
 
-@interface BOTRewardCollectionViewCell () <ATLMessagePresenting>
+@interface BOTRewardCollectionViewCell ()
 
 @end
 
@@ -40,31 +40,26 @@ NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollecti
 
 + (CGFloat)cellHeight
 {
-    return 280;
+    return 240;
 }
 
 - (void)setReward:(STReward *)reward
 {
-    reward.title = @"Staples Rewards";
-//    reward.name = @"Kevin Coleman";
-    reward.memberType = @"Plus Member";
-//    reward.ammount = @"$39.97";
-//    reward.barcodeNumber = @"3432970261";
-    
-    self.titleLabel.text = reward.title;
-    self.nameLabel.text = reward.name;
-    self.memberTypeLabel.text = reward.memberType;
-    self.ammountLabel.text = reward.ammount;
+    self.titleLabel.text = @"Staples Rewards";
+    self.nameLabel.text = reward.userName;
+    self.memberTypeLabel.text = @"Plus Member";
+    self.ammountLabel.text = reward.amount;
     self.rewardTypeLabel.text = @"Redeemable";
-    self.barcodeNumber.text = [NSString stringWithFormat:@"#%@",reward.barcodeNumber];
-    [self setBarCode:reward.barcodeNumber];
+    self.barcodeNumber.text = [NSString stringWithFormat:@"#%@",reward.number];
+    [self setBarCode:reward.number];
     
     self.barcodeImage.layer.borderColor = [UIColor grayColor].CGColor;
     self.barcodeImage.layer.borderWidth = 2;
     self.barcodeImage.layer.cornerRadius = 4;
 }
 
-- (void) setBarCode:(NSString *)barCode {
+- (void) setBarCode:(NSString *)barCode
+{
     if (barCode) {
         NSError *error = nil;
         ZXCode128Writer *writer = [ZXCode128Writer new];
