@@ -12,16 +12,25 @@
 #import "BOTRewardCollectionViewCell.h"
 #import "STUtilities.h"
 
-NSString *const STMultipleProductBaseCollectionViewCellTitle = @"Product Cell";
-NSString *const STMultipleProductBaseCollectionViewCellId = @"STMultipleProductBaseCollectionViewCellId";
-NSString *const STShipmentSelectedNotification = @"STShipmentSelectedNotification";
-NSString *const STRewardSelectedNotification = @"STRewardSelectedNotification";
+NSString *const BOTMultipleProductBaseCollectionViewCellTitle = @"Product Cell";
+NSString *const BOTMultipleProductBaseCollectionViewCellId = @"BOTMultipleProductBaseCollectionViewCellId";
+
+// NSNotificationKeys
+NSString *const BOTBackToSchoolItemSelectedNotification = @"BOTBackToSchoolItemSelectedNotification";
+NSString *const BOTShipmentSelectedNotification = @"BOTShipmentSelectedNotification";
+NSString *const BOTRewardSelectedNotification = @"BOTRewardSelectedNotification";
+
+// JSON Parsing Keys
+NSString *const STMessagePartBTSItemsKey = @"btsItems";
+NSString *const STMessagePartListItemsKey = @"listItems";
+NSString *const STMessagePartHeaderTitle = @"headerTitle";
+NSString *const STMessagePartShipmentTrackingListKey = @"shippmentTrackingList";
+NSString *const STMessagePartRewardListKey = @"rewardslistItems";
 
 typedef NS_ENUM(NSInteger, STCellType) {
-    STCellTypeProduct = 0,
-    STCellTypeItem = 1,
-    STCellTypeShipping = 2,
-    STCellTypeRewards = 3,
+    STCellTypeBackToSchool = 0,
+    STCellTypeShipping = 1,
+    STCellTypeRewards = 2,
 };
 
 @interface STMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource, STSuggestedProductCollectionViewCellDelegate>
@@ -30,6 +39,7 @@ typedef NS_ENUM(NSInteger, STCellType) {
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) STMultipleProductsCollectionViewLayout *collectionViewLayout;
 @property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) NSString *btsCellTitle;
 
 @end
 
@@ -59,13 +69,13 @@ typedef NS_ENUM(NSInteger, STCellType) {
 {
     self.contentView.backgroundColor = [UIColor clearColor];
     [self layoutCollectionView];
-    
+
     UINib *productNib = [UINib nibWithNibName:@"STProductCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[STProductCollectionViewCell reuseIdentifier]];
-    
+
     UINib *shippingNib = [UINib nibWithNibName:@"BOTShipmentTrackingCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:shippingNib forCellWithReuseIdentifier:[BOTShipmentTrackingCollectionViewCell reuseIdentifier]];
-    
+
     UINib *rewardNib = [UINib nibWithNibName:@"BOTRewardCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:rewardNib forCellWithReuseIdentifier:[BOTRewardCollectionViewCell reuseIdentifier]];
 }
@@ -84,13 +94,13 @@ typedef NS_ENUM(NSInteger, STCellType) {
     self.collectionView.showsHorizontalScrollIndicator = NO;
 
     [self addSubview:self.collectionView];
-    
+
     [self addCollecitonViewConstraints];
 }
 
 + (NSString *)reuseIdentifier
 {
-    return STMultipleProductBaseCollectionViewCellId;
+    return BOTMultipleProductBaseCollectionViewCellId;
 }
 
 + (CGFloat)cellHeightForMessage:(LYRMessage *)message
@@ -112,8 +122,8 @@ typedef NS_ENUM(NSInteger, STCellType) {
 {
     LYRMessagePart *part = message.parts[0];
     [self setCellTypeForMessagePart:part];
-    
-    self.items = [self cellItemsForMessagePart:part];
+
+    self.items = [self cellItemsForMessage:message];
     [self.collectionView reloadData];
 }
 
@@ -141,38 +151,42 @@ typedef NS_ENUM(NSInteger, STCellType) {
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSNotification *notification;
     switch (self.cellType) {
-        case STCellTypeProduct:
-            //notification = [NSNotification notificationWithName:STShipmentSelectedNotification object:self.items[indexPath.row]];
-            
+        case STCellTypeBackToSchool: {
+            NSNotification *notification = [NSNotification notificationWithName:BOTBackToSchoolItemSelectedNotification object:self.items[indexPath.row]];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+        }
             break;
-        case STCellTypeRewards:
-            notification = [NSNotification notificationWithName:STRewardSelectedNotification object:self.items[indexPath.row]];
-            
+
+        case STCellTypeRewards: {
+            NSNotification *notification = [NSNotification notificationWithName:BOTRewardSelectedNotification object:self.items[indexPath.row]];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+        }
             break;
-        case STCellTypeShipping:
-            notification = [NSNotification notificationWithName:STShipmentSelectedNotification object:self.items[indexPath.row]];
+
+        case STCellTypeShipping: {
+            NSNotification *notification = [NSNotification notificationWithName:BOTShipmentSelectedNotification object:self.items[indexPath.row]];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+        }
             break;
-            
+
         default:
             break;
     }
-    [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *returnCell;
     switch (self.cellType) {
-        case STCellTypeProduct: {
+        case STCellTypeBackToSchool: {
             NSString *reuseIdentifier = [STProductCollectionViewCell reuseIdentifier];
             STProductCollectionViewCell *cell = (STProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
             STProductItem *item = self.items[indexPath.row];
             [cell setProductItem:item];
             returnCell = cell;
         }
-            
+
             break;
         case STCellTypeRewards: {
             NSString *reuseIdentifier = [BOTRewardCollectionViewCell reuseIdentifier];
@@ -181,7 +195,7 @@ typedef NS_ENUM(NSInteger, STCellType) {
             [cell setReward:item];
             returnCell = cell;
         }
-            
+
             break;
         case STCellTypeShipping: {
             NSString *reuseIdentifier = [BOTShipmentTrackingCollectionViewCell reuseIdentifier];
@@ -191,26 +205,21 @@ typedef NS_ENUM(NSInteger, STCellType) {
             returnCell = cell;
         }
             break;
-            
+
         default:
             break;
     }
-    
-    
+
+
     return returnCell;
 }
 
 #pragma mark - Data Parsing
 
-NSString *const STMessagePartBTSItemsKey = @"btsItems";
-NSString *const STMessagePartListItemsKey = @"listItems";
-NSString *const STMessagePartShipmentTrackingListKey = @"shippmentTrackingList";
-NSString *const STMessagePartRewardListKey = @"rewardslistItems";
-
 - (void)setCellTypeForMessagePart:(LYRMessagePart *)part
 {
     if ([part.MIMEType isEqualToString:STProductListMIMEType]) {
-        self.cellType = STCellTypeProduct;
+        self.cellType = STCellTypeBackToSchool;
     } else if ([part.MIMEType isEqualToString:STRewardMIMEType]) {
         self.cellType = STCellTypeRewards;
     } else if ([part.MIMEType isEqualToString:STShipmentMIMEType]) {
@@ -218,34 +227,30 @@ NSString *const STMessagePartRewardListKey = @"rewardslistItems";
     }
 }
 
-- (NSArray *)cellItemsForMessagePart:(LYRMessagePart *)part
+- (NSArray *)cellItemsForMessage:(LYRMessage *)message
 {
-    NSString *dataString = [[NSString alloc] initWithData:part.data encoding:NSUTF8StringEncoding];
-    NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+    LYRMessagePart *part = message.parts[0];
+    NSDictionary *json = [self parseDataForMessagePart:part];
 
-    NSError *error;
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-    if (error) {
-        return nil;
-    }
-    
     // Parse Product Data.
     NSMutableArray *items = [[NSMutableArray alloc] init];
     if ([part.MIMEType isEqualToString:STProductListMIMEType]) {
-        NSArray *itemJSON;
+        // Parse BTS Title
         NSDictionary *data = json[STMessagePartDataKey];
-        if (data[STMessagePartBTSItemsKey]) {
-            itemJSON = data[STMessagePartBTSItemsKey];
-        } else if (data[STMessagePartListItemsKey]) {
-            itemJSON = data[STMessagePartListItemsKey];
-        }
+        NSDictionary *itemsData = data[STMessagePartBTSItemsKey];
+        self.btsCellTitle = itemsData[STMessagePartHeaderTitle];
 
+        /// Parse BTS Items
+        LYRMessagePart *part = message.parts[1];
+        NSDictionary *json = [self parseDataForMessagePart:part];
+        NSDictionary *itemData = json[STMessagePartDataKey];
+        NSArray *itemJSON = itemData[STMessagePartListItemsKey];
         for (NSDictionary *itemData in itemJSON) {
             STProductItem *item = [STProductItem productWithData:itemData];
             [items addObject:item];
         }
     }
-    
+
     // Parse Reward Data.
     if ([part.MIMEType isEqualToString:STRewardMIMEType]) {
         NSDictionary *data = json[STMessagePartDataKey];
@@ -255,7 +260,7 @@ NSString *const STMessagePartRewardListKey = @"rewardslistItems";
             [items addObject:reward];
         }
     }
-    
+
     // Parse Shipping Data.
     if ([part.MIMEType isEqualToString:STShipmentMIMEType]) {
         NSDictionary *data = json[STMessagePartDataKey];
@@ -268,17 +273,30 @@ NSString *const STMessagePartRewardListKey = @"rewardslistItems";
     return items;
 }
 
+- (NSDictionary *)parseDataForMessagePart:(LYRMessagePart *)part
+{
+    NSString *dataString = [[NSString alloc] initWithData:part.data encoding:NSUTF8StringEncoding];
+    NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSError *error;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+    if (error) {
+        return nil;
+    }
+    return json;
+}
+
 #pragma mark - STMultipleProductsCollectionViewCellDelegate Calls
 
-- (void)productCell:(STProductCollectionViewCell *)cell addButtonWasPressedWithProduct:(STProductItem *)item
-{
-    [self.productDelegate productCell:cell addButtonWasPressedWithProduct:item];
-}
-
-- (void)productCell:(STProductCollectionViewCell *)cell infoButtonWasPressedWithProduct:(STProductItem *)item
-{
-    [self.productDelegate productCell:cell infoButtonWasPressedWithProduct:item];
-}
+//- (void)productCell:(STProductCollectionViewCell *)cell addButtonWasPressedWithProduct:(STProductItem *)item
+//{
+//    [self.productDelegate productCell:cell addButtonWasPressedWithProduct:item];
+//}
+//
+//- (void)productCell:(STProductCollectionViewCell *)cell infoButtonWasPressedWithProduct:(STProductItem *)item
+//{
+//    [self.productDelegate productCell:cell infoButtonWasPressedWithProduct:item];
+//}
 
 #pragma mark - NSLayoutConstraints For UI
 

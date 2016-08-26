@@ -59,6 +59,11 @@ IB_DESIGNABLE
     self.addToCartButton.layer.shadowOffset = CGSizeMake(2.0, 2.0);
 }
 
++ (CGFloat)cellHeight
+{
+    return 160;
+}
+
 + (NSString *)reuseIdentifier
 {
     return STProductCollectionViewCellId;

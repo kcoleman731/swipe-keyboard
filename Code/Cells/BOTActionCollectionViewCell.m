@@ -9,7 +9,7 @@
 #import "BOTActionCollectionViewCell.h"
 #import "STUtilities.h"
 
-NSString *const BOTActionMIMEType = @"BOTActionMIMEType";
+NSString *const BOTActionMIMEType = @"application/json+actionobject";
 NSString *const BOTActionCollectionViewCellButtonTapped = @"BOTActionCollectionViewCellButtonTapped";
 NSString *const BOTActionCollectionViewCellReuseIdentifier = @"BOTActionCollectionViewCellReuseIdentifier";
 
