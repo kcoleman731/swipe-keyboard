@@ -18,6 +18,7 @@ NSString *const BOTActionCollectionViewCellReuseIdentifier = @"BOTActionCollecti
 @property (nonatomic) NSLayoutConstraint *bubbleWithAvatarLeadConstraint;
 @property (nonatomic) NSLayoutConstraint *bubbleWithoutAvatarLeadConstraint;
 @property (nonatomic) NSLayoutConstraint *bubbleViewWidthConstraint;
+
 - (void)lyr_baseInit;
 
 @end
@@ -25,6 +26,16 @@ NSString *const BOTActionCollectionViewCellReuseIdentifier = @"BOTActionCollecti
 @interface ATLIncomingMessageCollectionViewCell ();
 
 - (void)configureLayoutConstraints;
+
+- (NSAttributedString *)attributedStringForText:(NSString *)text;
+
++ (ATLMessageCollectionViewCell *)sharedCell;
+
+@end
+
+@interface LYRMessage ()
+
+@property (nonatomic, readwrite) NSArray *parts;
 
 @end
 
@@ -56,6 +67,61 @@ NSString *const BOTActionCollectionViewCellReuseIdentifier = @"BOTActionCollecti
     [super lyr_baseInit];
     
     [self configureActionButtonConstraints];
+}
+
++ (NSString *)reuseIdentifier
+{
+    return BOTActionCollectionViewCellReuseIdentifier;
+}
+
+NSString *const BOTHeaderTitleKey = @"headerTitle";
+NSString *const BOTBackToSchoolActionKey = @"btsAction";
+
+- (void)presentMessage:(LYRMessage *)message
+{
+    NSString *header = [self parseTextForMessage:message];
+    [self.bubbleView updateWithAttributedText:[super attributedStringForText:header]];
+    [self.bubbleView updateProgressIndicatorWithProgress:0.0 visible:NO animated:NO];
+    self.accessibilityLabel = [NSString stringWithFormat:@"Message: %@", header];
+    
+    [self updateBubbleWidth:300];
+}
+
+- (NSString *)parseTextForMessage:(LYRMessage *)message
+{
+    NSDictionary *json = [self parseDataForMessagePart:message.parts[0]];
+    NSDictionary *data = json[STMessagePartDataKey];
+    NSDictionary *action = data[BOTBackToSchoolActionKey];
+    return action[BOTHeaderTitleKey];
+}
+
+- (NSDictionary *)parseDataForMessagePart:(LYRMessagePart *)part
+{
+    NSString *dataString = [[NSString alloc] initWithData:part.data encoding:NSUTF8StringEncoding];
+    NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSError *error;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+    if (error) {
+        return nil;
+    }
+    return json;
+}
+
+//----------------------------
+// Warning Atlas Hacking Below
+//----------------------------
+
++ (CGFloat)cellHeightForMessage:(LYRMessage *)message inView:(UIView *)view
+{
+    NSString *text = [[[self alloc] init] parseTextForMessage:message];
+    UIFont *font = [[[self class] appearance] messageTextFont];
+    if (!font) {
+        font = [super sharedCell].messageTextFont;
+    }
+    CGSize size = ATLTextPlainSize(text, font);
+    size.height += ATLMessageBubbleLabelVerticalPadding * 2;
+    return size.height + 52;
 }
 
 - (void)configureLayoutConstraints

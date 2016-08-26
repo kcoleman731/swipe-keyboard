@@ -14,4 +14,6 @@ extern NSString *const BOTActionCollectionViewCellButtonTapped;
 
 @interface BOTActionCollectionViewCell : ATLIncomingMessageCollectionViewCell
 
+- (CGFloat)cellHeightForMessage:(LYRMessage *)message inView:(UIView *)view;
+
 @end
