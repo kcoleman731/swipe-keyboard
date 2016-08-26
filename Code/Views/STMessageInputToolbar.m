@@ -35,6 +35,7 @@ static CGFloat const ATLButtonHeight = 28.0f;
 
 @property (nonatomic) UIButton *listAccessoryButton;
 @property (nonatomic) UIImage *listAccessoryButtonImage;
+@property (nonnull, strong) NSLayoutConstraint *heightConstraint;
 
 @end
 
@@ -52,94 +53,159 @@ static CGFloat const ATLButtonHeight = 28.0f;
         self.listAccessoryButton.contentMode = UIViewContentModeScaleAspectFit;
         [self.listAccessoryButton setImage:self.listAccessoryButtonImage forState:UIControlStateNormal];
         [self.listAccessoryButton addTarget:self action:@selector(listButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.listAccessoryButton];        
+        
+        // Register for text change note
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(rightAccessoryButtonTappedEvent)
+                                                     name:UITextViewTextDidChangeNotification
+                                                   object:self.textInputView];
+        // Adding target for right accessory btn
+        [self.rightAccessoryButton addTarget:self
+                                      action:@selector(rightAccessoryButtonTapped1)
+                            forControlEvents:UIControlEventAllTouchEvents];
+        
+        [self addSubview:self.listAccessoryButton];
+        [self setupLayoutConstraints];
+        [self resizeTextViewAndFrame];
+        
     }
     return self;
 }
 
+- (void)setupLayoutConstraints
+{
+    [self.textInputView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    NSLayoutConstraint *leading  = [NSLayoutConstraint constraintWithItem:self.textInputView
+                                                                attribute:NSLayoutAttributeLeading
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.leftAccessoryButton
+                                                                attribute:NSLayoutAttributeTrailing
+                                                               multiplier:1.0
+                                                                 constant:8.0];
+    
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.textInputView
+                                                                attribute:NSLayoutAttributeTrailing
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.rightAccessoryButton
+                                                                attribute:NSLayoutAttributeLeading
+                                                               multiplier:1.0
+                                                                 constant:-8.0];
+    
+    NSLayoutConstraint *bottom   = [NSLayoutConstraint constraintWithItem:self.textInputView
+                                                                attribute:NSLayoutAttributeBottom
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self
+                                                                attribute:NSLayoutAttributeBottom
+                                                               multiplier:1.0
+                                                                 constant:-8.0];
+
+    NSLayoutConstraint *top      = [NSLayoutConstraint constraintWithItem:self.textInputView
+                                                                attribute:NSLayoutAttributeTop
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self
+                                                                attribute:NSLayoutAttributeTop
+                                                               multiplier:1.0
+                                                                 constant:8.0];
+    
+    self.heightConstraint      = [NSLayoutConstraint constraintWithItem:self.textInputView
+                                                                      attribute:NSLayoutAttributeHeight
+                                                                      relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                         toItem:nil
+                                                                      attribute:NSLayoutAttributeNotAnAttribute
+                                                                     multiplier:1.0
+                                                                       constant:40.0];
+    
+    [self addConstraints:@[leading, trailing, top, bottom, self.heightConstraint]];
+}
+
 - (void)layoutSubviews
 {
-    [super layoutSubviews];
+    NSArray *layoutConstraints = self.constraints;
+    for (NSLayoutConstraint *constraint in self.constraints) {
+        if (constraint.firstAttribute == NSLayoutAttributeHeight && constraint.constant == 44.0) {
+            [self removeConstraint:constraint];
+        }
+    }
     
+    // First apperance layout
     if (self.firstAppearance) {
-        [self configureRightAccessoryButtonState];
         self.firstAppearance = NO;
+        [self configureRightAccessoryButtonState];
     }
     
-    // set the font for the dummy text view as well
-    self.dummyTextView.font = self.textInputView.font;
+    CGRect listButtonToRect;
+    CGRect leftButtonToRect;
+    CGRect rightButtonToRect;
     
-    // We layout the views manually since using Auto Layout seems to cause issues in this context (i.e. an auto height resizing text view in an input accessory view) especially with iOS 7.1.
-    CGRect frame = self.frame;
+    // Configure leading edge buttons
+    // Note: Horiz Order -> [ListButton] [LeftButton] [TextView] [RightButton]
     
-    // Kevin Coleman: Including the list button frame.
-    CGRect listButtonFrame = self.listAccessoryButton.frame;
-    CGRect leftButtonFrame = self.leftAccessoryButton.frame;
-    CGRect rightButtonFrame = self.rightAccessoryButton.frame;
-    CGRect textViewFrame = self.textInputView.frame;
+    // Const Bottom Padding
+    const CGFloat vertPadding = 8.0f;
     
-    if (!self.leftAccessoryButton) {
-        leftButtonFrame.size.width = 0;
-    } else {
-        listButtonFrame.size.width = ATLLeftAccessoryButtonWidth;
-        leftButtonFrame.size.width = ATLLeftAccessoryButtonWidth;
-    }
+    // List Button
+    listButtonToRect.size.height = ATLButtonHeight;
+    listButtonToRect.size.width  = ATLButtonHeight;
+    listButtonToRect.origin.x    = ATLLeftButtonHorizontalMargin;
+    listButtonToRect.origin.y    = self.frame.size.height - vertPadding - listButtonToRect.size.height;
+
+    // Left Button
+    leftButtonToRect.size.height = ATLButtonHeight;
+    leftButtonToRect.size.width  = ATLButtonHeight;
+    leftButtonToRect.origin.x    = listButtonToRect.origin.x + listButtonToRect.size.width + ATLLeftButtonHorizontalMargin;
+    leftButtonToRect.origin.y    = self.frame.size.height - vertPadding - listButtonToRect.size.height;
     
-    // This makes the input accessory view work with UISplitViewController to manage the frame width.
-    if (self.containerViewController) {
-        CGRect windowRect = [self.containerViewController.view.superview convertRect:self.containerViewController.view.frame toView:nil];
-        frame.size.width = windowRect.size.width;
-        frame.origin.x = windowRect.origin.x;
-    }
+    // Right Button
+    rightButtonToRect.size.height = ATLButtonHeight;
+    rightButtonToRect.size.width  = ATLRightAccessoryButtonDefaultWidth;
+    rightButtonToRect.origin.x    = CGRectGetMaxX(self.bounds) - ATLRightButtonHorizontalMargin - ATLRightAccessoryButtonDefaultWidth;
+    rightButtonToRect.origin.y    = self.bounds.size.height - vertPadding - listButtonToRect.size.height;
     
-    // Kevin Coleman: List button must offset the default `leftAccessoryButton`.
-    listButtonFrame.size.height = ATLButtonHeight;
-    listButtonFrame.origin.x = ATLLeftButtonHorizontalMargin;
+    // Set All Frames
+    self.listAccessoryButton.frame  = listButtonToRect;
+    self.leftAccessoryButton.frame  = leftButtonToRect;
+    self.rightAccessoryButton.frame = rightButtonToRect;
     
-    leftButtonFrame.size.height = ATLButtonHeight;
-    leftButtonFrame.origin.x = listButtonFrame.origin.x + listButtonFrame.size.width ;
+    // Getting the text input view frame here so we can bypass the call to super
+    CGRect textViewRect = self.textInputView.frame;
     
-    if (self.rightAccessoryButtonFont && (self.textInputView.text.length || !self.displaysRightAccessoryImage)) {
-        rightButtonFrame.size.width = CGRectIntegral([ATLLocalizedString(@"atl.messagetoolbar.send.key", self.rightAccessoryButtonTitle, nil) boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:0 attributes:@{NSFontAttributeName: self.rightAccessoryButtonFont} context:nil]).size.width + ATLRightAccessoryButtonPadding;
-    } else {
-        rightButtonFrame.size.width = ATLRightAccessoryButtonDefaultWidth;
-    }
+    // Calc TextView Horiz Area
+    CGFloat textViewToX     = CGRectGetMaxX(self.leftAccessoryButton.frame) + 16.0;
+    CGFloat textViewToWidth = CGRectGetMinX(self.rightAccessoryButton.frame) - textViewToX;
+    textViewRect.origin.x   = textViewToX;
+    textViewRect.size.width = textViewToWidth;
+    self.textInputView.frame = textViewRect;
+}
+
+- (void)resizeTextViewAndFrame
+{
+    // Getting the text input view frame here so we can bypass the call to super
+    CGRect textViewRect = self.textInputView.frame;
+    CGRect prevTextViewRect = textViewRect;
+
+    // Calc TextView Vert Area
+    CGSize toSize            = [self.textInputView sizeThatFits:CGSizeMake(textViewRect.size.width, MAXFLOAT)];
+    CGFloat toHeight         = fmax(toSize.height, 30.0f);
+    textViewRect.size.height = toHeight;
     
-    rightButtonFrame.size.height = ATLButtonHeight;
-    rightButtonFrame.origin.x = CGRectGetWidth(frame) - CGRectGetWidth(rightButtonFrame) - ATLRightButtonHorizontalMargin;
+    // Set Text View Frame
+    [self layoutIfNeeded];
+    [UIView performWithoutAnimation:^{
+        self.heightConstraint.constant = textViewRect.size.height;
+    }];
     
-    textViewFrame.origin.x = CGRectGetMaxX(leftButtonFrame) + ATLLeftButtonHorizontalMargin;
-    textViewFrame.origin.y = self.verticalMargin;
-    textViewFrame.size.width = CGRectGetMinX(rightButtonFrame) - CGRectGetMinX(textViewFrame) - ATLRightButtonHorizontalMargin;
+    // Increase frame if need be
+    CGRect toFrame      = self.frame;
+    toFrame.size.height = toHeight + (2.0f * 8.0f);
     
-    self.dummyTextView.attributedText = self.textInputView.attributedText;
-    CGSize fittedTextViewSize = [self.dummyTextView sizeThatFits:CGSizeMake(CGRectGetWidth(textViewFrame), MAXFLOAT)];
-    textViewFrame.size.height = ceil(MIN(fittedTextViewSize.height, self.textViewMaxHeight));
-    
-    frame.size.height = CGRectGetHeight(textViewFrame) + self.verticalMargin * 2;
-    frame.origin.y -= frame.size.height - CGRectGetHeight(self.frame);
-    
-    // Only calculate button centerY once to anchor it to bottom of bar.
-    if (!self.buttonCenterY) {
-        self.buttonCenterY = (CGRectGetHeight(frame) - CGRectGetHeight(leftButtonFrame)) / 2;
-    }
-    listButtonFrame.origin.y = frame.size.height - listButtonFrame.size.height - self.buttonCenterY;
-    leftButtonFrame.origin.y = frame.size.height - leftButtonFrame.size.height - self.buttonCenterY;
-    rightButtonFrame.origin.y = frame.size.height - rightButtonFrame.size.height - self.buttonCenterY;
-    
-    BOOL heightChanged = CGRectGetHeight(textViewFrame) != CGRectGetHeight(self.textInputView.frame);
-    
-    self.listAccessoryButton.frame = listButtonFrame;
-    self.leftAccessoryButton.frame = leftButtonFrame;
-    self.rightAccessoryButton.frame = rightButtonFrame;
-    self.textInputView.frame = textViewFrame;
-    
-    // Setting one's own frame like this is a no-no but seems to be the lesser of evils when working around the layout issues mentioned above.
-    self.frame = frame;
-    
-    if (heightChanged) {
+    if (prevTextViewRect.size.height != toFrame.size.height) {
         [[NSNotificationCenter defaultCenter] postNotificationName:ATLMessageInputToolbarDidChangeHeightNotification object:self];
     }
+}
+
+- (void)rightAccessoryButtonTappedEvent
+{
+    [self resizeTextViewAndFrame];
 }
 
 - (void)listButtonTapped:(UIButton *)sender
@@ -147,6 +213,11 @@ static CGFloat const ATLButtonHeight = 28.0f;
     if ([self.customDelegate respondsToSelector:@selector(messageInputToolbar:didTapListAccessoryButton:)]) {
         [self.customDelegate messageInputToolbar:self didTapListAccessoryButton:sender];
     }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
