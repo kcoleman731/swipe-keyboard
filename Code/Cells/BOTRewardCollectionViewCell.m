@@ -46,10 +46,10 @@ NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollecti
 - (void)setReward:(STReward *)reward
 {
     reward.title = @"Staples Rewards";
-    reward.name = @"Kevin Coleman";
+//    reward.name = @"Kevin Coleman";
     reward.memberType = @"Plus Member";
-    reward.ammount = @"$39.97";
-    reward.barcodeNumber = @"3432970261";
+//    reward.ammount = @"$39.97";
+//    reward.barcodeNumber = @"3432970261";
     
     self.titleLabel.text = reward.title;
     self.nameLabel.text = reward.name;

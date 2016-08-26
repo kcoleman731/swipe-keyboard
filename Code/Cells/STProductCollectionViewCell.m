@@ -64,6 +64,10 @@ IB_DESIGNABLE
     return STProductCollectionViewCellId;
 }
 
++ (CGFloat)cellHeight
+{
+    return 280;
+}
 #pragma mark - Product Setter
 
 // Setter for the product

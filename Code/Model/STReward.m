@@ -11,9 +11,9 @@
 NSString *const STRewardMIMEType = @"application/json+rewardobject";
 
 NSString *const STRewardTitleKey = @"STRewardTitleKey";
-NSString *const STRewardNameKey = @"STRewardNameKey";
+NSString *const STRewardNameKey = @"userName";
 NSString *const STRewardMemberTypeKey = @"STRewardMemberTypeKey";
-NSString *const STRewardAmmountKey = @"STRewardAmmountKey";
+NSString *const STRewardAmmountKey = @"rewardsTotalAmount";
 NSString *const STRewardTypeKey = @"STRewardTypeKey";
 NSString *const STRewardLinkKey = @"STRewardLinkKey";
 NSString *const STRewardBarcodeLinkKey = @"STRewardBarcodeLinkKey";

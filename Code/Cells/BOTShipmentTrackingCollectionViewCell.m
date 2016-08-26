@@ -19,19 +19,15 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
     [super awakeFromNib];
     
     // State Config
-    self.placedImageView.backgroundColor = STBlueColor();
     self.placedImageView.layer.cornerRadius = 20;
     self.placedLabel.text = @"PLACED";
     
-    self.shippedImageView.backgroundColor = STBlueColor();
     self.shippedImageView.layer.cornerRadius = 20;
     self.shippedLabel.text = @"SHIPPED";
     
-    self.outForDeliveryImageView.backgroundColor = STBlueColor();
     self.outForDeliveryImageView.layer.cornerRadius = 20;
     self.outForDeliveryLabel.text = @"OUT FOR DELIVERY";
     
-    self.completeImageView.backgroundColor = STBlueColor();
     self.completeImageView.layer.cornerRadius = 20;
     self.completedLabel.text = @"COMPLETE";
     
@@ -69,7 +65,42 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
     NSString *orderNumberText = [NSString stringWithFormat:@"Order Number: %@", shipment.orderNumber];
     self.orderNumberLabel.attributedText = [self attributedTextForOrderNumber:orderNumberText];
     self.orderDetailLabel.text = [NSString stringWithFormat:@"%@ Boxes | ETA %@", shipment.boxCount, dateString];
+    
+    
+    if([shipment.status isEqual: @"Processing"]) {
+        self.placedImageView.backgroundColor = STBlueColor();
+        self.shippedImageView.backgroundColor = STLightGrayColor();
+        self.outForDeliveryImageView.backgroundColor = STLightGrayColor();
+        self.completeImageView.backgroundColor = STLightGrayColor();
+        
+    }else if ([shipment.status isEqual:@"In-Transit"]) {
+        self.lineNumber1.backgroundColor = STBlueColor();
+        self.placedImageView.backgroundColor = STBlueColor();
+        self.shippedImageView.backgroundColor = STBlueColor();
+        self.outForDeliveryImageView.backgroundColor = STLightGrayColor();
+         self.completeImageView.backgroundColor = STLightGrayColor();
+        
+    }else if ([shipment.status isEqual:@"Out for delivery"] || [shipment.status isEqual:@"Shipped"]) {
+        self.lineNumber1.backgroundColor = STBlueColor();
+        self.lineNumber2.backgroundColor = STBlueColor();
+        self.placedImageView.backgroundColor = STBlueColor();
+        self.shippedImageView.backgroundColor = STBlueColor();
+        self.outForDeliveryImageView.backgroundColor = STBlueColor();
+        self.completeImageView.backgroundColor = STLightGrayColor();
+        
+    }else if ([shipment.status isEqual:@"Delivered"]) {
+        self.lineNumber1.backgroundColor = STBlueColor();
+        self.lineNumber2.backgroundColor = STBlueColor();
+        self.lineNumber3.backgroundColor = STBlueColor();
+        self.placedImageView.backgroundColor = STBlueColor();
+        self.shippedImageView.backgroundColor = STBlueColor();
+        self.outForDeliveryImageView.backgroundColor = STBlueColor();
+        self.completeImageView.backgroundColor = STBlueColor();
+    }
+
 }
+
+
 
 #pragma mark - Attibuted Text
 
