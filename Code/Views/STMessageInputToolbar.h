@@ -17,6 +17,11 @@
  */
 - (void)messageInputToolbar:(STMessageInputToolbar *)messageInputToolbar didTapListAccessoryButton:(UIButton *)listAccessoryButton;
 
+/**
+ Notifies the receiver that the multi selection bar was tapped
+ */
+- (void)messageInputToolbar:(STMessageInputToolbar *)messageInputToolbar multiSelectionBarTappedWithTitle:(NSString *)title;
+
 @end
 
 /**
@@ -30,5 +35,11 @@
  The delegate for the custom subclass.
  */
 @property (nonatomic, weak) id <STMessageInputToolbarDelegate> customDelegate;
+
+/**
+ *  Setter for displaying the multi action Toolbar
+ *
+ */
+- (void)displayMultiSelectionInputBar:(BOOL)displayBar;
 
 @end

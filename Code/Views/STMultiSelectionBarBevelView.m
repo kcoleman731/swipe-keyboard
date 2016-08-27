@@ -10,6 +10,12 @@
 
 @implementation STMultiSelectionBarBevelView
 
+- (void)setTintColor:(UIColor *)tintColor
+{
+    [super setTintColor:tintColor];
+    [self setNeedsDisplay];
+}
+
 - (void)drawRect:(CGRect)rect {
     // Making a 'T' Bevel
     const CGFloat lineWidth = 1.0;

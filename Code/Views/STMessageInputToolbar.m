@@ -7,7 +7,7 @@
 //
 
 #import "STMessageInputToolbar.h"
-#import "STMultipleActionInputView.h"
+#import "STMultiSelectionBar.h"
 
 extern NSString *const ATLMessageInputToolbarCameraButton;
 
@@ -19,6 +19,7 @@ static CGFloat const ATLRightAccessoryButtonDefaultWidth = 46.0f;
 static CGFloat const ATLRightAccessoryButtonPadding = 5.3f;
 static CGFloat const ATLRightButtonHorizontalMargin = 4.0f;
 static CGFloat const ATLButtonHeight = 28.0f;
+static CGFloat const STMultiActionToolbarDefaultHeight = 44.0f;
 
 @interface ATLMessageInputToolbar ()
 
@@ -31,11 +32,15 @@ static CGFloat const ATLButtonHeight = 28.0f;
 
 @end
 
-@interface STMessageInputToolbar ()
+@interface STMessageInputToolbar () <STMultiSelectionBarDelegate>
 
 @property (nonatomic) UIButton *listAccessoryButton;
 @property (nonatomic) UIImage *listAccessoryButtonImage;
-@property (nonnull, strong) NSLayoutConstraint *heightConstraint;
+@property (nonnull, strong) NSLayoutConstraint *inputTextViewHeightConstraint;
+@property (nonnull, strong) NSLayoutConstraint *multiSelectionHeightConstraint;
+@property (nonnull, strong) STMultiSelectionBar *multiActionInputView;;
+
+@property (nonatomic) BOOL isShowingMultiSelectionBar;
 
 @end
 
@@ -45,15 +50,6 @@ static CGFloat const ATLButtonHeight = 28.0f;
 {
     self = [super init];
     if (self) {
-        NSBundle *resourcesBundle = ATLResourcesBundle();
-        
-        // Messages
-        self.listAccessoryButtonImage = [UIImage imageNamed:@"location_dark" inBundle:resourcesBundle compatibleWithTraitCollection:nil];
-        self.listAccessoryButton = [[UIButton alloc] init];
-        self.listAccessoryButton.contentMode = UIViewContentModeScaleAspectFit;
-        [self.listAccessoryButton setImage:self.listAccessoryButtonImage forState:UIControlStateNormal];
-        [self.listAccessoryButton addTarget:self action:@selector(listButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-        
         // Register for text change note
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(rightAccessoryButtonTappedEvent)
@@ -64,62 +60,103 @@ static CGFloat const ATLButtonHeight = 28.0f;
                                       action:@selector(rightAccessoryButtonTapped1)
                             forControlEvents:UIControlEventAllTouchEvents];
         
-        [self addSubview:self.listAccessoryButton];
-        [self setupLayoutConstraints];
+        // Accessorty Btn
+        [self setupListAccessoryButton];
+        
+        // Multi Selection Bar
+        [self setupMultiSelectionBar];
+        [self setupMultiSelectionToolbarConstraints];
+        
+        // Init some layout
+        [self setupTextInputViewConstraints];
         [self resizeTextViewAndFrame];
         
     }
     return self;
 }
 
-- (void)setupLayoutConstraints
+- (void)setupListAccessoryButton
 {
-    [self.textInputView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    NSLayoutConstraint *leading  = [NSLayoutConstraint constraintWithItem:self.textInputView
-                                                                attribute:NSLayoutAttributeLeading
-                                                                relatedBy:NSLayoutRelationEqual
-                                                                   toItem:self.leftAccessoryButton
-                                                                attribute:NSLayoutAttributeTrailing
-                                                               multiplier:1.0
-                                                                 constant:8.0];
-    
-    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.textInputView
-                                                                attribute:NSLayoutAttributeTrailing
-                                                                relatedBy:NSLayoutRelationEqual
-                                                                   toItem:self.rightAccessoryButton
-                                                                attribute:NSLayoutAttributeLeading
-                                                               multiplier:1.0
-                                                                 constant:-8.0];
-    
-    NSLayoutConstraint *bottom   = [NSLayoutConstraint constraintWithItem:self.textInputView
-                                                                attribute:NSLayoutAttributeBottom
-                                                                relatedBy:NSLayoutRelationEqual
-                                                                   toItem:self
-                                                                attribute:NSLayoutAttributeBottom
-                                                               multiplier:1.0
-                                                                 constant:-8.0];
-
-    NSLayoutConstraint *top      = [NSLayoutConstraint constraintWithItem:self.textInputView
-                                                                attribute:NSLayoutAttributeTop
-                                                                relatedBy:NSLayoutRelationEqual
-                                                                   toItem:self
-                                                                attribute:NSLayoutAttributeTop
-                                                               multiplier:1.0
-                                                                 constant:8.0];
-    
-    self.heightConstraint      = [NSLayoutConstraint constraintWithItem:self.textInputView
-                                                                      attribute:NSLayoutAttributeHeight
-                                                                      relatedBy:NSLayoutRelationGreaterThanOrEqual
-                                                                         toItem:nil
-                                                                      attribute:NSLayoutAttributeNotAnAttribute
-                                                                     multiplier:1.0
-                                                                       constant:40.0];
-    
-    [self addConstraints:@[leading, trailing, top, bottom, self.heightConstraint]];
+    // Messages
+    NSBundle *resourcesBundle = ATLResourcesBundle();
+    self.listAccessoryButtonImage = [UIImage imageNamed:@"location_dark" inBundle:resourcesBundle compatibleWithTraitCollection:nil];
+    self.listAccessoryButton = [[UIButton alloc] init];
+    self.listAccessoryButton.contentMode = UIViewContentModeScaleAspectFit;
+    [self.listAccessoryButton setImage:self.listAccessoryButtonImage forState:UIControlStateNormal];
+    [self.listAccessoryButton addTarget:self action:@selector(listButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.listAccessoryButton];
 }
+
+- (void)setupMultiSelectionBar
+{
+    self.multiActionInputView = [[STMultiSelectionBar alloc] init];
+    [self.multiActionInputView setLeftSelectionTitle:@"Buy Now" rightSelectionTitle:@"Customize in cart"];
+    self.multiActionInputView.delegate = self;
+    self.multiActionInputView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.multiActionInputView];
+}
+
+- (void)displayMultiSelectionInputBar:(BOOL)displayBar;
+{
+    self.isShowingMultiSelectionBar = displayBar;
+}
+
+- (void)setIsShowingMultiSelectionBar:(BOOL)isShowingMultiSelectionBar
+{
+    if (_isShowingMultiSelectionBar != isShowingMultiSelectionBar) {
+        CGFloat toHeight = STMultiActionToolbarDefaultHeight;
+        if (!isShowingMultiSelectionBar) {
+            toHeight = 0.0f;
+        }
+        
+        // Animate to the position
+        [self layoutIfNeeded];
+        [UIView animateWithDuration:0.3f
+                              delay:0
+                            options:UIViewAnimationOptionBeginFromCurrentState
+                         animations:^{
+                             self.multiSelectionHeightConstraint.constant = toHeight;
+                             [self layoutIfNeeded];
+                         }
+                         completion:^(BOOL finished) {
+                             [[NSNotificationCenter defaultCenter] postNotificationName:ATLMessageInputToolbarDidChangeHeightNotification object:self];
+                         }];
+    }
+}
+
+#pragma mark - Override for Frame Calc
+
+- (CGRect)frame
+{
+    if (self.isShowingMultiSelectionBar) {
+        CGRect multiSelecitonFrame = self.multiActionInputView.frame;
+        CGRect ownFrame            = [super frame];
+        ownFrame.size.height       = ownFrame.size.height + multiSelecitonFrame.size.height;
+        ownFrame.origin.y          = multiSelecitonFrame.origin.y;
+        return ownFrame;
+    }
+    return [super frame];
+}
+
+#pragma mark - Target / Action Reveivers
+
+- (void)rightAccessoryButtonTappedEvent
+{
+    [self resizeTextViewAndFrame];
+}
+
+- (void)listButtonTapped:(UIButton *)sender
+{
+    if ([self.customDelegate respondsToSelector:@selector(messageInputToolbar:didTapListAccessoryButton:)]) {
+        [self.customDelegate messageInputToolbar:self didTapListAccessoryButton:sender];
+    }
+}
+
+#pragma mark - Subview Layouts
 
 - (void)layoutSubviews
 {
+    // Remove the layout constraint for height attempting to lock this at 44.0
     NSArray *layoutConstraints = self.constraints;
     for (NSLayoutConstraint *constraint in self.constraints) {
         if (constraint.firstAttribute == NSLayoutAttributeHeight && constraint.constant == 44.0) {
@@ -170,10 +207,10 @@ static CGFloat const ATLButtonHeight = 28.0f;
     CGRect textViewRect = self.textInputView.frame;
     
     // Calc TextView Horiz Area
-    CGFloat textViewToX     = CGRectGetMaxX(self.leftAccessoryButton.frame) + 16.0;
-    CGFloat textViewToWidth = CGRectGetMinX(self.rightAccessoryButton.frame) - textViewToX;
-    textViewRect.origin.x   = textViewToX;
-    textViewRect.size.width = textViewToWidth;
+    CGFloat textViewToX      = CGRectGetMaxX(self.leftAccessoryButton.frame) + 16.0;
+    CGFloat textViewToWidth  = CGRectGetMinX(self.rightAccessoryButton.frame) - textViewToX;
+    textViewRect.origin.x    = textViewToX;
+    textViewRect.size.width  = textViewToWidth;
     self.textInputView.frame = textViewRect;
 }
 
@@ -191,29 +228,139 @@ static CGFloat const ATLButtonHeight = 28.0f;
     // Set Text View Frame
     [self layoutIfNeeded];
     [UIView performWithoutAnimation:^{
-        self.heightConstraint.constant = textViewRect.size.height;
+        self.inputTextViewHeightConstraint.constant = textViewRect.size.height;
     }];
     
     // Increase frame if need be
     CGRect toFrame      = self.frame;
     toFrame.size.height = toHeight + (2.0f * 8.0f);
     
+    // Notify of height change
     if (prevTextViewRect.size.height != toFrame.size.height) {
         [[NSNotificationCenter defaultCenter] postNotificationName:ATLMessageInputToolbarDidChangeHeightNotification object:self];
     }
 }
 
-- (void)rightAccessoryButtonTappedEvent
+#pragma mark - Touch Overrides For UI Interaction w/ View Outside of frame
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
-    [self resizeTextViewAndFrame];
+    // Return YES if the touch is within bounds or multiaction view
+    if (CGRectContainsPoint(self.bounds, point) || CGRectContainsPoint(self.multiActionInputView.frame, point)) {
+        return YES;
+    }
+    return NO;
 }
 
-- (void)listButtonTapped:(UIButton *)sender
-{
-    if ([self.customDelegate respondsToSelector:@selector(messageInputToolbar:didTapListAccessoryButton:)]) {
-        [self.customDelegate messageInputToolbar:self didTapListAccessoryButton:sender];
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    CGPoint pointForTargetView = [self.multiActionInputView convertPoint:point fromView:self];
+    
+    if (CGRectContainsPoint(self.multiActionInputView.bounds, pointForTargetView)) {
+        return [self.multiActionInputView hitTest:pointForTargetView withEvent:event];
     }
+    
+    return [super hitTest:point withEvent:event];
 }
+
+#pragma mark - Layout Constraints
+
+- (void)setupMultiSelectionToolbarConstraints
+{
+    [self.multiActionInputView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    NSLayoutConstraint *leading  = [NSLayoutConstraint constraintWithItem:self.multiActionInputView
+                                                                attribute:NSLayoutAttributeLeading
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self
+                                                                attribute:NSLayoutAttributeLeading
+                                                               multiplier:1.0
+                                                                 constant:0.0];
+    
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.multiActionInputView
+                                                                attribute:NSLayoutAttributeTrailing
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self
+                                                                attribute:NSLayoutAttributeTrailing
+                                                               multiplier:1.0
+                                                                 constant:0.0];
+    
+    NSLayoutConstraint *bottom   = [NSLayoutConstraint constraintWithItem:self.multiActionInputView
+                                                                attribute:NSLayoutAttributeBottom
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self
+                                                                attribute:NSLayoutAttributeTop
+                                                               multiplier:1.0
+                                                                 constant:0.0];
+    
+    self.multiSelectionHeightConstraint = [NSLayoutConstraint constraintWithItem:self.multiActionInputView
+                                                                       attribute:NSLayoutAttributeHeight
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:nil
+                                                                       attribute:NSLayoutAttributeNotAnAttribute
+                                                                      multiplier:1.0
+                                                                        constant:STMultiActionToolbarDefaultHeight];
+    
+    [self addConstraints:@[leading, trailing, bottom, self.multiSelectionHeightConstraint]];
+}
+
+- (void)setupTextInputViewConstraints
+{
+    [self.textInputView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    NSLayoutConstraint *leading  = [NSLayoutConstraint constraintWithItem:self.textInputView
+                                                                attribute:NSLayoutAttributeLeading
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.leftAccessoryButton
+                                                                attribute:NSLayoutAttributeTrailing
+                                                               multiplier:1.0
+                                                                 constant:8.0];
+    
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.textInputView
+                                                                attribute:NSLayoutAttributeTrailing
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self.rightAccessoryButton
+                                                                attribute:NSLayoutAttributeLeading
+                                                               multiplier:1.0
+                                                                 constant:-8.0];
+    
+    NSLayoutConstraint *bottom   = [NSLayoutConstraint constraintWithItem:self.textInputView
+                                                                attribute:NSLayoutAttributeBottom
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self
+                                                                attribute:NSLayoutAttributeBottom
+                                                               multiplier:1.0
+                                                                 constant:-8.0];
+    
+    NSLayoutConstraint *top      = [NSLayoutConstraint constraintWithItem:self.textInputView
+                                                                attribute:NSLayoutAttributeTop
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self
+                                                                attribute:NSLayoutAttributeTop
+                                                               multiplier:1.0
+                                                                 constant:8.0];
+    
+    self.inputTextViewHeightConstraint = [NSLayoutConstraint constraintWithItem:self.textInputView
+                                                                      attribute:NSLayoutAttributeHeight
+                                                                      relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                         toItem:nil
+                                                                      attribute:NSLayoutAttributeNotAnAttribute
+                                                                     multiplier:1.0
+                                                                       constant:40.0];
+    
+    [self addConstraints:@[leading, trailing, top, bottom, self.inputTextViewHeightConstraint]];
+}
+
+#pragma mark - STMultiSelectionBarDelegate Calls
+
+- (void)multiSelectionBar:(STMultiSelectionBar *)bar leftSelectionHitWithTitle:(NSString *)title
+{
+    
+}
+
+- (void)multiSelectionBar:(STMultiSelectionBar *)bar rightSelectionHitWithTitle:(NSString *)title
+{
+    
+}
+
+#pragma mark - Dealloc
 
 - (void)dealloc
 {

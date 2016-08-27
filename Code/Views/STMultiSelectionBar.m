@@ -9,6 +9,9 @@
 #import "STMultiSelectionBar.h"
 #import "STInvertedButton.h"
 #import "STMultiSelectionBarBevelView.h"
+#import "UIColor+Hex.h"
+
+static NSString *const jordyBlueCode = @"#76AAE3";
 
 @interface STMultiSelectionBar()
 
@@ -45,8 +48,13 @@
 
 - (void)commonInit
 {
+    self.backgroundColor = [UIColor whiteColor];
     [self layoutButtons];
     [self constructBevel];
+    
+    // Color
+    UIColor *blue = [UIColor colorWithRed:118.0f/255.0f green:170.0f/255.0f blue:227.0f/255.0f alpha:1.0];
+    [self setTintColor:blue];
 }
 
 #pragma mark - Layout
@@ -57,7 +65,7 @@
     self.leftButton = [[STInvertedButton alloc] init];
     [self.leftButton setTitleColor:self.leftButton.tintColor forState:UIControlStateNormal];
     [self.leftButton addTarget:self action:@selector(leftButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    [self.leftButton.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
+    self.leftButton.titleLabel.font = [UIFont systemFontOfSize:16.0 weight:UIFontWeightThin];
     self.leftButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.leftButton];
 
@@ -65,7 +73,7 @@
     self.rightButton = [[STInvertedButton alloc] init];
     [self.rightButton setTitleColor:self.rightButton.tintColor forState:UIControlStateNormal];
     [self.rightButton addTarget:self action:@selector(rightButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    [self.rightButton.titleLabel setFont:[UIFont systemFontOfSize:12.0]];
+    self.rightButton.titleLabel.font = [UIFont systemFontOfSize:16.0 weight:UIFontWeightThin];
     self.rightButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.rightButton];
     
@@ -91,8 +99,8 @@
     self.bevel.tintColor       = tintColor;
     self.leftButton.tintColor  = tintColor;
     self.rightButton.tintColor = tintColor;
-    [self.leftButton setTitleColor:tintColor forState:UIControlStateHighlighted];
-    [self.rightButton setTitleColor:tintColor forState:UIControlStateHighlighted];
+    [self.leftButton setTitleColor:tintColor forState:UIControlStateNormal];
+    [self.rightButton setTitleColor:tintColor forState:UIControlStateNormal];
 }
 
 #pragma mark - Button Title Setters
