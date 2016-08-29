@@ -71,6 +71,8 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
         [self setupTextInputViewConstraints];
         [self resizeTextViewAndFrame];
         
+        // Turn off the auto suggestion bar
+        self.textInputView.autocorrectionType = UITextAutocorrectionTypeNo;
     }
     return self;
 }
