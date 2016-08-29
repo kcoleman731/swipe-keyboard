@@ -52,7 +52,7 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
     if (self) {
         // Register for text change note
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(rightAccessoryButtonTappedEvent)
+                                                 selector:@selector(resizeTextViewAndFrame)
                                                      name:UITextViewTextDidChangeNotification
                                                    object:self.textInputView];
         // Adding target for right accessory btn
@@ -161,6 +161,9 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
 
 - (void)layoutSubviews
 {
+    // Disable if no text
+    self.rightAccessoryButton.enabled = self.textInputView.text.length;
+
     // Remove the layout constraint for height attempting to lock this at 44.0
     NSArray *layoutConstraints = self.constraints;
     for (NSLayoutConstraint *constraint in self.constraints) {

@@ -10,10 +10,15 @@
 #import "STMultipleActionInputScrollView.h"
 #import "EDColor.h"
 
+static const CGFloat PAGING_CONTROL_DEFAULT_HEIGHT = 30.0f;
+
 @interface STMultipleActionInputView () <STMultipleActionInputScrollViewDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) STMultipleActionInputScrollView *inputScrollView;
 @property (nonatomic, strong) UIPageControl *pageControl;
+
+@property (nonatomic, strong) NSLayoutConstraint *pagingHeightConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *multiSelectionBottomConstraint;
 
 @end
 
@@ -66,6 +71,7 @@
     [self addSubview:self.pageControl];
     
     [self configureLayoutConstraints];
+    [self displayPagingControl:self.inputScrollView.numberOfPages > 1];
 }
 
 #pragma mark Selection Item Configuration
@@ -74,6 +80,7 @@
 {
     [self.inputScrollView setSelectionTitles:titles];
     self.pageControl.numberOfPages = self.inputScrollView.numberOfPages;
+    [self displayPagingControl:self.inputScrollView.numberOfPages > 1];
 }
 
 #pragma mark Scroll View Delegate
@@ -97,15 +104,35 @@
 {
     // Input Scroll View Constraints
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-30.0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0]];
+    self.multiSelectionBottomConstraint = [NSLayoutConstraint constraintWithItem:self.inputScrollView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-PAGING_CONTROL_DEFAULT_HEIGHT];
+    [self addConstraint:self.multiSelectionBottomConstraint];
     
     // Page Control Constraints
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:30.0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0]];
+    self.pagingHeightConstraint = [NSLayoutConstraint constraintWithItem:self.pageControl attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:PAGING_CONTROL_DEFAULT_HEIGHT];
+    [self addConstraint:self.pagingHeightConstraint];
+}
+
+- (void)displayPagingControl:(BOOL)displayControl
+{
+    CGFloat toPageControlHeight          = 0.0;
+    CGFloat toMultiSelectionBottomOffset = -PAGING_CONTROL_DEFAULT_HEIGHT / 2.0;
+    BOOL pagingVisible                   = NO;
+    if (displayControl) {
+        CGFloat toPageControlHeight          = PAGING_CONTROL_DEFAULT_HEIGHT;
+        CGFloat toMultiSelectionBottomOffset = -PAGING_CONTROL_DEFAULT_HEIGHT;
+        pagingVisible                        = YES;
+    }
+    
+    // Set constants and relayout
+    self.pagingHeightConstraint.constant         = toPageControlHeight;
+    self.multiSelectionBottomConstraint.constant = toMultiSelectionBottomOffset;
+    self.pageControl.hidden                      = !pagingVisible;
+    [self layoutIfNeeded];
 }
 
 @end
