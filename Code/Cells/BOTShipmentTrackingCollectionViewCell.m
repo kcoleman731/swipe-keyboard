@@ -66,7 +66,6 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
     self.orderNumberLabel.attributedText = [self attributedTextForOrderNumber:orderNumberText];
     self.orderDetailLabel.text = [NSString stringWithFormat:@"%@ Boxes | ETA %@", shipment.boxCount, dateString];
     
-    
     if([shipment.status isEqual: @"Processing"]) {
         self.placedImageView.backgroundColor = STBlueColor();
         self.shippedImageView.backgroundColor = STLightGrayColor();

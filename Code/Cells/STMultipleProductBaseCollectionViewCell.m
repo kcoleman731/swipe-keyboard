@@ -22,6 +22,7 @@ NSString *const BOTShipmentSelectedNotification = @"BOTShipmentSelectedNotificat
 NSString *const BOTRewardSelectedNotification = @"BOTRewardSelectedNotification";
 
 // JSON Parsing Keys
+NSString *const STMessagePartCartItemsKey = @"cartItems";
 NSString *const STMessagePartBTSItemsKey = @"btsItems";
 NSString *const STMessagePartListItemsKey = @"listItems";
 NSString *const STMessagePartHeaderTitle = @"headerTitle";
@@ -267,18 +268,25 @@ typedef NS_ENUM(NSInteger, STCellType) {
     if ([part.MIMEType isEqualToString:STProductListMIMEType]) {
         // Parse BTS Title
         NSDictionary *data = json[STMessagePartDataKey];
-        NSDictionary *itemsData = data[STMessagePartBTSItemsKey];
+        NSDictionary *itemsData;
         
+        if(data[STMessagePartBTSItemsKey])
+            itemsData = data[STMessagePartBTSItemsKey];
+        else if(data[STMessagePartCartItemsKey])
+           itemsData = data[STMessagePartCartItemsKey];
+        
+        //BTS items and cart items are coming in mupltiple part, so Handled number of parts
         /// Parse BTS Items
-        LYRMessagePart *part = message.parts[1];
-        NSDictionary *json = [self parseDataForMessagePart:part];
-        NSDictionary *itemData = json[STMessagePartDataKey];
-        NSArray *itemJSON = itemData[STMessagePartListItemsKey];
-        for (NSDictionary *itemData in itemJSON) {
-            STProductItem *item = [STProductItem productWithData:itemData];
-            [items addObject:item];
-        }
-        
+        for(int i=1; i<self.message.parts.count; i++){
+            LYRMessagePart *part = self.message.parts[i];
+            NSDictionary *json = [self parseDataForMessagePart:part];
+            NSDictionary *itemData = json[STMessagePartDataKey];
+            NSArray *itemJSON = itemData[STMessagePartListItemsKey];
+            for (NSDictionary *itemData in itemJSON) {
+                STProductItem *item = [STProductItem productWithData:itemData];
+                [items addObject:item];
+            }
+       }
         // Update View
         self.btsHeaderLable.text = itemsData[STMessagePartHeaderTitle];
         [self.btsHeaderLable sizeToFit];
