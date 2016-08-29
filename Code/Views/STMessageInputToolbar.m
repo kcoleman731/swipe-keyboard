@@ -21,6 +21,8 @@ static CGFloat const ATLRightButtonHorizontalMargin = 4.0f;
 static CGFloat const ATLButtonHeight = 28.0f;
 static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
 
+NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputViewButtonTapped";
+
 @interface ATLMessageInputToolbar ()
 
 @property (nonatomic) CGFloat buttonCenterY;
@@ -90,7 +92,7 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
 - (void)setupMultiSelectionBar
 {
     self.multiActionInputView          = [[STMultiSelectionBar alloc] init];
-    [self.multiActionInputView setLeftSelectionTitle:@"Buy Now" rightSelectionTitle:@"Customize in cart"];
+    [self.multiActionInputView setLeftSelectionTitle:@"Continue Shopping" rightSelectionTitle:@"Checkout"];
     self.multiActionInputView.delegate = self;
     self.multiActionInputView.alpha    = 0.0;
     self.multiActionInputView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -364,12 +366,12 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
 
 - (void)multiSelectionBar:(STMultiSelectionBar *)bar leftSelectionHitWithTitle:(NSString *)title
 {
-    
+    //TODO open the below list items
 }
 
 - (void)multiSelectionBar:(STMultiSelectionBar *)bar rightSelectionHitWithTitle:(NSString *)title
 {
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:RightMultiActionInputViewButtonTapped object:self];
 }
 
 #pragma mark - Gesture Recognizers
