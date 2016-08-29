@@ -68,14 +68,14 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
     [self removeAllExistingActionViews];
     
     // Init Action Pages
-    NSInteger pages = (titles.count / MAX_OPTIONS_PER_PAGE);
+    NSInteger pages = MAX((titles.count / MAX_OPTIONS_PER_PAGE), 1);
     NSMutableArray *actionViews = [[NSMutableArray alloc] init];
     for (int i = 0; i < pages; i++) {
         
         // Create action input view w/ subsection of titles
         NSInteger begIdx                   = i * MAX_OPTIONS_PER_PAGE;
         BOOL idxCanHandleAllOptions        = titles.count >= begIdx + MAX_OPTIONS_PER_PAGE;
-        NSInteger length                   = idxCanHandleAllOptions ? MAX_OPTIONS_PER_PAGE : titles.count - MAX_OPTIONS_PER_PAGE;
+        NSInteger length                   = idxCanHandleAllOptions ? MAX_OPTIONS_PER_PAGE : titles.count - (MAX_OPTIONS_PER_PAGE * i);
         NSRange subRange                   = NSMakeRange(begIdx, length);
         NSArray *subSectionOfTitles        = [titles subarrayWithRange:subRange];
         

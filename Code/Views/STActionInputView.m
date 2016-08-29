@@ -15,12 +15,10 @@
 @property (nonatomic) STActionButton *button1;
 @property (nonatomic) STActionButton *button2;
 @property (nonatomic) STActionButton *button3;
-@property (nonatomic) STActionButton *button4;
 
 @property (nonatomic, strong) NSLayoutConstraint *btn1HeightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *btn2HeightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *btn3HeightConstraint;
-@property (nonatomic, strong) NSLayoutConstraint *btn4HeightConstraint;
 
 @end
 
@@ -53,10 +51,6 @@ NSUInteger const STCornerRadius = 6;
         _button3 = [STActionButton initWithTitle:(NSString *)titles[2]];
         [_button3 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_button3];
-        
-        _button4 = [STActionButton initWithTitle:(NSString *)titles[3]];
-        [_button4 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:_button4];
         
         [self configureAutoLayoutConstraints];
     }
@@ -99,22 +93,15 @@ NSUInteger const STCornerRadius = 6;
     self.btn3HeightConstraint = [NSLayoutConstraint constraintWithItem:self.button3 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0.0f];
     [self addConstraint:self.btn3HeightConstraint];
     
-    // Button 4
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.button4 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.button4 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.button4 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.button3 attribute:NSLayoutAttributeBottom multiplier:1.0 constant:STBorderWidth]];
-    self.btn4HeightConstraint = [NSLayoutConstraint constraintWithItem:self.button4 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0.0f];
-    [self addConstraint:self.btn4HeightConstraint];
     [self adjustBtnHeight];
 }
 
 - (void)adjustBtnHeight
 {
-    NSUInteger rowHeight = (self.bounds.size.height - (2.0 * STBorderWidth)) / 4.0;
+    NSUInteger rowHeight = (self.bounds.size.height - (2.0 * STBorderWidth)) / 3.0;
     self.btn1HeightConstraint.constant = rowHeight;
     self.btn2HeightConstraint.constant = rowHeight;
     self.btn3HeightConstraint.constant = rowHeight;
-    self.btn4HeightConstraint.constant = rowHeight;
     [self setNeedsLayout];
 }
 
