@@ -19,7 +19,7 @@ static CGFloat const ATLRightAccessoryButtonDefaultWidth = 46.0f;
 static CGFloat const ATLRightAccessoryButtonPadding = 5.3f;
 static CGFloat const ATLRightButtonHorizontalMargin = 4.0f;
 static CGFloat const ATLButtonHeight = 28.0f;
-static CGFloat const STMultiActionToolbarDefaultHeight = 44.0f;
+static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
 
 @interface ATLMessageInputToolbar ()
 
@@ -57,7 +57,7 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 44.0f;
                                                    object:self.textInputView];
         // Adding target for right accessory btn
         [self.rightAccessoryButton addTarget:self
-                                      action:@selector(rightAccessoryButtonTapped1)
+                                      action:@selector(rightAccessoryButtonTappedEvent)
                             forControlEvents:UIControlEventAllTouchEvents];
         
         // Accessorty Btn
@@ -89,9 +89,10 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 44.0f;
 
 - (void)setupMultiSelectionBar
 {
-    self.multiActionInputView = [[STMultiSelectionBar alloc] init];
+    self.multiActionInputView          = [[STMultiSelectionBar alloc] init];
     [self.multiActionInputView setLeftSelectionTitle:@"Buy Now" rightSelectionTitle:@"Customize in cart"];
     self.multiActionInputView.delegate = self;
+    self.multiActionInputView.alpha    = 0.0;
     self.multiActionInputView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.multiActionInputView];
 }
@@ -104,9 +105,12 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 44.0f;
 - (void)setIsShowingMultiSelectionBar:(BOOL)isShowingMultiSelectionBar
 {
     if (_isShowingMultiSelectionBar != isShowingMultiSelectionBar) {
+        _isShowingMultiSelectionBar = isShowingMultiSelectionBar;
         CGFloat toHeight = STMultiActionToolbarDefaultHeight;
+        CGFloat toAlpha = 1.0f;
         if (!isShowingMultiSelectionBar) {
             toHeight = 0.0f;
+            toAlpha = 0.0f;
         }
         
         // Animate to the position
@@ -116,6 +120,7 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 44.0f;
                             options:UIViewAnimationOptionBeginFromCurrentState
                          animations:^{
                              self.multiSelectionHeightConstraint.constant = toHeight;
+                             self.multiActionInputView.alpha = toAlpha;
                              [self layoutIfNeeded];
                          }
                          completion:^(BOOL finished) {
@@ -164,9 +169,8 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 44.0f;
         }
     }
     
-    // First apperance layout
-    if (self.firstAppearance) {
-        self.firstAppearance = NO;
+    // First apperance layout. Look for absent text on send button
+    if (!self.rightAccessoryButton.titleLabel.text) {
         [self configureRightAccessoryButtonState];
     }
     
@@ -196,7 +200,7 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 44.0f;
     rightButtonToRect.size.height = ATLButtonHeight;
     rightButtonToRect.size.width  = ATLRightAccessoryButtonDefaultWidth;
     rightButtonToRect.origin.x    = CGRectGetMaxX(self.bounds) - ATLRightButtonHorizontalMargin - ATLRightAccessoryButtonDefaultWidth;
-    rightButtonToRect.origin.y    = self.bounds.size.height - vertPadding - listButtonToRect.size.height;
+    rightButtonToRect.origin.y    = self.bounds.size.height - vertPadding - listButtonToRect.size.height - 2.0;
     
     // Set All Frames
     self.listAccessoryButton.frame  = listButtonToRect;
@@ -245,10 +249,18 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 44.0f;
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
+    // Look for taps in the text view
+    if (CGRectContainsPoint(self.textInputView.frame, point) && self.textInputView.inputView) {
+        self.textInputView.inputView = nil;
+        [self.textInputView reloadInputViews];
+        [self.textInputView becomeFirstResponder];
+    }
+
     // Return YES if the touch is within bounds or multiaction view
     if (CGRectContainsPoint(self.bounds, point) || CGRectContainsPoint(self.multiActionInputView.frame, point)) {
         return YES;
     }
+    
     return NO;
 }
 
@@ -297,7 +309,7 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 44.0f;
                                                                           toItem:nil
                                                                        attribute:NSLayoutAttributeNotAnAttribute
                                                                       multiplier:1.0
-                                                                        constant:STMultiActionToolbarDefaultHeight];
+                                                                        constant:0.0f];
     
     [self addConstraints:@[leading, trailing, bottom, self.multiSelectionHeightConstraint]];
 }
@@ -358,6 +370,13 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 44.0f;
 - (void)multiSelectionBar:(STMultiSelectionBar *)bar rightSelectionHitWithTitle:(NSString *)title
 {
     
+}
+
+#pragma mark - Gesture Recognizers
+
+- (void)tapDetectedOnTextInput
+{
+    self.textInputView.inputView = nil;
 }
 
 #pragma mark - Dealloc

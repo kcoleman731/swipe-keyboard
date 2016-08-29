@@ -51,6 +51,7 @@ static NSString *const jordyBlueCode = @"#76AAE3";
     self.backgroundColor = [UIColor whiteColor];
     [self layoutButtons];
     [self constructBevel];
+    [self addConstraintsForBevel];
     
     // Color
     UIColor *blue = [UIColor colorWithRed:118.0f/255.0f green:170.0f/255.0f blue:227.0f/255.0f alpha:1.0];
@@ -84,10 +85,11 @@ static NSString *const jordyBlueCode = @"#76AAE3";
 - (void)constructBevel
 {
     // Paint and close path
-    self.bevel                        = [[STMultiSelectionBarBevelView alloc] initWithFrame:self.bounds];
+    self.bevel                        = [[STMultiSelectionBarBevelView alloc] initWithFrame:CGRectZero];
     self.bevel.backgroundColor        = [UIColor clearColor];
     self.bevel.userInteractionEnabled = NO;
-    self.bevel.autoresizingMask       = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.bevel.contentMode = UIViewContentModeRedraw;
+    self.bevel.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.bevel];
 }
 
@@ -143,6 +145,15 @@ static NSString *const jordyBlueCode = @"#76AAE3";
     NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.rightButton attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
     NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.rightButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
     NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.rightButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
+    [self addConstraints:@[leading, trailing, top, bottom]];
+}
+
+- (void)addConstraintsForBevel
+{
+    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.bevel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.bevel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.bevel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.bevel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
     [self addConstraints:@[leading, trailing, top, bottom]];
 }
 
