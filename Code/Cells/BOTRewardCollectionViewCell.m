@@ -7,8 +7,8 @@
 //
 
 #import "BOTRewardCollectionViewCell.h"
-#import "STReward.h"
-#import "STUtilities.h"
+#import "BOTReward.h"
+#import "BOTUtilities.h"
 #import "ZXImage.h"
 #import "ZXCode128Writer.h"
 
@@ -25,7 +25,7 @@ NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollecti
 {
     [super awakeFromNib];
     
-    self.view.layer.borderColor = STLightGrayColor().CGColor;
+    self.view.layer.borderColor = BOTLightGrayColor().CGColor;
     self.view.layer.cornerRadius = 4;
     self.view.layer.borderWidth = 2;
     self.view.clipsToBounds = YES;
@@ -43,7 +43,7 @@ NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollecti
     return 240;
 }
 
-- (void)setReward:(STReward *)reward
+- (void)setReward:(BOTReward *)reward
 {
     self.titleLabel.text = @"Staples Rewards";
     self.nameLabel.text = reward.userName;

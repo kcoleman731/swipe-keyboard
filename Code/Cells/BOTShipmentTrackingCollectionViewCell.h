@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "STShipment.h"
-#import "STCellContainerView.h"
+#import "BOTShipment.h"
+#import "BOTCellContainerView.h"
 
 extern NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier;
 
 @interface BOTShipmentTrackingCollectionViewCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet STCellContainerView *cellContainerView;
+@property (weak, nonatomic) IBOutlet BOTCellContainerView *cellContainerView;
 @property (weak, nonatomic) IBOutlet UILabel *orderNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *orderDetailLabel;
 
@@ -42,7 +42,7 @@ extern NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier;
 /**
  *  Product Items Setter
  */
-- (void)setShipment:(STShipment *)shipment;
+- (void)setShipment:(BOTShipment *)shipment;
 
 /**
  *  Cell Height
