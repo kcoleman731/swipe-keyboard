@@ -44,6 +44,11 @@ NSString *const BOTItemCollectionViewCellReuseIdentifier = @"BOTItemCollectionVi
     self.clipsToBounds = YES;
 }
 
++ (CGFloat)cellHeight
+{
+    return 240;
+}
+
 + (NSString *)reuseIdentifier
 {
     return BOTItemCollectionViewCellReuseIdentifier;

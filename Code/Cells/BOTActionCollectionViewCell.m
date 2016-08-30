@@ -47,7 +47,6 @@ NSString *const BOTActionCollectionViewCellReuseIdentifier = @"BOTActionCollecti
 
 @implementation BOTActionCollectionViewCell
 
-
 - (void)lyr_baseInit
 {
     self.actionButton = [UIButton new];
@@ -119,7 +118,7 @@ NSString *const BOTBackToSchoolActionKey = @"btsAction";
     }
     CGSize size = ATLTextPlainSize(text, font);
     size.height += ATLMessageBubbleLabelVerticalPadding * 2;
-    return size.height + 52;
+    return size.height + 40;
 }
 
 - (void)configureLayoutConstraints
@@ -130,7 +129,7 @@ NSString *const BOTBackToSchoolActionKey = @"btsAction";
     CGFloat maxBubbleWidth = ATLMaxCellWidth() + ATLMessageBubbleLabelHorizontalPadding * 2;
     self.bubbleViewWidthConstraint = [NSLayoutConstraint constraintWithItem:self.bubbleView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:maxBubbleWidth];
     [self.contentView addConstraint:self.bubbleViewWidthConstraint];
-    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.bubbleView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:-52]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.bubbleView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:-40]];
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.bubbleView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]];
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.avatarImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
 }

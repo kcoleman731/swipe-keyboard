@@ -10,7 +10,20 @@
 #import <UIKit/UIKit.h>
 #import <LayerKit/LayerKit.h>
 
+// MIMEType
 extern NSString *const BOTRewardMIMEType;
+
+// Message Part Data Keys
+extern NSString *const STRewardAmmountKey;
+extern NSString *const STRewardLastUpdateKey;
+extern NSString *const STRewardEndsKey;
+extern NSString *const STRewardsMessageKey;
+extern NSString *const STRewardsNumberKey;
+extern NSString *const STRewardsPromoImageKey;
+extern NSString *const STRewardsStartDateKey;
+extern NSString *const STRewardsTotalAmountKey;
+extern NSString *const STRewardsTypeKey;
+extern NSString *const STRewardsUserNameKey;
 
 @interface BOTReward : NSObject
 

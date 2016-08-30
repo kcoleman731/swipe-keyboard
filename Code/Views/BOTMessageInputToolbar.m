@@ -168,7 +168,7 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
 
     // Remove the layout constraint for height attempting to lock this at 44.0
     NSArray *layoutConstraints = self.constraints;
-    for (NSLayoutConstraint *constraint in self.constraints) {
+    for (NSLayoutConstraint *constraint in layoutConstraints) {
         if (constraint.firstAttribute == NSLayoutAttributeHeight && constraint.constant == 44.0) {
             [self removeConstraint:constraint];
         }
@@ -214,6 +214,10 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
     
     // Getting the text input view frame here so we can bypass the call to super
     CGRect textViewRect = self.textInputView.frame;
+    
+    self.dummyTextView.attributedText = self.textInputView.attributedText;
+    CGSize fittedTextViewSize = [self.dummyTextView sizeThatFits:CGSizeMake(CGRectGetWidth(textViewRect), MAXFLOAT)];
+    textViewRect.size.height = ceil(MIN(fittedTextViewSize.height, self.textViewMaxHeight));
     
     // Calc TextView Horiz Area
     CGFloat textViewToX      = CGRectGetMaxX(self.leftAccessoryButton.frame) + 16.0;

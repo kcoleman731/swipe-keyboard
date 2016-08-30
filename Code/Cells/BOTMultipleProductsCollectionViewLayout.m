@@ -37,7 +37,7 @@
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(collectionView.bounds.size.width * 0.8f, collectionView.bounds.size.height * 0.9f);
+    return CGSizeMake(collectionView.bounds.size.width * 0.8f, collectionView.bounds.size.height);
 }
 
 @end
