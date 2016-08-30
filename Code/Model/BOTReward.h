@@ -14,16 +14,16 @@
 extern NSString *const BOTRewardMIMEType;
 
 // Message Part Data Keys
-extern NSString *const STRewardAmmountKey;
-extern NSString *const STRewardLastUpdateKey;
-extern NSString *const STRewardEndsKey;
-extern NSString *const STRewardsMessageKey;
-extern NSString *const STRewardsNumberKey;
-extern NSString *const STRewardsPromoImageKey;
-extern NSString *const STRewardsStartDateKey;
-extern NSString *const STRewardsTotalAmountKey;
-extern NSString *const STRewardsTypeKey;
-extern NSString *const STRewardsUserNameKey;
+extern NSString *const BOTRewardAmmountKey;
+extern NSString *const BOTRewardLastUpdateKey;
+extern NSString *const BOTRewardEndsKey;
+extern NSString *const BOTRewardsMessageKey;
+extern NSString *const BOTRewardsNumberKey;
+extern NSString *const BOTRewardsPromoImageKey;
+extern NSString *const BOTRewardsStartDateKey;
+extern NSString *const BOTRewardsTotalAmountKey;
+extern NSString *const BOTRewardsTypeKey;
+extern NSString *const BOTRewardsUserNameKey;
 
 @interface BOTReward : NSObject
 

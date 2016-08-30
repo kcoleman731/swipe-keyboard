@@ -78,6 +78,9 @@ CGFloat const BOTCollectionViewTopInset = 22.0f;
     self.contentView.backgroundColor = [UIColor clearColor];
     [self layoutCollectionView];
 
+    UINib *itemNib = [UINib nibWithNibName:@"BOTItemCollectionViewCell" bundle:StaplesUIBundle()];
+    [self.collectionView registerNib:itemNib forCellWithReuseIdentifier:[BOTItemCollectionViewCell reuseIdentifier]];
+    
     UINib *productNib = [UINib nibWithNibName:@"BOTProductCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[BOTProductCollectionViewCell reuseIdentifier]];
 
@@ -126,7 +129,7 @@ CGFloat const BOTCollectionViewTopInset = 22.0f;
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
-        return [BOTProductCollectionViewCell cellHeight] + 60;
+        return [BOTItemCollectionViewCell cellHeight] + 60;
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
@@ -214,8 +217,8 @@ CGFloat const BOTCollectionViewTopInset = 22.0f;
     UICollectionViewCell *returnCell;
     switch (self.cellType) {
         case BOTCellTypeBackToSchool: {
-            NSString *reuseIdentifier = [BOTProductCollectionViewCell reuseIdentifier];
-            BOTProductCollectionViewCell *cell = (BOTProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+            NSString *reuseIdentifier = [BOTItemCollectionViewCell reuseIdentifier];
+            BOTItemCollectionViewCell *cell = (BOTProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
             BOTProductItem *item = self.items[indexPath.row];
             [cell setProductItem:item];
             returnCell = cell;

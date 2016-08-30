@@ -7,27 +7,28 @@
 //
 
 #import "STConversationViewController.h"
-#import "STActionInputView.h"
-#import "STMultipleActionInputView.h"
-#import "STMessageInputToolbar.h"
-#import "STUtilities.h"
-#import "STMultiSelectionBar.h"
+#import "BOTActionInputView.h"
+#import "BOTMultipleActionInputView.h"
+#import "BOTMessageInputToolbar.h"
+#import "BOTUtilities.h"
+#import "BOTMultiSelectionBar.h"
+#import "BOTMessageInputToolbar.h"
 
 // Cells
-#import "STMultipleProductBaseCollectionViewCell.h"
-#import "STAddressCollectionViewCell.h"
-#import "STShippingCollectionViewCell.h"
+#import "BOTMultipleProductBaseCollectionViewCell.h"
+#import "BOTAddressCollectionViewCell.h"
+#import "BOTShippingCollectionViewCell.h"
 #import "BOTRewardCollectionViewCell.h"
-#import "STReorderCollectionViewCell.h"
+#import "BOTReorderCollectionViewCell.h"
 #import "BOTActionCollectionViewCell.h"
 
 // Models
-#import "STReward.h"
+#import "BOTReward.h"
 
-@interface STConversationViewController () <STMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource, ATLConversationViewControllerDelegate, STMessageInputToolbarDelegate, STMultiSelectionBarDelegate>
+@interface STConversationViewController () <BOTMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource, ATLConversationViewControllerDelegate, BOTMessageInputToolbarDelegate, BOTMultiSelectionBarDelegate>
 
 // Multi Selection UI and Constraint
-@property (nonatomic, strong) STMultiSelectionBar *multiSelectionBar;
+@property (nonatomic, strong) BOTMultiSelectionBar *multiSelectionBar;
 @property (nonnull, strong) NSLayoutConstraint *muliSelectionBarBottomConstraint;
 
 @end
@@ -59,7 +60,7 @@ NSString *const STOptionCell = @"Option Cell";
 - (void)configureCollectionViewCells
 {
     // Product Cell
-    [self.collectionView registerClass:[STMultipleProductBaseCollectionViewCell class] forCellWithReuseIdentifier:[STMultipleProductBaseCollectionViewCell reuseIdentifier]];
+    [self.collectionView registerClass:[BOTMultipleProductBaseCollectionViewCell class] forCellWithReuseIdentifier:[BOTMultipleProductBaseCollectionViewCell reuseIdentifier]];
     
     // Action Cell
     [self registerClass:[BOTActionCollectionViewCell class] forMessageCellWithReuseIdentifier:BOTActionCollectionViewCellReuseIdentifier];
@@ -67,7 +68,7 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (void)layoutMultiSelectionBar
 {
-    self.multiSelectionBar = [[STMultiSelectionBar alloc] init];
+    self.multiSelectionBar = [[BOTMultiSelectionBar alloc] init];
     self.multiSelectionBar.delegate = self;
     self.multiSelectionBar.translatesAutoresizingMaskIntoConstraints = NO;
     [self.multiSelectionBar setLeftSelectionTitle:@"Continue Shopping" rightSelectionTitle:@"Checkout"];
@@ -75,13 +76,13 @@ NSString *const STOptionCell = @"Option Cell";
     [self addConstraintsToSelectionBar];
 }
 
-- (void)multipleActionInputView:(STMultipleActionInputView *)multipleActionInputView didSelectTitle:(NSString *)title
+- (void)multipleActionInputView:(BOTMultipleActionInputView *)multipleActionInputView didSelectTitle:(NSString *)title
 {
     NSError *error;
     NSMutableArray *messageParts;
     if ([title isEqualToString:BOTMultipleProductBaseCollectionViewCellTitle]) {
         messageParts = [self fakeProductParts];
-    } else if ([title isEqualToString:STShippingCollectionViewCellTitle]) {
+    } else if ([title isEqualToString:BOTShippingCollectionViewCellTitle]) {
         messageParts = [self fakeShipmentInfo];
     } else if ([title isEqualToString:BOTRewardCollectionViewCellTitle]) {
         messageParts = [self fakeRewardInfo];
@@ -101,14 +102,14 @@ NSString *const STOptionCell = @"Option Cell";
 - (CGFloat)conversationViewController:(ATLConversationViewController *)viewController heightForMessage:(LYRMessage *)message withCellWidth:(CGFloat)cellWidth
 {
     LYRMessagePart *part = message.parts[0];
-    if ([part.MIMEType isEqualToString:STProductListMIMEType]) {
-        return [STMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
-    } else if ([part.MIMEType isEqualToString:STShipmentMIMEType]) {
-        return [STMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
-    } else if ([part.MIMEType isEqualToString:STRewardMIMEType]) {
+    if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
+        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+    } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
+        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+    } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
-    } else if ([part.MIMEType isEqualToString:STReorderCollectionViewCellMimeType]) {
-        return [STReorderCollectionViewCell cellHeight];
+    } else if ([part.MIMEType isEqualToString:BOTReorderCollectionViewCellMimeType]) {
+        return [BOTReorderCollectionViewCell cellHeight];
     }
     return 0;
 }
@@ -118,14 +119,14 @@ NSString *const STOptionCell = @"Option Cell";
 - (nullable NSString *)conversationViewController:(ATLConversationViewController *)viewController reuseIdentifierForMessage:(LYRMessage *)message
 {
     LYRMessagePart *part = message.parts[0];
-    if ([part.MIMEType isEqualToString:STProductListMIMEType]) {
-        return [STMultipleProductBaseCollectionViewCell reuseIdentifier];
-    } else if ([part.MIMEType isEqualToString:STShipmentMIMEType]) {
-        return [STMultipleProductBaseCollectionViewCell reuseIdentifier];
-    } else if ([part.MIMEType isEqualToString:STRewardMIMEType]) {
-        return [STMultipleProductBaseCollectionViewCell reuseIdentifier];
-    } else if ([part.MIMEType isEqualToString:STReorderCollectionViewCellMimeType]) {
-        return [STReorderCollectionViewCell reuseIdentifier];
+    if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
+        return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
+        return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
+        return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:BOTReorderCollectionViewCellMimeType]) {
+        return [BOTReorderCollectionViewCell reuseIdentifier];
     }
     return nil;
 }
@@ -147,23 +148,23 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (ATLMessageInputToolbar *)initializeMessageInputToolbar
 {
-    STMessageInputToolbar *toolbar = [STMessageInputToolbar new];
+    BOTMessageInputToolbar *toolbar = [BOTMessageInputToolbar new];
     toolbar.customDelegate = self;
     return toolbar;
 }
 
 #pragma mark - Message Input Toolbar Delegate 
 
-- (void)messageInputToolbar:(STMessageInputToolbar *)messageInputToolbar didTapListAccessoryButton:(UIButton *)listAccessoryButton
+- (void)messageInputToolbar:(BOTMessageInputToolbar *)messageInputToolbar didTapListAccessoryButton:(UIButton *)listAccessoryButton
 {
-    STMultipleActionInputView *multiOptionSelectionView = [[STMultipleActionInputView alloc] initWithSelectionTitles:[self selectionItems]];
+    BOTMultipleActionInputView *multiOptionSelectionView = [[BOTMultipleActionInputView alloc] initWithSelectionTitles:[self selectionItems]];
     multiOptionSelectionView.frame = CGRectMake(0, 0, 320, 240);
     multiOptionSelectionView.delegate = self;
     messageInputToolbar.textInputView.inputView = multiOptionSelectionView;
     [messageInputToolbar.textInputView becomeFirstResponder];
 }
 
-- (void)messageInputToolbar:(STMessageInputToolbar *)messageInputToolbar multiSelectionBarTappedWithTitle:(NSString *)title
+- (void)messageInputToolbar:(BOTMessageInputToolbar *)messageInputToolbar multiSelectionBarTappedWithTitle:(NSString *)title
 {
     //
 }
@@ -185,7 +186,7 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (NSArray *)selectionItems
 {
-    return @[BOTMultipleProductBaseCollectionViewCellTitle, STShippingCollectionViewCellTitle , BOTRewardCollectionViewCellTitle];
+    return @[BOTMultipleProductBaseCollectionViewCellTitle, BOTShippingCollectionViewCellTitle , BOTRewardCollectionViewCellTitle];
 }
 
 - (NSMutableArray *)fakeRewardInfo
@@ -193,18 +194,18 @@ NSString *const STOptionCell = @"Option Cell";
     NSMutableArray *rewards = [[NSMutableArray alloc] init];
     for (int i = 0; i < 50; i++) {
         [rewards addObject:@{
-                             STRewardsUserNameKey : @"Kevin Coleman",
-                             STRewardAmmountKey: @"$39.97",
-                             STRewardsTotalAmountKey: @"$39.95",
-                             STRewardsTypeKey: @"Redeemable",
-                             STRewardsPromoImageKey: @"www.staples.com",
-                             STRewardsNumberKey: @"#1234567890"
+                             BOTRewardsUserNameKey : @"Kevin Coleman",
+                             BOTRewardAmmountKey: @"$39.97",
+                             BOTRewardsTotalAmountKey: @"$39.95",
+                             BOTRewardsTypeKey: @"Redeemable",
+                             BOTRewardsPromoImageKey: @"www.staples.com",
+                             BOTRewardsNumberKey: @"#1234567890"
                              }];
     }
     
     NSDictionary *reward = @{@"data": @{ @"rewardslistItems" : [rewards copy]}};
     NSData *rewardData = [NSJSONSerialization dataWithJSONObject:reward options:NSJSONWritingPrettyPrinted error:nil];
-    LYRMessagePart *dataPart = [LYRMessagePart messagePartWithMIMEType:STRewardMIMEType data:rewardData];
+    LYRMessagePart *dataPart = [LYRMessagePart messagePartWithMIMEType:BOTRewardMIMEType data:rewardData];
     return [NSMutableArray arrayWithObject:dataPart];
 }
 
@@ -229,11 +230,11 @@ NSString *const STOptionCell = @"Option Cell";
     }
     NSDictionary *product = @{@"data": @{ @"listItems" : [products copy]}};
     NSData *productData = [NSJSONSerialization dataWithJSONObject:product options:NSJSONWritingPrettyPrinted error:nil];
-    LYRMessagePart *dataPart = [LYRMessagePart messagePartWithMIMEType:STProductListMIMEType data:productData];
+    LYRMessagePart *dataPart = [LYRMessagePart messagePartWithMIMEType:BOTProductListMIMEType data:productData];
     
     NSDictionary *info = @{@"data": @{ @"btsItems" :  @{@"headerTitle" : @"Test Title"}}};
     NSData *infoData = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:nil];
-    LYRMessagePart *infoPart = [LYRMessagePart messagePartWithMIMEType:STProductListMIMEType data:infoData];
+    LYRMessagePart *infoPart = [LYRMessagePart messagePartWithMIMEType:BOTProductListMIMEType data:infoData];
     return [NSMutableArray arrayWithObjects:infoPart, dataPart, nil];
 }
 
@@ -252,7 +253,7 @@ NSString *const STOptionCell = @"Option Cell";
     }
     NSDictionary *shipment = @{@"data": @{ @"shippmentTrackingList" : [products copy]}};
     NSData *shipmentData = [NSJSONSerialization dataWithJSONObject:shipment options:NSJSONWritingPrettyPrinted error:nil];
-    LYRMessagePart *dataPart = [LYRMessagePart messagePartWithMIMEType:STShipmentMIMEType data:shipmentData];
+    LYRMessagePart *dataPart = [LYRMessagePart messagePartWithMIMEType:BOTShipmentMIMEType data:shipmentData];
     return [NSMutableArray arrayWithObject:dataPart];
 }
 
@@ -270,12 +271,12 @@ NSString *const STOptionCell = @"Option Cell";
 
 #pragma mark - STMultiSelectionToolbar
 
-- (void)multiSelectionBar:(STMultiSelectionBar *)bar leftSelectionHitWithTitle:(NSString *)title
+- (void)multiSelectionBar:(BOTMultiSelectionBar *)bar leftSelectionHitWithTitle:(NSString *)title
 {
     
 }
 
-- (void)multiSelectionBar:(STMultiSelectionBar *)bar rightSelectionHitWithTitle:(NSString *)title
+- (void)multiSelectionBar:(BOTMultiSelectionBar *)bar rightSelectionHitWithTitle:(NSString *)title
 {
     
 }

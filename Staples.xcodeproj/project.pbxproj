@@ -10,46 +10,46 @@
 		3414E0202F8AD103A56840B2 /* Pods_Staples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCAFA925975ACD65020CCDD /* Pods_Staples.framework */; };
 		620E15FA3F1DD1FB26C366C1 /* Pods_StaplesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */; };
 		D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71BC1D6B7482005F2546 /* STLayerService.m */; };
-		D676C9011D6E2BDD00A09D8B /* STShipment.m in Sources */ = {isa = PBXBuildFile; fileRef = D676C8FF1D6E2BDD00A09D8B /* STShipment.m */; };
-		D695B6741D6E0E2F0087A4D1 /* STReorderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6721D6E0E2F0087A4D1 /* STReorderCollectionViewCell.m */; };
-		D695B6751D6E0E2F0087A4D1 /* STReorderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B6731D6E0E2F0087A4D1 /* STReorderCollectionViewCell.xib */; };
-		D695B6791D6E0E420087A4D1 /* STReorderItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6771D6E0E420087A4D1 /* STReorderItemCollectionViewCell.m */; };
-		D695B67A1D6E0E420087A4D1 /* STReorderItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B6781D6E0E420087A4D1 /* STReorderItemCollectionViewCell.xib */; };
-		D695B67E1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B67C1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.m */; };
-		D695B67F1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B67D1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.xib */; };
-		D695B6821D6E0E610087A4D1 /* STCellContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6811D6E0E610087A4D1 /* STCellContainerView.m */; };
-		D695B6861D6E0E6D0087A4D1 /* STShippingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6841D6E0E6D0087A4D1 /* STShippingCollectionViewCell.m */; };
-		D695B6871D6E0E6D0087A4D1 /* STShippingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B6851D6E0E6D0087A4D1 /* STShippingCollectionViewCell.xib */; };
-		D695B68B1D6E0E760087A4D1 /* STAddressCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6891D6E0E760087A4D1 /* STAddressCollectionViewCell.m */; };
-		D695B68C1D6E0E760087A4D1 /* STAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B68A1D6E0E760087A4D1 /* STAddressCollectionViewCell.xib */; };
-		D695B68F1D6E0E800087A4D1 /* STMultipleProductBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B68E1D6E0E800087A4D1 /* STMultipleProductBaseCollectionViewCell.m */; };
-		D695B6931D6E0E880087A4D1 /* STItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6911D6E0E880087A4D1 /* STItemCollectionViewCell.m */; };
-		D695B6941D6E0E880087A4D1 /* STItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B6921D6E0E880087A4D1 /* STItemCollectionViewCell.xib */; };
-		D695B6991D6E0E960087A4D1 /* STProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D695B6971D6E0E960087A4D1 /* STProductCollectionViewCell.xib */; };
-		D695B69C1D6E0E9F0087A4D1 /* STMultipleProductsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B69B1D6E0E9F0087A4D1 /* STMultipleProductsCollectionViewLayout.m */; };
-		D695B69F1D6E0EB60087A4D1 /* STUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B69E1D6E0EB60087A4D1 /* STUtilities.m */; };
-		D695B6A41D6E0EC30087A4D1 /* STProductItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6A11D6E0EC30087A4D1 /* STProductItem.m */; };
-		D695B6A51D6E0EC30087A4D1 /* STReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6A31D6E0EC30087A4D1 /* STReward.m */; };
-		D695B6A81D6E0ED40087A4D1 /* STMultiSelectionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6A71D6E0ED40087A4D1 /* STMultiSelectionBar.m */; };
-		D695B6AB1D6E0EE00087A4D1 /* STMultiSelectionBarBevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6AA1D6E0EE00087A4D1 /* STMultiSelectionBarBevelView.m */; };
-		D695B6AE1D6E0EE90087A4D1 /* STInvertedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6AD1D6E0EE90087A4D1 /* STInvertedButton.m */; };
-		D695B6B11D6E0EF50087A4D1 /* STMessageInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6B01D6E0EF50087A4D1 /* STMessageInputToolbar.m */; };
-		D695B6B41D6E0F080087A4D1 /* STMultipleActionInputScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6B31D6E0F080087A4D1 /* STMultipleActionInputScrollView.m */; };
-		D695B6B71D6E0F100087A4D1 /* STMultipleActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6B61D6E0F100087A4D1 /* STMultipleActionInputView.m */; };
-		D695B6BA1D6E0F180087A4D1 /* STActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6B91D6E0F180087A4D1 /* STActionInputView.m */; };
-		D695B6BD1D6E0F200087A4D1 /* STActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6BC1D6E0F200087A4D1 /* STActionButton.m */; };
-		D695B6C71D6E223F0087A4D1 /* STPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = D695B6C61D6E223F0087A4D1 /* STPrice.m */; };
 		D69761711D660AEE00F3369F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761701D660AEE00F3369F /* main.m */; };
 		D69761741D660AEE00F3369F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761731D660AEE00F3369F /* AppDelegate.m */; };
 		D697617A1D660AEE00F3369F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69761781D660AEE00F3369F /* Main.storyboard */; };
 		D697617C1D660AEE00F3369F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D697617B1D660AEE00F3369F /* Assets.xcassets */; };
 		D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D697617D1D660AEE00F3369F /* LaunchScreen.storyboard */; };
 		D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761871D660FBA00F3369F /* STConversationViewController.m */; };
+		D69E94DB1D75124B0064BF8B /* BOTMultiSelectionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94D91D75124B0064BF8B /* BOTMultiSelectionBar.m */; };
+		D69E94DE1D7512550064BF8B /* BOTMultipleActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94DC1D7512550064BF8B /* BOTMultipleActionInputView.m */; };
+		D69E94E11D75125F0064BF8B /* BOTMultipleActionInputScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94DF1D75125F0064BF8B /* BOTMultipleActionInputScrollView.m */; };
+		D69E94E41D7512640064BF8B /* BOTMessageInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94E21D7512640064BF8B /* BOTMessageInputToolbar.m */; };
+		D69E94E71D75126B0064BF8B /* BOTInvertedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94E51D75126B0064BF8B /* BOTInvertedButton.m */; };
+		D69E94EC1D7512720064BF8B /* BOTActionInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94E81D7512720064BF8B /* BOTActionInputView.m */; };
+		D69E94ED1D7512720064BF8B /* BOTActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94EA1D7512720064BF8B /* BOTActionButton.m */; };
+		D69E94F01D75127B0064BF8B /* BOTMultiSelectionBarBevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94EE1D75127B0064BF8B /* BOTMultiSelectionBarBevelView.m */; };
+		D69E94F91D7512880064BF8B /* BOTShipment.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94F11D7512880064BF8B /* BOTShipment.m */; };
+		D69E94FA1D7512880064BF8B /* BOTReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94F31D7512880064BF8B /* BOTReward.m */; };
+		D69E94FB1D7512880064BF8B /* BOTProductItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94F51D7512880064BF8B /* BOTProductItem.m */; };
+		D69E94FC1D7512880064BF8B /* BOTPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94F71D7512880064BF8B /* BOTPrice.m */; };
+		D69E94FF1D75128F0064BF8B /* BOTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94FD1D75128F0064BF8B /* BOTUtilities.m */; };
+		D69E95061D7512AD0064BF8B /* BOTAddressCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E95041D7512AD0064BF8B /* BOTAddressCollectionViewCell.m */; };
+		D69E95071D7512AD0064BF8B /* BOTAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69E95051D7512AD0064BF8B /* BOTAddressCollectionViewCell.xib */; };
+		D69E950A1D7512B30064BF8B /* BOTCellContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E95091D7512B30064BF8B /* BOTCellContainerView.m */; };
+		D69E950E1D7512BC0064BF8B /* BOTItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E950C1D7512BC0064BF8B /* BOTItemCollectionViewCell.m */; };
+		D69E950F1D7512BC0064BF8B /* BOTItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69E950D1D7512BC0064BF8B /* BOTItemCollectionViewCell.xib */; };
+		D69E95121D7512C40064BF8B /* BOTMultipleProductBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E95111D7512C40064BF8B /* BOTMultipleProductBaseCollectionViewCell.m */; };
+		D69E95151D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E95141D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.m */; };
+		D69E95191D7512D40064BF8B /* BOTProductCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E95171D7512D40064BF8B /* BOTProductCollectionViewCell.m */; };
+		D69E951A1D7512D40064BF8B /* BOTProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69E95181D7512D40064BF8B /* BOTProductCollectionViewCell.xib */; };
+		D69E951E1D7512E10064BF8B /* BOTReorderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E951C1D7512E10064BF8B /* BOTReorderCollectionViewCell.m */; };
+		D69E951F1D7512E10064BF8B /* BOTReorderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69E951D1D7512E10064BF8B /* BOTReorderCollectionViewCell.xib */; };
+		D69E95231D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E95211D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.m */; };
+		D69E95241D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69E95221D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.xib */; };
+		D69E95281D7512FF0064BF8B /* BOTRewardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E95261D7512FF0064BF8B /* BOTRewardCollectionViewCell.m */; };
+		D69E95291D7512FF0064BF8B /* BOTRewardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69E95271D7512FF0064BF8B /* BOTRewardCollectionViewCell.xib */; };
+		D69E952D1D75133E0064BF8B /* BOTShippingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E952B1D75133E0064BF8B /* BOTShippingCollectionViewCell.m */; };
+		D69E952E1D75133E0064BF8B /* BOTShippingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69E952C1D75133E0064BF8B /* BOTShippingCollectionViewCell.xib */; };
+		D69E95311D7514BE0064BF8B /* BOTActionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E95301D7514BE0064BF8B /* BOTActionCollectionViewCell.m */; };
 		D6CFC3AC1D6BF69E00F3F2F1 /* STLayerServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D6CFC3AB1D6BF69E00F3F2F1 /* STLayerServiceTest.m */; };
-		D6EB8AB81D6F4F0E00BF4BE1 /* STProductCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EB8AB71D6F4F0E00BF4BE1 /* STProductCollectionViewCell.m */; };
 		D6EB8ABC1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6EB8AB91D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.xib */; };
 		D6EB8ABD1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EB8ABB1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.m */; };
-		D6EB8AC31D6F914400BF4BE1 /* BOTActionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EB8AC11D6F914400BF4BE1 /* BOTActionCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,57 +73,6 @@
 		D65F71BC1D6B7482005F2546 /* STLayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLayerService.m; sourceTree = "<group>"; };
 		D65F71CB1D6BA164005F2546 /* StaplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StaplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65F71CF1D6BA164005F2546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D676C8FF1D6E2BDD00A09D8B /* STShipment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STShipment.m; path = Code/Model/STShipment.m; sourceTree = SOURCE_ROOT; };
-		D676C9001D6E2BDD00A09D8B /* STShipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STShipment.h; path = Code/Model/STShipment.h; sourceTree = SOURCE_ROOT; };
-		D695B6711D6E0E2F0087A4D1 /* STReorderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STReorderCollectionViewCell.h; path = Code/Cells/STReorderCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		D695B6721D6E0E2F0087A4D1 /* STReorderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STReorderCollectionViewCell.m; path = Code/Cells/STReorderCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		D695B6731D6E0E2F0087A4D1 /* STReorderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STReorderCollectionViewCell.xib; path = Code/Cells/STReorderCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
-		D695B6761D6E0E420087A4D1 /* STReorderItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STReorderItemCollectionViewCell.h; path = Code/Cells/STReorderItemCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		D695B6771D6E0E420087A4D1 /* STReorderItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STReorderItemCollectionViewCell.m; path = Code/Cells/STReorderItemCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		D695B6781D6E0E420087A4D1 /* STReorderItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STReorderItemCollectionViewCell.xib; path = Code/Cells/STReorderItemCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
-		D695B67B1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTRewardCollectionViewCell.h; path = Code/Cells/BOTRewardCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		D695B67C1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTRewardCollectionViewCell.m; path = Code/Cells/BOTRewardCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		D695B67D1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTRewardCollectionViewCell.xib; path = Code/Cells/BOTRewardCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
-		D695B6801D6E0E610087A4D1 /* STCellContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STCellContainerView.h; path = Code/Cells/STCellContainerView.h; sourceTree = SOURCE_ROOT; };
-		D695B6811D6E0E610087A4D1 /* STCellContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STCellContainerView.m; path = Code/Cells/STCellContainerView.m; sourceTree = SOURCE_ROOT; };
-		D695B6831D6E0E6D0087A4D1 /* STShippingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STShippingCollectionViewCell.h; path = Code/Cells/STShippingCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		D695B6841D6E0E6D0087A4D1 /* STShippingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STShippingCollectionViewCell.m; path = Code/Cells/STShippingCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		D695B6851D6E0E6D0087A4D1 /* STShippingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STShippingCollectionViewCell.xib; path = Code/Cells/STShippingCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
-		D695B6881D6E0E760087A4D1 /* STAddressCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STAddressCollectionViewCell.h; path = Code/Cells/STAddressCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		D695B6891D6E0E760087A4D1 /* STAddressCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STAddressCollectionViewCell.m; path = Code/Cells/STAddressCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		D695B68A1D6E0E760087A4D1 /* STAddressCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STAddressCollectionViewCell.xib; path = Code/Cells/STAddressCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
-		D695B68D1D6E0E800087A4D1 /* STMultipleProductBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STMultipleProductBaseCollectionViewCell.h; path = Code/Cells/STMultipleProductBaseCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		D695B68E1D6E0E800087A4D1 /* STMultipleProductBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STMultipleProductBaseCollectionViewCell.m; path = Code/Cells/STMultipleProductBaseCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		D695B6901D6E0E880087A4D1 /* STItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STItemCollectionViewCell.h; path = Code/Cells/STItemCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		D695B6911D6E0E880087A4D1 /* STItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STItemCollectionViewCell.m; path = Code/Cells/STItemCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		D695B6921D6E0E880087A4D1 /* STItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STItemCollectionViewCell.xib; path = Code/Cells/STItemCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
-		D695B6971D6E0E960087A4D1 /* STProductCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = STProductCollectionViewCell.xib; path = Code/Cells/STProductCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
-		D695B69A1D6E0E9F0087A4D1 /* STMultipleProductsCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STMultipleProductsCollectionViewLayout.h; path = Code/Cells/STMultipleProductsCollectionViewLayout.h; sourceTree = SOURCE_ROOT; };
-		D695B69B1D6E0E9F0087A4D1 /* STMultipleProductsCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STMultipleProductsCollectionViewLayout.m; path = Code/Cells/STMultipleProductsCollectionViewLayout.m; sourceTree = SOURCE_ROOT; };
-		D695B69D1D6E0EB60087A4D1 /* STUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STUtilities.h; path = Code/Utilities/STUtilities.h; sourceTree = SOURCE_ROOT; };
-		D695B69E1D6E0EB60087A4D1 /* STUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STUtilities.m; path = Code/Utilities/STUtilities.m; sourceTree = SOURCE_ROOT; };
-		D695B6A01D6E0EC30087A4D1 /* STProductItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STProductItem.h; path = Code/Model/STProductItem.h; sourceTree = SOURCE_ROOT; };
-		D695B6A11D6E0EC30087A4D1 /* STProductItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STProductItem.m; path = Code/Model/STProductItem.m; sourceTree = SOURCE_ROOT; };
-		D695B6A21D6E0EC30087A4D1 /* STReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STReward.h; path = Code/Model/STReward.h; sourceTree = SOURCE_ROOT; };
-		D695B6A31D6E0EC30087A4D1 /* STReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STReward.m; path = Code/Model/STReward.m; sourceTree = SOURCE_ROOT; };
-		D695B6A61D6E0ED40087A4D1 /* STMultiSelectionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STMultiSelectionBar.h; path = Code/Views/STMultiSelectionBar.h; sourceTree = SOURCE_ROOT; };
-		D695B6A71D6E0ED40087A4D1 /* STMultiSelectionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STMultiSelectionBar.m; path = Code/Views/STMultiSelectionBar.m; sourceTree = SOURCE_ROOT; };
-		D695B6A91D6E0EE00087A4D1 /* STMultiSelectionBarBevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STMultiSelectionBarBevelView.h; path = Code/Views/STMultiSelectionBarBevelView.h; sourceTree = SOURCE_ROOT; };
-		D695B6AA1D6E0EE00087A4D1 /* STMultiSelectionBarBevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STMultiSelectionBarBevelView.m; path = Code/Views/STMultiSelectionBarBevelView.m; sourceTree = SOURCE_ROOT; };
-		D695B6AC1D6E0EE90087A4D1 /* STInvertedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STInvertedButton.h; path = Code/Views/STInvertedButton.h; sourceTree = SOURCE_ROOT; };
-		D695B6AD1D6E0EE90087A4D1 /* STInvertedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STInvertedButton.m; path = Code/Views/STInvertedButton.m; sourceTree = SOURCE_ROOT; };
-		D695B6AF1D6E0EF50087A4D1 /* STMessageInputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STMessageInputToolbar.h; path = Code/Views/STMessageInputToolbar.h; sourceTree = SOURCE_ROOT; };
-		D695B6B01D6E0EF50087A4D1 /* STMessageInputToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STMessageInputToolbar.m; path = Code/Views/STMessageInputToolbar.m; sourceTree = SOURCE_ROOT; };
-		D695B6B21D6E0F080087A4D1 /* STMultipleActionInputScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STMultipleActionInputScrollView.h; path = Code/Views/STMultipleActionInputScrollView.h; sourceTree = SOURCE_ROOT; };
-		D695B6B31D6E0F080087A4D1 /* STMultipleActionInputScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STMultipleActionInputScrollView.m; path = Code/Views/STMultipleActionInputScrollView.m; sourceTree = SOURCE_ROOT; };
-		D695B6B51D6E0F100087A4D1 /* STMultipleActionInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STMultipleActionInputView.h; path = Code/Views/STMultipleActionInputView.h; sourceTree = SOURCE_ROOT; };
-		D695B6B61D6E0F100087A4D1 /* STMultipleActionInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STMultipleActionInputView.m; path = Code/Views/STMultipleActionInputView.m; sourceTree = SOURCE_ROOT; };
-		D695B6B81D6E0F180087A4D1 /* STActionInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STActionInputView.h; path = Code/Views/STActionInputView.h; sourceTree = SOURCE_ROOT; };
-		D695B6B91D6E0F180087A4D1 /* STActionInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STActionInputView.m; path = Code/Views/STActionInputView.m; sourceTree = SOURCE_ROOT; };
-		D695B6BB1D6E0F200087A4D1 /* STActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STActionButton.h; path = Code/Views/STActionButton.h; sourceTree = SOURCE_ROOT; };
-		D695B6BC1D6E0F200087A4D1 /* STActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STActionButton.m; path = Code/Views/STActionButton.m; sourceTree = SOURCE_ROOT; };
-		D695B6C51D6E223F0087A4D1 /* STPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STPrice.h; path = Code/Model/STPrice.h; sourceTree = SOURCE_ROOT; };
-		D695B6C61D6E223F0087A4D1 /* STPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STPrice.m; path = Code/Model/STPrice.m; sourceTree = SOURCE_ROOT; };
 		D697616C1D660AEE00F3369F /* Staples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69761701D660AEE00F3369F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D69761721D660AEE00F3369F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -134,14 +83,65 @@
 		D69761801D660AEE00F3369F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D69761861D660FBA00F3369F /* STConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STConversationViewController.h; sourceTree = "<group>"; };
 		D69761871D660FBA00F3369F /* STConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STConversationViewController.m; sourceTree = "<group>"; };
+		D69E94D91D75124B0064BF8B /* BOTMultiSelectionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTMultiSelectionBar.m; path = Code/Views/BOTMultiSelectionBar.m; sourceTree = SOURCE_ROOT; };
+		D69E94DA1D75124B0064BF8B /* BOTMultiSelectionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTMultiSelectionBar.h; path = Code/Views/BOTMultiSelectionBar.h; sourceTree = SOURCE_ROOT; };
+		D69E94DC1D7512550064BF8B /* BOTMultipleActionInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTMultipleActionInputView.m; path = Code/Views/BOTMultipleActionInputView.m; sourceTree = SOURCE_ROOT; };
+		D69E94DD1D7512550064BF8B /* BOTMultipleActionInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTMultipleActionInputView.h; path = Code/Views/BOTMultipleActionInputView.h; sourceTree = SOURCE_ROOT; };
+		D69E94DF1D75125F0064BF8B /* BOTMultipleActionInputScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTMultipleActionInputScrollView.m; path = Code/Views/BOTMultipleActionInputScrollView.m; sourceTree = SOURCE_ROOT; };
+		D69E94E01D75125F0064BF8B /* BOTMultipleActionInputScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTMultipleActionInputScrollView.h; path = Code/Views/BOTMultipleActionInputScrollView.h; sourceTree = SOURCE_ROOT; };
+		D69E94E21D7512640064BF8B /* BOTMessageInputToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTMessageInputToolbar.m; path = Code/Views/BOTMessageInputToolbar.m; sourceTree = SOURCE_ROOT; };
+		D69E94E31D7512640064BF8B /* BOTMessageInputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTMessageInputToolbar.h; path = Code/Views/BOTMessageInputToolbar.h; sourceTree = SOURCE_ROOT; };
+		D69E94E51D75126B0064BF8B /* BOTInvertedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTInvertedButton.m; path = Code/Views/BOTInvertedButton.m; sourceTree = SOURCE_ROOT; };
+		D69E94E61D75126B0064BF8B /* BOTInvertedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTInvertedButton.h; path = Code/Views/BOTInvertedButton.h; sourceTree = SOURCE_ROOT; };
+		D69E94E81D7512720064BF8B /* BOTActionInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTActionInputView.m; path = Code/Views/BOTActionInputView.m; sourceTree = SOURCE_ROOT; };
+		D69E94E91D7512720064BF8B /* BOTActionInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTActionInputView.h; path = Code/Views/BOTActionInputView.h; sourceTree = SOURCE_ROOT; };
+		D69E94EA1D7512720064BF8B /* BOTActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTActionButton.m; path = Code/Views/BOTActionButton.m; sourceTree = SOURCE_ROOT; };
+		D69E94EB1D7512720064BF8B /* BOTActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTActionButton.h; path = Code/Views/BOTActionButton.h; sourceTree = SOURCE_ROOT; };
+		D69E94EE1D75127B0064BF8B /* BOTMultiSelectionBarBevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTMultiSelectionBarBevelView.m; path = Code/Views/BOTMultiSelectionBarBevelView.m; sourceTree = SOURCE_ROOT; };
+		D69E94EF1D75127B0064BF8B /* BOTMultiSelectionBarBevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTMultiSelectionBarBevelView.h; path = Code/Views/BOTMultiSelectionBarBevelView.h; sourceTree = SOURCE_ROOT; };
+		D69E94F11D7512880064BF8B /* BOTShipment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTShipment.m; path = Code/Model/BOTShipment.m; sourceTree = SOURCE_ROOT; };
+		D69E94F21D7512880064BF8B /* BOTShipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTShipment.h; path = Code/Model/BOTShipment.h; sourceTree = SOURCE_ROOT; };
+		D69E94F31D7512880064BF8B /* BOTReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTReward.m; path = Code/Model/BOTReward.m; sourceTree = SOURCE_ROOT; };
+		D69E94F41D7512880064BF8B /* BOTReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTReward.h; path = Code/Model/BOTReward.h; sourceTree = SOURCE_ROOT; };
+		D69E94F51D7512880064BF8B /* BOTProductItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTProductItem.m; path = Code/Model/BOTProductItem.m; sourceTree = SOURCE_ROOT; };
+		D69E94F61D7512880064BF8B /* BOTProductItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTProductItem.h; path = Code/Model/BOTProductItem.h; sourceTree = SOURCE_ROOT; };
+		D69E94F71D7512880064BF8B /* BOTPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTPrice.m; path = Code/Model/BOTPrice.m; sourceTree = SOURCE_ROOT; };
+		D69E94F81D7512880064BF8B /* BOTPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTPrice.h; path = Code/Model/BOTPrice.h; sourceTree = SOURCE_ROOT; };
+		D69E94FD1D75128F0064BF8B /* BOTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTUtilities.m; path = Code/Utilities/BOTUtilities.m; sourceTree = SOURCE_ROOT; };
+		D69E94FE1D75128F0064BF8B /* BOTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTUtilities.h; path = Code/Utilities/BOTUtilities.h; sourceTree = SOURCE_ROOT; };
+		D69E95031D7512AD0064BF8B /* BOTAddressCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTAddressCollectionViewCell.h; path = Code/Cells/BOTAddressCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		D69E95041D7512AD0064BF8B /* BOTAddressCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTAddressCollectionViewCell.m; path = Code/Cells/BOTAddressCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		D69E95051D7512AD0064BF8B /* BOTAddressCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTAddressCollectionViewCell.xib; path = Code/Cells/BOTAddressCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D69E95081D7512B30064BF8B /* BOTCellContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTCellContainerView.h; path = Code/Cells/BOTCellContainerView.h; sourceTree = SOURCE_ROOT; };
+		D69E95091D7512B30064BF8B /* BOTCellContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTCellContainerView.m; path = Code/Cells/BOTCellContainerView.m; sourceTree = SOURCE_ROOT; };
+		D69E950B1D7512BC0064BF8B /* BOTItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTItemCollectionViewCell.h; path = Code/Cells/BOTItemCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		D69E950C1D7512BC0064BF8B /* BOTItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTItemCollectionViewCell.m; path = Code/Cells/BOTItemCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		D69E950D1D7512BC0064BF8B /* BOTItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTItemCollectionViewCell.xib; path = Code/Cells/BOTItemCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D69E95101D7512C40064BF8B /* BOTMultipleProductBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTMultipleProductBaseCollectionViewCell.h; path = Code/Cells/BOTMultipleProductBaseCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		D69E95111D7512C40064BF8B /* BOTMultipleProductBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTMultipleProductBaseCollectionViewCell.m; path = Code/Cells/BOTMultipleProductBaseCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		D69E95131D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTMultipleProductsCollectionViewLayout.h; path = Code/Cells/BOTMultipleProductsCollectionViewLayout.h; sourceTree = SOURCE_ROOT; };
+		D69E95141D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTMultipleProductsCollectionViewLayout.m; path = Code/Cells/BOTMultipleProductsCollectionViewLayout.m; sourceTree = SOURCE_ROOT; };
+		D69E95161D7512D40064BF8B /* BOTProductCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTProductCollectionViewCell.h; path = Code/Cells/BOTProductCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		D69E95171D7512D40064BF8B /* BOTProductCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTProductCollectionViewCell.m; path = Code/Cells/BOTProductCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		D69E95181D7512D40064BF8B /* BOTProductCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTProductCollectionViewCell.xib; path = Code/Cells/BOTProductCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D69E951B1D7512E10064BF8B /* BOTReorderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTReorderCollectionViewCell.h; path = Code/Cells/BOTReorderCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		D69E951C1D7512E10064BF8B /* BOTReorderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTReorderCollectionViewCell.m; path = Code/Cells/BOTReorderCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		D69E951D1D7512E10064BF8B /* BOTReorderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTReorderCollectionViewCell.xib; path = Code/Cells/BOTReorderCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D69E95201D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTReorderItemCollectionViewCell.h; path = Code/Cells/BOTReorderItemCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		D69E95211D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTReorderItemCollectionViewCell.m; path = Code/Cells/BOTReorderItemCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		D69E95221D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTReorderItemCollectionViewCell.xib; path = Code/Cells/BOTReorderItemCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D69E95251D7512FF0064BF8B /* BOTRewardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTRewardCollectionViewCell.h; path = Code/Cells/BOTRewardCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		D69E95261D7512FF0064BF8B /* BOTRewardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTRewardCollectionViewCell.m; path = Code/Cells/BOTRewardCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		D69E95271D7512FF0064BF8B /* BOTRewardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTRewardCollectionViewCell.xib; path = Code/Cells/BOTRewardCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D69E952A1D75133E0064BF8B /* BOTShippingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTShippingCollectionViewCell.h; path = Code/Cells/BOTShippingCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		D69E952B1D75133E0064BF8B /* BOTShippingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTShippingCollectionViewCell.m; path = Code/Cells/BOTShippingCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		D69E952C1D75133E0064BF8B /* BOTShippingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTShippingCollectionViewCell.xib; path = Code/Cells/BOTShippingCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D69E952F1D7514BE0064BF8B /* BOTActionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTActionCollectionViewCell.h; path = Code/Cells/BOTActionCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		D69E95301D7514BE0064BF8B /* BOTActionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTActionCollectionViewCell.m; path = Code/Cells/BOTActionCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		D6CFC3AB1D6BF69E00F3F2F1 /* STLayerServiceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLayerServiceTest.m; sourceTree = "<group>"; };
-		D6EB8AB61D6F4F0E00BF4BE1 /* STProductCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STProductCollectionViewCell.h; path = Code/Cells/STProductCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		D6EB8AB71D6F4F0E00BF4BE1 /* STProductCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STProductCollectionViewCell.m; path = Code/Cells/STProductCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		D6EB8AB91D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTShipmentTrackingCollectionViewCell.xib; path = Code/Cells/BOTShipmentTrackingCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
 		D6EB8ABA1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTShipmentTrackingCollectionViewCell.h; path = Code/Cells/BOTShipmentTrackingCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		D6EB8ABB1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTShipmentTrackingCollectionViewCell.m; path = Code/Cells/BOTShipmentTrackingCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		D6EB8AC11D6F914400BF4BE1 /* BOTActionCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTActionCollectionViewCell.m; path = Code/Cells/BOTActionCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		D6EB8AC21D6F914400BF4BE1 /* BOTActionCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTActionCollectionViewCell.h; path = Code/Cells/BOTActionCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,9 +167,9 @@
 		3486CD011D6779130041E2F7 /* STMultipleProductCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				D69E95101D7512C40064BF8B /* BOTMultipleProductBaseCollectionViewCell.h */,
+				D69E95111D7512C40064BF8B /* BOTMultipleProductBaseCollectionViewCell.m */,
 				D6EB8AAA1D6F45E400BF4BE1 /* BOTShipmentTrackingCollectionViewCell */,
-				D695B68D1D6E0E800087A4D1 /* STMultipleProductBaseCollectionViewCell.h */,
-				D695B68E1D6E0E800087A4D1 /* STMultipleProductBaseCollectionViewCell.m */,
 				D68FEF071D6C0578006AEFC6 /* STItemCollectionViewCell */,
 				3486CD0B1D679E6B0041E2F7 /* STProductCollectionViewCell */,
 				3486CD181D67A9D70041E2F7 /* Collection View Layout */,
@@ -180,9 +180,9 @@
 		3486CD0B1D679E6B0041E2F7 /* STProductCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D6EB8AB61D6F4F0E00BF4BE1 /* STProductCollectionViewCell.h */,
-				D6EB8AB71D6F4F0E00BF4BE1 /* STProductCollectionViewCell.m */,
-				D695B6971D6E0E960087A4D1 /* STProductCollectionViewCell.xib */,
+				D69E95161D7512D40064BF8B /* BOTProductCollectionViewCell.h */,
+				D69E95171D7512D40064BF8B /* BOTProductCollectionViewCell.m */,
+				D69E95181D7512D40064BF8B /* BOTProductCollectionViewCell.xib */,
 			);
 			name = STProductCollectionViewCell;
 			sourceTree = "<group>";
@@ -190,14 +190,14 @@
 		3486CD141D67A46E0041E2F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D676C8FF1D6E2BDD00A09D8B /* STShipment.m */,
-				D676C9001D6E2BDD00A09D8B /* STShipment.h */,
-				D695B6C51D6E223F0087A4D1 /* STPrice.h */,
-				D695B6C61D6E223F0087A4D1 /* STPrice.m */,
-				D695B6A01D6E0EC30087A4D1 /* STProductItem.h */,
-				D695B6A11D6E0EC30087A4D1 /* STProductItem.m */,
-				D695B6A21D6E0EC30087A4D1 /* STReward.h */,
-				D695B6A31D6E0EC30087A4D1 /* STReward.m */,
+				D69E94F11D7512880064BF8B /* BOTShipment.m */,
+				D69E94F21D7512880064BF8B /* BOTShipment.h */,
+				D69E94F31D7512880064BF8B /* BOTReward.m */,
+				D69E94F41D7512880064BF8B /* BOTReward.h */,
+				D69E94F51D7512880064BF8B /* BOTProductItem.m */,
+				D69E94F61D7512880064BF8B /* BOTProductItem.h */,
+				D69E94F71D7512880064BF8B /* BOTPrice.m */,
+				D69E94F81D7512880064BF8B /* BOTPrice.h */,
 			);
 			name = Model;
 			path = Staples;
@@ -206,8 +206,8 @@
 		3486CD181D67A9D70041E2F7 /* Collection View Layout */ = {
 			isa = PBXGroup;
 			children = (
-				D695B69A1D6E0E9F0087A4D1 /* STMultipleProductsCollectionViewLayout.h */,
-				D695B69B1D6E0E9F0087A4D1 /* STMultipleProductsCollectionViewLayout.m */,
+				D69E95131D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.h */,
+				D69E95141D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.m */,
 			);
 			name = "Collection View Layout";
 			sourceTree = "<group>";
@@ -215,8 +215,8 @@
 		34A8A4A91D6CB81A00245773 /* STMultiSelectionBar */ = {
 			isa = PBXGroup;
 			children = (
-				D695B6A61D6E0ED40087A4D1 /* STMultiSelectionBar.h */,
-				D695B6A71D6E0ED40087A4D1 /* STMultiSelectionBar.m */,
+				D69E94D91D75124B0064BF8B /* BOTMultiSelectionBar.m */,
+				D69E94DA1D75124B0064BF8B /* BOTMultiSelectionBar.h */,
 				34A8A4B41D6CD66900245773 /* STMultiSelectionBarBevelView */,
 				34A8A4AA1D6CB86300245773 /* STInvertedButton */,
 			);
@@ -226,8 +226,8 @@
 		34A8A4AA1D6CB86300245773 /* STInvertedButton */ = {
 			isa = PBXGroup;
 			children = (
-				D695B6AC1D6E0EE90087A4D1 /* STInvertedButton.h */,
-				D695B6AD1D6E0EE90087A4D1 /* STInvertedButton.m */,
+				D69E94E51D75126B0064BF8B /* BOTInvertedButton.m */,
+				D69E94E61D75126B0064BF8B /* BOTInvertedButton.h */,
 			);
 			name = STInvertedButton;
 			sourceTree = "<group>";
@@ -235,8 +235,8 @@
 		34A8A4B41D6CD66900245773 /* STMultiSelectionBarBevelView */ = {
 			isa = PBXGroup;
 			children = (
-				D695B6A91D6E0EE00087A4D1 /* STMultiSelectionBarBevelView.h */,
-				D695B6AA1D6E0EE00087A4D1 /* STMultiSelectionBarBevelView.m */,
+				D69E94EE1D75127B0064BF8B /* BOTMultiSelectionBarBevelView.m */,
+				D69E94EF1D75127B0064BF8B /* BOTMultiSelectionBarBevelView.h */,
 			);
 			name = STMultiSelectionBarBevelView;
 			sourceTree = "<group>";
@@ -264,9 +264,9 @@
 		D65F71BE1D6B7A0D005F2546 /* STAddressCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D695B6881D6E0E760087A4D1 /* STAddressCollectionViewCell.h */,
-				D695B6891D6E0E760087A4D1 /* STAddressCollectionViewCell.m */,
-				D695B68A1D6E0E760087A4D1 /* STAddressCollectionViewCell.xib */,
+				D69E95031D7512AD0064BF8B /* BOTAddressCollectionViewCell.h */,
+				D69E95041D7512AD0064BF8B /* BOTAddressCollectionViewCell.m */,
+				D69E95051D7512AD0064BF8B /* BOTAddressCollectionViewCell.xib */,
 			);
 			name = STAddressCollectionViewCell;
 			sourceTree = "<group>";
@@ -274,9 +274,9 @@
 		D65F71BF1D6B7A17005F2546 /* STShippingCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D695B6831D6E0E6D0087A4D1 /* STShippingCollectionViewCell.h */,
-				D695B6841D6E0E6D0087A4D1 /* STShippingCollectionViewCell.m */,
-				D695B6851D6E0E6D0087A4D1 /* STShippingCollectionViewCell.xib */,
+				D69E952A1D75133E0064BF8B /* BOTShippingCollectionViewCell.h */,
+				D69E952B1D75133E0064BF8B /* BOTShippingCollectionViewCell.m */,
+				D69E952C1D75133E0064BF8B /* BOTShippingCollectionViewCell.xib */,
 			);
 			name = STShippingCollectionViewCell;
 			sourceTree = "<group>";
@@ -284,8 +284,8 @@
 		D65F71C01D6B7A27005F2546 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				D695B6801D6E0E610087A4D1 /* STCellContainerView.h */,
-				D695B6811D6E0E610087A4D1 /* STCellContainerView.m */,
+				D69E95081D7512B30064BF8B /* BOTCellContainerView.h */,
+				D69E95091D7512B30064BF8B /* BOTCellContainerView.m */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -293,14 +293,14 @@
 		D65F71C11D6B7A3B005F2546 /* STMultipleActionInputView */ = {
 			isa = PBXGroup;
 			children = (
-				D695B6B21D6E0F080087A4D1 /* STMultipleActionInputScrollView.h */,
-				D695B6B31D6E0F080087A4D1 /* STMultipleActionInputScrollView.m */,
-				D695B6B51D6E0F100087A4D1 /* STMultipleActionInputView.h */,
-				D695B6B61D6E0F100087A4D1 /* STMultipleActionInputView.m */,
-				D695B6B81D6E0F180087A4D1 /* STActionInputView.h */,
-				D695B6B91D6E0F180087A4D1 /* STActionInputView.m */,
-				D695B6BB1D6E0F200087A4D1 /* STActionButton.h */,
-				D695B6BC1D6E0F200087A4D1 /* STActionButton.m */,
+				D69E94E81D7512720064BF8B /* BOTActionInputView.m */,
+				D69E94E91D7512720064BF8B /* BOTActionInputView.h */,
+				D69E94EA1D7512720064BF8B /* BOTActionButton.m */,
+				D69E94EB1D7512720064BF8B /* BOTActionButton.h */,
+				D69E94DF1D75125F0064BF8B /* BOTMultipleActionInputScrollView.m */,
+				D69E94E01D75125F0064BF8B /* BOTMultipleActionInputScrollView.h */,
+				D69E94DC1D7512550064BF8B /* BOTMultipleActionInputView.m */,
+				D69E94DD1D7512550064BF8B /* BOTMultipleActionInputView.h */,
 			);
 			name = STMultipleActionInputView;
 			sourceTree = "<group>";
@@ -308,8 +308,8 @@
 		D65F71C21D6B7A6C005F2546 /* STMessageInputToolbar */ = {
 			isa = PBXGroup;
 			children = (
-				D695B6AF1D6E0EF50087A4D1 /* STMessageInputToolbar.h */,
-				D695B6B01D6E0EF50087A4D1 /* STMessageInputToolbar.m */,
+				D69E94E21D7512640064BF8B /* BOTMessageInputToolbar.m */,
+				D69E94E31D7512640064BF8B /* BOTMessageInputToolbar.h */,
 			);
 			name = STMessageInputToolbar;
 			sourceTree = "<group>";
@@ -317,8 +317,8 @@
 		D65F71C31D6B7A7D005F2546 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				D695B69D1D6E0EB60087A4D1 /* STUtilities.h */,
-				D695B69E1D6E0EB60087A4D1 /* STUtilities.m */,
+				D69E94FD1D75128F0064BF8B /* BOTUtilities.m */,
+				D69E94FE1D75128F0064BF8B /* BOTUtilities.h */,
 			);
 			name = Utilities;
 			path = Staples;
@@ -336,9 +336,9 @@
 		D65F71D81D6BB4A1005F2546 /* STARewardCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D695B67B1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.h */,
-				D695B67C1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.m */,
-				D695B67D1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.xib */,
+				D69E95251D7512FF0064BF8B /* BOTRewardCollectionViewCell.h */,
+				D69E95261D7512FF0064BF8B /* BOTRewardCollectionViewCell.m */,
+				D69E95271D7512FF0064BF8B /* BOTRewardCollectionViewCell.xib */,
 			);
 			name = STARewardCollectionViewCell;
 			sourceTree = "<group>";
@@ -346,9 +346,9 @@
 		D68FEF011D6BFC4B006AEFC6 /* STReorderCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D695B6711D6E0E2F0087A4D1 /* STReorderCollectionViewCell.h */,
-				D695B6721D6E0E2F0087A4D1 /* STReorderCollectionViewCell.m */,
-				D695B6731D6E0E2F0087A4D1 /* STReorderCollectionViewCell.xib */,
+				D69E951B1D7512E10064BF8B /* BOTReorderCollectionViewCell.h */,
+				D69E951C1D7512E10064BF8B /* BOTReorderCollectionViewCell.m */,
+				D69E951D1D7512E10064BF8B /* BOTReorderCollectionViewCell.xib */,
 				D68FEF171D6CC456006AEFC6 /* STReorderItemCollectionViewCell */,
 			);
 			name = STReorderCollectionViewCell;
@@ -357,9 +357,9 @@
 		D68FEF071D6C0578006AEFC6 /* STItemCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D695B6901D6E0E880087A4D1 /* STItemCollectionViewCell.h */,
-				D695B6911D6E0E880087A4D1 /* STItemCollectionViewCell.m */,
-				D695B6921D6E0E880087A4D1 /* STItemCollectionViewCell.xib */,
+				D69E950B1D7512BC0064BF8B /* BOTItemCollectionViewCell.h */,
+				D69E950C1D7512BC0064BF8B /* BOTItemCollectionViewCell.m */,
+				D69E950D1D7512BC0064BF8B /* BOTItemCollectionViewCell.xib */,
 			);
 			name = STItemCollectionViewCell;
 			sourceTree = "<group>";
@@ -378,9 +378,9 @@
 		D68FEF171D6CC456006AEFC6 /* STReorderItemCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D695B6761D6E0E420087A4D1 /* STReorderItemCollectionViewCell.h */,
-				D695B6771D6E0E420087A4D1 /* STReorderItemCollectionViewCell.m */,
-				D695B6781D6E0E420087A4D1 /* STReorderItemCollectionViewCell.xib */,
+				D69E95201D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.h */,
+				D69E95211D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.m */,
+				D69E95221D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.xib */,
 			);
 			name = STReorderItemCollectionViewCell;
 			sourceTree = "<group>";
@@ -457,8 +457,8 @@
 		D6EB8AC41D6F914700BF4BE1 /* BOTActionCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D6EB8AC21D6F914400BF4BE1 /* BOTActionCollectionViewCell.h */,
-				D6EB8AC11D6F914400BF4BE1 /* BOTActionCollectionViewCell.m */,
+				D69E952F1D7514BE0064BF8B /* BOTActionCollectionViewCell.h */,
+				D69E95301D7514BE0064BF8B /* BOTActionCollectionViewCell.m */,
 			);
 			name = BOTActionCollectionViewCell;
 			sourceTree = "<group>";
@@ -572,16 +572,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */,
-				D695B67F1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.xib in Resources */,
-				D695B6751D6E0E2F0087A4D1 /* STReorderCollectionViewCell.xib in Resources */,
+				D69E950F1D7512BC0064BF8B /* BOTItemCollectionViewCell.xib in Resources */,
 				D697617C1D660AEE00F3369F /* Assets.xcassets in Resources */,
-				D695B68C1D6E0E760087A4D1 /* STAddressCollectionViewCell.xib in Resources */,
+				D69E951F1D7512E10064BF8B /* BOTReorderCollectionViewCell.xib in Resources */,
 				D6EB8ABC1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.xib in Resources */,
+				D69E952E1D75133E0064BF8B /* BOTShippingCollectionViewCell.xib in Resources */,
 				D697617A1D660AEE00F3369F /* Main.storyboard in Resources */,
-				D695B6991D6E0E960087A4D1 /* STProductCollectionViewCell.xib in Resources */,
-				D695B67A1D6E0E420087A4D1 /* STReorderItemCollectionViewCell.xib in Resources */,
-				D695B6941D6E0E880087A4D1 /* STItemCollectionViewCell.xib in Resources */,
-				D695B6871D6E0E6D0087A4D1 /* STShippingCollectionViewCell.xib in Resources */,
+				D69E951A1D7512D40064BF8B /* BOTProductCollectionViewCell.xib in Resources */,
+				D69E95241D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.xib in Resources */,
+				D69E95291D7512FF0064BF8B /* BOTRewardCollectionViewCell.xib in Resources */,
+				D69E95071D7512AD0064BF8B /* BOTAddressCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,35 +693,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D695B68B1D6E0E760087A4D1 /* STAddressCollectionViewCell.m in Sources */,
+				D69E951E1D7512E10064BF8B /* BOTReorderCollectionViewCell.m in Sources */,
+				D69E95231D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.m in Sources */,
+				D69E952D1D75133E0064BF8B /* BOTShippingCollectionViewCell.m in Sources */,
+				D69E94E11D75125F0064BF8B /* BOTMultipleActionInputScrollView.m in Sources */,
 				D69761741D660AEE00F3369F /* AppDelegate.m in Sources */,
-				D695B6821D6E0E610087A4D1 /* STCellContainerView.m in Sources */,
-				D695B6861D6E0E6D0087A4D1 /* STShippingCollectionViewCell.m in Sources */,
-				D695B6BD1D6E0F200087A4D1 /* STActionButton.m in Sources */,
-				D695B6931D6E0E880087A4D1 /* STItemCollectionViewCell.m in Sources */,
-				D695B6A51D6E0EC30087A4D1 /* STReward.m in Sources */,
-				D695B6791D6E0E420087A4D1 /* STReorderItemCollectionViewCell.m in Sources */,
-				D695B6AB1D6E0EE00087A4D1 /* STMultiSelectionBarBevelView.m in Sources */,
-				D676C9011D6E2BDD00A09D8B /* STShipment.m in Sources */,
-				D695B6741D6E0E2F0087A4D1 /* STReorderCollectionViewCell.m in Sources */,
-				D695B68F1D6E0E800087A4D1 /* STMultipleProductBaseCollectionViewCell.m in Sources */,
-				D695B6B71D6E0F100087A4D1 /* STMultipleActionInputView.m in Sources */,
+				D69E94FF1D75128F0064BF8B /* BOTUtilities.m in Sources */,
+				D69E95121D7512C40064BF8B /* BOTMultipleProductBaseCollectionViewCell.m in Sources */,
+				D69E94ED1D7512720064BF8B /* BOTActionButton.m in Sources */,
 				D6EB8ABD1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.m in Sources */,
+				D69E94E41D7512640064BF8B /* BOTMessageInputToolbar.m in Sources */,
 				D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */,
-				D695B69C1D6E0E9F0087A4D1 /* STMultipleProductsCollectionViewLayout.m in Sources */,
-				D695B69F1D6E0EB60087A4D1 /* STUtilities.m in Sources */,
-				D695B6A41D6E0EC30087A4D1 /* STProductItem.m in Sources */,
-				D695B6B11D6E0EF50087A4D1 /* STMessageInputToolbar.m in Sources */,
-				D6EB8AB81D6F4F0E00BF4BE1 /* STProductCollectionViewCell.m in Sources */,
-				D695B67E1D6E0E590087A4D1 /* BOTRewardCollectionViewCell.m in Sources */,
-				D695B6BA1D6E0F180087A4D1 /* STActionInputView.m in Sources */,
-				D695B6C71D6E223F0087A4D1 /* STPrice.m in Sources */,
+				D69E94DB1D75124B0064BF8B /* BOTMultiSelectionBar.m in Sources */,
 				D69761711D660AEE00F3369F /* main.m in Sources */,
+				D69E94FA1D7512880064BF8B /* BOTReward.m in Sources */,
+				D69E95281D7512FF0064BF8B /* BOTRewardCollectionViewCell.m in Sources */,
+				D69E94EC1D7512720064BF8B /* BOTActionInputView.m in Sources */,
+				D69E94E71D75126B0064BF8B /* BOTInvertedButton.m in Sources */,
+				D69E95061D7512AD0064BF8B /* BOTAddressCollectionViewCell.m in Sources */,
+				D69E94FC1D7512880064BF8B /* BOTPrice.m in Sources */,
 				D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */,
-				D695B6A81D6E0ED40087A4D1 /* STMultiSelectionBar.m in Sources */,
-				D695B6AE1D6E0EE90087A4D1 /* STInvertedButton.m in Sources */,
-				D6EB8AC31D6F914400BF4BE1 /* BOTActionCollectionViewCell.m in Sources */,
-				D695B6B41D6E0F080087A4D1 /* STMultipleActionInputScrollView.m in Sources */,
+				D69E94FB1D7512880064BF8B /* BOTProductItem.m in Sources */,
+				D69E950A1D7512B30064BF8B /* BOTCellContainerView.m in Sources */,
+				D69E95151D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.m in Sources */,
+				D69E94F91D7512880064BF8B /* BOTShipment.m in Sources */,
+				D69E94F01D75127B0064BF8B /* BOTMultiSelectionBarBevelView.m in Sources */,
+				D69E950E1D7512BC0064BF8B /* BOTItemCollectionViewCell.m in Sources */,
+				D69E95191D7512D40064BF8B /* BOTProductCollectionViewCell.m in Sources */,
+				D69E95311D7514BE0064BF8B /* BOTActionCollectionViewCell.m in Sources */,
+				D69E94DE1D7512550064BF8B /* BOTMultipleActionInputView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
