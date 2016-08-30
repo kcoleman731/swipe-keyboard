@@ -32,11 +32,12 @@ extern NSString *const BOTBackToSchoolViewCartButtonTappedNotification;
  */
 + (NSString *)reuseIdentifier;
 
-+ (CGFloat)cellHeight;
++ (CGFloat)cellHeightWithButton:(BOOL)button;
 
 /**
  *  Product Items Setter
  */
 - (void)setProductItem:(BOTProductItem *)item;
+
 
 @end
