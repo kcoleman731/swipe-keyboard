@@ -32,7 +32,7 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
 
 @end
 
-@interface STMessageInputToolbar () <BOTMultiSelectionBarDelegate, ATLMessageInputToolbarDelegate>
+@interface BOTMessageInputToolbar () <BOTMultiSelectionBarDelegate, ATLMessageInputToolbarDelegate>
 
 @property (nonatomic) UIButton *listAccessoryButton;
 @property (nonatomic) UIImage *listAccessoryButtonImage;
