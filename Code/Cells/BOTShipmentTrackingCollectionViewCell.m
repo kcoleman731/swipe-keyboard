@@ -64,7 +64,11 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
     
     NSString *orderNumberText = [NSString stringWithFormat:@"Order Number: %@", shipment.orderNumber];
     self.orderNumberLabel.attributedText = [self attributedTextForOrderNumber:orderNumberText];
-    self.orderDetailLabel.text = [NSString stringWithFormat:@"%@ Boxes | ETA %@", shipment.boxCount, dateString];
+    NSString *boxCount = [NSString stringWithFormat:@"%@",shipment.boxCount];
+    if([boxCount isEqual:@"1"])
+        self.orderDetailLabel.text = [NSString stringWithFormat:@"%@ Box | ETA %@", shipment.boxCount, dateString];
+    else
+        self.orderDetailLabel.text = [NSString stringWithFormat:@"%@ Boxes | ETA %@", shipment.boxCount, dateString];
     
     if([shipment.status isEqual: @"Processing"]) {
         self.placedImageView.backgroundColor = BOTBlueColor();
@@ -98,8 +102,6 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
     }
 
 }
-
-
 
 #pragma mark - Attibuted Text
 
