@@ -21,6 +21,8 @@ static CGFloat const ATLRightButtonHorizontalMargin = 4.0f;
 static CGFloat const ATLButtonHeight = 28.0f;
 static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
 
+NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputViewButtonTapped";
+
 @interface ATLMessageInputToolbar ()
 
 @property (nonatomic) CGFloat buttonCenterY;

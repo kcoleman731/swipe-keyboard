@@ -73,6 +73,7 @@ NSString *const BOTActionCollectionViewCellReuseIdentifier = @"BOTActionCollecti
 
 NSString *const BOTHeaderTitleKey = @"headerTitle";
 NSString *const BOTBackToSchoolActionKey = @"btsAction";
+NSString *const BOTCartActionKey = @"cartAction";
 
 - (void)presentMessage:(LYRMessage *)message
 {
@@ -87,8 +88,13 @@ NSString *const BOTBackToSchoolActionKey = @"btsAction";
 - (NSString *)parseTextForMessage:(LYRMessage *)message
 {
     NSDictionary *json = [self parseDataForMessagePart:message.parts[0]];
-    NSDictionary *data = json[BOTMessagePartDataKey];
-    NSDictionary *action = data[BOTBackToSchoolActionKey];
+    NSDictionary *data = json[STMessagePartDataKey];
+    NSDictionary *action;
+    if(data[BOTBackToSchoolActionKey])
+        action = data[BOTBackToSchoolActionKey];
+    else if(data[BOTCartActionKey])
+        action = data[BOTCartActionKey];
+    
     return action[BOTHeaderTitleKey];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import <Atlas/Atlas.h>
+extern NSString *const RightMultiActionInputViewButtonTapped;
 
 @class BOTMessageInputToolbar;
 

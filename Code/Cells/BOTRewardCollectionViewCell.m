@@ -31,6 +31,7 @@ NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollecti
     self.view.clipsToBounds = YES;
     
     [self.viewButton setTitle:@"View" forState:UIControlStateNormal];
+    self.viewButton.hidden = YES;
 }
 
 + (NSString *)reuseIdentifier

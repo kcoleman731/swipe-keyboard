@@ -22,6 +22,7 @@ NSString *const BOTShipmentSelectedNotification = @"BOTShipmentSelectedNotificat
 NSString *const BOTRewardSelectedNotification = @"BOTRewardSelectedNotification";
 
 // JSON Parsing Keys
+NSString *const BOTMessagePartCartItemsKey = @"cartItems";
 NSString *const BOTMessagePartBTSItemsKey = @"btsItems";
 NSString *const BOTMessagePartListItemsKey = @"listItems";
 NSString *const BOTMessagePartHeaderTitle = @"headerTitle";
@@ -274,18 +275,25 @@ CGFloat const BOTCollectionViewTopInset = 22.0f;
         
         // Parse BTS Title
         NSDictionary *data = json[BOTMessagePartDataKey];
-        NSDictionary *itemsData = data[BOTMessagePartBTSItemsKey];
+        NSDictionary *itemsData;
         
+        if(data[STMessagePartBTSItemsKey])
+            itemsData = data[STMessagePartBTSItemsKey];
+        else if(data[STMessagePartCartItemsKey])
+           itemsData = data[STMessagePartCartItemsKey];
+        
+        //BTS items and cart items are coming in mupltiple part, so Handled number of parts
         /// Parse BTS Items
-        LYRMessagePart *part = message.parts[1];
-        NSDictionary *json = [self parseDataForMessagePart:part];
-        NSDictionary *itemData = json[BOTMessagePartDataKey];
-        NSArray *itemJSON = itemData[BOTMessagePartListItemsKey];
-        for (NSDictionary *itemData in itemJSON) {
-            BOTProductItem *item = [BOTProductItem productWithData:itemData];
-            [items addObject:item];
-        }
-        
+        for(int i=1; i<self.message.parts.count; i++){
+            LYRMessagePart *part = self.message.parts[i];
+            NSDictionary *json = [self parseDataForMessagePart:part];
+            NSDictionary *itemData = json[BOTMessagePartDataKey];
+            NSArray *itemJSON = itemData[BOTMessagePartListItemsKey];
+            for (NSDictionary *itemData in itemJSON) {
+                STProductItem *item = [BOTProductItem productWithData:itemData];
+                [items addObject:item];
+            }
+       }
         // Update View
         self.btsHeaderLable.text = itemsData[BOTMessagePartHeaderTitle];
         [self.btsHeaderLable sizeToFit];
