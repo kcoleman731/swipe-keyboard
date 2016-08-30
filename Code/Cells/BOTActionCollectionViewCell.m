@@ -88,7 +88,7 @@ NSString *const BOTCartActionKey = @"cartAction";
 - (NSString *)parseTextForMessage:(LYRMessage *)message
 {
     NSDictionary *json = [self parseDataForMessagePart:message.parts[0]];
-    NSDictionary *data = json[STMessagePartDataKey];
+    NSDictionary *data = json[BOTMessagePartDataKey];
     NSDictionary *action;
     if(data[BOTBackToSchoolActionKey])
         action = data[BOTBackToSchoolActionKey];

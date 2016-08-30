@@ -277,10 +277,10 @@ CGFloat const BOTCollectionViewTopInset = 22.0f;
         NSDictionary *data = json[BOTMessagePartDataKey];
         NSDictionary *itemsData;
         
-        if(data[STMessagePartBTSItemsKey])
-            itemsData = data[STMessagePartBTSItemsKey];
-        else if(data[STMessagePartCartItemsKey])
-           itemsData = data[STMessagePartCartItemsKey];
+        if(data[BOTMessagePartBTSItemsKey])
+            itemsData = data[BOTMessagePartBTSItemsKey];
+        else if(data[BOTMessagePartCartItemsKey])
+           itemsData = data[BOTMessagePartCartItemsKey];
         
         //BTS items and cart items are coming in mupltiple part, so Handled number of parts
         /// Parse BTS Items
@@ -290,7 +290,7 @@ CGFloat const BOTCollectionViewTopInset = 22.0f;
             NSDictionary *itemData = json[BOTMessagePartDataKey];
             NSArray *itemJSON = itemData[BOTMessagePartListItemsKey];
             for (NSDictionary *itemData in itemJSON) {
-                STProductItem *item = [BOTProductItem productWithData:itemData];
+                BOTProductItem *item = [BOTProductItem productWithData:itemData];
                 [items addObject:item];
             }
        }
