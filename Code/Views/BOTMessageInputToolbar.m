@@ -194,13 +194,13 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     listButtonToRect.size.height = ATLButtonHeight;
     listButtonToRect.size.width  = ATLButtonHeight;
     listButtonToRect.origin.x    = ATLLeftButtonHorizontalMargin;
-    listButtonToRect.origin.y    = self.frame.size.height - vertPadding - listButtonToRect.size.height;
+    listButtonToRect.origin.y    = self.bounds.size.height - vertPadding - listButtonToRect.size.height;
 
     // Left Button
     leftButtonToRect.size.height = ATLButtonHeight;
     leftButtonToRect.size.width  = ATLButtonHeight;
     leftButtonToRect.origin.x    = listButtonToRect.origin.x + listButtonToRect.size.width + ATLLeftButtonHorizontalMargin;
-    leftButtonToRect.origin.y    = self.frame.size.height - vertPadding - listButtonToRect.size.height;
+    leftButtonToRect.origin.y    = self.bounds.size.height - vertPadding - listButtonToRect.size.height;
     
     // Right Button
     rightButtonToRect.size.height = ATLButtonHeight;
