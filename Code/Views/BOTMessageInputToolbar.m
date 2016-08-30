@@ -93,7 +93,7 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
 - (void)setupMultiSelectionBar
 {
     self.multiActionInputView          = [[BOTMultiSelectionBar alloc] init];
-    [self.multiActionInputView setLeftSelectionTitle:@"Buy Now" rightSelectionTitle:@"Customize in cart"];
+    [self.multiActionInputView setLeftSelectionTitle:@"Continue shopping" rightSelectionTitle:@"Customize in cart"];
     self.multiActionInputView.delegate = self;
     self.multiActionInputView.alpha    = 0.0;
     self.multiActionInputView.translatesAutoresizingMaskIntoConstraints = NO;

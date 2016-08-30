@@ -8,6 +8,7 @@
 
 #import "BOTActionInputView.h"
 #import "BOTActionButton.h"
+#import "BOTUtilities.h"
 
 @interface BOTActionInputView ()
 
@@ -33,7 +34,7 @@ NSUInteger const STCornerRadius = 6;
     self = [super init];
     if (self) {
         
-        UIColor *blue = [UIColor colorWithRed:118.0f/255.0f green:170.0f/255.0f blue:227.0f/255.0f alpha:1.0];
+        UIColor *blue = BOTBlueColor();
         self.layer.borderColor = blue.CGColor;
         self.layer.borderWidth = STBorderWidth;
         self.layer.cornerRadius = STCornerRadius;
