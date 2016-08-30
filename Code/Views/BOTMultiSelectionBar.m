@@ -10,6 +10,7 @@
 #import "BOTInvertedButton.h"
 #import "BOTMultiSelectionBarBevelView.h"
 #import "UIColor+Hex.h"
+#import "BOTUtilities.h"
 
 static NSString *const jordyBlueCode = @"#76AAE3";
 
@@ -54,8 +55,7 @@ static NSString *const jordyBlueCode = @"#76AAE3";
     [self addConstraintsForBevel];
     
     // Color
-    UIColor *blue = [UIColor colorWithRed:118.0f/255.0f green:170.0f/255.0f blue:227.0f/255.0f alpha:1.0];
-    [self setTintColor:blue];
+    [self setTintColor:BOTBlueColor()];
 }
 
 #pragma mark - Layout

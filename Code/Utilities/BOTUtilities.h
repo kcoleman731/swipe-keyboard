@@ -9,16 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+// Returns the appropriate bundle that should be used for Nibs and Assets.
 NSBundle * StaplesUIBundle();
 
+// Light Gray
 UIColor * BOTLightGrayColor();
 
+// Staples Blue
 UIColor * BOTBlueColor();
-
-/// Order Info
-extern NSString *const BOTOrderNumberKey;
-extern NSString *const BOTOrderPriceKey;
-extern NSString *const BOTOrderItemKey;
 
 // Address
 extern NSString *const BOTAddressName;

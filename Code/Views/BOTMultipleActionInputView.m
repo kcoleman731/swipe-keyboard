@@ -9,6 +9,7 @@
 #import "BOTMultipleActionInputView.h"
 #import "BOTMultipleActionInputScrollView.h"
 #import "EDColor.h"
+#import "BOTUtilities.h"
 
 static const CGFloat PAGING_CONTROL_DEFAULT_HEIGHT = 30.0f;
 
@@ -66,7 +67,7 @@ static const CGFloat PAGING_CONTROL_DEFAULT_HEIGHT = 30.0f;
     self.pageControl = [[UIPageControl alloc] init];
     self.pageControl.translatesAutoresizingMaskIntoConstraints = false;
     self.pageControl.numberOfPages = self.inputScrollView.numberOfPages;
-    self.pageControl.pageIndicatorTintColor = [UIColor colorWithRed:217.0f/255.0f green:217.0f/255.0f blue:217.0f/255.0f alpha:1.0];
+    self.pageControl.pageIndicatorTintColor = BOTBlueColor();
     self.pageControl.currentPageIndicatorTintColor = self.tintColor;
     [self addSubview:self.pageControl];
     

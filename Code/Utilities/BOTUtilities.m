@@ -30,9 +30,6 @@ UIColor * BOTBlueColor()
     return [UIColor colorWithRed:0/255.0 green:104/255.0 blue:223/255.0 alpha:1.0];
 }
 
-NSString *const BOTOrderNumberKey = @"STOrderNumberKey";
-NSString *const BOTOrderPriceKey = @"STOrderPriceKey";
-NSString *const BOTOrderItemKey = @"STOrderItemKey";
 
 NSString *const BOTAddressName = @"STAddressName";
 NSString *const BOTAddressStreet = @"STAddressStreet";

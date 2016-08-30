@@ -27,6 +27,9 @@ NSString *const BOTItemCollectionViewCellReuseIdentifier = @"BOTItemCollectionVi
 
 @implementation BOTItemCollectionViewCell
 
+CGFloat const BOTItemCollectionViewCellHeight = 240;
+CGFloat const BOTAddToCartButtonHeight = 52;
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -38,19 +41,27 @@ NSString *const BOTItemCollectionViewCellReuseIdentifier = @"BOTItemCollectionVi
     self.clipsToBounds = NO;
     self.contentView.backgroundColor = [UIColor clearColor];
     self.backgroundColor = [UIColor whiteColor];
-    self.layer.cornerRadius = 10.0;
     self.layer.borderColor = BOTLightGrayColor().CGColor;
     self.layer.cornerRadius = 4;
     self.layer.borderWidth = 2;
     self.clipsToBounds = YES;
     
+    self.addToCartButton = [UIButton new];
+    self.addToCartButton.translatesAutoresizingMaskIntoConstraints = NO;
+    self.addToCartButton.layer.cornerRadius = 4;
+    self.addToCartButton.layer.borderColor = BOTLightGrayColor().CGColor;
+    self.addToCartButton.layer.borderWidth = 2;
+    
     [self.addToCartButton setTitle:@"Add to cart" forState:UIControlStateNormal];
+    [self.addToCartButton setTitleColor:BOTBlueColor() forState:UIControlStateNormal];
     [self.addToCartButton addTarget:self action:@selector(viewInCartButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:self.addToCartButton];
+    [self configureAddToCardButtonConstraints];
 }
 
-+ (CGFloat)cellHeight
++ (CGFloat)cellHeightWithButton:(BOOL)button
 {
-    return 240;
+    return button ? BOTItemCollectionViewCellHeight + BOTAddToCartButtonHeight : BOTItemCollectionViewCellHeight;
 }
 
 + (NSString *)reuseIdentifier
@@ -67,6 +78,8 @@ NSString *const BOTItemCollectionViewCellReuseIdentifier = @"BOTItemCollectionVi
     self.priceLabel.text = item.price.price;
     self.deliveryLabel.text = @"Pick Up Today";
     [self setProductImageURL:item.imageURL];
+    
+    self.addToCartButton.alpha = 0.0f;
 }
 
 /**
@@ -94,9 +107,18 @@ NSString *const BOTItemCollectionViewCellReuseIdentifier = @"BOTItemCollectionVi
     }
 }
 
-- (void)viewInCartButtonTapped:(UIButton *)button
+- (void)configureAddToCardButtonConstraints
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:BOTBackToSchoolViewCartButtonTappedNotification object:self];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.addToCartButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.addToCartButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.addToCartButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.addToCartButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:BOTAddToCartButtonHeight]];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    NSLog(@"Self: %@", self);
 }
 
 @end

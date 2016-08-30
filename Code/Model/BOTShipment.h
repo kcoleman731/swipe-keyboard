@@ -9,12 +9,26 @@
 #import <Foundation/Foundation.h>
 #import <LayerKit/LayerKit.h>
 
+/**
+ The MIMEType used for shipment message parts.
+ */
 extern NSString *const BOTShipmentMIMEType;
 
+/**
+ BOTShipment is a convenience model used for parsing Shipment info from a BOT `LYRMessagePart` payload.
+ */
 @interface BOTShipment : NSObject
 
+/**
+ Returns an new `BOTShipment` object hydratd with the supplied data.
+ 
+ @param data An `NSDictionary` containing the shipment data.
+ */
 + (instancetype)shipmentWithData:(NSDictionary *)data;
 
+/**
+ Shipment Attributes
+ */
 @property (nonatomic) NSString *status;
 @property (nonatomic) NSString *deliveryDate;
 @property (nonatomic) NSString *number;

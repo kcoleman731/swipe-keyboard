@@ -10,43 +10,29 @@
 #import "BOTShipment.h"
 #import "BOTCellContainerView.h"
 
+/**
+ The reuse identifier for the cell.
+ */
 extern NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier;
 
+/**
+ The `BOTShipmentTrackingCollectionViewCell` displays an `BOT Card` with information about an order's shipment status.
+ */
 @interface BOTShipmentTrackingCollectionViewCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet BOTCellContainerView *cellContainerView;
-@property (weak, nonatomic) IBOutlet UILabel *orderNumberLabel;
-@property (weak, nonatomic) IBOutlet UILabel *orderDetailLabel;
-
-// State Image Views
-@property (strong, nonatomic) IBOutlet UIImageView *placedImageView;
-@property (strong, nonatomic) IBOutlet UIImageView *shippedImageView;
-@property (strong, nonatomic) IBOutlet UIImageView *outForDeliveryImageView;
-@property (strong, nonatomic) IBOutlet UIImageView *completeImageView;
-
-// State Labels
-@property (strong, nonatomic) IBOutlet UILabel *placedLabel;
-@property (strong, nonatomic) IBOutlet UILabel *shippedLabel;
-@property (strong, nonatomic) IBOutlet UILabel *outForDeliveryLabel;
-@property (strong, nonatomic) IBOutlet UILabel *completedLabel;
-
-@property (strong, nonatomic) IBOutlet UIImageView *lineNumber1;
-@property (strong, nonatomic) IBOutlet UIImageView *lineNumber2;
-@property (strong, nonatomic) IBOutlet UIImageView *lineNumber3;
-
 /**
- *  Reuse Identifier
+ Reuse Identifier
  */
 + (NSString *)reuseIdentifier;
 
 /**
- *  Product Items Setter
- */
-- (void)setShipment:(BOTShipment *)shipment;
-
-/**
- *  Cell Height
+ Cell Height
  */
 + (CGFloat)cellHeight;
+
+/**
+ Product Items Setter
+ */
+- (void)setShipment:(BOTShipment *)shipment;
 
 @end

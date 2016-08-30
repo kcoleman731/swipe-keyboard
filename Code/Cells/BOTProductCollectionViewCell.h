@@ -9,34 +9,33 @@
 #import <UIKit/UIKit.h>
 #import "BOTProductItem.h"
 
-@class BOTProductCollectionViewCell;
-
-@protocol BOTSuggestedProductCollectionViewCellDelegate
-
-- (void)productCell:(BOTProductCollectionViewCell *)cell addButtonWasPressedWithProduct:(BOTProductItem *)item;
-
-- (void)productCell:(BOTProductCollectionViewCell *)cell infoButtonWasPressedWithProduct:(BOTProductItem *)item;
-
-@end
-
-@interface BOTProductCollectionViewCell : UICollectionViewCell
-
-@property (readonly, nonatomic, strong) BOTProductItem *item;
-
-@property (nonatomic, weak) id <BOTSuggestedProductCollectionViewCellDelegate> delegate;
+//============================================================================
+// Note: This cell is per old designs. Keeping around for now in case we reuse.
+// Desing Link - https://t3.invisionapp.com/share/CD7XVFN7R#/screens/180458550
+//=============================================================================
 
 /**
- *  Reuse Identifier
+ The `BOTItemCollectionViewCell` displays a product card in a conversation UI.
+ */
+@interface BOTProductCollectionViewCell : UICollectionViewCell
+
+/**
+ item Models the product that is displayed in the card.
+ */
+@property (readonly, nonatomic, strong) BOTProductItem *item;
+
+/**
+ Reuse Identifier
  */
 + (NSString *)reuseIdentifier;
 
 /**
- *  Cell Height
+ Cell Height
  */
 + (CGFloat)cellHeight;
 
 /**
- *  Product Items Setter
+ Product Items Setter
  */
 - (void)setProductItem:(BOTProductItem *)item;
 

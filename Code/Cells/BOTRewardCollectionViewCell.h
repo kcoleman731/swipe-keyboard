@@ -10,25 +10,34 @@
 #import <Atlas/Atlas.h>
 #import "BOTReward.h"
 
+/**
+ The title of the cell. Used for testing purposes.
+ */
 extern NSString *const BOTRewardCollectionViewCellTitle;
+
+/**
+ The reuse identifier for the cell.
+ */
 extern NSString *const BOTRewardCollectionViewCellReuseIdentifier;
 
+/**
+ The `BOTRewardCollectionViewCell` displays an `BOT Card` with information about a staples reward.
+ */
 @interface BOTRewardCollectionViewCell : UICollectionViewCell
 
-@property (strong, nonatomic) IBOutlet UIView *view;
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *memberTypeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *ammountLabel;
-@property (strong, nonatomic) IBOutlet UILabel *rewardTypeLabel;
-@property (strong, nonatomic) IBOutlet UIButton *viewButton;
-@property (strong, nonatomic) IBOutlet UIImageView *barcodeImage;
-@property (strong, nonatomic) IBOutlet UILabel *barcodeNumber;
-
-- (void)setReward:(BOTReward *)reward;
-
+/**
+ Reuse Identifier
+ */
 + (NSString *)reuseIdentifier;
 
+/**
+ Cell Height
+ */
 + (CGFloat)cellHeight;
+
+/**
+ Reward Setter
+ */
+- (void)setReward:(BOTReward *)reward;
 
 @end
