@@ -49,6 +49,10 @@ typedef NS_ENUM(NSInteger, BOTCellType) {
 
 @implementation BOTMultipleProductBaseCollectionViewCell
 
+CGFloat const BOTHeaderLabelTopInset = 8.0f;
+CGFloat const BOTHeaderLabelHorizontalInset = 20.0f;
+CGFloat const BOTCollectionViewTopInset = 22.0f;
+
 #pragma mark - Initializers / Common Init
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -74,6 +78,9 @@ typedef NS_ENUM(NSInteger, BOTCellType) {
     self.contentView.backgroundColor = [UIColor clearColor];
     [self layoutCollectionView];
 
+    UINib *itemNib = [UINib nibWithNibName:@"BOTItemCollectionViewCell" bundle:StaplesUIBundle()];
+    [self.collectionView registerNib:itemNib forCellWithReuseIdentifier:[BOTItemCollectionViewCell reuseIdentifier]];
+    
     UINib *productNib = [UINib nibWithNibName:@"BOTProductCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[BOTProductCollectionViewCell reuseIdentifier]];
 
@@ -122,7 +129,7 @@ typedef NS_ENUM(NSInteger, BOTCellType) {
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
-        return [BOTProductCollectionViewCell cellHeight] + 60;
+        return [BOTItemCollectionViewCell cellHeight] + 60;
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
@@ -210,8 +217,8 @@ typedef NS_ENUM(NSInteger, BOTCellType) {
     UICollectionViewCell *returnCell;
     switch (self.cellType) {
         case BOTCellTypeBackToSchool: {
-            NSString *reuseIdentifier = [BOTProductCollectionViewCell reuseIdentifier];
-            BOTProductCollectionViewCell *cell = (BOTProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+            NSString *reuseIdentifier = [BOTItemCollectionViewCell reuseIdentifier];
+            BOTItemCollectionViewCell *cell = (BOTProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
             BOTProductItem *item = self.items[indexPath.row];
             [cell setProductItem:item];
             returnCell = cell;
@@ -286,7 +293,7 @@ typedef NS_ENUM(NSInteger, BOTCellType) {
         [self.viewAllButton setTitle:@"View All" forState:UIControlStateNormal];
         [self.viewAllButton sizeToFit];
         
-        self.topCollectionViewConstraint.constant = 40;
+        self.topCollectionViewConstraint.constant = BOTCollectionViewTopInset;
     }
 
     // Parse Reward Data.
@@ -335,11 +342,11 @@ typedef NS_ENUM(NSInteger, BOTCellType) {
 
 - (void)addCollecitonViewConstraints
 {
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btsHeaderLable attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:20.0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btsHeaderLable attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:10.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btsHeaderLable attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:BOTHeaderLabelTopInset]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btsHeaderLable attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:BOTHeaderLabelHorizontalInset]];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewAllButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.btsHeaderLable attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewAllButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:-20.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewAllButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:-BOTHeaderLabelHorizontalInset]];
     
     self.topCollectionViewConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
     [self addConstraint:self.topCollectionViewConstraint];

@@ -30,6 +30,8 @@
  */
 + (NSString *)reuseIdentifier;
 
++ (CGFloat)cellHeight;
+
 /**
  *  Product Items Setter
  */

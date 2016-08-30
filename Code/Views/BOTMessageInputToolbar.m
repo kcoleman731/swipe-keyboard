@@ -32,7 +32,7 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
 
 @end
 
-@interface BOTMessageInputToolbar () <BOTMultiSelectionBarDelegate>
+@interface STMessageInputToolbar () <BOTMultiSelectionBarDelegate, ATLMessageInputToolbarDelegate>
 
 @property (nonatomic) UIButton *listAccessoryButton;
 @property (nonatomic) UIImage *listAccessoryButtonImage;
@@ -55,6 +55,7 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
                                                  selector:@selector(resizeTextViewAndFrame)
                                                      name:UITextViewTextDidChangeNotification
                                                    object:self.textInputView];
+        
         // Adding target for right accessory btn
         [self.rightAccessoryButton addTarget:self
                                       action:@selector(rightAccessoryButtonTappedEvent)
@@ -230,6 +231,8 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
     CGRect prevTextViewRect = textViewRect;
 
     // Calc TextView Vert Area
+    [self.textInputView sizeToFit];
+    [self.textInputView layoutIfNeeded];
     CGSize toSize            = [self.textInputView sizeThatFits:CGSizeMake(textViewRect.size.width, MAXFLOAT)];
     CGFloat toHeight         = fmax(toSize.height, 30.0f);
     textViewRect.size.height = toHeight;
@@ -365,16 +368,23 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
     [self addConstraints:@[leading, trailing, top, bottom, self.inputTextViewHeightConstraint]];
 }
 
+#pragma mark - ATLMessageInputToolbarDelegate
+
+- (void)messageInputToolbarDidType:(ATLMessageInputToolbar *)messageInputToolbar
+{
+    [self resizeTextViewAndFrame];
+}
+
 #pragma mark - STMultiSelectionBarDelegate Calls
 
 - (void)multiSelectionBar:(BOTMultiSelectionBar *)bar leftSelectionHitWithTitle:(NSString *)title
 {
-    
+    [self.customDelegate messageInputToolbar:self multiSelectionBarTappedWithTitle:title];
 }
 
 - (void)multiSelectionBar:(BOTMultiSelectionBar *)bar rightSelectionHitWithTitle:(NSString *)title
 {
-    
+    [self.customDelegate messageInputToolbar:self multiSelectionBarTappedWithTitle:title];
 }
 
 #pragma mark - Gesture Recognizers

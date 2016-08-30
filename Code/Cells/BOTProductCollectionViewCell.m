@@ -61,7 +61,7 @@ IB_DESIGNABLE
 
 + (CGFloat)cellHeight
 {
-    return 160;
+    return 100;
 }
 
 + (NSString *)reuseIdentifier
