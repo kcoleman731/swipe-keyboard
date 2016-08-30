@@ -47,4 +47,6 @@
  */
 - (void)resizeTextViewAndFrame;
 
+@property (nonatomic) BOOL isShowingMultiSelectionBar;
+
 @end

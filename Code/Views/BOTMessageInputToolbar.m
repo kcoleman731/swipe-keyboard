@@ -40,8 +40,6 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
 @property (nonnull, strong) NSLayoutConstraint *multiSelectionHeightConstraint;
 @property (nonnull, strong) BOTMultiSelectionBar *multiActionInputView;;
 
-@property (nonatomic) BOOL isShowingMultiSelectionBar;
-
 @end
 
 @implementation BOTMessageInputToolbar

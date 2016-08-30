@@ -129,7 +129,7 @@ CGFloat const BOTCollectionViewTopInset = 22.0f;
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
-        return [BOTItemCollectionViewCell cellHeight] + 60;
+        return [BOTItemCollectionViewCell cellHeight] + 46;
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
@@ -183,7 +183,7 @@ CGFloat const BOTCollectionViewTopInset = 22.0f;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(collectionView.bounds.size.width * 0.8f, collectionView.bounds.size.height * 0.9f);
+    return CGSizeMake(collectionView.bounds.size.width * 0.8f, collectionView.bounds.size.height * 0.95f);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -272,6 +272,7 @@ CGFloat const BOTCollectionViewTopInset = 22.0f;
     // Parse Product Data.
     NSMutableArray *items = [[NSMutableArray alloc] init];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
+        
         // Parse BTS Title
         NSDictionary *data = json[BOTMessagePartDataKey];
         NSDictionary *itemsData = data[BOTMessagePartBTSItemsKey];

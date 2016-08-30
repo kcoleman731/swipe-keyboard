@@ -80,7 +80,7 @@ NSString *const BOTBackToSchoolActionKey = @"btsAction";
     [self.bubbleView updateWithAttributedText:[super attributedStringForText:header]];
     [self.bubbleView updateProgressIndicatorWithProgress:0.0 visible:NO animated:NO];
     self.accessibilityLabel = [NSString stringWithFormat:@"Message: %@", header];
-    
+    self.backgroundColor = [UIColor whiteColor];
     [self updateBubbleWidth:300];
 }
 
