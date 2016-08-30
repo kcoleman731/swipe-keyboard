@@ -8,6 +8,7 @@
 
 #import "BOTMessageInputToolbar.h"
 #import "BOTMultiSelectionBar.h"
+#import "EDColor.h"
 
 extern NSString *const ATLMessageInputToolbarCameraButton;
 
@@ -71,6 +72,9 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
         // Init some layout
         [self setupTextInputViewConstraints];
         [self resizeTextViewAndFrame];
+        
+        // Custom images
+        [self setCustomAccessoryButtonImages];
         
         // Turn off the auto suggestion bar
         self.textInputView.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -158,6 +162,32 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     if ([self.customDelegate respondsToSelector:@selector(messageInputToolbar:didTapListAccessoryButton:)]) {
         [self.customDelegate messageInputToolbar:self didTapListAccessoryButton:sender];
     }
+}
+
+#pragma mark - Accessory Button Images
+
+- (void)setCustomAccessoryButtonImages
+{
+    UIImage *cameraGlyph = [UIImage imageNamed:@"camera_glyph"];
+    UIImage *listGlyph   = [UIImage imageNamed:@"list_glyph"];
+    
+    UIImage *cameraGlyphSelected = [UIImage imageNamed:@"camera_glyph_selected"];
+    UIImage *listGlyphSelected   = [UIImage imageNamed:@"list_glyph_selected"];
+    
+    self.listAccessoryButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.leftAccessoryButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    // Normal
+    [self.listAccessoryButton setImage:listGlyph forState:UIControlStateNormal];
+    [self.leftAccessoryButton setImage:cameraGlyph forState:UIControlStateNormal];
+    
+    // Highlighted
+    [self.listAccessoryButton setImage:listGlyphSelected forState:UIControlStateHighlighted];
+    [self.leftAccessoryButton setImage:cameraGlyphSelected forState:UIControlStateHighlighted];
+    
+    // Shink the list and cam a bit
+    [self.listAccessoryButton setContentEdgeInsets:UIEdgeInsetsMake(2.0, 2.0, 2.0, 2.0)];
+    [self.leftAccessoryButton setContentEdgeInsets:UIEdgeInsetsMake(1.0, 1.0, 1.0, 1.0)];
 }
 
 #pragma mark - Subview Layouts
