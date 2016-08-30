@@ -15,37 +15,37 @@
 extern NSString *const BOTMultipleProductBaseCollectionViewCellTitle;
 
 /**
- * Posted when a `Back To School` View All button is selected. The `object` of the notification will be an array containing the BTS products.
+ Posted when a `Back To School` View All button is selected. The `object` of the notification will be an array containing the BTS products.
  */
 extern NSString *const BOTBackToSchoolViewAllSelectedNotification;
 
 /**
- * Posted when a `Back To School` product card is selected. The `object` of the notification will be the cooresponing `Product` object.
+ Posted when a `Back To School` product card is selected. The `object` of the notification will be the cooresponing `Product` object.
  */
 extern NSString *const BOTBackToSchoolItemSelectedNotification;
 
 /**
- * Posted when a `Shipment` card is selected. The `object` of the notification will be the cooresponing `STShipment` object.
+ Posted when a `Shipment` card is selected. The `object` of the notification will be the cooresponing `STShipment` object.
  */
 extern NSString *const BOTShipmentSelectedNotification;
 
 /**
- * Posted when a `Reward` card is selected. The `object` of the notification will be the cooresponing `STReward` object.
+ Posted when a `Reward` card is selected. The `object` of the notification will be the cooresponing `STReward` object.
  */
 extern NSString *const BOTRewardSelectedNotification;
 
 /**
- * The `STMultipleProductBaseCollectionViewCell` displays a horizontally scrolling collection view used to display multiple `Bot Cards`within a single cell.
+ The `STMultipleProductBaseCollectionViewCell` displays a horizontally scrolling collection view used to display multiple `Bot Cards`within a single cell.
  */
 @interface BOTMultipleProductBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
 /**
- *  Reuse Identifier
+ Reuse Identifier
  */
 + (NSString *)reuseIdentifier;
 
 /**
- *  Cell Height
+ Cell Height
  */
 + (CGFloat)cellHeightForMessage:(LYRMessage *)message;
 

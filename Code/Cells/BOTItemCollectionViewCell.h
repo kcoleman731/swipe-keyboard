@@ -9,35 +9,36 @@
 #import <UIKit/UIKit.h>
 #import "BOTProductItem.h"
 
+/**
+ The `BOTBackToSchoolViewCartButtonTappedNotification` is posed when a user taps the `View Cart` button that appears below a product card.
+ */
 extern NSString *const BOTBackToSchoolViewCartButtonTappedNotification;
 
-@class BOTItemCollectionViewCell;
-
-@protocol BOTItemCollectionViewCellDelegate
-
-- (void)ItemCell:(BOTItemCollectionViewCell *)cell addButtonWasPressedWithItem:(BOTProductItem *)item;
-
-- (void)ItemCell:(BOTItemCollectionViewCell *)cell infoButtonWasPressedWithItem:(BOTProductItem *)item;
-
-@end
-
+/**
+ The `BOTItemCollectionViewCell` displays a product card in a conversation UI.
+ */
 @interface BOTItemCollectionViewCell : UICollectionViewCell
 
+/**
+ item Models the product that is displayed in the card.
+ */
 @property (readonly, nonatomic, strong) BOTProductItem *item;
 
-@property (nonatomic, weak) id <BOTItemCollectionViewCellDelegate> delegate;
-
 /**
- *  Reuse Identifier
+ Reuse Identifier
  */
 + (NSString *)reuseIdentifier;
 
+/**
+ Cell Height
+ 
+ @param button Determines whether or not the cell should display a `View Cart` button.
+ */
 + (CGFloat)cellHeightWithButton:(BOOL)button;
 
 /**
- *  Product Items Setter
+ Product Item Setter
  */
 - (void)setProductItem:(BOTProductItem *)item;
-
 
 @end

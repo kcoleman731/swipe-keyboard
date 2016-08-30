@@ -17,6 +17,16 @@ NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollecti
 
 @interface BOTRewardCollectionViewCell ()
 
+@property (strong, nonatomic) IBOutlet UIView *view;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *memberTypeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *ammountLabel;
+@property (strong, nonatomic) IBOutlet UILabel *rewardTypeLabel;
+@property (strong, nonatomic) IBOutlet UIButton *viewButton;
+@property (strong, nonatomic) IBOutlet UIImageView *barcodeImage;
+@property (strong, nonatomic) IBOutlet UILabel *barcodeNumber;
+
 @end
 
 @implementation BOTRewardCollectionViewCell

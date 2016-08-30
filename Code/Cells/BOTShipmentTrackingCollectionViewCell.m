@@ -12,6 +12,30 @@
 
 NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShipmentTrackingCollectionViewCellReuseIdentifier";
 
+@interface BOTShipmentTrackingCollectionViewCell ()
+
+@property (weak, nonatomic) IBOutlet BOTCellContainerView *cellContainerView;
+@property (weak, nonatomic) IBOutlet UILabel *orderNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *orderDetailLabel;
+
+// State Image Views
+@property (strong, nonatomic) IBOutlet UIImageView *placedImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *shippedImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *outForDeliveryImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *completeImageView;
+
+// State Labels
+@property (strong, nonatomic) IBOutlet UILabel *placedLabel;
+@property (strong, nonatomic) IBOutlet UILabel *shippedLabel;
+@property (strong, nonatomic) IBOutlet UILabel *outForDeliveryLabel;
+@property (strong, nonatomic) IBOutlet UILabel *completedLabel;
+
+@property (strong, nonatomic) IBOutlet UIImageView *lineNumber1;
+@property (strong, nonatomic) IBOutlet UIImageView *lineNumber2;
+@property (strong, nonatomic) IBOutlet UIImageView *lineNumber3;
+
+@end
+
 @implementation BOTShipmentTrackingCollectionViewCell
 
 - (void)awakeFromNib

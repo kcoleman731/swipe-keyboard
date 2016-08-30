@@ -8,10 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ BOTPrice is a convenience model used for parsing price info from a BOT `LYRMessagePart` payload.
+ */
 @interface BOTPrice : NSObject
 
+/**
+ Returns an new `BOTPrice` object hydratd with the supplied data.
+ 
+ @param data An `NSDictionary` containing the price data.
+ */
 + (instancetype)priceWithData:(NSDictionary *)data;
 
+/**
+ Price Attirbutes
+ */
 @property (nonatomic) NSString *unitOfMeasure;
 @property (nonatomic) NSString *price;
 @property (nonatomic) NSString *finalPrice;

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ The `BOTCellContainerView` displays a red `Info` triangle UI element in the top right corner of its container.
+ */
 @interface BOTCellContainerView : UIView
 
 @end

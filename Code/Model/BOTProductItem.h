@@ -9,14 +9,31 @@
 #import <Foundation/Foundation.h>
 #import "BOTPrice.h"
 
+/**
+ The MIMEType used for product message parts.
+ */
 extern NSString *const BOTProductListMIMEType;
 
+/**
+ BOTProductItem is a convenience model used for parsing Product info from a BOT `LYRMessagePart` payload.
+ */
 @interface BOTProductItem : NSObject <NSCoding>
 
+/**
+ Returns an new `BOTProductItem` object hydratd with the supplied data.
+ 
+ @param data An `NSDictionary` containing the product data.
+ */
 + (instancetype)productWithData:(NSDictionary *)data;
 
+/**
+ Convenience method that returns the value of the supplied key.
+ */
 - (id)objectForKey:(NSString *)key;
 
+/**
+ Product Attributes
+ */
 @property (nonatomic, strong) NSString *quatity;
 @property (nonatomic, strong) NSString *imageURL;
 @property (nonatomic, strong) NSString *skuNumber;

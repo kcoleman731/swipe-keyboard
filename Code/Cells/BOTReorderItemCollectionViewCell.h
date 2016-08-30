@@ -9,12 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "BOTProductItem.h"
 
+/**
+ The `BOTReorderItemCollectionViewCell` displays an individual reorder item cell.
+ */
 @interface BOTReorderItemCollectionViewCell : UICollectionViewCell
 
+/**
+ Reuse identifier.
+ */
 + (NSString *)reuseIdentifier;
 
 /**
- *  Product Items Setter
+ Product Items Setter
  */
 - (void)setProductItem:(BOTProductItem *)item;
 
