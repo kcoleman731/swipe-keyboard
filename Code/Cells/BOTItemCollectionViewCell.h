@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BOTProductItem.h"
 
+extern NSString *const BOTBackToSchoolViewCartButtonTappedNotification;
+
 @class BOTItemCollectionViewCell;
 
 @protocol BOTItemCollectionViewCellDelegate

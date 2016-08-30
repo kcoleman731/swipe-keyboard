@@ -10,6 +10,7 @@
 #import "BOTUtilities.h"
 #import "UIImageView+WebCache.h"
 
+NSString *const BOTBackToSchoolViewCartButtonTappedNotification = @"BOTBackToSchoolViewCartButtonTappedNotification";
 NSString *const BOTItemCollectionViewCellReuseIdentifier = @"BOTItemCollectionViewCellReuseIdentifier";
 
 @interface BOTItemCollectionViewCell ()
@@ -42,6 +43,9 @@ NSString *const BOTItemCollectionViewCellReuseIdentifier = @"BOTItemCollectionVi
     self.layer.cornerRadius = 4;
     self.layer.borderWidth = 2;
     self.clipsToBounds = YES;
+    
+    [self.addToCartButton setTitle:@"Add to cart" forState:UIControlStateNormal];
+    [self.addToCartButton addTarget:self action:@selector(viewInCartButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 + (CGFloat)cellHeight
@@ -88,6 +92,11 @@ NSString *const BOTItemCollectionViewCellReuseIdentifier = @"BOTItemCollectionVi
     } else {
         [self.itemImageView setImage:nil];
     }
+}
+
+- (void)viewInCartButtonTapped:(UIButton *)button
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:BOTBackToSchoolViewCartButtonTappedNotification object:self];
 }
 
 @end

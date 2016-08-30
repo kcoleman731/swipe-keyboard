@@ -247,7 +247,6 @@ CGFloat const BOTCollectionViewTopInset = 22.0f;
             break;
     }
 
-
     return returnCell;
 }
 
