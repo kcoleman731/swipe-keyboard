@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Atlas/Atlas.h>
-#import "STReward.h"
+#import "BOTReward.h"
 
 extern NSString *const BOTRewardCollectionViewCellTitle;
 extern NSString *const BOTRewardCollectionViewCellReuseIdentifier;
@@ -25,7 +25,7 @@ extern NSString *const BOTRewardCollectionViewCellReuseIdentifier;
 @property (strong, nonatomic) IBOutlet UIImageView *barcodeImage;
 @property (strong, nonatomic) IBOutlet UILabel *barcodeNumber;
 
-- (void)setReward:(STReward *)reward;
+- (void)setReward:(BOTReward *)reward;
 
 + (NSString *)reuseIdentifier;
 

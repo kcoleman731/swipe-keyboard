@@ -7,7 +7,7 @@
 //
 
 #import "BOTActionCollectionViewCell.h"
-#import "STUtilities.h"
+#import "BOTUtilities.h"
 
 NSString *const BOTActionMIMEType = @"application/json+actionobject";
 NSString *const BOTActionCollectionViewCellButtonTapped = @"BOTActionCollectionViewCellButtonTapped";
@@ -52,14 +52,14 @@ NSString *const BOTActionCollectionViewCellReuseIdentifier = @"BOTActionCollecti
 {
     self.actionButton = [UIButton new];
     [self.actionButton setTitle:@"View My Cart" forState:UIControlStateNormal];
-    [self.actionButton setTitleColor:STBlueColor() forState:UIControlStateNormal];
+    [self.actionButton setTitleColor:BOTBlueColor() forState:UIControlStateNormal];
     [self.actionButton addTarget:self action:@selector(actionButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     
     self.actionButton.titleLabel.font = [UIFont systemFontOfSize:14];
     self.actionButton.translatesAutoresizingMaskIntoConstraints = NO;
     self.actionButton.layer.cornerRadius = 4;
     self.actionButton.backgroundColor = [UIColor whiteColor];
-    self.actionButton.layer.borderColor = STBlueColor().CGColor;
+    self.actionButton.layer.borderColor = BOTBlueColor().CGColor;
     self.actionButton.layer.borderWidth = 1;
     [self.contentView addSubview:self.actionButton];
     [super lyr_baseInit];
@@ -88,7 +88,7 @@ NSString *const BOTBackToSchoolActionKey = @"btsAction";
 - (NSString *)parseTextForMessage:(LYRMessage *)message
 {
     NSDictionary *json = [self parseDataForMessagePart:message.parts[0]];
-    NSDictionary *data = json[STMessagePartDataKey];
+    NSDictionary *data = json[BOTMessagePartDataKey];
     NSDictionary *action = data[BOTBackToSchoolActionKey];
     return action[BOTHeaderTitleKey];
 }

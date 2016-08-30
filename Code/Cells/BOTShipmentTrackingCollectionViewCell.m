@@ -8,7 +8,7 @@
 
 #import "BOTShipmentTrackingCollectionViewCell.h"
 #import "ATLMessagingUtilities.h"
-#import "STUtilities.h"
+#import "BOTUtilities.h"
 
 NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShipmentTrackingCollectionViewCellReuseIdentifier";
 
@@ -32,7 +32,7 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
     self.completedLabel.text = @"COMPLETE";
     
     // Initialization code
-    self.cellContainerView.layer.borderColor = STLightGrayColor().CGColor;
+    self.cellContainerView.layer.borderColor = BOTLightGrayColor().CGColor;
     self.cellContainerView.layer.cornerRadius = 4;
     self.cellContainerView.layer.borderWidth = 2;
     self.cellContainerView.clipsToBounds = YES;
@@ -52,7 +52,7 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
     return 180;
 }
 
-- (void)setShipment:(STShipment *)shipment
+- (void)setShipment:(BOTShipment *)shipment
 {
     NSDateFormatter *formatter = [NSDateFormatter new];
     formatter.dateFormat = @"EEE MMM d HH:mm:ss zzz yyyy";
@@ -68,34 +68,34 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
     
     
     if([shipment.status isEqual: @"Processing"]) {
-        self.placedImageView.backgroundColor = STBlueColor();
-        self.shippedImageView.backgroundColor = STLightGrayColor();
-        self.outForDeliveryImageView.backgroundColor = STLightGrayColor();
-        self.completeImageView.backgroundColor = STLightGrayColor();
+        self.placedImageView.backgroundColor = BOTBlueColor();
+        self.shippedImageView.backgroundColor = BOTLightGrayColor();
+        self.outForDeliveryImageView.backgroundColor = BOTLightGrayColor();
+        self.completeImageView.backgroundColor = BOTLightGrayColor();
         
     }else if ([shipment.status isEqual:@"In-Transit"]) {
-        self.lineNumber1.backgroundColor = STBlueColor();
-        self.placedImageView.backgroundColor = STBlueColor();
-        self.shippedImageView.backgroundColor = STBlueColor();
-        self.outForDeliveryImageView.backgroundColor = STLightGrayColor();
-         self.completeImageView.backgroundColor = STLightGrayColor();
+        self.lineNumber1.backgroundColor = BOTBlueColor();
+        self.placedImageView.backgroundColor = BOTBlueColor();
+        self.shippedImageView.backgroundColor = BOTBlueColor();
+        self.outForDeliveryImageView.backgroundColor = BOTLightGrayColor();
+         self.completeImageView.backgroundColor = BOTLightGrayColor();
         
     }else if ([shipment.status isEqual:@"Out for delivery"] || [shipment.status isEqual:@"Shipped"]) {
-        self.lineNumber1.backgroundColor = STBlueColor();
-        self.lineNumber2.backgroundColor = STBlueColor();
-        self.placedImageView.backgroundColor = STBlueColor();
-        self.shippedImageView.backgroundColor = STBlueColor();
-        self.outForDeliveryImageView.backgroundColor = STBlueColor();
-        self.completeImageView.backgroundColor = STLightGrayColor();
+        self.lineNumber1.backgroundColor = BOTBlueColor();
+        self.lineNumber2.backgroundColor = BOTBlueColor();
+        self.placedImageView.backgroundColor = BOTBlueColor();
+        self.shippedImageView.backgroundColor = BOTBlueColor();
+        self.outForDeliveryImageView.backgroundColor = BOTBlueColor();
+        self.completeImageView.backgroundColor = BOTLightGrayColor();
         
     }else if ([shipment.status isEqual:@"Delivered"]) {
-        self.lineNumber1.backgroundColor = STBlueColor();
-        self.lineNumber2.backgroundColor = STBlueColor();
-        self.lineNumber3.backgroundColor = STBlueColor();
-        self.placedImageView.backgroundColor = STBlueColor();
-        self.shippedImageView.backgroundColor = STBlueColor();
-        self.outForDeliveryImageView.backgroundColor = STBlueColor();
-        self.completeImageView.backgroundColor = STBlueColor();
+        self.lineNumber1.backgroundColor = BOTBlueColor();
+        self.lineNumber2.backgroundColor = BOTBlueColor();
+        self.lineNumber3.backgroundColor = BOTBlueColor();
+        self.placedImageView.backgroundColor = BOTBlueColor();
+        self.shippedImageView.backgroundColor = BOTBlueColor();
+        self.outForDeliveryImageView.backgroundColor = BOTBlueColor();
+        self.completeImageView.backgroundColor = BOTBlueColor();
     }
 
 }
@@ -108,7 +108,7 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
 {
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:orderNumberText];
     [text setAttributes:@{NSFontAttributeName:self.orderNumberLabel.font,
-                          NSForegroundColorAttributeName: STBlueColor(),
+                          NSForegroundColorAttributeName: BOTBlueColor(),
                           NSUnderlineStyleAttributeName: @(NSUnderlineStyleSingle | NSUnderlinePatternDot)} range:NSMakeRange(14, text.length - 14)];
     return text;
 }
