@@ -42,4 +42,9 @@
  */
 - (void)displayMultiSelectionInputBar:(BOOL)displayBar;
 
+/**
+ *  Convenience to tell this toolbar to resize the textview for the content in it.
+ */
+- (void)resizeTextViewAndFrame;
+
 @end

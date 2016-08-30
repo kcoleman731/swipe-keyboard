@@ -32,7 +32,7 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
 
 @end
 
-@interface BOTMessageInputToolbar () <BOTMultiSelectionBarDelegate>
+@interface STMessageInputToolbar () <BOTMultiSelectionBarDelegate, ATLMessageInputToolbarDelegate>
 
 @property (nonatomic) UIButton *listAccessoryButton;
 @property (nonatomic) UIImage *listAccessoryButtonImage;
@@ -55,6 +55,7 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
                                                  selector:@selector(resizeTextViewAndFrame)
                                                      name:UITextViewTextDidChangeNotification
                                                    object:self.textInputView];
+        
         // Adding target for right accessory btn
         [self.rightAccessoryButton addTarget:self
                                       action:@selector(rightAccessoryButtonTappedEvent)
@@ -168,7 +169,7 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
 
     // Remove the layout constraint for height attempting to lock this at 44.0
     NSArray *layoutConstraints = self.constraints;
-    for (NSLayoutConstraint *constraint in layoutConstraints) {
+    for (NSLayoutConstraint *constraint in self.constraints) {
         if (constraint.firstAttribute == NSLayoutAttributeHeight && constraint.constant == 44.0) {
             [self removeConstraint:constraint];
         }
@@ -215,10 +216,6 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
     // Getting the text input view frame here so we can bypass the call to super
     CGRect textViewRect = self.textInputView.frame;
     
-    self.dummyTextView.attributedText = self.textInputView.attributedText;
-    CGSize fittedTextViewSize = [self.dummyTextView sizeThatFits:CGSizeMake(CGRectGetWidth(textViewRect), MAXFLOAT)];
-    textViewRect.size.height = ceil(MIN(fittedTextViewSize.height, self.textViewMaxHeight));
-    
     // Calc TextView Horiz Area
     CGFloat textViewToX      = CGRectGetMaxX(self.leftAccessoryButton.frame) + 16.0;
     CGFloat textViewToWidth  = CGRectGetMinX(self.rightAccessoryButton.frame) - textViewToX;
@@ -234,6 +231,8 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
     CGRect prevTextViewRect = textViewRect;
 
     // Calc TextView Vert Area
+    [self.textInputView sizeToFit];
+    [self.textInputView layoutIfNeeded];
     CGSize toSize            = [self.textInputView sizeThatFits:CGSizeMake(textViewRect.size.width, MAXFLOAT)];
     CGFloat toHeight         = fmax(toSize.height, 30.0f);
     textViewRect.size.height = toHeight;
@@ -369,16 +368,23 @@ static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
     [self addConstraints:@[leading, trailing, top, bottom, self.inputTextViewHeightConstraint]];
 }
 
+#pragma mark - ATLMessageInputToolbarDelegate
+
+- (void)messageInputToolbarDidType:(ATLMessageInputToolbar *)messageInputToolbar
+{
+    [self resizeTextViewAndFrame];
+}
+
 #pragma mark - STMultiSelectionBarDelegate Calls
 
 - (void)multiSelectionBar:(BOTMultiSelectionBar *)bar leftSelectionHitWithTitle:(NSString *)title
 {
-    
+    [self.customDelegate messageInputToolbar:self multiSelectionBarTappedWithTitle:title];
 }
 
 - (void)multiSelectionBar:(BOTMultiSelectionBar *)bar rightSelectionHitWithTitle:(NSString *)title
 {
-    
+    [self.customDelegate messageInputToolbar:self multiSelectionBarTappedWithTitle:title];
 }
 
 #pragma mark - Gesture Recognizers
