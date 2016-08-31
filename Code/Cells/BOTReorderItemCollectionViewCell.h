@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BOTProductItem.h"
+#import "BOTProduct.h"
 
 /**
  The `BOTReorderItemCollectionViewCell` displays an individual reorder item cell.
@@ -22,7 +22,7 @@
 /**
  Product Items Setter
  */
-- (void)setProductItem:(BOTProductItem *)item;
+- (void)setProductItem:(BOTProduct *)item;
 
 
 @end

@@ -16,9 +16,7 @@ extern NSString *const ATLMessageInputToolbarCameraButton;
 // Kevin Coleman: Redeclaring these constants here, as they are private to the Atlas superclass.
 // Note, these values are subject to change in the super.
 static CGFloat const ATLLeftButtonHorizontalMargin = 6.0f;
-static CGFloat const ATLLeftAccessoryButtonWidth = 40.0f;
 static CGFloat const ATLRightAccessoryButtonDefaultWidth = 46.0f;
-static CGFloat const ATLRightAccessoryButtonPadding = 5.3f;
 static CGFloat const ATLRightButtonHorizontalMargin = 4.0f;
 static CGFloat const ATLButtonHeight = 28.0f;
 static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
@@ -404,6 +402,16 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
 - (void)messageInputToolbarDidType:(ATLMessageInputToolbar *)messageInputToolbar
 {
     [self resizeTextViewAndFrame];
+}
+
+- (void)messageInputToolbar:(ATLMessageInputToolbar *)messageInputToolbar didTapRightAccessoryButton:(UIButton *)rightAccessoryButton
+{
+    // Not sure
+}
+
+- (void)messageInputToolbar:(ATLMessageInputToolbar *)messageInputToolbar didTapLeftAccessoryButton:(UIButton *)leftAccessoryButton
+{
+    // Not Sure
 }
 
 #pragma mark - STMultiSelectionBarDelegate Calls

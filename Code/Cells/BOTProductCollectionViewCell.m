@@ -1,42 +1,39 @@
 //
-//  STMultipleProductsCollectionViewCell.m
+//  STItemCollectionViewCell.m
 //  Staples
 //
-//  Created by Taylor Halliday on 8/19/16.
+//  Created by Kevin Coleman on 8/22/16.
 //  Copyright © 2016 Mesh. All rights reserved.
 //
 
 #import "BOTProductCollectionViewCell.h"
-#import "UIImageView+WebCache.h"
-#import "EDColor.h"
 #import "BOTUtilities.h"
+#import "UIImageView+WebCache.h"
 
-// Cell ID
-NSString *const BOTProductCollectionViewCellId = @"BOTProductCollectionViewCellId";
+NSString *const BOTBackToSchoolViewCartButtonTappedNotification = @"BOTBackToSchoolViewCartButtonTappedNotification";
+NSString *const BOTItemCollectionViewCellReuseIdentifier = @"BOTItemCollectionViewCellReuseIdentifier";
 
 @interface BOTProductCollectionViewCell ()
 
-// Model
-@property (nonatomic, strong) BOTProductItem *item;
+@property (nonatomic, strong) BOTProduct *item;
 
-// UI
-@property (weak, nonatomic) IBOutlet UIImageView *productImageView;
-@property (weak, nonatomic) IBOutlet UILabel *productDescriptionLabel;
-@property (weak, nonatomic) IBOutlet UIButton *addToCartButton;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *itemImageView;
+@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (strong, nonatomic) IBOutlet UILabel *priceLabel;
+@property (strong, nonatomic) IBOutlet UILabel *deliveryLabel;
+@property (strong, nonatomic) IBOutlet UIButton *addToCartButton;
 
 @end
 
-IB_DESIGNABLE
-
 @implementation BOTProductCollectionViewCell
 
-#pragma mark - Layout / Init
+CGFloat const BOTItemCollectionViewCellHeight = 232;
+CGFloat const BOTAddToCartButtonHeight = 52;
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     [self configureUI];
-    [self configureAddButton];
 }
 
 - (void)configureUI
@@ -44,42 +41,46 @@ IB_DESIGNABLE
     self.clipsToBounds = NO;
     self.contentView.backgroundColor = [UIColor clearColor];
     self.backgroundColor = [UIColor whiteColor];
-    self.layer.cornerRadius = 10.0;
     self.layer.borderColor = BOTLightGrayColor().CGColor;
     self.layer.cornerRadius = 4;
     self.layer.borderWidth = 2;
     self.clipsToBounds = YES;
+    
+    self.addToCartButton = [UIButton new];
+    self.addToCartButton.translatesAutoresizingMaskIntoConstraints = NO;
+    self.addToCartButton.layer.cornerRadius = 4;
+    self.addToCartButton.layer.borderColor = BOTLightGrayColor().CGColor;
+    self.addToCartButton.layer.borderWidth = 2;
+    
+    [self.addToCartButton setTitle:@"Add to cart" forState:UIControlStateNormal];
+    [self.addToCartButton setTitleColor:BOTBlueColor() forState:UIControlStateNormal];
+    [self.addToCartButton addTarget:self action:@selector(viewInCartButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:self.addToCartButton];
+    [self configureAddToCardButtonConstraints];
 }
 
-- (void)configureAddButton
++ (CGFloat)cellHeightWithButton:(BOOL)button
 {
-    self.addToCartButton.layer.shadowColor = [[UIColor blackColor] CGColor];
-    self.addToCartButton.layer.shadowOpacity = 0.3f;
-    self.addToCartButton.layer.shadowRadius = 1.0;
-    self.addToCartButton.layer.shadowOffset = CGSizeMake(2.0, 2.0);
-}
-
-+ (CGFloat)cellHeight
-{
-    return 100;
+    return button ? BOTItemCollectionViewCellHeight + BOTAddToCartButtonHeight : BOTItemCollectionViewCellHeight;
 }
 
 + (NSString *)reuseIdentifier
 {
-    return BOTProductCollectionViewCellId;
+    return BOTItemCollectionViewCellReuseIdentifier;
 }
 
-#pragma mark - Product Setter
-
-// Setter for the product
-- (void)setProductItem:(BOTProductItem *)item
+- (void)setProductItem:(BOTProduct *)item
 {
     self.item = item;
     
     // Set UI
-    self.productDescriptionLabel.text = item.name;
+    self.descriptionLabel.text = item.name;
     self.priceLabel.text = item.price.price;
+    self.deliveryLabel.text = @"Pick Up Today";
+    self.deliveryLabel.hidden = YES;
     [self setProductImageURL:item.imageURL];
+    
+    self.addToCartButton.alpha = 0.0f;
 }
 
 /**
@@ -92,63 +93,32 @@ IB_DESIGNABLE
     if (imageURL) {
         NSURL *picURL = [NSURL URLWithString:imageURL];
         __weak typeof(self) wSelf = self;
-        [self.productImageView sd_setImageWithURL:picURL
+        [self.itemImageView sd_setImageWithURL:picURL
                                  placeholderImage:nil
                                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                             if (image && cacheType == SDImageCacheTypeNone) {
                                                 [UIView animateWithDuration:0.3
                                                                  animations:^{
-                                                                     wSelf.productImageView.alpha = 1.0;
+                                                                     wSelf.itemImageView.alpha = 1.0;
                                                                  }];
                                             }
                                         }];
     } else {
-        [self.productImageView setImage:nil];
+        [self.itemImageView setImage:nil];
     }
 }
 
-#pragma mark - Drawing
-
-- (void)drawRect:(CGRect)rect
+- (void)configureAddToCardButtonConstraints
 {
-    /**
-     *  Draw Triangle
-     */
-    const CGFloat rightTriangleLegWidth = 32.0;
-    
-    // Generate ctrl pts
-    CGPoint firstPoint = CGPointMake(rect.origin.x + rect.size.width, 0.0);
-    CGPoint secondPoint = CGPointMake(firstPoint.x - rightTriangleLegWidth, firstPoint.y);
-    CGPoint thirdPoint = CGPointMake(firstPoint.x, firstPoint.y + rightTriangleLegWidth);
-    
-    // Gen path
-    UIBezierPath *bezPath = [UIBezierPath bezierPath];
-    [bezPath moveToPoint:firstPoint];
-    [bezPath addLineToPoint:secondPoint];
-    [bezPath addLineToPoint:thirdPoint];
-    [bezPath closePath];
-    
-    // Set Color
-    UIColor *lavaRed = [UIColor colorWithHexString:@"CE0B24"];
-    [lavaRed setFill];
-    
-    // Fill
-    [bezPath fill];
-    
-    /**
-     *  Draw Text
-     */
-    
-    // Attrs
-    UIFont *font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
-    
-    UIColor *textColor = [UIColor whiteColor];
-    NSDictionary *stringAttrs = @{NSFontAttributeName : font, NSForegroundColorAttributeName : textColor};
-    NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:@"i" attributes:stringAttrs];
-    
-    // Draw layout
-    CGPoint textPoint = CGPointMake(rect.size.width - 12, rect.origin.y + 3);
-    [attrStr drawAtPoint:textPoint];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.addToCartButton attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.addToCartButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.addToCartButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0]];
+    [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.addToCartButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:BOTAddToCartButtonHeight]];
+}
+
+- (void)viewInCartButtonTapped:(UIButton *)button
+{
+    // nothing yet
 }
 
 @end

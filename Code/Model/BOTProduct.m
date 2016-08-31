@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mesh. All rights reserved.
 //
 
-#import "BOTProductItem.h"
+#import "BOTProduct.h"
 
 NSString *const BOTProductListMIMEType = @"application/json+listobject";
 
@@ -16,7 +16,7 @@ NSString *const BOTProductSKUNumberKey = @"skuNo";
 NSString *const BOTProductPriceKey = @"price";
 NSString *const BOTProductNameKey = @"productName";
 
-@implementation BOTProductItem
+@implementation BOTProduct
 
 + (instancetype)productWithData:(NSDictionary *)data
 {

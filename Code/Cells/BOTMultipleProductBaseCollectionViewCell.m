@@ -80,10 +80,10 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     [self layoutCollectionView];
 
     UINib *itemNib = [UINib nibWithNibName:@"BOTItemCollectionViewCell" bundle:StaplesUIBundle()];
-    [self.collectionView registerNib:itemNib forCellWithReuseIdentifier:[BOTItemCollectionViewCell reuseIdentifier]];
+    [self.collectionView registerNib:itemNib forCellWithReuseIdentifier:[BOTProductCollectionViewCell reuseIdentifier]];
     
     UINib *productNib = [UINib nibWithNibName:@"BOTProductCollectionViewCell" bundle:StaplesUIBundle()];
-    [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[BOTProductCollectionViewCell reuseIdentifier]];
+    [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[BOTProductCollectionViewCellOld reuseIdentifier]];
 
     UINib *shippingNib = [UINib nibWithNibName:@"BOTShipmentTrackingCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:shippingNib forCellWithReuseIdentifier:[BOTShipmentTrackingCollectionViewCell reuseIdentifier]];
@@ -130,7 +130,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
-        return [BOTItemCollectionViewCell cellHeightWithButton:NO];
+        return [BOTProductCollectionViewCell cellHeightWithButton:NO];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
@@ -218,9 +218,9 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     UICollectionViewCell *returnCell;
     switch (self.cellType) {
         case BOTCellTypeBackToSchool: {
-            NSString *reuseIdentifier = [BOTItemCollectionViewCell reuseIdentifier];
-            BOTItemCollectionViewCell *cell = (BOTProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-            BOTProductItem *item = self.items[indexPath.row];
+            NSString *reuseIdentifier = [BOTProductCollectionViewCell reuseIdentifier];
+            BOTProductCollectionViewCell *cell = (BOTProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+            BOTProduct *item = self.items[indexPath.row];
             [cell setProductItem:item];
             returnCell = cell;
         }
@@ -290,7 +290,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             NSDictionary *itemData = json[BOTMessagePartDataKey];
             NSArray *itemJSON = itemData[BOTMessagePartListItemsKey];
             for (NSDictionary *itemData in itemJSON) {
-                BOTProductItem *item = [BOTProductItem productWithData:itemData];
+                BOTProduct *item = [BOTProduct productWithData:itemData];
                 [items addObject:item];
             }
        }

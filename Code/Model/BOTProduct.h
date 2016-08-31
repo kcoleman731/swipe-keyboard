@@ -17,7 +17,7 @@ extern NSString *const BOTProductListMIMEType;
 /**
  BOTProductItem is a convenience model used for parsing Product info from a BOT `LYRMessagePart` payload.
  */
-@interface BOTProductItem : NSObject <NSCoding>
+@interface BOTProduct : NSObject <NSCoding>
 
 /**
  Returns an new `BOTProductItem` object hydratd with the supplied data.

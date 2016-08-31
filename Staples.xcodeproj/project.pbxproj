@@ -10,6 +10,15 @@
 		3414E0202F8AD103A56840B2 /* Pods_Staples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCAFA925975ACD65020CCDD /* Pods_Staples.framework */; };
 		620E15FA3F1DD1FB26C366C1 /* Pods_StaplesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */; };
 		D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71BC1D6B7482005F2546 /* STLayerService.m */; };
+		D68D749B1D777FFD00471724 /* BOTAddressCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74991D777FFD00471724 /* BOTAddressCollectionViewCell.m */; };
+		D68D749C1D777FFD00471724 /* BOTAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68D749A1D777FFD00471724 /* BOTAddressCollectionViewCell.xib */; };
+		D68D74A01D77801700471724 /* BOTReceiptCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D749E1D77801700471724 /* BOTReceiptCollectionViewCell.m */; };
+		D68D74A11D77801700471724 /* BOTReceiptCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68D749F1D77801700471724 /* BOTReceiptCollectionViewCell.xib */; };
+		D68D74A41D77826D00471724 /* BOTAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74A31D77826D00471724 /* BOTAddress.m */; };
+		D68D74A71D77828300471724 /* BOTReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74A61D77828300471724 /* BOTReceipt.m */; };
+		D68D74AA1D77829C00471724 /* BOTRepresentative.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74A91D77829C00471724 /* BOTRepresentative.m */; };
+		D68D74AD1D7786E100471724 /* BOTRepresentativeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74AC1D7786E100471724 /* BOTRepresentativeCollectionViewCell.m */; };
+		D68D74B01D7786FF00471724 /* BOTRepresentativeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68D74AF1D7786FF00471724 /* BOTRepresentativeCollectionViewCell.xib */; };
 		D69761711D660AEE00F3369F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761701D660AEE00F3369F /* main.m */; };
 		D69761741D660AEE00F3369F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761731D660AEE00F3369F /* AppDelegate.m */; };
 		D697617A1D660AEE00F3369F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69761781D660AEE00F3369F /* Main.storyboard */; };
@@ -26,16 +35,16 @@
 		D69E94F01D75127B0064BF8B /* BOTMultiSelectionBarBevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94EE1D75127B0064BF8B /* BOTMultiSelectionBarBevelView.m */; };
 		D69E94F91D7512880064BF8B /* BOTShipment.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94F11D7512880064BF8B /* BOTShipment.m */; };
 		D69E94FA1D7512880064BF8B /* BOTReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94F31D7512880064BF8B /* BOTReward.m */; };
-		D69E94FB1D7512880064BF8B /* BOTProductItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94F51D7512880064BF8B /* BOTProductItem.m */; };
+		D69E94FB1D7512880064BF8B /* BOTProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94F51D7512880064BF8B /* BOTProduct.m */; };
 		D69E94FC1D7512880064BF8B /* BOTPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94F71D7512880064BF8B /* BOTPrice.m */; };
 		D69E94FF1D75128F0064BF8B /* BOTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E94FD1D75128F0064BF8B /* BOTUtilities.m */; };
 		D69E950A1D7512B30064BF8B /* BOTCellContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E95091D7512B30064BF8B /* BOTCellContainerView.m */; };
-		D69E950E1D7512BC0064BF8B /* BOTItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E950C1D7512BC0064BF8B /* BOTItemCollectionViewCell.m */; };
-		D69E950F1D7512BC0064BF8B /* BOTItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69E950D1D7512BC0064BF8B /* BOTItemCollectionViewCell.xib */; };
+		D69E950E1D7512BC0064BF8B /* BOTProductCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E950C1D7512BC0064BF8B /* BOTProductCollectionViewCell.m */; };
+		D69E950F1D7512BC0064BF8B /* BOTProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69E950D1D7512BC0064BF8B /* BOTProductCollectionViewCell.xib */; };
 		D69E95121D7512C40064BF8B /* BOTMultipleProductBaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E95111D7512C40064BF8B /* BOTMultipleProductBaseCollectionViewCell.m */; };
 		D69E95151D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E95141D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.m */; };
-		D69E95191D7512D40064BF8B /* BOTProductCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E95171D7512D40064BF8B /* BOTProductCollectionViewCell.m */; };
-		D69E951A1D7512D40064BF8B /* BOTProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69E95181D7512D40064BF8B /* BOTProductCollectionViewCell.xib */; };
+		D69E95191D7512D40064BF8B /* BOTProductCollectionViewCellOld.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E95171D7512D40064BF8B /* BOTProductCollectionViewCellOld.m */; };
+		D69E951A1D7512D40064BF8B /* BOTProductCollectionViewCellOld.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69E95181D7512D40064BF8B /* BOTProductCollectionViewCellOld.xib */; };
 		D69E951E1D7512E10064BF8B /* BOTReorderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E951C1D7512E10064BF8B /* BOTReorderCollectionViewCell.m */; };
 		D69E951F1D7512E10064BF8B /* BOTReorderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D69E951D1D7512E10064BF8B /* BOTReorderCollectionViewCell.xib */; };
 		D69E95231D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69E95211D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.m */; };
@@ -69,6 +78,21 @@
 		D65F71BC1D6B7482005F2546 /* STLayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLayerService.m; sourceTree = "<group>"; };
 		D65F71CB1D6BA164005F2546 /* StaplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StaplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65F71CF1D6BA164005F2546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D68D74981D777FFD00471724 /* BOTAddressCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTAddressCollectionViewCell.h; sourceTree = "<group>"; };
+		D68D74991D777FFD00471724 /* BOTAddressCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTAddressCollectionViewCell.m; sourceTree = "<group>"; };
+		D68D749A1D777FFD00471724 /* BOTAddressCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BOTAddressCollectionViewCell.xib; sourceTree = "<group>"; };
+		D68D749D1D77801700471724 /* BOTReceiptCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTReceiptCollectionViewCell.h; sourceTree = "<group>"; };
+		D68D749E1D77801700471724 /* BOTReceiptCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTReceiptCollectionViewCell.m; sourceTree = "<group>"; };
+		D68D749F1D77801700471724 /* BOTReceiptCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BOTReceiptCollectionViewCell.xib; sourceTree = "<group>"; };
+		D68D74A21D77826D00471724 /* BOTAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTAddress.h; sourceTree = "<group>"; };
+		D68D74A31D77826D00471724 /* BOTAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTAddress.m; sourceTree = "<group>"; };
+		D68D74A51D77828300471724 /* BOTReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTReceipt.h; sourceTree = "<group>"; };
+		D68D74A61D77828300471724 /* BOTReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTReceipt.m; sourceTree = "<group>"; };
+		D68D74A81D77829C00471724 /* BOTRepresentative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTRepresentative.h; sourceTree = "<group>"; };
+		D68D74A91D77829C00471724 /* BOTRepresentative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTRepresentative.m; sourceTree = "<group>"; };
+		D68D74AB1D7786E100471724 /* BOTRepresentativeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTRepresentativeCollectionViewCell.h; sourceTree = "<group>"; };
+		D68D74AC1D7786E100471724 /* BOTRepresentativeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTRepresentativeCollectionViewCell.m; sourceTree = "<group>"; };
+		D68D74AF1D7786FF00471724 /* BOTRepresentativeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BOTRepresentativeCollectionViewCell.xib; sourceTree = "<group>"; };
 		D697616C1D660AEE00F3369F /* Staples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69761701D660AEE00F3369F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D69761721D660AEE00F3369F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -99,24 +123,24 @@
 		D69E94F21D7512880064BF8B /* BOTShipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTShipment.h; path = Code/Model/BOTShipment.h; sourceTree = SOURCE_ROOT; };
 		D69E94F31D7512880064BF8B /* BOTReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTReward.m; path = Code/Model/BOTReward.m; sourceTree = SOURCE_ROOT; };
 		D69E94F41D7512880064BF8B /* BOTReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTReward.h; path = Code/Model/BOTReward.h; sourceTree = SOURCE_ROOT; };
-		D69E94F51D7512880064BF8B /* BOTProductItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTProductItem.m; path = Code/Model/BOTProductItem.m; sourceTree = SOURCE_ROOT; };
-		D69E94F61D7512880064BF8B /* BOTProductItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTProductItem.h; path = Code/Model/BOTProductItem.h; sourceTree = SOURCE_ROOT; };
+		D69E94F51D7512880064BF8B /* BOTProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTProduct.m; path = Code/Model/BOTProduct.m; sourceTree = SOURCE_ROOT; };
+		D69E94F61D7512880064BF8B /* BOTProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTProduct.h; path = Code/Model/BOTProduct.h; sourceTree = SOURCE_ROOT; };
 		D69E94F71D7512880064BF8B /* BOTPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTPrice.m; path = Code/Model/BOTPrice.m; sourceTree = SOURCE_ROOT; };
 		D69E94F81D7512880064BF8B /* BOTPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTPrice.h; path = Code/Model/BOTPrice.h; sourceTree = SOURCE_ROOT; };
 		D69E94FD1D75128F0064BF8B /* BOTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTUtilities.m; path = Code/Utilities/BOTUtilities.m; sourceTree = SOURCE_ROOT; };
 		D69E94FE1D75128F0064BF8B /* BOTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTUtilities.h; path = Code/Utilities/BOTUtilities.h; sourceTree = SOURCE_ROOT; };
 		D69E95081D7512B30064BF8B /* BOTCellContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTCellContainerView.h; path = Code/Cells/BOTCellContainerView.h; sourceTree = SOURCE_ROOT; };
 		D69E95091D7512B30064BF8B /* BOTCellContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTCellContainerView.m; path = Code/Cells/BOTCellContainerView.m; sourceTree = SOURCE_ROOT; };
-		D69E950B1D7512BC0064BF8B /* BOTItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTItemCollectionViewCell.h; path = Code/Cells/BOTItemCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		D69E950C1D7512BC0064BF8B /* BOTItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTItemCollectionViewCell.m; path = Code/Cells/BOTItemCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		D69E950D1D7512BC0064BF8B /* BOTItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTItemCollectionViewCell.xib; path = Code/Cells/BOTItemCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D69E950B1D7512BC0064BF8B /* BOTProductCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTProductCollectionViewCell.h; path = Code/Cells/BOTProductCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		D69E950C1D7512BC0064BF8B /* BOTProductCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTProductCollectionViewCell.m; path = Code/Cells/BOTProductCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		D69E950D1D7512BC0064BF8B /* BOTProductCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTProductCollectionViewCell.xib; path = Code/Cells/BOTProductCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
 		D69E95101D7512C40064BF8B /* BOTMultipleProductBaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTMultipleProductBaseCollectionViewCell.h; path = Code/Cells/BOTMultipleProductBaseCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		D69E95111D7512C40064BF8B /* BOTMultipleProductBaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTMultipleProductBaseCollectionViewCell.m; path = Code/Cells/BOTMultipleProductBaseCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		D69E95131D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTMultipleProductsCollectionViewLayout.h; path = Code/Cells/BOTMultipleProductsCollectionViewLayout.h; sourceTree = SOURCE_ROOT; };
 		D69E95141D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTMultipleProductsCollectionViewLayout.m; path = Code/Cells/BOTMultipleProductsCollectionViewLayout.m; sourceTree = SOURCE_ROOT; };
-		D69E95161D7512D40064BF8B /* BOTProductCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTProductCollectionViewCell.h; path = Code/Cells/BOTProductCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		D69E95171D7512D40064BF8B /* BOTProductCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTProductCollectionViewCell.m; path = Code/Cells/BOTProductCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		D69E95181D7512D40064BF8B /* BOTProductCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTProductCollectionViewCell.xib; path = Code/Cells/BOTProductCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D69E95161D7512D40064BF8B /* BOTProductCollectionViewCellOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTProductCollectionViewCellOld.h; path = Code/Cells/BOTProductCollectionViewCellOld.h; sourceTree = SOURCE_ROOT; };
+		D69E95171D7512D40064BF8B /* BOTProductCollectionViewCellOld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTProductCollectionViewCellOld.m; path = Code/Cells/BOTProductCollectionViewCellOld.m; sourceTree = SOURCE_ROOT; };
+		D69E95181D7512D40064BF8B /* BOTProductCollectionViewCellOld.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTProductCollectionViewCellOld.xib; path = Code/Cells/BOTProductCollectionViewCellOld.xib; sourceTree = SOURCE_ROOT; };
 		D69E951B1D7512E10064BF8B /* BOTReorderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTReorderCollectionViewCell.h; path = Code/Cells/BOTReorderCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		D69E951C1D7512E10064BF8B /* BOTReorderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTReorderCollectionViewCell.m; path = Code/Cells/BOTReorderCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		D69E951D1D7512E10064BF8B /* BOTReorderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTReorderCollectionViewCell.xib; path = Code/Cells/BOTReorderCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -159,9 +183,6 @@
 			children = (
 				D69E95101D7512C40064BF8B /* BOTMultipleProductBaseCollectionViewCell.h */,
 				D69E95111D7512C40064BF8B /* BOTMultipleProductBaseCollectionViewCell.m */,
-				D6EB8AAA1D6F45E400BF4BE1 /* BOTShipmentTrackingCollectionViewCell */,
-				D68FEF071D6C0578006AEFC6 /* BOTItemCollectionViewCell */,
-				3486CD0B1D679E6B0041E2F7 /* BOTProductCollectionViewCell */,
 				3486CD181D67A9D70041E2F7 /* Collection View Layout */,
 			);
 			name = BOTMultipleProductCollectionViewCell;
@@ -170,9 +191,9 @@
 		3486CD0B1D679E6B0041E2F7 /* BOTProductCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D69E95161D7512D40064BF8B /* BOTProductCollectionViewCell.h */,
-				D69E95171D7512D40064BF8B /* BOTProductCollectionViewCell.m */,
-				D69E95181D7512D40064BF8B /* BOTProductCollectionViewCell.xib */,
+				D69E95161D7512D40064BF8B /* BOTProductCollectionViewCellOld.h */,
+				D69E95171D7512D40064BF8B /* BOTProductCollectionViewCellOld.m */,
+				D69E95181D7512D40064BF8B /* BOTProductCollectionViewCellOld.xib */,
 			);
 			name = BOTProductCollectionViewCell;
 			sourceTree = "<group>";
@@ -180,14 +201,20 @@
 		3486CD141D67A46E0041E2F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D69E94F11D7512880064BF8B /* BOTShipment.m */,
+				D68D74A21D77826D00471724 /* BOTAddress.h */,
+				D68D74A31D77826D00471724 /* BOTAddress.m */,
 				D69E94F21D7512880064BF8B /* BOTShipment.h */,
-				D69E94F31D7512880064BF8B /* BOTReward.m */,
+				D69E94F11D7512880064BF8B /* BOTShipment.m */,
 				D69E94F41D7512880064BF8B /* BOTReward.h */,
-				D69E94F51D7512880064BF8B /* BOTProductItem.m */,
-				D69E94F61D7512880064BF8B /* BOTProductItem.h */,
-				D69E94F71D7512880064BF8B /* BOTPrice.m */,
+				D69E94F31D7512880064BF8B /* BOTReward.m */,
+				D69E94F61D7512880064BF8B /* BOTProduct.h */,
+				D69E94F51D7512880064BF8B /* BOTProduct.m */,
 				D69E94F81D7512880064BF8B /* BOTPrice.h */,
+				D69E94F71D7512880064BF8B /* BOTPrice.m */,
+				D68D74A51D77828300471724 /* BOTReceipt.h */,
+				D68D74A61D77828300471724 /* BOTReceipt.m */,
+				D68D74A81D77829C00471724 /* BOTRepresentative.h */,
+				D68D74A91D77829C00471724 /* BOTRepresentative.m */,
 			);
 			name = Model;
 			path = Staples;
@@ -287,8 +314,8 @@
 		D65F71C31D6B7A7D005F2546 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				D69E94FD1D75128F0064BF8B /* BOTUtilities.m */,
 				D69E94FE1D75128F0064BF8B /* BOTUtilities.h */,
+				D69E94FD1D75128F0064BF8B /* BOTUtilities.m */,
 			);
 			name = Utilities;
 			path = Staples;
@@ -313,6 +340,44 @@
 			name = BOTRewardCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		D68D74951D777F6700471724 /* BOTReceiptCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D68D749D1D77801700471724 /* BOTReceiptCollectionViewCell.h */,
+				D68D749E1D77801700471724 /* BOTReceiptCollectionViewCell.m */,
+				D68D749F1D77801700471724 /* BOTReceiptCollectionViewCell.xib */,
+			);
+			name = BOTReceiptCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		D68D74961D777F8A00471724 /* BOTAddressCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D68D74981D777FFD00471724 /* BOTAddressCollectionViewCell.h */,
+				D68D74991D777FFD00471724 /* BOTAddressCollectionViewCell.m */,
+				D68D749A1D777FFD00471724 /* BOTAddressCollectionViewCell.xib */,
+			);
+			name = BOTAddressCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		D68D74971D777FD100471724 /* Old Design */ = {
+			isa = PBXGroup;
+			children = (
+				3486CD0B1D679E6B0041E2F7 /* BOTProductCollectionViewCell */,
+			);
+			name = "Old Design";
+			sourceTree = "<group>";
+		};
+		D68D74AE1D7786E500471724 /* BOTRepresentativeCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D68D74AB1D7786E100471724 /* BOTRepresentativeCollectionViewCell.h */,
+				D68D74AC1D7786E100471724 /* BOTRepresentativeCollectionViewCell.m */,
+				D68D74AF1D7786FF00471724 /* BOTRepresentativeCollectionViewCell.xib */,
+			);
+			name = BOTRepresentativeCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		D68FEF011D6BFC4B006AEFC6 /* BOTReorderCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,14 +389,14 @@
 			name = BOTReorderCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		D68FEF071D6C0578006AEFC6 /* BOTItemCollectionViewCell */ = {
+		D68FEF071D6C0578006AEFC6 /* BOTProductCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D69E950B1D7512BC0064BF8B /* BOTItemCollectionViewCell.h */,
-				D69E950C1D7512BC0064BF8B /* BOTItemCollectionViewCell.m */,
-				D69E950D1D7512BC0064BF8B /* BOTItemCollectionViewCell.xib */,
+				D69E950B1D7512BC0064BF8B /* BOTProductCollectionViewCell.h */,
+				D69E950C1D7512BC0064BF8B /* BOTProductCollectionViewCell.m */,
+				D69E950D1D7512BC0064BF8B /* BOTProductCollectionViewCell.xib */,
 			);
-			name = BOTItemCollectionViewCell;
+			name = BOTProductCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		D68FEF151D6CBA32006AEFC6 /* Views */ = {
@@ -436,11 +501,17 @@
 		D6F858831D6786480027F195 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D68FEF071D6C0578006AEFC6 /* BOTProductCollectionViewCell */,
+				D6EB8AAA1D6F45E400BF4BE1 /* BOTShipmentTrackingCollectionViewCell */,
+				D68D74961D777F8A00471724 /* BOTAddressCollectionViewCell */,
+				D68D74951D777F6700471724 /* BOTReceiptCollectionViewCell */,
 				D6EB8AC41D6F914700BF4BE1 /* BOTActionCollectionViewCell */,
+				D68D74AE1D7786E500471724 /* BOTRepresentativeCollectionViewCell */,
 				D68FEF011D6BFC4B006AEFC6 /* BOTReorderCollectionViewCell */,
 				D65F71D81D6BB4A1005F2546 /* BOTRewardCollectionViewCell */,
-				D65F71C01D6B7A27005F2546 /* Shared */,
 				3486CD011D6779130041E2F7 /* BOTMultipleProductCollectionViewCell */,
+				D65F71C01D6B7A27005F2546 /* Shared */,
+				D68D74971D777FD100471724 /* Old Design */,
 			);
 			name = Cells;
 			path = Staples;
@@ -539,13 +610,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D68D749C1D777FFD00471724 /* BOTAddressCollectionViewCell.xib in Resources */,
 				D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */,
-				D69E950F1D7512BC0064BF8B /* BOTItemCollectionViewCell.xib in Resources */,
+				D69E950F1D7512BC0064BF8B /* BOTProductCollectionViewCell.xib in Resources */,
 				D697617C1D660AEE00F3369F /* Assets.xcassets in Resources */,
 				D69E951F1D7512E10064BF8B /* BOTReorderCollectionViewCell.xib in Resources */,
+				D68D74A11D77801700471724 /* BOTReceiptCollectionViewCell.xib in Resources */,
 				D6EB8ABC1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.xib in Resources */,
 				D697617A1D660AEE00F3369F /* Main.storyboard in Resources */,
-				D69E951A1D7512D40064BF8B /* BOTProductCollectionViewCell.xib in Resources */,
+				D69E951A1D7512D40064BF8B /* BOTProductCollectionViewCellOld.xib in Resources */,
+				D68D74B01D7786FF00471724 /* BOTRepresentativeCollectionViewCell.xib in Resources */,
 				D69E95241D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.xib in Resources */,
 				D69E95291D7512FF0064BF8B /* BOTRewardCollectionViewCell.xib in Resources */,
 			);
@@ -661,13 +735,19 @@
 			files = (
 				D69E951E1D7512E10064BF8B /* BOTReorderCollectionViewCell.m in Sources */,
 				D69E95231D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.m in Sources */,
+				D68D74A01D77801700471724 /* BOTReceiptCollectionViewCell.m in Sources */,
 				D69E94E11D75125F0064BF8B /* BOTMultipleActionInputScrollView.m in Sources */,
+				D68D74AA1D77829C00471724 /* BOTRepresentative.m in Sources */,
+				D68D749B1D777FFD00471724 /* BOTAddressCollectionViewCell.m in Sources */,
+				D68D74A71D77828300471724 /* BOTReceipt.m in Sources */,
 				D69761741D660AEE00F3369F /* AppDelegate.m in Sources */,
 				D69E94FF1D75128F0064BF8B /* BOTUtilities.m in Sources */,
 				D69E95121D7512C40064BF8B /* BOTMultipleProductBaseCollectionViewCell.m in Sources */,
+				D68D74A41D77826D00471724 /* BOTAddress.m in Sources */,
 				D69E94ED1D7512720064BF8B /* BOTActionButton.m in Sources */,
 				D6EB8ABD1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.m in Sources */,
 				D69E94E41D7512640064BF8B /* BOTMessageInputToolbar.m in Sources */,
+				D68D74AD1D7786E100471724 /* BOTRepresentativeCollectionViewCell.m in Sources */,
 				D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */,
 				D69E94DB1D75124B0064BF8B /* BOTMultiSelectionBar.m in Sources */,
 				D69761711D660AEE00F3369F /* main.m in Sources */,
@@ -677,13 +757,13 @@
 				D69E94E71D75126B0064BF8B /* BOTInvertedButton.m in Sources */,
 				D69E94FC1D7512880064BF8B /* BOTPrice.m in Sources */,
 				D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */,
-				D69E94FB1D7512880064BF8B /* BOTProductItem.m in Sources */,
+				D69E94FB1D7512880064BF8B /* BOTProduct.m in Sources */,
 				D69E950A1D7512B30064BF8B /* BOTCellContainerView.m in Sources */,
 				D69E95151D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.m in Sources */,
 				D69E94F91D7512880064BF8B /* BOTShipment.m in Sources */,
 				D69E94F01D75127B0064BF8B /* BOTMultiSelectionBarBevelView.m in Sources */,
-				D69E950E1D7512BC0064BF8B /* BOTItemCollectionViewCell.m in Sources */,
-				D69E95191D7512D40064BF8B /* BOTProductCollectionViewCell.m in Sources */,
+				D69E950E1D7512BC0064BF8B /* BOTProductCollectionViewCell.m in Sources */,
+				D69E95191D7512D40064BF8B /* BOTProductCollectionViewCellOld.m in Sources */,
 				D69E95311D7514BE0064BF8B /* BOTActionCollectionViewCell.m in Sources */,
 				D69E94DE1D7512550064BF8B /* BOTMultipleActionInputView.m in Sources */,
 			);

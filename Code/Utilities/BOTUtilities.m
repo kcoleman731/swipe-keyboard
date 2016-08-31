@@ -30,6 +30,16 @@ UIColor * BOTBlueColor()
     return [UIColor colorWithRed:0/255.0 green:104/255.0 blue:223/255.0 alpha:1.0];
 }
 
+// Flows
+NSString *const BOTOptionTrackMyShipment = @"Track My Shipment";
+NSString *const BOTOptionOrderNewSupplies = @"Order New Supplies";
+NSString *const BOTOptionReorderLastShipment = @"Reorder Last Shipment";
+NSString *const BOTOptionScanSchoolSuppliesList = @"Scan School Supplies List";
+
+NSString *const BOTOptionPaper = @"Paper";
+NSString *const BOTOptionRedSharpies = @"Red Sharpies";
+NSString *const BOTOptionJournals = @"Journals";
+NSString *const BOTOptionStaplers = @"Staplers";
 
 NSString *const BOTAddressName = @"STAddressName";
 NSString *const BOTAddressStreet = @"STAddressStreet";
