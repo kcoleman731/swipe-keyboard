@@ -24,7 +24,7 @@ NSString *const BOTReorderCollectionViewCellReuseIdentifier = @"BOReorderCollect
 @property (strong, nonatomic) IBOutlet UILabel *seeAllOrdersLabel;
 @property (strong, nonatomic) IBOutlet UIButton *orderButton;
 @property (strong, nonatomic) IBOutlet UIButton *pastOrdersButton;
-@property (strong, nonatomic) UICollectionViewLayout *collectionViewLayout;
+@property (strong, nonatomic) BOTMultipleProductsCollectionViewLayout *collectionViewLayout;
 
 @end
 
