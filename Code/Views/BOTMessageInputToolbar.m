@@ -180,11 +180,10 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     self.leftAccessoryButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     // Normal
-    [self.listAccessoryButton setImage:listGlyph forState:UIControlStateNormal];
+    [self.listAccessoryButton setImage:listGlyphSelected forState:UIControlStateNormal];
     [self.leftAccessoryButton setImage:cameraGlyph forState:UIControlStateNormal];
     
     // Highlighted
-    [self.listAccessoryButton setImage:listGlyphSelected forState:UIControlStateHighlighted];
     [self.leftAccessoryButton setImage:cameraGlyphSelected forState:UIControlStateHighlighted];
     
     // Shink the list and cam a bit

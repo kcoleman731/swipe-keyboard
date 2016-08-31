@@ -77,6 +77,7 @@ CGFloat const BOTAddToCartButtonHeight = 52;
     self.descriptionLabel.text = item.name;
     self.priceLabel.text = item.price.price;
     self.deliveryLabel.text = @"Pick Up Today";
+    self.deliveryLabel.hidden = YES;
     [self setProductImageURL:item.imageURL];
     
     self.addToCartButton.alpha = 0.0f;
