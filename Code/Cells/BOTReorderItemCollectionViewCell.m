@@ -13,7 +13,7 @@ NSString *const BOTReorderItemCollectionViewCellReuseIdentifier = @"BOTReorderIt
 
 @interface BOTReorderItemCollectionViewCell ()
 
-@property (nonatomic, strong) BOTProductItem *item;
+@property (nonatomic, strong) BOTProduct *item;
 
 @property (strong, nonatomic) IBOutlet UIImageView *itemImageView;
 @property (strong, nonatomic) IBOutlet UILabel *itemCount;
@@ -27,7 +27,7 @@ NSString *const BOTReorderItemCollectionViewCellReuseIdentifier = @"BOTReorderIt
     return BOTReorderItemCollectionViewCellReuseIdentifier;
 }
 
-- (void)setProductItem:(BOTProductItem *)item
+- (void)setProductItem:(BOTProduct *)item
 {
     _item = item;
     self.itemCount.text = item.quatity;

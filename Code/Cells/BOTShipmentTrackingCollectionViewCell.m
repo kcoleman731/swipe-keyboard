@@ -30,9 +30,9 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
 @property (strong, nonatomic) IBOutlet UILabel *outForDeliveryLabel;
 @property (strong, nonatomic) IBOutlet UILabel *completedLabel;
 
-@property (strong, nonatomic) IBOutlet UIImageView *lineNumber1;
-@property (strong, nonatomic) IBOutlet UIImageView *lineNumber2;
-@property (strong, nonatomic) IBOutlet UIImageView *lineNumber3;
+@property (strong, nonatomic) IBOutlet UIView *lineNumber1;
+@property (strong, nonatomic) IBOutlet UIView *lineNumber2;
+@property (strong, nonatomic) IBOutlet UIView *lineNumber3;
 
 @end
 
@@ -44,16 +44,28 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
     
     // State Config
     self.placedImageView.layer.cornerRadius = 20;
+    self.placedImageView.layer.borderWidth = 4;
+    self.placedImageView.layer.borderColor = BOTBlueColor().CGColor;
     self.placedLabel.text = @"PLACED";
     
     self.shippedImageView.layer.cornerRadius = 20;
+    self.shippedImageView.layer.borderWidth = 4;
+    self.shippedImageView.layer.borderColor = BOTBlueColor().CGColor;
     self.shippedLabel.text = @"SHIPPED";
     
     self.outForDeliveryImageView.layer.cornerRadius = 20;
+    self.outForDeliveryImageView.layer.borderWidth = 4;
+    self.outForDeliveryImageView.layer.borderColor = BOTBlueColor().CGColor;
     self.outForDeliveryLabel.text = @"OUT FOR DELIVERY";
     
     self.completeImageView.layer.cornerRadius = 20;
+    self.completeImageView.layer.borderWidth = 4;
+    self.completeImageView.layer.borderColor = BOTBlueColor().CGColor;
     self.completedLabel.text = @"COMPLETE";
+    
+    self.lineNumber1.backgroundColor = BOTBlueColor();
+    self.lineNumber2.backgroundColor = BOTBlueColor();
+    self.lineNumber3.backgroundColor = BOTBlueColor();
     
     // Initialization code
     self.cellContainerView.layer.borderColor = BOTLightGrayColor().CGColor;
@@ -95,34 +107,28 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
         self.orderDetailLabel.text = [NSString stringWithFormat:@"%@ Boxes | ETA %@", shipment.boxCount, dateString];
     
     if([shipment.status isEqual: @"Processing"]) {
-        self.placedImageView.backgroundColor = BOTBlueColor();
-        self.shippedImageView.backgroundColor = BOTLightGrayColor();
-        self.outForDeliveryImageView.backgroundColor = BOTLightGrayColor();
-        self.completeImageView.backgroundColor = BOTLightGrayColor();
+        self.placedImageView.image = [UIImage imageNamed:@"tracking" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
         
     }else if ([shipment.status isEqual:@"In-Transit"]) {
         self.lineNumber1.backgroundColor = BOTBlueColor();
-        self.placedImageView.backgroundColor = BOTBlueColor();
-        self.shippedImageView.backgroundColor = BOTBlueColor();
-        self.outForDeliveryImageView.backgroundColor = BOTLightGrayColor();
-         self.completeImageView.backgroundColor = BOTLightGrayColor();
+        self.placedImageView.image = [UIImage imageNamed:@"tracking" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
+        self.shippedImageView.image = [UIImage imageNamed:@"tracking" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
         
     }else if ([shipment.status isEqual:@"Out for delivery"] || [shipment.status isEqual:@"Shipped"]) {
         self.lineNumber1.backgroundColor = BOTBlueColor();
         self.lineNumber2.backgroundColor = BOTBlueColor();
-        self.placedImageView.backgroundColor = BOTBlueColor();
-        self.shippedImageView.backgroundColor = BOTBlueColor();
-        self.outForDeliveryImageView.backgroundColor = BOTBlueColor();
-        self.completeImageView.backgroundColor = BOTLightGrayColor();
+        self.placedImageView.image = [UIImage imageNamed:@"tracking" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
+        self.shippedImageView.image = [UIImage imageNamed:@"tracking" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
+        self.outForDeliveryImageView.image = [UIImage imageNamed:@"tracking" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
         
     }else if ([shipment.status isEqual:@"Delivered"]) {
         self.lineNumber1.backgroundColor = BOTBlueColor();
         self.lineNumber2.backgroundColor = BOTBlueColor();
         self.lineNumber3.backgroundColor = BOTBlueColor();
-        self.placedImageView.backgroundColor = BOTBlueColor();
-        self.shippedImageView.backgroundColor = BOTBlueColor();
-        self.outForDeliveryImageView.backgroundColor = BOTBlueColor();
-        self.completeImageView.backgroundColor = BOTBlueColor();
+        self.placedImageView.image = [UIImage imageNamed:@"tracking" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
+        self.shippedImageView.image = [UIImage imageNamed:@"tracking" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
+        self.outForDeliveryImageView.image = [UIImage imageNamed:@"tracking" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
+        self.completeImageView.image = [UIImage imageNamed:@"tracking" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
     }
 
 }

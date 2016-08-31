@@ -85,7 +85,7 @@ NSString *const BOTReorderCollectionViewCellReuseIdentifier = @"BOReorderCollect
 {
     NSString *reuseIdentifier = [BOTReorderItemCollectionViewCell reuseIdentifier];
     BOTReorderItemCollectionViewCell *cell = (BOTReorderItemCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    BOTProductItem *item = self.products[indexPath.row];
+    BOTProduct *item = self.products[indexPath.row];
     [cell setProductItem:item];
     return cell;
 }
@@ -98,7 +98,7 @@ NSString *const BOTReorderCollectionViewCellReuseIdentifier = @"BOReorderCollect
     NSArray *data = [NSJSONSerialization JSONObjectWithData:part.data options:NSJSONReadingAllowFragments error:nil];
     NSMutableArray *products = [[NSMutableArray alloc] init];
     for (NSDictionary *dataDict in data) {
-        BOTProductItem *item = [BOTProductItem productWithData:dataDict];
+        BOTProduct *item = [BOTProduct productWithData:dataDict];
         [products addObject:item];
     }
     self.products = products;

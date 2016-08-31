@@ -1,18 +1,18 @@
 //
-//  STMultipleProductsCollectionViewCell.h
+//  STItemCollectionViewCell.h
 //  Staples
 //
-//  Created by Taylor Halliday on 8/19/16.
+//  Created by Kevin Coleman on 8/22/16.
 //  Copyright © 2016 Mesh. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "BOTProductItem.h"
+#import "BOTProduct.h"
 
-//============================================================================
-// Note: This cell is per old designs. Keeping around for now in case we reuse.
-// Desing Link - https://t3.invisionapp.com/share/CD7XVFN7R#/screens/180458550
-//=============================================================================
+/**
+ The `BOTBackToSchoolViewCartButtonTappedNotification` is posed when a user taps the `View Cart` button that appears below a product card.
+ */
+extern NSString *const BOTBackToSchoolViewCartButtonTappedNotification;
 
 /**
  The `BOTItemCollectionViewCell` displays a product card in a conversation UI.
@@ -22,7 +22,7 @@
 /**
  item Models the product that is displayed in the card.
  */
-@property (readonly, nonatomic, strong) BOTProductItem *item;
+@property (readonly, nonatomic, strong) BOTProduct *item;
 
 /**
  Reuse Identifier
@@ -31,12 +31,14 @@
 
 /**
  Cell Height
+ 
+ @param button Determines whether or not the cell should display a `View Cart` button.
  */
-+ (CGFloat)cellHeight;
++ (CGFloat)cellHeightWithButton:(BOOL)button;
 
 /**
- Product Items Setter
+ Product Item Setter
  */
-- (void)setProductItem:(BOTProductItem *)item;
+- (void)setProductItem:(BOTProduct *)item;
 
 @end

@@ -18,6 +18,22 @@ UIColor * BOTLightGrayColor();
 // Staples Blue
 UIColor * BOTBlueColor();
 
+// Flows
+extern NSString *const BOTOptionTrackMyShipment;
+extern NSString *const BOTOptionOrderNewSupplies;
+extern NSString *const BOTOptionReorderLastShipment;
+extern NSString *const BOTOptionScanSchoolSuppliesList;
+extern NSString *const BOTOptionReturnItems;
+extern NSString *const BOTOptionCancelYourShipment;
+extern NSString *const BOTOptionViewCouponWallet;
+extern NSString *const BOTOptionCheckGiftCardBalance;
+extern NSString *const BOTOptionCheckGiftCardBalance;
+
+extern NSString *const BOTOptionPaper;
+extern NSString *const BOTOptionRedSharpies;
+extern NSString *const BOTOptionJournals;
+extern NSString *const BOTOptionStaplers;
+
 // Address
 extern NSString *const BOTAddressName;
 extern NSString *const BOTAddressStreet;

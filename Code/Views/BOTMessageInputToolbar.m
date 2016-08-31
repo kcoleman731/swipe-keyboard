@@ -420,6 +420,16 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     [self resizeTextViewAndFrame];
 }
 
+- (void)messageInputToolbar:(ATLMessageInputToolbar *)messageInputToolbar didTapRightAccessoryButton:(UIButton *)rightAccessoryButton
+{
+    // Not sure
+}
+
+- (void)messageInputToolbar:(ATLMessageInputToolbar *)messageInputToolbar didTapLeftAccessoryButton:(UIButton *)leftAccessoryButton
+{
+    // Not Sure
+}
+
 #pragma mark - STMultiSelectionBarDelegate Calls
 
 - (void)multiSelectionBar:(BOTMultiSelectionBar *)bar leftSelectionHitWithTitle:(NSString *)title

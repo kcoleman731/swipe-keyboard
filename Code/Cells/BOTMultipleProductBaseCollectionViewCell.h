@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Atlas/Atlas.h>
+#import "BOTProductCollectionViewCellOld.h"
 #import "BOTProductCollectionViewCell.h"
-#import "BOTItemCollectionViewCell.h"
-#import "BOTProductItem.h"
+#import "BOTProduct.h"
 
 extern NSString *const BOTMultipleProductBaseCollectionViewCellTitle;
 

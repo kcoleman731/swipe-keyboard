@@ -17,18 +17,29 @@
 
 // Cells
 #import "BOTMultipleProductBaseCollectionViewCell.h"
-#import "BOTRewardCollectionViewCell.h"
+#import "BOTProductCollectionViewCell.h"
+#import "BOTAddressCollectionViewCell.h"
+#import "BOTReceiptCollectionViewCell.h"
 #import "BOTReorderCollectionViewCell.h"
+#import "BOTShipmentTrackingCollectionViewCell.h"
+#import "BOTRewardCollectionViewCell.h"
+//#import "BOTReturnCollectionViewCell.h"
+#import "BOTRepresentativeCollectionViewCell.h"
 #import "BOTActionCollectionViewCell.h"
 
 // Models
 #import "BOTReward.h"
+#import "BOTAddress.h"
+#import "BOTReceipt.h"
+#import "BOTShipment.h"
+#import "BOTReward.h"
+#import "BOTRepresentative.h"
 
 @interface STConversationViewController () <BOTMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource, ATLConversationViewControllerDelegate, BOTMessageInputToolbarDelegate, BOTMultiSelectionBarDelegate>
 
-// Multi Selection UI and Constraint
+@property (nonatomic, strong) BOTMultipleActionInputView *inputView;
 @property (nonatomic, strong) BOTMultiSelectionBar *multiSelectionBar;
-@property (nonnull, strong) NSLayoutConstraint *muliSelectionBarBottomConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *muliSelectionBarBottomConstraint;
 
 @end
 
@@ -77,17 +88,19 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (void)multipleActionInputView:(BOTMultipleActionInputView *)multipleActionInputView didSelectTitle:(NSString *)title
 {
-    NSError *error;
-    NSMutableArray *messageParts;
-    if ([title isEqualToString:BOTMultipleProductBaseCollectionViewCellTitle]) {
-        messageParts = [self fakeProductParts];
-    } else if ([title isEqualToString:@"Shipping"]) {
-        messageParts = [self fakeShipmentInfo];
-    } else if ([title isEqualToString:BOTRewardCollectionViewCellTitle]) {
-        messageParts = [self fakeRewardInfo];
+    if ([title isEqualToString:BOTOptionTrackMyShipment]) {
+        // messageParts = [self fakeProductParts];
+    } else if ([title isEqualToString:BOTOptionOrderNewSupplies]) {
+        [self.inputView setSelectionTitles:[self orderSupplySelectionItems]];
+    } else if ([title isEqualToString:BOTOptionReorderLastShipment]) {
+        // messageParts = [self fakeRewardInfo];
+    } else if ([title isEqualToString:BOTOptionScanSchoolSuppliesList]) {
+        
     }
     
-    LYRMessage *message = [self.layerClient newMessageWithParts:messageParts options:nil error:&error];
+    NSError *error;
+    LYRMessagePart *part = [LYRMessagePart messagePartWithText:title];
+    LYRMessage *message = [self.layerClient newMessageWithParts:@[part] options:nil error:&error];
     if (!message) {
         NSLog(@"Failed to build message with error: %@", error);
         return;
@@ -103,10 +116,16 @@ NSString *const STOptionCell = @"Option Cell";
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
         return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+    } else if ([part.MIMEType isEqualToString:BOTAddressMIMEType]) {
+        return [BOTAddressCollectionViewCell cellHeight];
+    } else if ([part.MIMEType isEqualToString:BOTReceiptMIMEType]) {
+        return [BOTReceiptCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
         return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
+    } else if ([part.MIMEType isEqualToString:BOTRepresentativeMIMEType]) {
+        return [BOTRepresentativeCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTReorderCollectionViewCellMimeType]) {
         return [BOTReorderCollectionViewCell cellHeight];
     }
@@ -120,10 +139,16 @@ NSString *const STOptionCell = @"Option Cell";
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
         return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:BOTAddressMIMEType]) {
+        return [BOTAddressCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:BOTReceiptMIMEType]) {
+        return [BOTReceiptCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
         return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:BOTRepresentativeMIMEType]) {
+        return [BOTRepresentativeCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTReorderCollectionViewCellMimeType]) {
         return [BOTReorderCollectionViewCell reuseIdentifier];
     }
@@ -156,10 +181,10 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (void)messageInputToolbar:(BOTMessageInputToolbar *)messageInputToolbar didTapListAccessoryButton:(UIButton *)listAccessoryButton
 {
-    BOTMultipleActionInputView *multiOptionSelectionView = [[BOTMultipleActionInputView alloc] initWithSelectionTitles:[self selectionItems]];
-    multiOptionSelectionView.frame = CGRectMake(0, 0, 320, 240);
-    multiOptionSelectionView.delegate = self;
-    messageInputToolbar.textInputView.inputView = multiOptionSelectionView;
+    self.inputView = [[BOTMultipleActionInputView alloc] initWithSelectionTitles:[self selectionItems]];
+    self.inputView.frame = CGRectMake(0, 0, 320, 240);
+    self.inputView.delegate = self;
+    messageInputToolbar.textInputView.inputView = self.inputView;
     [messageInputToolbar.textInputView becomeFirstResponder];
 }
 
@@ -167,8 +192,6 @@ NSString *const STOptionCell = @"Option Cell";
 {
     //
 }
-
-#pragma mark - FAKE DATA
 
 - (void)createNewConversation
 {
@@ -183,9 +206,59 @@ NSString *const STOptionCell = @"Option Cell";
     [self setConversation:conversation];
 }
 
+#pragma mark - Constraints
+
+- (void)addConstraintsToSelectionBar
+{
+    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:44.0f];
+    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0f];
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0f];
+    self.muliSelectionBarBottomConstraint = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0f];
+    
+    [self.view addConstraints:@[leading, height, trailing, self.muliSelectionBarBottomConstraint]];
+}
+
+#pragma mark - STMultiSelectionToolbar
+
+- (void)multiSelectionBar:(BOTMultiSelectionBar *)bar leftSelectionHitWithTitle:(NSString *)title
+{
+    
+}
+
+- (void)multiSelectionBar:(BOTMultiSelectionBar *)bar rightSelectionHitWithTitle:(NSString *)title
+{
+    
+}
+
+#pragma mark - Keyboard Notifications
+
+- (void)keyboardWillShowOrHide:(NSNotification *)note
+{
+    NSDictionary *info           = [note userInfo];
+    NSTimeInterval duration      = [info[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationOptions curve = [info[UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
+    CGRect inputViewEndFrame     = [info[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:duration
+                          delay:0
+                        options:curve | UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         self.muliSelectionBarBottomConstraint.constant = -inputViewEndFrame.size.height;
+                         [self.view layoutIfNeeded];
+                     }
+                     completion:nil];
+}
+
+#pragma mark - FAKE DATA
+
 - (NSArray *)selectionItems
 {
-    return @[BOTMultipleProductBaseCollectionViewCellTitle, @"Shipping" , BOTRewardCollectionViewCellTitle];
+    return @[BOTOptionTrackMyShipment, BOTOptionOrderNewSupplies , BOTOptionReorderLastShipment, BOTOptionScanSchoolSuppliesList];
+}
+
+- (NSArray *)orderSupplySelectionItems
+{
+    return @[BOTOptionPaper, BOTOptionRedSharpies, BOTOptionJournals, BOTOptionStaplers];
 }
 
 - (NSMutableArray *)fakeRewardInfo
@@ -254,49 +327,6 @@ NSString *const STOptionCell = @"Option Cell";
     NSData *shipmentData = [NSJSONSerialization dataWithJSONObject:shipment options:NSJSONWritingPrettyPrinted error:nil];
     LYRMessagePart *dataPart = [LYRMessagePart messagePartWithMIMEType:BOTShipmentMIMEType data:shipmentData];
     return [NSMutableArray arrayWithObject:dataPart];
-}
-
-#pragma mark - Constraints
-
-- (void)addConstraintsToSelectionBar
-{
-    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:44.0f];
-    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0f];
-    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0f];
-    self.muliSelectionBarBottomConstraint = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0f];
-    
-    [self.view addConstraints:@[leading, height, trailing, self.muliSelectionBarBottomConstraint]];
-}
-
-#pragma mark - STMultiSelectionToolbar
-
-- (void)multiSelectionBar:(BOTMultiSelectionBar *)bar leftSelectionHitWithTitle:(NSString *)title
-{
-    
-}
-
-- (void)multiSelectionBar:(BOTMultiSelectionBar *)bar rightSelectionHitWithTitle:(NSString *)title
-{
-    
-}
-
-#pragma mark - Keyboard Notifications
-
-- (void)keyboardWillShowOrHide:(NSNotification *)note
-{
-    NSDictionary *info           = [note userInfo];
-    NSTimeInterval duration      = [info[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    UIViewAnimationOptions curve = [info[UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
-    CGRect inputViewEndFrame     = [info[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    [self.view layoutIfNeeded];
-    [UIView animateWithDuration:duration
-                          delay:0
-                        options:curve | UIViewAnimationOptionBeginFromCurrentState
-                     animations:^{
-                         self.muliSelectionBarBottomConstraint.constant = -inputViewEndFrame.size.height;
-                         [self.view layoutIfNeeded];
-                     }
-                     completion:nil];
 }
 
 @end

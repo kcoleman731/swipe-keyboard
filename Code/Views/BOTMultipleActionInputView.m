@@ -124,8 +124,6 @@ static const CGFloat PAGING_CONTROL_DEFAULT_HEIGHT = 30.0f;
     CGFloat toMultiSelectionBottomOffset = -PAGING_CONTROL_DEFAULT_HEIGHT / 2.0;
     BOOL pagingVisible                   = NO;
     if (displayControl) {
-        CGFloat toPageControlHeight          = PAGING_CONTROL_DEFAULT_HEIGHT;
-        CGFloat toMultiSelectionBottomOffset = -PAGING_CONTROL_DEFAULT_HEIGHT;
         pagingVisible                        = YES;
     }
     
