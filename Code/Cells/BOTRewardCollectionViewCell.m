@@ -51,7 +51,7 @@ NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollecti
 
 + (CGFloat)cellHeight
 {
-    return 240;
+    return 224;
 }
 
 - (void)setReward:(BOTReward *)reward
@@ -61,12 +61,8 @@ NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollecti
     self.memberTypeLabel.text = @"Plus Member";
     self.ammountLabel.text = reward.amount;
     self.rewardTypeLabel.text = @"Redeemable";
-    self.barcodeNumber.text = [NSString stringWithFormat:@"#%@",reward.number];
+    self.barcodeNumber.text = [NSString stringWithFormat:@"%@",reward.number];
     [self setBarCode:reward.number];
-    
-    self.barcodeImage.layer.borderColor = [UIColor grayColor].CGColor;
-    self.barcodeImage.layer.borderWidth = 2;
-    self.barcodeImage.layer.cornerRadius = 4;
 }
 
 - (void) setBarCode:(NSString *)barCode

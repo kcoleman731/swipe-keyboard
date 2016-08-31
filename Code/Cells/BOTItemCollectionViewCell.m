@@ -27,7 +27,7 @@ NSString *const BOTItemCollectionViewCellReuseIdentifier = @"BOTItemCollectionVi
 
 @implementation BOTItemCollectionViewCell
 
-CGFloat const BOTItemCollectionViewCellHeight = 240;
+CGFloat const BOTItemCollectionViewCellHeight = 232;
 CGFloat const BOTAddToCartButtonHeight = 52;
 
 - (void)awakeFromNib
@@ -115,10 +115,9 @@ CGFloat const BOTAddToCartButtonHeight = 52;
     [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:self.addToCartButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:BOTAddToCartButtonHeight]];
 }
 
-- (void)layoutSubviews
+- (void)viewInCartButtonTapped:(UIButton *)button
 {
-    [super layoutSubviews];
-    NSLog(@"Self: %@", self);
+    // nothing yet
 }
 
 @end

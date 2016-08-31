@@ -200,7 +200,6 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     self.rightAccessoryButton.enabled = self.textInputView.text.length;
 
     // Remove the layout constraint for height attempting to lock this at 44.0
-    NSArray *layoutConstraints = self.constraints;
     for (NSLayoutConstraint *constraint in self.constraints) {
         if (constraint.firstAttribute == NSLayoutAttributeHeight && constraint.constant == 44.0) {
             [self removeConstraint:constraint];

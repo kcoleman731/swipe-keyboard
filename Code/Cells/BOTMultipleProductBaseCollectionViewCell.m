@@ -52,7 +52,7 @@ typedef NS_ENUM(NSInteger, BOTCellType) {
 
 CGFloat const BOTHeaderLabelTopInset = 8.0f;
 CGFloat const BOTHeaderLabelHorizontalInset = 20.0f;
-CGFloat const BOTCollectionViewTopInset = 22.0f;
+CGFloat const BOTCollectionViewTopInset = 26.0f;
 
 #pragma mark - Initializers / Common Init
 
@@ -95,13 +95,13 @@ CGFloat const BOTCollectionViewTopInset = 22.0f;
 - (void)layoutCollectionView
 {
     self.btsHeaderLable = [UILabel new];
-    self.btsHeaderLable.font = [UIFont systemFontOfSize:14];
+    self.btsHeaderLable.font = [UIFont systemFontOfSize:15 weight:UIFontWeightThin];
     self.btsHeaderLable.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.btsHeaderLable];
     
     self.viewAllButton = [UIButton new];
     self.viewAllButton.translatesAutoresizingMaskIntoConstraints = NO;
-    self.viewAllButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    self.viewAllButton.titleLabel.font = [UIFont systemFontOfSize:15 weight:UIFontWeightThin];
     [self.viewAllButton setTitleColor:BOTBlueColor() forState:UIControlStateNormal];
     [self.viewAllButton addTarget:self action:@selector(viewAllButtonWasTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.viewAllButton];

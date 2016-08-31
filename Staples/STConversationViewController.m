@@ -13,11 +13,10 @@
 #import "BOTUtilities.h"
 #import "BOTMultiSelectionBar.h"
 #import "BOTMessageInputToolbar.h"
+#import "BOTShipment.h"
 
 // Cells
 #import "BOTMultipleProductBaseCollectionViewCell.h"
-#import "BOTAddressCollectionViewCell.h"
-#import "BOTShippingCollectionViewCell.h"
 #import "BOTRewardCollectionViewCell.h"
 #import "BOTReorderCollectionViewCell.h"
 #import "BOTActionCollectionViewCell.h"
@@ -82,7 +81,7 @@ NSString *const STOptionCell = @"Option Cell";
     NSMutableArray *messageParts;
     if ([title isEqualToString:BOTMultipleProductBaseCollectionViewCellTitle]) {
         messageParts = [self fakeProductParts];
-    } else if ([title isEqualToString:BOTShippingCollectionViewCellTitle]) {
+    } else if ([title isEqualToString:@"Shipping"]) {
         messageParts = [self fakeShipmentInfo];
     } else if ([title isEqualToString:BOTRewardCollectionViewCellTitle]) {
         messageParts = [self fakeRewardInfo];
@@ -186,7 +185,7 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (NSArray *)selectionItems
 {
-    return @[BOTMultipleProductBaseCollectionViewCellTitle, BOTShippingCollectionViewCellTitle , BOTRewardCollectionViewCellTitle];
+    return @[BOTMultipleProductBaseCollectionViewCellTitle, @"Shipping" , BOTRewardCollectionViewCellTitle];
 }
 
 - (NSMutableArray *)fakeRewardInfo
