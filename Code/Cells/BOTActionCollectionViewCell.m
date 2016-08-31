@@ -82,7 +82,6 @@ NSString *const BOTCartActionKey = @"cartAction";
     [self.bubbleView updateProgressIndicatorWithProgress:0.0 visible:NO animated:NO];
     self.accessibilityLabel = [NSString stringWithFormat:@"Message: %@", header];
     self.backgroundColor = [UIColor whiteColor];
-    [self updateBubbleWidth:300];
 }
 
 - (NSString *)parseTextForMessage:(LYRMessage *)message

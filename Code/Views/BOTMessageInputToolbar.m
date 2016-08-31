@@ -9,6 +9,7 @@
 #import "BOTMessageInputToolbar.h"
 #import "BOTMultiSelectionBar.h"
 #import "EDColor.h"
+#import "BOTUtilities.h"
 
 extern NSString *const ATLMessageInputToolbarCameraButton;
 
@@ -168,11 +169,12 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
 
 - (void)setCustomAccessoryButtonImages
 {
-    UIImage *cameraGlyph = [UIImage imageNamed:@"camera_glyph"];
-    UIImage *listGlyph   = [UIImage imageNamed:@"list_glyph"];
     
-    UIImage *cameraGlyphSelected = [UIImage imageNamed:@"camera_glyph_selected"];
-    UIImage *listGlyphSelected   = [UIImage imageNamed:@"list_glyph_selected"];
+    UIImage *cameraGlyph = [UIImage imageNamed:@"camera_glyph" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
+    UIImage *listGlyph   = [UIImage imageNamed:@"list_glyph" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
+    
+    UIImage *cameraGlyphSelected = [UIImage imageNamed:@"camera_glyph_selected" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
+    UIImage *listGlyphSelected   = [UIImage imageNamed:@"list_glyph_selected" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
     
     self.listAccessoryButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.leftAccessoryButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
