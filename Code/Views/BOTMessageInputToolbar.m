@@ -16,9 +16,7 @@ extern NSString *const ATLMessageInputToolbarCameraButton;
 // Kevin Coleman: Redeclaring these constants here, as they are private to the Atlas superclass.
 // Note, these values are subject to change in the super.
 static CGFloat const ATLLeftButtonHorizontalMargin = 6.0f;
-static CGFloat const ATLLeftAccessoryButtonWidth = 40.0f;
 static CGFloat const ATLRightAccessoryButtonDefaultWidth = 46.0f;
-static CGFloat const ATLRightAccessoryButtonPadding = 5.3f;
 static CGFloat const ATLRightButtonHorizontalMargin = 4.0f;
 static CGFloat const ATLButtonHeight = 28.0f;
 static CGFloat const STMultiActionToolbarDefaultHeight = 48.0f;
@@ -71,7 +69,6 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
         [self setupMultiSelectionToolbarConstraints];
         
         // Init some layout
-        [self setupTextInputViewConstraints];
         [self resizeTextViewAndFrame];
         
         // Custom images
@@ -79,6 +76,9 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
         
         // Turn off the auto suggestion bar
         self.textInputView.autocorrectionType = UITextAutocorrectionTypeNo;
+        
+        // Setup trigger for post initial pass
+        self.firstAppearance = YES;
     }
     return self;
 }
@@ -196,6 +196,13 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
 
 - (void)layoutSubviews
 {
+    // Turn off the auto resizing mask for all manually laid out buttons
+    for (UIButton *btn in @[self.rightAccessoryButton, self.leftAccessoryButton, self.listAccessoryButton]) {
+        for (NSLayoutConstraint *constraint in btn.constraints) {
+            [btn removeConstraint:constraint];
+        }
+    }
+    
     // Disable if no text
     self.rightAccessoryButton.enabled = self.textInputView.text.length;
 
@@ -253,6 +260,13 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     textViewRect.origin.x    = textViewToX;
     textViewRect.size.width  = textViewToWidth;
     self.textInputView.frame = textViewRect;
+    
+    // Add Text View Constraints after we've positioned our buttons
+    if (self.firstAppearance) {
+        self.firstAppearance = NO;
+        [self setupTextInputViewConstraints];
+        [self resizeTextViewAndFrame];
+    }
 }
 
 - (void)resizeTextViewAndFrame
