@@ -19,6 +19,7 @@
 		D68D74AA1D77829C00471724 /* BOTRepresentative.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74A91D77829C00471724 /* BOTRepresentative.m */; };
 		D68D74AD1D7786E100471724 /* BOTRepresentativeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74AC1D7786E100471724 /* BOTRepresentativeCollectionViewCell.m */; };
 		D68D74B01D7786FF00471724 /* BOTRepresentativeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68D74AF1D7786FF00471724 /* BOTRepresentativeCollectionViewCell.xib */; };
+		D68D74B21D77979900471724 /* chat-ui-images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D68D74B11D77979900471724 /* chat-ui-images.xcassets */; };
 		D69761711D660AEE00F3369F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761701D660AEE00F3369F /* main.m */; };
 		D69761741D660AEE00F3369F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761731D660AEE00F3369F /* AppDelegate.m */; };
 		D697617A1D660AEE00F3369F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69761781D660AEE00F3369F /* Main.storyboard */; };
@@ -93,6 +94,7 @@
 		D68D74AB1D7786E100471724 /* BOTRepresentativeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTRepresentativeCollectionViewCell.h; sourceTree = "<group>"; };
 		D68D74AC1D7786E100471724 /* BOTRepresentativeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTRepresentativeCollectionViewCell.m; sourceTree = "<group>"; };
 		D68D74AF1D7786FF00471724 /* BOTRepresentativeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BOTRepresentativeCollectionViewCell.xib; sourceTree = "<group>"; };
+		D68D74B11D77979900471724 /* chat-ui-images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "chat-ui-images.xcassets"; path = "Code/chat-ui-images.xcassets"; sourceTree = "<group>"; };
 		D697616C1D660AEE00F3369F /* Staples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69761701D660AEE00F3369F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D69761721D660AEE00F3369F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 		D69761631D660AEE00F3369F = {
 			isa = PBXGroup;
 			children = (
+				D68D74B11D77979900471724 /* chat-ui-images.xcassets */,
 				D697616E1D660AEE00F3369F /* Staples */,
 				D68FEF6C1D6CE5F1006AEFC6 /* Code */,
 				5D7BC486E268FE80EA4B3D58 /* Pods */,
@@ -610,6 +613,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D68D74B21D77979900471724 /* chat-ui-images.xcassets in Resources */,
 				D68D749C1D777FFD00471724 /* BOTAddressCollectionViewCell.xib in Resources */,
 				D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */,
 				D69E950F1D7512BC0064BF8B /* BOTProductCollectionViewCell.xib in Resources */,
