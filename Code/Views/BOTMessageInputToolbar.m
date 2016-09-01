@@ -36,7 +36,6 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
 
 @interface BOTMessageInputToolbar () <BOTMultiSelectionBarDelegate, ATLMessageInputToolbarDelegate>
 
-@property (nonatomic) UIButton *listAccessoryButton;
 @property (nonatomic) UIImage *listAccessoryButtonImage;
 @property (nonnull, strong) NSLayoutConstraint *inputTextViewHeightConstraint;
 @property (nonnull, strong) NSLayoutConstraint *multiSelectionHeightConstraint;
@@ -51,15 +50,11 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     self = [super init];
     if (self) {
         // Register for text change note
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(resizeTextViewAndFrame)
-                                                     name:UITextViewTextDidChangeNotification
-                                                   object:self.textInputView];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resizeTextViewAndFrame) name:UITextViewTextDidChangeNotification object:self.textInputView];
         
         // Adding target for right accessory btn
-        [self.rightAccessoryButton addTarget:self
-                                      action:@selector(rightAccessoryButtonTappedEvent)
-                            forControlEvents:UIControlEventAllTouchEvents];
+        [self.rightAccessoryButton addTarget:self action:@selector(rightAccessoryButtonTappedEvent) forControlEvents:UIControlEventAllTouchEvents];
+        [self.leftAccessoryButton addTarget:self action:@selector(leftAccessoryButtonTappedEvent) forControlEvents:UIControlEventAllTouchEvents];
         
         // Accessorty Btn
         [self setupListAccessoryButton];
@@ -158,8 +153,19 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     [self resizeTextViewAndFrame];
 }
 
+- (void)leftAccessoryButtonTappedEvent
+{
+    [self.listAccessoryButton setSelected:NO];
+}
+
 - (void)listButtonTapped:(UIButton *)sender
 {
+    if (self.textInputView.inputView && self.textInputView.isFirstResponder) {
+        [sender setSelected:NO];
+    } else {
+        [sender setSelected:YES];
+    }
+    
     if ([self.customDelegate respondsToSelector:@selector(messageInputToolbar:didTapListAccessoryButton:)]) {
         [self.customDelegate messageInputToolbar:self didTapListAccessoryButton:sender];
     }
@@ -186,6 +192,10 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     // Highlighted
     [self.listAccessoryButton setImage:listGlyphSelected forState:UIControlStateHighlighted];
     [self.leftAccessoryButton setImage:cameraGlyphSelected forState:UIControlStateHighlighted];
+    
+    // Selected
+    [self.listAccessoryButton setImage:listGlyphSelected forState:UIControlStateSelected];
+    [self.leftAccessoryButton setImage:cameraGlyphSelected forState:UIControlStateSelected];
     
     // Shink the list and cam a bit
     [self.listAccessoryButton setContentEdgeInsets:UIEdgeInsetsMake(2.0, 2.0, 2.0, 2.0)];
@@ -317,9 +327,9 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     return NO;
 }
 
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
     CGPoint pointForTargetView = [self.multiActionInputView convertPoint:point fromView:self];
-    
     if (CGRectContainsPoint(self.multiActionInputView.bounds, pointForTargetView)) {
         return [self.multiActionInputView hitTest:pointForTargetView withEvent:event];
     }

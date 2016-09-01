@@ -37,6 +37,9 @@ extern NSString *const RightMultiActionInputViewButtonTapped;
  */
 @property (nonatomic, weak) id <BOTMessageInputToolbarDelegate> customDelegate;
 
+
+@property (nonatomic) UIButton *listAccessoryButton;
+
 /**
  *  Setter for displaying the multi action Toolbar
  *
