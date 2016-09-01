@@ -9,7 +9,7 @@
 #import "BOTMultipleActionInputScrollView.h"
 #import "BOTActionInputView.h"
 
-static const int MAX_OPTIONS_PER_PAGE = 4;
+static const int MAX_OPTIONS_PER_PAGE = 4.0f;
 
 @interface BOTMultipleActionInputScrollView() <BOTActionInputViewDelegate, UIScrollViewDelegate>
 
@@ -68,7 +68,7 @@ static const int MAX_OPTIONS_PER_PAGE = 4;
     [self removeAllExistingActionViews];
     
     // Init Action Pages
-    NSInteger pages = MAX((titles.count / MAX_OPTIONS_PER_PAGE), 1);
+    CGFloat pages = ceilf((titles.count * 1.0f)/ MAX_OPTIONS_PER_PAGE);
     NSMutableArray *actionViews = [[NSMutableArray alloc] init];
     for (int i = 0; i < pages; i++) {
         

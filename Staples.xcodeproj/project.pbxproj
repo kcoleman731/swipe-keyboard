@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3414E0202F8AD103A56840B2 /* Pods_Staples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCAFA925975ACD65020CCDD /* Pods_Staples.framework */; };
 		620E15FA3F1DD1FB26C366C1 /* Pods_StaplesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */; };
+		D609FF751D78AF67009E5E40 /* BOTOrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D609FF741D78AF67009E5E40 /* BOTOrderCollectionViewCell.m */; };
+		D609FF781D78AF81009E5E40 /* BOTOrderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D609FF771D78AF81009E5E40 /* BOTOrderCollectionViewCell.xib */; };
 		D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71BC1D6B7482005F2546 /* STLayerService.m */; };
 		D68D74B51D77AA8F00471724 /* BOTAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74B41D77AA8F00471724 /* BOTAddress.m */; };
 		D68D74B81D77AA9700471724 /* BOTReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74B71D77AA9700471724 /* BOTReceipt.m */; };
@@ -74,6 +76,9 @@
 		9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StaplesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B72ABA2CB0359A53DA8545 /* Pods-Staples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Staples/Pods-Staples.debug.xcconfig"; sourceTree = "<group>"; };
 		D5B93285FFEE36FC4B96057A /* Pods-StaplesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaplesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StaplesTests/Pods-StaplesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D609FF731D78AF67009E5E40 /* BOTOrderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTOrderCollectionViewCell.h; sourceTree = "<group>"; };
+		D609FF741D78AF67009E5E40 /* BOTOrderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTOrderCollectionViewCell.m; sourceTree = "<group>"; };
+		D609FF771D78AF81009E5E40 /* BOTOrderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTOrderCollectionViewCell.xib; path = ../BOTOrderCollectionViewCell.xib; sourceTree = "<group>"; };
 		D65F71BB1D6B7482005F2546 /* STLayerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLayerService.h; sourceTree = "<group>"; };
 		D65F71BC1D6B7482005F2546 /* STLayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLayerService.m; sourceTree = "<group>"; };
 		D65F71CB1D6BA164005F2546 /* StaplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StaplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -276,6 +281,16 @@
 				9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D609FF761D78AF6C009E5E40 /* BOTOrderCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D609FF731D78AF67009E5E40 /* BOTOrderCollectionViewCell.h */,
+				D609FF741D78AF67009E5E40 /* BOTOrderCollectionViewCell.m */,
+				D609FF771D78AF81009E5E40 /* BOTOrderCollectionViewCell.xib */,
+			);
+			name = BOTOrderCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		D65F71C01D6B7A27005F2546 /* Shared */ = {
@@ -509,6 +524,7 @@
 		D6F858831D6786480027F195 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D609FF761D78AF6C009E5E40 /* BOTOrderCollectionViewCell */,
 				D68FEF071D6C0578006AEFC6 /* BOTProductCollectionViewCell */,
 				D6EB8AAA1D6F45E400BF4BE1 /* BOTShipmentTrackingCollectionViewCell */,
 				D68D74961D777F8A00471724 /* BOTAddressCollectionViewCell */,
@@ -618,6 +634,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D609FF781D78AF81009E5E40 /* BOTOrderCollectionViewCell.xib in Resources */,
 				D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */,
 				D69E950F1D7512BC0064BF8B /* BOTProductCollectionViewCell.xib in Resources */,
 				D68D74C51D77AABB00471724 /* BOTReceiptCollectionViewCell.xib in Resources */,
@@ -760,6 +777,7 @@
 				D69E94EC1D7512720064BF8B /* BOTActionInputView.m in Sources */,
 				D69E94E71D75126B0064BF8B /* BOTInvertedButton.m in Sources */,
 				D68D74BB1D77AA9B00471724 /* BOTRepresentative.m in Sources */,
+				D609FF751D78AF67009E5E40 /* BOTOrderCollectionViewCell.m in Sources */,
 				D69E94FC1D7512880064BF8B /* BOTPrice.m in Sources */,
 				D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */,
 				D69E94FB1D7512880064BF8B /* BOTProduct.m in Sources */,

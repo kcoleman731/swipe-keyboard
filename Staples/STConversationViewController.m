@@ -253,7 +253,7 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (NSArray *)selectionItems
 {
-    return @[BOTOptionTrackMyShipment, BOTOptionOrderNewSupplies , BOTOptionReorderLastShipment, BOTOptionScanSchoolSuppliesList];
+    return @[BOTOptionTrackMyShipment, BOTOptionOrderNewSupplies, BOTOptionReorderLastShipment, BOTOptionScanSchoolSuppliesList, BOTOptionReturnItems, BOTOptionViewReceipt, BOTOptionViewMyRewards];
 }
 
 - (NSArray *)orderSupplySelectionItems

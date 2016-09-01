@@ -35,6 +35,12 @@ NSString *const BOTOptionTrackMyShipment = @"Track My Shipment";
 NSString *const BOTOptionOrderNewSupplies = @"Order New Supplies";
 NSString *const BOTOptionReorderLastShipment = @"Reorder Last Shipment";
 NSString *const BOTOptionScanSchoolSuppliesList = @"Scan School Supplies List";
+NSString *const BOTOptionReturnItems = @"Return Items";
+NSString *const BOTOptionViewReceipt = @"View Receipt";
+NSString *const BOTOptionViewMyRewards = @"View My Rewards";
+NSString *const BOTOptionCancelYourShipment = @"Cancel Your Shipment";
+NSString *const BOTOptionViewCouponWallet = @"View Coupon Wallet";
+NSString *const BOTOptionCheckGiftCardBalance = @"Check Giftcard Balance";
 
 NSString *const BOTOptionPaper = @"Paper";
 NSString *const BOTOptionRedSharpies = @"Red Sharpies";

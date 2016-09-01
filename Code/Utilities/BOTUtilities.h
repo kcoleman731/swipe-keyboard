@@ -24,9 +24,10 @@ extern NSString *const BOTOptionOrderNewSupplies;
 extern NSString *const BOTOptionReorderLastShipment;
 extern NSString *const BOTOptionScanSchoolSuppliesList;
 extern NSString *const BOTOptionReturnItems;
+extern NSString *const BOTOptionViewReceipt;
+extern NSString *const BOTOptionViewMyRewards;
 extern NSString *const BOTOptionCancelYourShipment;
 extern NSString *const BOTOptionViewCouponWallet;
-extern NSString *const BOTOptionCheckGiftCardBalance;
 extern NSString *const BOTOptionCheckGiftCardBalance;
 
 extern NSString *const BOTOptionPaper;
