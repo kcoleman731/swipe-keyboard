@@ -30,14 +30,17 @@
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    STConversationViewController *controller = [STConversationViewController conversationViewControllerWithLayerClient:self.layerClient];
-    UINavigationController *root = [[UINavigationController alloc] initWithRootViewController:controller];
-    
-    self.window = [UIWindow new];
-    self.window.frame = [[UIScreen mainScreen] bounds];
-    self.window.rootViewController = root;
-    [self.window makeKeyAndVisible];
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    if (self.layerClient.authenticatedUser) {
+        STConversationViewController *controller = [STConversationViewController conversationViewControllerWithLayerClient:self.layerClient];
+        UINavigationController *root = [[UINavigationController alloc] initWithRootViewController:controller];
+        
+        self.window = [UIWindow new];
+        self.window.frame = [[UIScreen mainScreen] bounds];
+        self.window.rootViewController = root;
+        [self.window makeKeyAndVisible];
+    }
     
     return YES;
 }
@@ -94,6 +97,19 @@
             NSLog(@"Failed to request auth token with error: %@", error);
         }
     }];
+}
+
+- (void)layerClient:(LYRClient *)client didAuthenticateAsUserID:(NSString *)userID
+{
+    if (![self.window.rootViewController isKindOfClass:[UINavigationController class]]) {
+        STConversationViewController *controller = [STConversationViewController conversationViewControllerWithLayerClient:self.layerClient];
+        UINavigationController *root = [[UINavigationController alloc] initWithRootViewController:controller];
+        
+        self.window = [UIWindow new];
+        self.window.frame = [[UIScreen mainScreen] bounds];
+        self.window.rootViewController = root;
+        [self.window makeKeyAndVisible];
+    }
 }
 
 @end

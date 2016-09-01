@@ -131,7 +131,6 @@ static const CGFloat PAGING_CONTROL_DEFAULT_HEIGHT = 30.0f;
     self.pagingHeightConstraint.constant         = toPageControlHeight;
     self.multiSelectionBottomConstraint.constant = toMultiSelectionBottomOffset;
     self.pageControl.hidden                      = !pagingVisible;
-    [self layoutIfNeeded];
 }
 
 @end
