@@ -22,7 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSString *userID = [[NSUUID UUID] UUIDString];
+    NSString *userID = @"1234-1234-1234-1234";
     NSURL *appID = [NSURL URLWithString:@"layer:///apps/staging/4e426158-68b0-11e6-9b8d-cc1001002ef3"];
     self.layerService = [STLayerService serviceWithAppID:appID apiToken:@"" userID:userID];
     self.layerClient = [LYRClient clientWithAppID:appID delegate:self options:nil];
@@ -81,7 +81,19 @@
 
 - (void)layerClient:(LYRClient *)client didReceiveAuthenticationChallengeWithNonce:(NSString *)nonce
 {
-   // Nothing
+    [self.layerService authenticationTokenWithNonce:nonce completion:^(NSString *token, NSError *error) {
+        if (token) {
+            [self.layerClient authenticateWithIdentityToken:token completion:^(LYRIdentity * _Nullable authenticatedUser, NSError * _Nullable error) {
+                if (authenticatedUser) {
+                    NSLog(@"We good");
+                } else {
+                    NSLog(@"Failed to auth with error: %@", error);
+                }
+            }];
+        } else {
+            NSLog(@"Failed to request auth token with error: %@", error);
+        }
+    }];
 }
 
 @end
