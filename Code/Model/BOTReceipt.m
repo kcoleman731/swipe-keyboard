@@ -10,6 +10,13 @@
 
 NSString *const BOTReceiptMIMEType = @"";
 
+NSString *const BOTReceiptDetails = @"receiptDetails";
+NSString *const BOTReceiptOrderNumber = @"orderNumber";
+NSString *const BOTReceiptPrice = @"price";
+NSString *const BOTReceiptEta = @"eta";
+NSString *const BOTReceiptItemsCount = @"itemsCount";
+NSString *const BOTReceiptAddress = @"address";
+
 @implementation BOTReceipt
 
 + (instancetype)receiptWithData:(NSDictionary *)data
@@ -21,7 +28,11 @@ NSString *const BOTReceiptMIMEType = @"";
 {
     self = [super init];
     if (self) {
-        
+        self.orderNumber = data[BOTReceiptOrderNumber];
+        self.price = data[BOTReceiptOrderNumber];
+        self.eta = data[BOTReceiptOrderNumber];
+        self.itemsCount = data[BOTReceiptOrderNumber];
+        self.address = [BOTAddress addressWithData:data[BOTReceiptOrderNumber]];
     }
     return self;
 }

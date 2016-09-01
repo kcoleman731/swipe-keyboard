@@ -8,8 +8,17 @@
 
 #import "BOTMultipleProductBaseCollectionViewCell.h"
 #import "BOTMultipleProductsCollectionViewLayout.h"
+
+
+// Cells
 #import "BOTShipmentTrackingCollectionViewCell.h"
+#import "BOTReorderCollectionViewCell.h"
+#import "BOTProductCollectionViewCell.h"
 #import "BOTRewardCollectionViewCell.h"
+
+// Modesl
+#import "BOTProduct.h"
+
 #import "BOTUtilities.h"
 
 NSString *const BOTMultipleProductBaseCollectionViewCellTitle = @"Product Cell";
@@ -87,6 +96,9 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 
     UINib *rewardNib = [UINib nibWithNibName:@"BOTRewardCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:rewardNib forCellWithReuseIdentifier:[BOTRewardCollectionViewCell reuseIdentifier]];
+    
+    UINib *reorderNib = [UINib nibWithNibName:@"BOTReorderCollectionViewCell" bundle:StaplesUIBundle()];
+    [self.collectionView registerNib:reorderNib forCellWithReuseIdentifier:[BOTReorderCollectionViewCell reuseIdentifier]];
 }
 
 - (void)layoutCollectionView

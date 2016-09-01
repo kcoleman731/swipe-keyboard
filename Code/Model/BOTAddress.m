@@ -10,6 +10,16 @@
 
 NSString *const BOTAddressMIMEType = @"";
 
+NSString *const BOTAddressDetails = @"addressDetails";
+NSString *const BOTAddressFirstName = @"firstName";
+NSString *const BOTAddressLastName = @"lastName";
+NSString *const BOTAddressStreet = @"street";
+NSString *const BOTAddressCity = @"city";
+NSString *const BOTAddressState = @"state";
+NSString *const BOTAddressZip = @"zip";
+NSString *const BOTAddressLat = @"lattitude";
+NSString *const BOTAddressLon = @"longitude";
+
 @implementation BOTAddress
 
 + (instancetype)addressWithData:(NSDictionary *)data
@@ -21,7 +31,14 @@ NSString *const BOTAddressMIMEType = @"";
 {
     self = [super init];
     if (self) {
-        
+        self.firstName = data[BOTAddressFirstName];
+        self.lastName = data[BOTAddressLat];
+        self.street = data[BOTAddressStreet];
+        self.city = data[BOTAddressCity];
+        self.state = data[BOTAddressState];
+        self.zip = data[BOTAddressZip];
+        self.lattitude = data[BOTAddressLat];
+        self.longitude = data[BOTAddressLon];
     }
     return self;
 }
