@@ -10,4 +10,14 @@
 
 @implementation BOTRepresentativeCollectionViewCell
 
++ (NSString *)reuseIdentifier
+{
+    return @"";
+}
+
++ (CGFloat)cellHeight
+{
+    return 0;
+}
+
 @end

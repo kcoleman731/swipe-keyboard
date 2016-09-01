@@ -35,13 +35,6 @@ extern NSString *const BOTOptionRedSharpies;
 extern NSString *const BOTOptionJournals;
 extern NSString *const BOTOptionStaplers;
 
-// Address
-extern NSString *const BOTAddressName;
-extern NSString *const BOTAddressStreet;
-extern NSString *const BOTAddressCity;
-extern NSString *const BOTAddressLon;
-extern NSString *const BOTAddressLat;
-
 // Message Data Parsing
 
 extern NSString *const BOTMessagePartDataKey;

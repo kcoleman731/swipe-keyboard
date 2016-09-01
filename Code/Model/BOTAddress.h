@@ -21,8 +21,8 @@ extern NSString *const BOTAddressMIMEType;
 @property (nonatomic, strong) NSString *city;
 @property (nonatomic, strong) NSString *state;
 @property (nonatomic, strong) NSString *zip;
-@property (nonatomic, strong) NSString *lattitude;
-@property (nonatomic, strong) NSString *longitude;
+@property (nonatomic) NSUInteger lattitude;
+@property (nonatomic) NSUInteger longitude;
 
 /**
  Returns an new `BOTAddress` object hydratd with the supplied data.

@@ -8,6 +8,7 @@
 
 #import "BOTAddressCollectionViewCell.h"
 #import "BOTUtilities.h"
+#import "BOTAddress.h"
 
 NSString *const BOTAddressCollectionViewCellTitle= @"Address Cell";
 NSString *const BOTAddressCollectionViewCellMimeType = @"json/address";
@@ -53,11 +54,13 @@ NSString *const BOTAddressCollectionViewCellReuseIdentifier = @"STAddressCollect
 {
     LYRMessagePart *part = message.parts[0];
     NSDictionary *data = [NSJSONSerialization JSONObjectWithData:part.data options:NSJSONReadingAllowFragments error:nil];
-    self.addressName.text = data[BOTAddressName];
-    self.addressStreet.text = data[BOTAddressStreet];
-    self.addressCity.text = data[BOTAddressCity];
     
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(37.79154, -122.42211);
+    BOTAddress *address;
+    self.addressName.text = [NSString stringWithFormat:@"%@ %@", address.firstName, address.lastName];
+    self.addressStreet.text = address.street;
+    self.addressCity.text = address.city;
+    
+    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(address.lattitude, address.longitude);
     MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
     MKCoordinateRegion region = MKCoordinateRegionMake(coordinate, span);
     [self.mapView setRegion:region];

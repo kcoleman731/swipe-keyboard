@@ -47,12 +47,6 @@ NSString *const BOTOptionRedSharpies = @"Red Sharpies";
 NSString *const BOTOptionJournals = @"Journals";
 NSString *const BOTOptionStaplers = @"Staplers";
 
-NSString *const BOTAddressName = @"STAddressName";
-NSString *const BOTAddressStreet = @"STAddressStreet";
-NSString *const BOTAddressCity = @"STAddressCity";
-NSString *const BOTAddressLon = @"STAddressLon";
-NSString *const BOTAddressLat = @"STAddressLat";
-
 NSString *const BOTMessagePartDataKey = @"data";
 
 @implementation BOTUtilities

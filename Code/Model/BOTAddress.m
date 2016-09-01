@@ -37,8 +37,8 @@ NSString *const BOTAddressLon = @"longitude";
         self.city = data[BOTAddressCity];
         self.state = data[BOTAddressState];
         self.zip = data[BOTAddressZip];
-        self.lattitude = data[BOTAddressLat];
-        self.longitude = data[BOTAddressLon];
+        self.lattitude = [data[BOTAddressLat] integerValue];
+        self.longitude = [data[BOTAddressLon] integerValue];
     }
     return self;
 }
