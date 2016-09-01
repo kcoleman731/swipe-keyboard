@@ -15,7 +15,7 @@
 extern NSString *const BOTBackToSchoolViewCartButtonTappedNotification;
 
 /**
- The `BOTItemCollectionViewCell` displays a product card in a conversation UI.
+ The `BOTProductCollectionViewCell` displays a product card in a conversation UI.
  */
 @interface BOTProductCollectionViewCell : UICollectionViewCell
 

@@ -78,12 +78,9 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 {
     self.contentView.backgroundColor = [UIColor clearColor];
     [self layoutCollectionView];
-
-    UINib *itemNib = [UINib nibWithNibName:@"BOTItemCollectionViewCell" bundle:StaplesUIBundle()];
-    [self.collectionView registerNib:itemNib forCellWithReuseIdentifier:[BOTProductCollectionViewCell reuseIdentifier]];
     
     UINib *productNib = [UINib nibWithNibName:@"BOTProductCollectionViewCell" bundle:StaplesUIBundle()];
-    [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[BOTProductCollectionViewCellOld reuseIdentifier]];
+    [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[BOTProductCollectionViewCell reuseIdentifier]];
 
     UINib *shippingNib = [UINib nibWithNibName:@"BOTShipmentTrackingCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:shippingNib forCellWithReuseIdentifier:[BOTShipmentTrackingCollectionViewCell reuseIdentifier]];

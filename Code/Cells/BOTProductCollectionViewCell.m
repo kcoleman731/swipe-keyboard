@@ -1,5 +1,5 @@
 //
-//  STItemCollectionViewCell.m
+//  BOTProductCollectionViewCell
 //  Staples
 //
 //  Created by Kevin Coleman on 8/22/16.
@@ -11,7 +11,7 @@
 #import "UIImageView+WebCache.h"
 
 NSString *const BOTBackToSchoolViewCartButtonTappedNotification = @"BOTBackToSchoolViewCartButtonTappedNotification";
-NSString *const BOTItemCollectionViewCellReuseIdentifier = @"BOTItemCollectionViewCellReuseIdentifier";
+NSString *const BOTProductCollectionViewCellReuseIdentifier = @"BOTProductCollectionViewCellReuseIdentifier";
 
 @interface BOTProductCollectionViewCell ()
 
@@ -27,7 +27,7 @@ NSString *const BOTItemCollectionViewCellReuseIdentifier = @"BOTItemCollectionVi
 
 @implementation BOTProductCollectionViewCell
 
-CGFloat const BOTItemCollectionViewCellHeight = 232;
+CGFloat const BOTProductCollectionViewCellHeight = 232;
 CGFloat const BOTAddToCartButtonHeight = 52;
 
 - (void)awakeFromNib
@@ -61,12 +61,12 @@ CGFloat const BOTAddToCartButtonHeight = 52;
 
 + (CGFloat)cellHeightWithButton:(BOOL)button
 {
-    return button ? BOTItemCollectionViewCellHeight + BOTAddToCartButtonHeight : BOTItemCollectionViewCellHeight;
+    return button ? BOTProductCollectionViewCellHeight + BOTAddToCartButtonHeight : BOTProductCollectionViewCellHeight;
 }
 
 + (NSString *)reuseIdentifier
 {
-    return BOTItemCollectionViewCellReuseIdentifier;
+    return BOTProductCollectionViewCellReuseIdentifier;
 }
 
 - (void)setProductItem:(BOTProduct *)item
