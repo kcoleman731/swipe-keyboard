@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,15 +7,93 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="21s-b9-C8c">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="21s-b9-C8c" customClass="BOTOrderCollectionViewCell">
             <rect key="frame" x="0.0" y="0.0" width="454" height="250"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="454" height="250"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fV9-Br-VIG">
+                        <rect key="frame" x="16" y="0.0" width="422" height="250"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="co3-ba-Wfr">
+                                <rect key="frame" x="0.0" y="190" width="422" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="pYS-Dh-be3"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EwX-Tf-Ece">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Number:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NxX-r1-b1L">
+                                <rect key="frame" x="40" y="16" width="96" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$265.02" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTd-RM-1re">
+                                <rect key="frame" x="40" y="37" width="91.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Det-sC-xyF">
+                                <rect key="frame" x="144" y="10" width="92" height="30"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="12346785955">
+                                            <attributes>
+                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 Items | 6/17/2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="GLa-8u-VSo">
+                                <rect key="frame" x="40" y="70" width="167" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GLa-8u-VSo" secondAttribute="trailing" constant="16" id="2b2-25-AYY"/>
+                            <constraint firstAttribute="trailing" secondItem="co3-ba-Wfr" secondAttribute="trailing" id="8Qu-nP-8MJ"/>
+                            <constraint firstAttribute="bottom" secondItem="co3-ba-Wfr" secondAttribute="bottom" id="I6T-YA-M4R"/>
+                            <constraint firstItem="GLa-8u-VSo" firstAttribute="leading" secondItem="uTd-RM-1re" secondAttribute="leading" id="Lhh-SA-vbe"/>
+                            <constraint firstItem="co3-ba-Wfr" firstAttribute="leading" secondItem="fV9-Br-VIG" secondAttribute="leading" id="LxQ-mB-IFF"/>
+                            <constraint firstItem="Det-sC-xyF" firstAttribute="leading" secondItem="NxX-r1-b1L" secondAttribute="trailing" constant="8" id="MNJ-zs-sEL"/>
+                            <constraint firstItem="uTd-RM-1re" firstAttribute="leading" secondItem="NxX-r1-b1L" secondAttribute="leading" id="a6U-d5-ycj"/>
+                            <constraint firstItem="NxX-r1-b1L" firstAttribute="leading" secondItem="fV9-Br-VIG" secondAttribute="leading" constant="40" id="amN-z5-7cI"/>
+                            <constraint firstItem="Det-sC-xyF" firstAttribute="centerY" secondItem="NxX-r1-b1L" secondAttribute="centerY" id="bAh-cl-XCk"/>
+                            <constraint firstItem="uTd-RM-1re" firstAttribute="top" secondItem="NxX-r1-b1L" secondAttribute="bottom" constant="4" id="m2k-fP-8bD"/>
+                            <constraint firstItem="NxX-r1-b1L" firstAttribute="top" secondItem="fV9-Br-VIG" secondAttribute="top" constant="16" id="yMz-gp-Jx5"/>
+                            <constraint firstItem="GLa-8u-VSo" firstAttribute="top" secondItem="uTd-RM-1re" secondAttribute="bottom" constant="4" id="yso-Ka-72e"/>
+                        </constraints>
+                    </view>
+                </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <constraints>
+                <constraint firstItem="fV9-Br-VIG" firstAttribute="top" secondItem="21s-b9-C8c" secondAttribute="top" id="M6T-NF-f03"/>
+                <constraint firstAttribute="trailing" secondItem="fV9-Br-VIG" secondAttribute="trailing" constant="16" id="Mwt-nk-yoc"/>
+                <constraint firstItem="fV9-Br-VIG" firstAttribute="leading" secondItem="21s-b9-C8c" secondAttribute="leading" constant="16" id="UkX-Fk-7zP"/>
+                <constraint firstAttribute="bottom" secondItem="fV9-Br-VIG" secondAttribute="bottom" id="wAk-qE-bkh"/>
+            </constraints>
             <size key="customSize" width="454" height="250"/>
+            <connections>
+                <outlet property="bgView" destination="fV9-Br-VIG" id="uqB-6d-e9P"/>
+                <outlet property="collectionView" destination="co3-ba-Wfr" id="dIl-80-XW6"/>
+                <outlet property="itemsLabel" destination="GLa-8u-VSo" id="XsU-mV-ql0"/>
+                <outlet property="orderNumberButton" destination="Det-sC-xyF" id="jm1-my-NT5"/>
+                <outlet property="orderNumberLabel" destination="NxX-r1-b1L" id="0ti-Qg-FwH"/>
+                <outlet property="priceLabel" destination="uTd-RM-1re" id="TB3-cl-fNJ"/>
+            </connections>
             <point key="canvasLocation" x="640" y="269"/>
         </collectionViewCell>
     </objects>

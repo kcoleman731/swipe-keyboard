@@ -7,8 +7,37 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Atlas/Atlas.h>
+#import "BOTOrder.h"
 
-@interface BOTOrderCollectionViewCell : UICollectionViewCell
+/**
+ The title of the cell. Used for testing purposes.
+ */
+extern NSString *const BOTOrderCollectionViewCellTitle;
+
+/**
+ The MIMEType used for message parts that should display the cell.
+ */
+extern NSString *const BOTOrderCollectionViewCellMimeType;
+
+/**
+ The reuse identifier for the cell.
+ */
+extern NSString *const BOTOrderCollectionViewCellReuseIdentifier;
+
+@interface BOTOrderCollectionViewCell : ATLIncomingMessageCollectionViewCell
+
+@property (nonatomic, strong) BOTOrder *order;
+
+/**
+ Cell height
+ */
++ (CGFloat)cellHeight;
+    
+/**
+ Reuse Identifier
+ */
++ (NSString *)reuseIdentifier;
 
 + (NSString *)reuseIdentifier;
 

@@ -21,6 +21,7 @@
 #import "BOTAddressCollectionViewCell.h"
 #import "BOTReceiptCollectionViewCell.h"
 #import "BOTReorderCollectionViewCell.h"
+#import "BOTOrderCollectionViewCell.h"
 #import "BOTShipmentTrackingCollectionViewCell.h"
 #import "BOTRewardCollectionViewCell.h"
 //#import "BOTReturnCollectionViewCell.h"
@@ -70,6 +71,10 @@ NSString *const STOptionCell = @"Option Cell";
 {
     // Product Cell
     [self.collectionView registerClass:[BOTMultipleProductBaseCollectionViewCell class] forCellWithReuseIdentifier:[BOTMultipleProductBaseCollectionViewCell reuseIdentifier]];
+    
+    // Order Cell
+    UINib *orderCell = [UINib nibWithNibName:@"BOTOrderCollectionViewCell" bundle:StaplesUIBundle()];
+    [self.collectionView registerNib:orderCell forCellWithReuseIdentifier:[BOTOrderCollectionViewCell reuseIdentifier]];
     
     // Receipt Cell
     UINib *receiptCell = [UINib nibWithNibName:@"BOTReceiptCollectionViewCell" bundle:StaplesUIBundle()];
@@ -123,7 +128,9 @@ NSString *const STOptionCell = @"Option Cell";
 
 #pragma mark - ATLConversationViewControllerDelegate
 
-- (CGFloat)conversationViewController:(ATLConversationViewController *)viewController heightForMessage:(LYRMessage *)message withCellWidth:(CGFloat)cellWidth
+- (CGFloat)conversationViewController:(ATLConversationViewController *)viewController
+                     heightForMessage:(LYRMessage *)message
+                        withCellWidth:(CGFloat)cellWidth
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
@@ -138,10 +145,8 @@ NSString *const STOptionCell = @"Option Cell";
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTReorderCollectionViewCellMimeType]) {
         return [BOTReorderCollectionViewCell cellHeight];
-    } else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
-        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
-    } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
-        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+    } else if ([part.MIMEType isEqualToString:BOTOrderCollectionViewCellMimeType]) {
+        return [BOTOrderCollectionViewCell cellHeight];
     }
     return 0;
 }
@@ -151,6 +156,7 @@ NSString *const STOptionCell = @"Option Cell";
 - (nullable NSString *)conversationViewController:(ATLConversationViewController *)viewController reuseIdentifierForMessage:(LYRMessage *)message
 {
     LYRMessagePart *part = message.parts[0];
+    NSLog(@"mime type: %@", part.MIMEType);
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
         return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTAddressMIMEType]) {
@@ -163,10 +169,8 @@ NSString *const STOptionCell = @"Option Cell";
         return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTReorderCollectionViewCellMimeType]) {
         return [BOTReorderCollectionViewCell reuseIdentifier];
-    } else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
-        return [BOTReorderCollectionViewCell reuseIdentifier];
-    } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
-        return [BOTReorderCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:BOTOrderCollectionViewCellMimeType]) {
+        return [BOTOrderCollectionViewCell reuseIdentifier];
     }
     
     return nil;
