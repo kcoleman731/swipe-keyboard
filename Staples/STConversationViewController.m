@@ -189,8 +189,20 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (ATLMessageInputToolbar *)initializeMessageInputToolbar
 {
-    BOTMessageInputToolbar *toolbar = [BOTMessageInputToolbar new];
+    CGFloat screenWidth             = [[UIScreen mainScreen] bounds].size.width;
+    
+    // Create Custom Keyboard w/ Selection list.
+    self.inputView = [[BOTMultipleActionInputView alloc] initWithSelectionTitles:[self selectionItems]];
+    self.inputView.frame = (CGRect){0.0, 0.0, screenWidth, 216.0f};
+    self.inputView.delegate = self;
+    
+    // Create Toolbar
+    BOTMessageInputToolbar *toolbar = [[BOTMessageInputToolbar alloc] init];
     toolbar.customDelegate = self;
+    toolbar.multiInputView = self.inputView;
+    toolbar.textInputView.inputView = self.inputView;
+    [toolbar.listAccessoryButton setSelected:YES];
+    
     return toolbar;
 }
 
@@ -198,11 +210,7 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (void)messageInputToolbar:(BOTMessageInputToolbar *)messageInputToolbar didTapListAccessoryButton:(UIButton *)listAccessoryButton
 {
-    self.inputView = [[BOTMultipleActionInputView alloc] initWithSelectionTitles:[self selectionItems]];
-    self.inputView.frame = CGRectMake(0, 0, 320, 240);
-    self.inputView.delegate = self;
-    messageInputToolbar.textInputView.inputView = self.inputView;
-    [messageInputToolbar.textInputView becomeFirstResponder];
+    //
 }
 
 - (void)messageInputToolbar:(BOTMessageInputToolbar *)messageInputToolbar multiSelectionBarTappedWithTitle:(NSString *)title
