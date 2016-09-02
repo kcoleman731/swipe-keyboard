@@ -45,7 +45,7 @@ NSString *const BOTAddressCollectionViewCellReuseIdentifier = @"STAddressCollect
 
 + (CGFloat)cellHeight
 {
-    return 260;
+    return 250;
 }
 
 #pragma mark - ATLMessagePresenting
@@ -53,12 +53,11 @@ NSString *const BOTAddressCollectionViewCellReuseIdentifier = @"STAddressCollect
 - (void)presentMessage:(LYRMessage *)message
 {
     LYRMessagePart *part = message.parts[0];
-    NSDictionary *data = [NSJSONSerialization JSONObjectWithData:part.data options:NSJSONReadingAllowFragments error:nil];
-    
-    BOTAddress *address;
+    NSDictionary *data = DataForMessagePart(part);
+    BOTAddress *address = [BOTAddress addressWithData:data];
     self.addressName.text = [NSString stringWithFormat:@"%@ %@", address.firstName, address.lastName];
     self.addressStreet.text = address.street;
-    self.addressCity.text = address.city;
+    self.addressCity.text = [NSString stringWithFormat:@"%@, %@ %@", address.city, address.state, address.zip];
     
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(address.lattitude, address.longitude);
     MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);

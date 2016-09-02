@@ -9,19 +9,16 @@
 /* Begin PBXBuildFile section */
 		3414E0202F8AD103A56840B2 /* Pods_Staples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCAFA925975ACD65020CCDD /* Pods_Staples.framework */; };
 		620E15FA3F1DD1FB26C366C1 /* Pods_StaplesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */; };
-		D609FF751D78AF67009E5E40 /* BOTOrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D609FF741D78AF67009E5E40 /* BOTOrderCollectionViewCell.m */; };
-		D609FF781D78AF81009E5E40 /* BOTOrderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D609FF771D78AF81009E5E40 /* BOTOrderCollectionViewCell.xib */; };
-		D609FF7B1D78B36F009E5E40 /* BOTOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D609FF7A1D78B36F009E5E40 /* BOTOrder.m */; };
 		D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71BC1D6B7482005F2546 /* STLayerService.m */; };
+		D6829C601D791B8800FB485F /* BOTOrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6829C5E1D791B8800FB485F /* BOTOrderCollectionViewCell.m */; };
+		D6829C611D791B8800FB485F /* BOTOrderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6829C5F1D791B8800FB485F /* BOTOrderCollectionViewCell.xib */; };
+		D6829C641D791B9000FB485F /* BOTOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = D6829C631D791B9000FB485F /* BOTOrder.m */; };
 		D68D74B51D77AA8F00471724 /* BOTAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74B41D77AA8F00471724 /* BOTAddress.m */; };
 		D68D74B81D77AA9700471724 /* BOTReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74B71D77AA9700471724 /* BOTReceipt.m */; };
-		D68D74BB1D77AA9B00471724 /* BOTRepresentative.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74BA1D77AA9B00471724 /* BOTRepresentative.m */; };
 		D68D74BF1D77AAAD00471724 /* BOTAddressCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74BD1D77AAAD00471724 /* BOTAddressCollectionViewCell.m */; };
 		D68D74C01D77AAAD00471724 /* BOTAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68D74BE1D77AAAD00471724 /* BOTAddressCollectionViewCell.xib */; };
 		D68D74C41D77AABB00471724 /* BOTReceiptCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74C21D77AABB00471724 /* BOTReceiptCollectionViewCell.m */; };
 		D68D74C51D77AABB00471724 /* BOTReceiptCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68D74C31D77AABB00471724 /* BOTReceiptCollectionViewCell.xib */; };
-		D68D74C91D77AACA00471724 /* BOTRepresentativeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D68D74C71D77AACA00471724 /* BOTRepresentativeCollectionViewCell.m */; };
-		D68D74CA1D77AACA00471724 /* BOTRepresentativeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68D74C81D77AACA00471724 /* BOTRepresentativeCollectionViewCell.xib */; };
 		D68D74CD1D77AAE900471724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D68D74CC1D77AAE900471724 /* Assets.xcassets */; };
 		D69761711D660AEE00F3369F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761701D660AEE00F3369F /* main.m */; };
 		D69761741D660AEE00F3369F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D69761731D660AEE00F3369F /* AppDelegate.m */; };
@@ -77,30 +74,25 @@
 		9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StaplesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B72ABA2CB0359A53DA8545 /* Pods-Staples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Staples/Pods-Staples.debug.xcconfig"; sourceTree = "<group>"; };
 		D5B93285FFEE36FC4B96057A /* Pods-StaplesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaplesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StaplesTests/Pods-StaplesTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D609FF731D78AF67009E5E40 /* BOTOrderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTOrderCollectionViewCell.h; sourceTree = "<group>"; };
-		D609FF741D78AF67009E5E40 /* BOTOrderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTOrderCollectionViewCell.m; sourceTree = "<group>"; };
-		D609FF771D78AF81009E5E40 /* BOTOrderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTOrderCollectionViewCell.xib; path = ../BOTOrderCollectionViewCell.xib; sourceTree = "<group>"; };
-		D609FF791D78B36F009E5E40 /* BOTOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTOrder.h; sourceTree = "<group>"; };
-		D609FF7A1D78B36F009E5E40 /* BOTOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTOrder.m; sourceTree = "<group>"; };
 		D65F71BB1D6B7482005F2546 /* STLayerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLayerService.h; sourceTree = "<group>"; };
 		D65F71BC1D6B7482005F2546 /* STLayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLayerService.m; sourceTree = "<group>"; };
 		D65F71CB1D6BA164005F2546 /* StaplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StaplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D65F71CF1D6BA164005F2546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6829C5D1D791B8800FB485F /* BOTOrderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTOrderCollectionViewCell.h; path = Code/Cells/BOTOrderCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		D6829C5E1D791B8800FB485F /* BOTOrderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTOrderCollectionViewCell.m; path = Code/Cells/BOTOrderCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		D6829C5F1D791B8800FB485F /* BOTOrderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTOrderCollectionViewCell.xib; path = Code/Cells/BOTOrderCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		D6829C621D791B9000FB485F /* BOTOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTOrder.h; path = Code/Model/BOTOrder.h; sourceTree = SOURCE_ROOT; };
+		D6829C631D791B9000FB485F /* BOTOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTOrder.m; path = Code/Model/BOTOrder.m; sourceTree = SOURCE_ROOT; };
 		D68D74B31D77AA8F00471724 /* BOTAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTAddress.h; path = Code/Model/BOTAddress.h; sourceTree = SOURCE_ROOT; };
 		D68D74B41D77AA8F00471724 /* BOTAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTAddress.m; path = Code/Model/BOTAddress.m; sourceTree = SOURCE_ROOT; };
 		D68D74B61D77AA9700471724 /* BOTReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTReceipt.h; path = Code/Model/BOTReceipt.h; sourceTree = SOURCE_ROOT; };
 		D68D74B71D77AA9700471724 /* BOTReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTReceipt.m; path = Code/Model/BOTReceipt.m; sourceTree = SOURCE_ROOT; };
-		D68D74B91D77AA9B00471724 /* BOTRepresentative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTRepresentative.h; path = Code/Model/BOTRepresentative.h; sourceTree = SOURCE_ROOT; };
-		D68D74BA1D77AA9B00471724 /* BOTRepresentative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTRepresentative.m; path = Code/Model/BOTRepresentative.m; sourceTree = SOURCE_ROOT; };
 		D68D74BC1D77AAAD00471724 /* BOTAddressCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTAddressCollectionViewCell.h; path = Code/Cells/BOTAddressCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		D68D74BD1D77AAAD00471724 /* BOTAddressCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTAddressCollectionViewCell.m; path = Code/Cells/BOTAddressCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		D68D74BE1D77AAAD00471724 /* BOTAddressCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTAddressCollectionViewCell.xib; path = Code/Cells/BOTAddressCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
 		D68D74C11D77AABB00471724 /* BOTReceiptCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTReceiptCollectionViewCell.h; path = Code/Cells/BOTReceiptCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		D68D74C21D77AABB00471724 /* BOTReceiptCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTReceiptCollectionViewCell.m; path = Code/Cells/BOTReceiptCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		D68D74C31D77AABB00471724 /* BOTReceiptCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTReceiptCollectionViewCell.xib; path = Code/Cells/BOTReceiptCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
-		D68D74C61D77AACA00471724 /* BOTRepresentativeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTRepresentativeCollectionViewCell.h; path = Code/Cells/BOTRepresentativeCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
-		D68D74C71D77AACA00471724 /* BOTRepresentativeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTRepresentativeCollectionViewCell.m; path = Code/Cells/BOTRepresentativeCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
-		D68D74C81D77AACA00471724 /* BOTRepresentativeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTRepresentativeCollectionViewCell.xib; path = Code/Cells/BOTRepresentativeCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
 		D68D74CC1D77AAE900471724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		D697616C1D660AEE00F3369F /* Staples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Staples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69761701D660AEE00F3369F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -209,8 +201,8 @@
 		3486CD141D67A46E0041E2F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D609FF791D78B36F009E5E40 /* BOTOrder.h */,
-				D609FF7A1D78B36F009E5E40 /* BOTOrder.m */,
+				D6829C621D791B9000FB485F /* BOTOrder.h */,
+				D6829C631D791B9000FB485F /* BOTOrder.m */,
 				D68D74B31D77AA8F00471724 /* BOTAddress.h */,
 				D68D74B41D77AA8F00471724 /* BOTAddress.m */,
 				D69E94F21D7512880064BF8B /* BOTShipment.h */,
@@ -223,8 +215,6 @@
 				D69E94F71D7512880064BF8B /* BOTPrice.m */,
 				D68D74B61D77AA9700471724 /* BOTReceipt.h */,
 				D68D74B71D77AA9700471724 /* BOTReceipt.m */,
-				D68D74B91D77AA9B00471724 /* BOTRepresentative.h */,
-				D68D74BA1D77AA9B00471724 /* BOTRepresentative.m */,
 			);
 			name = Model;
 			path = Staples;
@@ -291,9 +281,9 @@
 		D609FF761D78AF6C009E5E40 /* BOTOrderCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D609FF731D78AF67009E5E40 /* BOTOrderCollectionViewCell.h */,
-				D609FF741D78AF67009E5E40 /* BOTOrderCollectionViewCell.m */,
-				D609FF771D78AF81009E5E40 /* BOTOrderCollectionViewCell.xib */,
+				D6829C5D1D791B8800FB485F /* BOTOrderCollectionViewCell.h */,
+				D6829C5E1D791B8800FB485F /* BOTOrderCollectionViewCell.m */,
+				D6829C5F1D791B8800FB485F /* BOTOrderCollectionViewCell.xib */,
 			);
 			name = BOTOrderCollectionViewCell;
 			sourceTree = "<group>";
@@ -386,16 +376,6 @@
 				3486CD0B1D679E6B0041E2F7 /* BOTProductCollectionViewCell */,
 			);
 			name = "Old Design";
-			sourceTree = "<group>";
-		};
-		D68D74AE1D7786E500471724 /* BOTRepresentativeCollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				D68D74C61D77AACA00471724 /* BOTRepresentativeCollectionViewCell.h */,
-				D68D74C71D77AACA00471724 /* BOTRepresentativeCollectionViewCell.m */,
-				D68D74C81D77AACA00471724 /* BOTRepresentativeCollectionViewCell.xib */,
-			);
-			name = BOTRepresentativeCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		D68D74CB1D77AAD900471724 /* Resources */ = {
@@ -535,7 +515,6 @@
 				D68D74961D777F8A00471724 /* BOTAddressCollectionViewCell */,
 				D68D74951D777F6700471724 /* BOTReceiptCollectionViewCell */,
 				D6EB8AC41D6F914700BF4BE1 /* BOTActionCollectionViewCell */,
-				D68D74AE1D7786E500471724 /* BOTRepresentativeCollectionViewCell */,
 				D68FEF011D6BFC4B006AEFC6 /* BOTReorderCollectionViewCell */,
 				D65F71D81D6BB4A1005F2546 /* BOTRewardCollectionViewCell */,
 				3486CD011D6779130041E2F7 /* BOTMultipleProductCollectionViewCell */,
@@ -639,16 +618,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D609FF781D78AF81009E5E40 /* BOTOrderCollectionViewCell.xib in Resources */,
 				D697617F1D660AEE00F3369F /* LaunchScreen.storyboard in Resources */,
 				D69E950F1D7512BC0064BF8B /* BOTProductCollectionViewCell.xib in Resources */,
 				D68D74C51D77AABB00471724 /* BOTReceiptCollectionViewCell.xib in Resources */,
+				D6829C611D791B8800FB485F /* BOTOrderCollectionViewCell.xib in Resources */,
 				D68D74C01D77AAAD00471724 /* BOTAddressCollectionViewCell.xib in Resources */,
 				D69E951F1D7512E10064BF8B /* BOTReorderCollectionViewCell.xib in Resources */,
 				D6EB8ABC1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.xib in Resources */,
 				D697617A1D660AEE00F3369F /* Main.storyboard in Resources */,
 				D69E951A1D7512D40064BF8B /* BOTProductCollectionViewCellOld.xib in Resources */,
-				D68D74CA1D77AACA00471724 /* BOTRepresentativeCollectionViewCell.xib in Resources */,
 				D69E95241D7512EE0064BF8B /* BOTReorderItemCollectionViewCell.xib in Resources */,
 				D68D74CD1D77AAE900471724 /* Assets.xcassets in Resources */,
 				D69E95291D7512FF0064BF8B /* BOTRewardCollectionViewCell.xib in Resources */,
@@ -777,16 +755,14 @@
 				D69E94DB1D75124B0064BF8B /* BOTMultiSelectionBar.m in Sources */,
 				D69761711D660AEE00F3369F /* main.m in Sources */,
 				D69E94FA1D7512880064BF8B /* BOTReward.m in Sources */,
-				D68D74C91D77AACA00471724 /* BOTRepresentativeCollectionViewCell.m in Sources */,
 				D69E95281D7512FF0064BF8B /* BOTRewardCollectionViewCell.m in Sources */,
 				D69E94EC1D7512720064BF8B /* BOTActionInputView.m in Sources */,
 				D69E94E71D75126B0064BF8B /* BOTInvertedButton.m in Sources */,
-				D68D74BB1D77AA9B00471724 /* BOTRepresentative.m in Sources */,
-				D609FF751D78AF67009E5E40 /* BOTOrderCollectionViewCell.m in Sources */,
 				D69E94FC1D7512880064BF8B /* BOTPrice.m in Sources */,
 				D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */,
 				D69E94FB1D7512880064BF8B /* BOTProduct.m in Sources */,
 				D69E950A1D7512B30064BF8B /* BOTCellContainerView.m in Sources */,
+				D6829C641D791B9000FB485F /* BOTOrder.m in Sources */,
 				D69E95151D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.m in Sources */,
 				D69E94F91D7512880064BF8B /* BOTShipment.m in Sources */,
 				D69E94F01D75127B0064BF8B /* BOTMultiSelectionBarBevelView.m in Sources */,
@@ -796,8 +772,8 @@
 				D69E95311D7514BE0064BF8B /* BOTActionCollectionViewCell.m in Sources */,
 				D68D74B51D77AA8F00471724 /* BOTAddress.m in Sources */,
 				D68D74B81D77AA9700471724 /* BOTReceipt.m in Sources */,
-				D609FF7B1D78B36F009E5E40 /* BOTOrder.m in Sources */,
 				D69E94DE1D7512550064BF8B /* BOTMultipleActionInputView.m in Sources */,
+				D6829C601D791B8800FB485F /* BOTOrderCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

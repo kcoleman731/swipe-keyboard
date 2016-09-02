@@ -8,6 +8,8 @@
 
 #import "BOTOrder.h"
 
+NSString *const BOTOrderMIMEType = @"application/list+order";
+
 NSString *const BOTReorderItem = @"reorderItem";
 NSString *const BOTOrderNumber = @"orderNumber";
 NSString *const BOTOrderTotalPrice = @"totalPrice";

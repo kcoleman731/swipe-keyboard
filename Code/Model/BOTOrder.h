@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "BOTProduct.h"
 
+extern NSString *const BOTOrderMIMEType;
+
 @interface BOTOrder : NSObject
 
 @property (nonatomic, strong) NSString *orderNumber;

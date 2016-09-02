@@ -24,7 +24,6 @@
 #import "BOTShipmentTrackingCollectionViewCell.h"
 #import "BOTRewardCollectionViewCell.h"
 //#import "BOTReturnCollectionViewCell.h"
-#import "BOTRepresentativeCollectionViewCell.h"
 #import "BOTActionCollectionViewCell.h"
 
 // Models
@@ -33,7 +32,6 @@
 #import "BOTReceipt.h"
 #import "BOTShipment.h"
 #import "BOTReward.h"
-#import "BOTRepresentative.h"
 
 @interface STConversationViewController () <BOTMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource, ATLConversationViewControllerDelegate, BOTMessageInputToolbarDelegate, BOTMultiSelectionBarDelegate>
 
@@ -71,6 +69,14 @@ NSString *const STOptionCell = @"Option Cell";
 {
     // Product Cell
     [self.collectionView registerClass:[BOTMultipleProductBaseCollectionViewCell class] forCellWithReuseIdentifier:[BOTMultipleProductBaseCollectionViewCell reuseIdentifier]];
+    
+    // Receipt Cell
+    UINib *receiptCell = [UINib nibWithNibName:@"BOTReceiptCollectionViewCell" bundle:StaplesUIBundle()];
+    [self.collectionView registerNib:receiptCell forCellWithReuseIdentifier:[BOTReceiptCollectionViewCell reuseIdentifier]];
+    
+    // Address Cell
+    UINib *addressCell = [UINib nibWithNibName:@"BOTAddressCollectionViewCell" bundle:StaplesUIBundle()];
+    [self.collectionView registerNib:addressCell forCellWithReuseIdentifier:[BOTAddressCollectionViewCell reuseIdentifier]];
     
     // Action Cell
     [self registerClass:[BOTActionCollectionViewCell class] forMessageCellWithReuseIdentifier:BOTActionCollectionViewCellReuseIdentifier];
@@ -124,8 +130,6 @@ NSString *const STOptionCell = @"Option Cell";
         return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
-    } else if ([part.MIMEType isEqualToString:BOTRepresentativeMIMEType]) {
-        return [BOTRepresentativeCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTReorderCollectionViewCellMimeType]) {
         return [BOTReorderCollectionViewCell cellHeight];
     }
@@ -147,9 +151,8 @@ NSString *const STOptionCell = @"Option Cell";
         return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
-    } else if ([part.MIMEType isEqualToString:BOTRepresentativeMIMEType]) {
-        return [BOTRepresentativeCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTReorderCollectionViewCellMimeType]) {
+     
         return [BOTReorderCollectionViewCell reuseIdentifier];
     }
     return nil;
@@ -253,7 +256,7 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (NSArray *)selectionItems
 {
-    return @[BOTOptionTrackMyShipment, BOTOptionOrderNewSupplies, BOTOptionReorderLastShipment, BOTOptionScanSchoolSuppliesList, BOTOptionReturnItems, BOTOptionViewReceipt, BOTOptionViewMyRewards];
+    return @[BOTOptionTrackMyShipment, BOTOptionOrderNewSupplies, BOTOptionReorderLastShipment, BOTOptionScanSchoolSuppliesList, BOTOptionReturnItems, BOTOptionViewReceipt, BOTOptionViewMyRewards, BOTOptionViewMyAddress];
 }
 
 - (NSArray *)orderSupplySelectionItems

@@ -7,7 +7,7 @@
 //
 
 #import "BOTShipment.h"
-
+                            
 NSString *const BOTShipmentMIMEType = @"application/json+shipmentTrackingobject";
 
 NSString *const BOTShipmentStatusKey = @"status";

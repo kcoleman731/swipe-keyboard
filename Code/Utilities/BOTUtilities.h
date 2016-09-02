@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <Atlas/Atlas.h>
 
 // Returns the appropriate bundle that should be used for Nibs and Assets.
 NSBundle * StaplesUIBundle();
@@ -18,6 +19,9 @@ UIColor * BOTLightGrayColor();
 // Staples Blue
 UIColor * BOTBlueColor();
 
+// Message Part
+NSDictionary *DataForMessagePart(LYRMessagePart *part);
+
 // Flows
 extern NSString *const BOTOptionTrackMyShipment;
 extern NSString *const BOTOptionOrderNewSupplies;
@@ -26,6 +30,7 @@ extern NSString *const BOTOptionScanSchoolSuppliesList;
 extern NSString *const BOTOptionReturnItems;
 extern NSString *const BOTOptionViewReceipt;
 extern NSString *const BOTOptionViewMyRewards;
+extern NSString *const BOTOptionViewMyAddress;
 extern NSString *const BOTOptionCancelYourShipment;
 extern NSString *const BOTOptionViewCouponWallet;
 extern NSString *const BOTOptionCheckGiftCardBalance;

@@ -7,8 +7,9 @@
 //
 
 #import "BOTReceipt.h"
+#import "BOTUtilities.h"
 
-NSString *const BOTReceiptMIMEType = @"";
+NSString *const BOTReceiptMIMEType = @"application/receiptObject";
 
 NSString *const BOTReceiptDetails = @"receiptDetails";
 NSString *const BOTReceiptOrderNumber = @"orderNumber";
@@ -28,11 +29,13 @@ NSString *const BOTReceiptAddress = @"address";
 {
     self = [super init];
     if (self) {
-        self.orderNumber = data[BOTReceiptOrderNumber];
-        self.price = data[BOTReceiptOrderNumber];
-        self.eta = data[BOTReceiptOrderNumber];
-        self.itemsCount = data[BOTReceiptOrderNumber];
-        self.address = [BOTAddress addressWithData:data[BOTReceiptOrderNumber]];
+        NSDictionary *parsedData = data[BOTMessagePartDataKey];
+        NSDictionary *details = parsedData[BOTReceiptDetails];
+        self.orderNumber = details[BOTReceiptOrderNumber];
+        self.price = details[BOTReceiptPrice];
+        self.eta = details[BOTReceiptEta];
+        self.itemsCount = details[BOTReceiptItemsCount];
+        self.address = [BOTAddress addressWithData:details[BOTReceiptAddress]];
     }
     return self;
 }

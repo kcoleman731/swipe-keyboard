@@ -7,8 +7,9 @@
 //
 
 #import "BOTAddress.h"
+#import "BOTUtilities.h"
 
-NSString *const BOTAddressMIMEType = @"";
+NSString *const BOTAddressMIMEType = @"application/addressObject";
 
 NSString *const BOTAddressDetails = @"addressDetails";
 NSString *const BOTAddressFirstName = @"firstName";
@@ -31,16 +32,27 @@ NSString *const BOTAddressLon = @"longitude";
 {
     self = [super init];
     if (self) {
-        self.firstName = data[BOTAddressFirstName];
-        self.lastName = data[BOTAddressLat];
-        self.street = data[BOTAddressStreet];
-        self.city = data[BOTAddressCity];
-        self.state = data[BOTAddressState];
-        self.zip = data[BOTAddressZip];
-        self.lattitude = [data[BOTAddressLat] integerValue];
-        self.longitude = [data[BOTAddressLon] integerValue];
+        NSDictionary *parsedData = data[BOTMessagePartDataKey];
+        if (parsedData) {
+            NSDictionary *details = parsedData[BOTAddressDetails];
+            [self hydrateAddress:details];
+        } else {
+            [self hydrateAddress:data];
+        }
     }
     return self;
+}
+
+- (void)hydrateAddress:(NSDictionary *)data
+{
+    self.firstName = data[BOTAddressFirstName];
+    self.lastName = data[BOTAddressLastName];
+    self.street = data[BOTAddressStreet];
+    self.city = data[BOTAddressCity];
+    self.state = data[BOTAddressState];
+    self.zip = data[BOTAddressZip];
+    self.lattitude = [data[BOTAddressLat] floatValue];
+    self.longitude = [data[BOTAddressLon] floatValue];
 }
 
 @end

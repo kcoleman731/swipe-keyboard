@@ -18,6 +18,7 @@
 
 // Modesl
 #import "BOTProduct.h"
+#import "BOTOrder.h"
 
 #import "BOTUtilities.h"
 
@@ -37,11 +38,13 @@ NSString *const BOTMessagePartListItemsKey = @"listItems";
 NSString *const BOTMessagePartHeaderTitle = @"headerTitle";
 NSString *const BOTMessagePartShipmentTrackingListKey = @"shippmentTrackingList";
 NSString *const BOTMessagePartRewardListKey = @"rewardslistItems";
+NSString *const BOTMessagePartReorderItemKey = @"reorderItem";
 
 typedef NS_ENUM(NSInteger, BOTCellType) {
     BOTCellTypeBackToSchool = 0,
     BOTCellTypeShipping = 1,
     BOTCellTypeRewards = 2,
+    BOTCellTypeOrder = 3,
 };
 
 @interface BOTMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -252,6 +255,14 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             returnCell = cell;
         }
             break;
+            
+        case BOTCellTypeOrder: {
+            NSString *reuseIdentifier = [BOTReorderCollectionViewCell reuseIdentifier];
+            BOTReorderCollectionViewCell *cell = (BOTReorderCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+            BOTOrder *order = self.items[indexPath.row];
+            returnCell = cell;
+        }
+            break;
 
         default:
             break;
@@ -313,6 +324,16 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
         self.topCollectionViewConstraint.constant = BOTCollectionViewTopInset;
     }
 
+    // Parse Reorder Data.
+    if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
+        NSDictionary *data = json[BOTMessagePartDataKey];
+        NSArray *reorderJSON = data[BOTMessagePartReorderItemKey];
+        for (NSDictionary *itemData in reorderJSON) {
+            BOTOrder *order = [BOTOrder orderWithData:itemData];
+            [items addObject:order];
+        }
+    }
+    
     // Parse Reward Data.
     if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         NSDictionary *data = json[BOTMessagePartDataKey];

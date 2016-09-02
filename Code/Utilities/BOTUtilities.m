@@ -30,6 +30,19 @@ UIColor * BOTBlueColor()
     return [UIColor colorWithRed:0/255.0 green:104/255.0 blue:223/255.0 alpha:1.0];
 }
 
+NSDictionary *DataForMessagePart(LYRMessagePart *part)
+{
+    NSString *dataString = [[NSString alloc] initWithData:part.data encoding:NSUTF8StringEncoding];
+    NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSError *error;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+    if (error) {
+        return nil;
+    }
+    return json;
+}
+
 // Flows
 NSString *const BOTOptionTrackMyShipment = @"Track My Shipment";
 NSString *const BOTOptionOrderNewSupplies = @"Order New Supplies";
@@ -38,6 +51,7 @@ NSString *const BOTOptionScanSchoolSuppliesList = @"Scan School Supplies List";
 NSString *const BOTOptionReturnItems = @"Return Items";
 NSString *const BOTOptionViewReceipt = @"View Receipt";
 NSString *const BOTOptionViewMyRewards = @"View My Rewards";
+NSString *const BOTOptionViewMyAddress = @"View My Address";
 NSString *const BOTOptionCancelYourShipment = @"Cancel Your Shipment";
 NSString *const BOTOptionViewCouponWallet = @"View Coupon Wallet";
 NSString *const BOTOptionCheckGiftCardBalance = @"Check Giftcard Balance";

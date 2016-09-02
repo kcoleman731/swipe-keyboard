@@ -1,5 +1,5 @@
 //
-//  STShippingCollectionViewCell.m
+//  BOTReceiptCollectionViewCell.m
 //  Staples
 //
 //  Created by Kevin Coleman on 8/19/16.
@@ -8,9 +8,10 @@
 
 #import "BOTReceiptCollectionViewCell.h"
 #import "BOTUtilities.h"
+#import "BOTReceipt.h"
 
 NSString *const BOTShippingCollectionViewCellTitle = @"Shipping Cell";
-NSString *const BOTShippingCollectionViewCellReuseIdentifier = @"STShippingCollectionViewCellReuseIdentifier";
+NSString *const BOTReceiptCollectionViewCellReuseIdentifier = @"BOTReceiptCollectionViewCellReuseIdentifier";
 
 @interface BOTReceiptCollectionViewCell ()
 
@@ -32,26 +33,23 @@ NSString *const BOTShippingCollectionViewCellReuseIdentifier = @"STShippingColle
 {
     [super awakeFromNib];
     
-    self.backgroundView.layer.borderColor = BOTLightGrayColor().CGColor;
-    self.backgroundView.layer.cornerRadius = 4;
-    self.backgroundView.layer.borderWidth = 2;
-    self.backgroundView.clipsToBounds = YES;
+    self.cellContainerView.layer.borderColor = BOTLightGrayColor().CGColor;
+    self.cellContainerView.layer.cornerRadius = 4;
+    self.cellContainerView.layer.borderWidth = 2;
+    self.cellContainerView.clipsToBounds = YES;
     self.seperator.backgroundColor = BOTLightGrayColor();
     
     self.deliverToLabel.text = @"Deliver To:";
-    self.deliverToLabel.font = [UIFont boldSystemFontOfSize:12];
-    self.priceLabel.font = [UIFont systemFontOfSize:22 weight:UIFontWeightThin];
-    self.itemLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightThin];
 }
 
 + (NSString *)reuseIdentifier
 {
-    return BOTShippingCollectionViewCellReuseIdentifier;
+    return BOTReceiptCollectionViewCellReuseIdentifier;
 }
 
 + (CGFloat)cellHeight
 {
-    return 220;
+    return 240;
 }
 
 #pragma mark - ATLMessagePresenting
@@ -60,7 +58,17 @@ NSString *const BOTMMessagePartShipmentTrackingListKey = @"shippmentTrackingList
 
 - (void)presentMessage:(LYRMessage *)message
 {
+    LYRMessagePart *part = message.parts[0];
+    NSDictionary *data = DataForMessagePart(part);
     
+    BOTReceipt *receipt = [BOTReceipt receiptWithData:data];
+    NSString *orderNumberString = [NSString stringWithFormat:@"Order Number: %@", receipt.orderNumber];
+    self.orderNumberLabel.attributedText = [self attributedTextForOrderNumber:orderNumberString];
+    self.priceLabel.text = receipt.price;
+    self.itemLabel.text = [NSString stringWithFormat:@"%@ Item | ETA: %@", receipt.itemsCount, receipt.eta];
+    self.addressNameLabel.text = [NSString stringWithFormat:@"%@ %@", receipt.address.firstName, receipt.address.lastName];
+    self.addressStreetLabel.text = receipt.address.street;
+    self.addressCityLabel.text = [NSString stringWithFormat:@"%@, %@ %@", receipt.address.city, receipt.address.state, receipt.address.zip];
 }
 
 - (void)updateWithSender:(nullable id<ATLParticipant>)sender
