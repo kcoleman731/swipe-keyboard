@@ -333,6 +333,7 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
         self.textInputView.inputView = nil;
         [self.textInputView reloadInputViews];
         [self.textInputView becomeFirstResponder];
+        [self.listAccessoryButton setSelected:NO];
     }
 
     // Return YES if the touch is within bounds or multiaction view
@@ -466,13 +467,6 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
 - (void)multiSelectionBar:(BOTMultiSelectionBar *)bar rightSelectionHitWithTitle:(NSString *)title
 {
     [self.customDelegate messageInputToolbar:self multiSelectionBarTappedWithTitle:title];
-}
-
-#pragma mark - Gesture Recognizers
-
-- (void)tapDetectedOnTextInput
-{
-    self.textInputView.inputView = nil;
 }
 
 #pragma mark - Dealloc
