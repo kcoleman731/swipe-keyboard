@@ -7,6 +7,8 @@
 //
 
 #import <Atlas/Atlas.h>
+#import "BOTMultipleActionInputView.h"
+
 extern NSString *const RightMultiActionInputViewButtonTapped;
 
 @class BOTMessageInputToolbar;
@@ -37,6 +39,7 @@ extern NSString *const RightMultiActionInputViewButtonTapped;
  */
 @property (nonatomic, weak) id <BOTMessageInputToolbarDelegate> customDelegate;
 
+@property (nonatomic, strong) BOTMultipleActionInputView *multiInputView;
 
 @property (nonatomic) UIButton *listAccessoryButton;
 

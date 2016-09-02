@@ -8,7 +8,9 @@
 
 #import "BOTOrder.h"
 
-NSString *const BOTOrderMIMEType = @"application/list+order";
+NSString *const BOTOrderMIMEType = @"application/json+listorder";
+NSString *const BOTReorderMIMEType = @"application/json+listreorder";
+NSString *const BOTReturnMIMEType = @"application/json+listreturn";
 
 NSString *const BOTReorderItem = @"reorderItem";
 NSString *const BOTOrderNumber = @"orderNumber";

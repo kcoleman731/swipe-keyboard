@@ -41,8 +41,28 @@
         self.window.rootViewController = root;
         [self.window makeKeyAndVisible];
     }
-    
+
+    UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    [application registerUserNotificationSettings:notificationSettings];
+    [application registerForRemoteNotifications];
+
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSError *error;
+    BOOL success = [self.layerClient updateRemoteNotificationDeviceToken:deviceToken error:&error];
+    if (success) {
+        NSLog(@"Application did register for remote notifications");
+    } else {
+        NSLog(@"Error updating Layer device token for push:%@", error);
+    }
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    
 }
 
 - (void)connectLayer

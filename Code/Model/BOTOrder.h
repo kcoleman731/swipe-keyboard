@@ -10,6 +10,8 @@
 #import "BOTProduct.h"
 
 extern NSString *const BOTOrderMIMEType;
+extern NSString *const BOTReorderMIMEType;
+extern NSString *const BOTReturnMIMEType;
 
 @interface BOTOrder : NSObject
 

@@ -9,12 +9,12 @@
 #import "BOTMultipleProductBaseCollectionViewCell.h"
 #import "BOTMultipleProductsCollectionViewLayout.h"
 
-
 // Cells
 #import "BOTShipmentTrackingCollectionViewCell.h"
 #import "BOTReorderCollectionViewCell.h"
 #import "BOTProductCollectionViewCell.h"
 #import "BOTRewardCollectionViewCell.h"
+#import "BOTOrderCollectionViewCell.h"
 
 // Modesl
 #import "BOTProduct.h"
@@ -31,10 +31,18 @@ NSString *const BOTBackToSchoolItemSelectedNotification = @"BOTBackToSchoolItemS
 NSString *const BOTShipmentSelectedNotification = @"BOTShipmentSelectedNotification";
 NSString *const BOTRewardSelectedNotification = @"BOTRewardSelectedNotification";
 
-// JSON Parsing Keys
+
+// Card Type Keys
+NSString *const BOTCardTypeBTSItems = @"BTS_ITEMS";
+NSString *const BOTCardTypeOrderItems = @"ORDER_ITEM";
+
+// Card List Keys
+NSString *const BOTMessagePartCardTypeKey = @"cardType";
 NSString *const BOTMessagePartCartItemsKey = @"cartItems";
 NSString *const BOTMessagePartBTSItemsKey = @"btsItems";
+NSString *const BOTMessagePartOrderItemsKey = @"orderItems";
 NSString *const BOTMessagePartListItemsKey = @"listItems";
+
 NSString *const BOTMessagePartHeaderTitle = @"headerTitle";
 NSString *const BOTMessagePartShipmentTrackingListKey = @"shippmentTrackingList";
 NSString *const BOTMessagePartRewardListKey = @"rewardslistItems";
@@ -100,8 +108,8 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     UINib *rewardNib = [UINib nibWithNibName:@"BOTRewardCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:rewardNib forCellWithReuseIdentifier:[BOTRewardCollectionViewCell reuseIdentifier]];
     
-    UINib *reorderNib = [UINib nibWithNibName:@"BOTReorderCollectionViewCell" bundle:StaplesUIBundle()];
-    [self.collectionView registerNib:reorderNib forCellWithReuseIdentifier:[BOTReorderCollectionViewCell reuseIdentifier]];
+    UINib *reorderNib = [UINib nibWithNibName:@"BOTOrderCollectionViewCell" bundle:StaplesUIBundle()];
+    [self.collectionView registerNib:reorderNib forCellWithReuseIdentifier:[BOTOrderCollectionViewCell reuseIdentifier]];
 }
 
 - (void)layoutCollectionView
@@ -296,45 +304,20 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 {
     LYRMessagePart *part = message.parts[0];
     NSDictionary *json = [self parseDataForMessagePart:part];
-
-    // Parse Product Data.
+    NSDictionary *data = json[BOTMessagePartDataKey];
+    
+    // Parse Product list Data.
     NSMutableArray *items = [[NSMutableArray alloc] init];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
-        
-        // Parse BTS Title
-        NSDictionary *data = json[BOTMessagePartDataKey];
-        NSDictionary *itemsData;
-        
-        if(data[BOTMessagePartBTSItemsKey])
-            itemsData = data[BOTMessagePartBTSItemsKey];
-        else if(data[BOTMessagePartCartItemsKey])
-           itemsData = data[BOTMessagePartCartItemsKey];
-        
-        //BTS items and cart items are coming in mupltiple part, so Handled number of parts
-        /// Parse BTS Items
-        for(int i=1; i<self.message.parts.count; i++){
-            LYRMessagePart *part = self.message.parts[i];
-            NSDictionary *json = [self parseDataForMessagePart:part];
-            NSDictionary *itemData = json[BOTMessagePartDataKey];
-            NSArray *itemJSON = itemData[BOTMessagePartListItemsKey];
-            for (NSDictionary *itemData in itemJSON) {
-                BOTProduct *item = [BOTProduct productWithData:itemData];
-                [items addObject:item];
-            }
-       }
-        // Update View
-        self.btsHeaderLable.text = itemsData[BOTMessagePartHeaderTitle];
-        [self.btsHeaderLable sizeToFit];
-        
-        [self.viewAllButton setTitle:@"View All" forState:UIControlStateNormal];
-        [self.viewAllButton sizeToFit];
-        
-        self.topCollectionViewConstraint.constant = BOTCollectionViewTopInset;
+        if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeBTSItems]) {
+            items = [self itemsForBTSFlowWithMessage:message];
+        } else  if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeOrderItems]) {
+            items = [self itemsForOrderFlowWithMessage:message];
+        }
     }
 
     // Parse Reorder Data.
     if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
-        NSDictionary *data = json[BOTMessagePartDataKey];
         NSArray *reorderJSON = data[BOTMessagePartReorderItemKey];
         for (NSDictionary *itemData in reorderJSON) {
             BOTOrder *order = [BOTOrder orderWithData:itemData];
@@ -344,7 +327,6 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     
     // Parse Reward Data.
     if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
-        NSDictionary *data = json[BOTMessagePartDataKey];
         NSArray *rewardJSON = data[BOTMessagePartRewardListKey];
         for (NSDictionary *itemData in rewardJSON) {
             BOTReward *reward = [BOTReward rewardWithData:itemData];
@@ -354,7 +336,6 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 
     // Parse Shipping Data.
     if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
-        NSDictionary *data = json[BOTMessagePartDataKey];
         NSArray *shipmentJSON = data[BOTMessagePartShipmentTrackingListKey];
         for (NSDictionary *itemData in shipmentJSON) {
             BOTShipment *item = [BOTShipment shipmentWithData:itemData];
@@ -363,6 +344,8 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     }
     return items;
 }
+
+#pragma mark - Data Parsing
 
 - (NSDictionary *)parseDataForMessagePart:(LYRMessagePart *)part
 {
@@ -375,6 +358,62 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
         return nil;
     }
     return json;
+}
+
+- (NSMutableArray *)itemsForBTSFlowWithMessage:(LYRMessage *)message
+{
+    LYRMessagePart *part = message.parts[0];
+    NSDictionary *json = [self parseDataForMessagePart:part];
+    
+    // Parse BTS Title
+    NSDictionary *data = json[BOTMessagePartDataKey];
+    NSDictionary *part1Data = data[BOTMessagePartBTSItemsKey];
+    
+    // Update View
+    self.btsHeaderLable.text = part1Data[BOTMessagePartHeaderTitle];
+    [self.btsHeaderLable sizeToFit];
+    
+    [self.viewAllButton setTitle:@"View All" forState:UIControlStateNormal];
+    [self.viewAllButton sizeToFit];
+    
+    self.topCollectionViewConstraint.constant = BOTCollectionViewTopInset;
+    
+    //BTS items and cart items are coming in mupltiple part, so Handled number of parts Parse BTS Items
+    NSMutableArray *items = [NSMutableArray new];
+    for (int i = 1; i < self.message.parts.count; i++){
+        LYRMessagePart *part = self.message.parts[i];
+        NSDictionary *json = [self parseDataForMessagePart:part];
+        
+        NSDictionary *itemsData;
+        NSDictionary *data = json[BOTMessagePartDataKey];
+        if (data[BOTMessagePartListItemsKey]) {
+            itemsData = data[BOTMessagePartListItemsKey];
+        }
+        
+        
+        for (NSDictionary *itemData in itemsData) {
+            BOTProduct *item = [BOTProduct productWithData:itemData];
+            [items addObject:item];
+        }
+    }
+    return items;
+}
+
+- (NSMutableArray *)itemsForOrderFlowWithMessage:(LYRMessage *)message
+{
+    LYRMessagePart *part = message.parts[0];
+    NSDictionary *json = [self parseDataForMessagePart:part];
+    
+    // Parse BTS Title
+    NSDictionary *data = json[BOTMessagePartDataKey];
+    NSDictionary *orderItems = data[BOTMessagePartOrderItemsKey];
+    
+    NSMutableArray *items = [NSMutableArray new];
+    for (NSDictionary *itemData in orderItems) {
+        BOTProduct *item = [BOTProduct productWithData:itemData];
+        [items addObject:item];
+    }
+    return items;
 }
 
 #pragma mark - BTS View All Button Tap

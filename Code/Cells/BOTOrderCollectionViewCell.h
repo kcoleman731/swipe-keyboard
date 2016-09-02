@@ -39,4 +39,6 @@ extern NSString *const BOTOrderCollectionViewCellReuseIdentifier;
  */
 + (NSString *)reuseIdentifier;
 
++ (NSString *)reuseIdentifier;
+
 @end
