@@ -17,6 +17,7 @@ extern NSString *const BOTOrderMIMEType;
 @property (nonatomic, strong) NSString *totalPrice;
 @property (nonatomic, strong) NSString *eta;
 @property (nonatomic, strong) NSString *itemsCount;
+@property (nonatomic, strong) NSDate *orderDate;
 @property (nonatomic, strong) NSArray <BOTProduct *> *items;
 
 + (instancetype)orderWithData:(NSDictionary *)data;

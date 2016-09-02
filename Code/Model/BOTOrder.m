@@ -15,6 +15,7 @@ NSString *const BOTOrderNumber = @"orderNumber";
 NSString *const BOTOrderTotalPrice = @"totalPrice";
 NSString *const BOTOrderETA = @"eta";
 NSString *const BOTOrderItemsCount = @"itemsCount";
+NSString *const BOTOrderDate = @"orderDate";
 NSString *const BOTOrderItems = @"items";
 
 @implementation BOTOrder
@@ -32,6 +33,7 @@ NSString *const BOTOrderItems = @"items";
         self.totalPrice = data[BOTOrderTotalPrice];
         self.eta = data[BOTOrderETA ];
         self.itemsCount = data[BOTOrderItemsCount];
+        self.orderDate = [NSDate dateWithTimeIntervalSince1970:[data[BOTOrderDate] integerValue]];
         
         // Parse products.
         NSArray *items = data[BOTOrderItems];

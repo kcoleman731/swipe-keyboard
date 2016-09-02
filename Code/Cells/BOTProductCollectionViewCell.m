@@ -38,7 +38,6 @@ CGFloat const BOTAddToCartButtonHeight = 52;
 
 - (void)configureUI
 {
-    self.clipsToBounds = NO;
     self.contentView.backgroundColor = [UIColor clearColor];
     self.backgroundColor = [UIColor whiteColor];
     self.layer.borderColor = BOTLightGrayColor().CGColor;
