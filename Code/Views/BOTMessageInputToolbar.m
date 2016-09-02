@@ -168,6 +168,25 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
         [sender setSelected:YES];
     }
     
+    
+    // If keyboard is not showing, and this button is tapped,
+    // pop the multi selection input view. If it is showing, just toggle
+    if (!self.textInputView.isFirstResponder) {
+        [self.textInputView becomeFirstResponder];
+        self.textInputView.inputView = self.multiInputView;
+        [self.textInputView reloadInputViews];
+        return;
+    }
+    
+    // Toggle
+    if (self.textInputView.inputView != self.multiInputView) {
+        self.textInputView.inputView = self.multiInputView;
+        [self.textInputView reloadInputViews];
+    } else {
+        self.textInputView.inputView = nil;
+        [self.textInputView reloadInputViews];
+    }
+    
     if ([self.customDelegate respondsToSelector:@selector(messageInputToolbar:didTapListAccessoryButton:)]) {
         [self.customDelegate messageInputToolbar:self didTapListAccessoryButton:sender];
     }

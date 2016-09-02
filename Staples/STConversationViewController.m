@@ -95,6 +95,11 @@ NSString *const STOptionCell = @"Option Cell";
 
 - (void)multipleActionInputView:(BOTMultipleActionInputView *)multipleActionInputView didSelectTitle:(NSString *)title
 {
+    BOTMessageInputToolbar *toolbar = (BOTMessageInputToolbar *)self.messageInputToolbar;
+    [toolbar.textInputView resignFirstResponder];
+    toolbar.textInputView.inputView = nil;
+    [toolbar.textInputView reloadInputViews];
+    
     if ([title isEqualToString:BOTOptionTrackMyShipment]) {
         // messageParts = [self fakeProductParts];
     } else if ([title isEqualToString:BOTOptionOrderNewSupplies]) {
