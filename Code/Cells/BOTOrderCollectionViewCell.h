@@ -10,4 +10,6 @@
 
 @interface BOTOrderCollectionViewCell : UICollectionViewCell
 
++ (NSString *)reuseIdentifier;
+
 @end

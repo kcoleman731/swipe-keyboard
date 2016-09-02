@@ -32,6 +32,7 @@
 #import "BOTReceipt.h"
 #import "BOTShipment.h"
 #import "BOTReward.h"
+#import "BOTOrder.h"
 
 @interface STConversationViewController () <BOTMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource, ATLConversationViewControllerDelegate, BOTMessageInputToolbarDelegate, BOTMultiSelectionBarDelegate>
 
@@ -132,6 +133,10 @@ NSString *const STOptionCell = @"Option Cell";
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTReorderCollectionViewCellMimeType]) {
         return [BOTReorderCollectionViewCell cellHeight];
+    } else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
+        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+    } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
+        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
     }
     return 0;
 }
@@ -152,9 +157,13 @@ NSString *const STOptionCell = @"Option Cell";
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTReorderCollectionViewCellMimeType]) {
-     
+        return [BOTReorderCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
+        return [BOTReorderCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
         return [BOTReorderCollectionViewCell reuseIdentifier];
     }
+    
     return nil;
 }
 

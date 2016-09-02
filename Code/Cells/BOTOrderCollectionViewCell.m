@@ -11,4 +11,9 @@
 
 @implementation BOTOrderCollectionViewCell
 
++ (NSString *)reuseIdentifier
+{
+    return @"taste test";
+}
+
 @end
