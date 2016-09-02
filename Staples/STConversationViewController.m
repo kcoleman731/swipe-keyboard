@@ -52,10 +52,10 @@ NSString *const STOptionCell = @"Option Cell";
     
     self.dataSource = self;
     self.delegate = self;
-    
+    self.shouldDisplayAvatarItemForOneOtherParticipant = NO;
+
     [self createNewConversation];
     [self configureCollectionViewCells];
-    [self layoutMultiSelectionBar];
     [self registerForNotifications];
 }
 
@@ -98,7 +98,7 @@ NSString *const STOptionCell = @"Option Cell";
     if ([title isEqualToString:BOTOptionTrackMyShipment]) {
         // messageParts = [self fakeProductParts];
     } else if ([title isEqualToString:BOTOptionOrderNewSupplies]) {
-        [self.inputView setSelectionTitles:[self orderSupplySelectionItems]];
+        //[self.inputView setSelectionTitles:[self orderSupplySelectionItems]];
     } else if ([title isEqualToString:BOTOptionReorderLastShipment]) {
         // messageParts = [self fakeRewardInfo];
     } else if ([title isEqualToString:BOTOptionScanSchoolSuppliesList]) {
@@ -271,74 +271,6 @@ NSString *const STOptionCell = @"Option Cell";
 - (NSArray *)orderSupplySelectionItems
 {
     return @[BOTOptionPaper, BOTOptionRedSharpies, BOTOptionJournals, BOTOptionStaplers];
-}
-
-- (NSMutableArray *)fakeRewardInfo
-{
-    NSMutableArray *rewards = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 50; i++) {
-        [rewards addObject:@{
-                             BOTRewardsUserNameKey : @"Kevin Coleman",
-                             BOTRewardAmmountKey: @"$39.97",
-                             BOTRewardsTotalAmountKey: @"$39.95",
-                             BOTRewardsTypeKey: @"Redeemable",
-                             BOTRewardsPromoImageKey: @"www.staples.com",
-                             BOTRewardsNumberKey: @"#1234567890"
-                             }];
-    }
-    
-    NSDictionary *reward = @{@"data": @{ @"rewardslistItems" : [rewards copy]}};
-    NSData *rewardData = [NSJSONSerialization dataWithJSONObject:reward options:NSJSONWritingPrettyPrinted error:nil];
-    LYRMessagePart *dataPart = [LYRMessagePart messagePartWithMIMEType:BOTRewardMIMEType data:rewardData];
-    return [NSMutableArray arrayWithObject:dataPart];
-}
-
-- (NSMutableArray *)fakeProductParts
-{
-    NSMutableArray *products = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 50; i++) {
-        [products addObject:@{
-                              @"quantity":@"1",
-                              @"productImage":@"http://www.staples-3p.com/s7/is/image/Staples/s0071040_sc7",
-                              @"skuNo":@"228445",
-                              @"price":@{
-                                    @"unitOfMeasure":@"Dozen",
-                                    @"price":@"16.29",
-                                    @"finalPrice":@"16.29",
-                                    @"displayWasPricing":@"false",
-                                    @"displayRegularPricing":@"false",
-                                    @"buyMoreSaveMoreImage":@"",
-                                },
-                              @"productName":@"Paper Mate&amp;reg; FlairÂ® Felt-Tip Pens, Medium Point, Red, Dozen",
-                            }];
-    }
-    NSDictionary *product = @{@"data": @{ @"listItems" : [products copy]}};
-    NSData *productData = [NSJSONSerialization dataWithJSONObject:product options:NSJSONWritingPrettyPrinted error:nil];
-    LYRMessagePart *dataPart = [LYRMessagePart messagePartWithMIMEType:BOTProductListMIMEType data:productData];
-    
-    NSDictionary *info = @{@"data": @{ @"btsItems" :  @{@"headerTitle" : @"Test Title"}}};
-    NSData *infoData = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:nil];
-    LYRMessagePart *infoPart = [LYRMessagePart messagePartWithMIMEType:BOTProductListMIMEType data:infoData];
-    return [NSMutableArray arrayWithObjects:infoPart, dataPart, nil];
-}
-
-- (NSMutableArray *)fakeShipmentInfo
-{
-    NSMutableArray *products = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 2; i++) {
-        [products addObject:@{
-                              @"boxes" : @"1",
-                              @"deliveryDate" : @"Wed Aug 10 09:56:12 EDT 2016",
-                              @"orderNumber" : @"9742476281",
-                              @"shipmentNumber" : @"117628629",
-                              @"shipmentType" : @"ISP",
-                              @"status" : @"Did not pick up",
-                              }];
-    }
-    NSDictionary *shipment = @{@"data": @{ @"shippmentTrackingList" : [products copy]}};
-    NSData *shipmentData = [NSJSONSerialization dataWithJSONObject:shipment options:NSJSONWritingPrettyPrinted error:nil];
-    LYRMessagePart *dataPart = [LYRMessagePart messagePartWithMIMEType:BOTShipmentMIMEType data:shipmentData];
-    return [NSMutableArray arrayWithObject:dataPart];
 }
 
 @end
