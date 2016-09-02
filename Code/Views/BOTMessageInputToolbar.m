@@ -332,7 +332,6 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     if (CGRectContainsPoint(self.textInputView.frame, point) && self.textInputView.inputView) {
         self.textInputView.inputView = nil;
         [self.textInputView reloadInputViews];
-        [self.textInputView becomeFirstResponder];
         [self.listAccessoryButton setSelected:NO];
     }
 
