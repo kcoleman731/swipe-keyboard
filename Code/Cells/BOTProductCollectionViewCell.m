@@ -75,7 +75,7 @@ CGFloat const BOTAddToCartButtonHeight = 52;
     
     // Set UI
     self.descriptionLabel.text = item.name;
-    self.priceLabel.text = item.price.price;
+    self.priceLabel.text = [NSString stringWithFormat:@"$%@", item.price.finalPrice];
     self.deliveryLabel.text = @"Pick Up Today";
     self.deliveryLabel.hidden = YES;
     [self setProductImageURL:item.imageURL];
