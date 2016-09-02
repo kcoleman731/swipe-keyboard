@@ -191,7 +191,15 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.items.count;
+    //for BTS and Cart Items has display limit of 10
+    if(self.cellType == 0){
+        if(self.items.count>10){
+            return 10;
+        }else
+            return self.items.count;
+    }
+    else
+        return self.items.count;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
