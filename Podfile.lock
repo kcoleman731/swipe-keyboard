@@ -12,7 +12,7 @@ PODS:
   - ZXingObjC/All (3.1.0)
 
 DEPENDENCIES:
-  - Atlas
+  - Atlas (~> 1.0.26)
   - EDColor (~> 1.0.0)
   - Reveal-iOS-SDK (~> 1.6.2)
   - SDWebImage (~> 3.8.1)
@@ -26,6 +26,6 @@ SPEC CHECKSUMS:
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   ZXingObjC: bf15b3814f7a105b6d99f47da2333c93a063650a
 
-PODFILE CHECKSUM: 4c27e853c8b0fda55ec03a4e9cc1fda870c66ee2
+PODFILE CHECKSUM: ee17f189495647d0f822a05455431b7fb57c3ede
 
 COCOAPODS: 1.0.1

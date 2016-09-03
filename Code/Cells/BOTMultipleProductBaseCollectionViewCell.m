@@ -31,10 +31,11 @@ NSString *const BOTBackToSchoolItemSelectedNotification = @"BOTBackToSchoolItemS
 NSString *const BOTShipmentSelectedNotification = @"BOTShipmentSelectedNotification";
 NSString *const BOTRewardSelectedNotification = @"BOTRewardSelectedNotification";
 
-
 // Card Type Keys
-NSString *const BOTCardTypeBTSItems = @"BTS_ITEMS";
+NSString *const BOTCardTypeBTSItems = @"CART_ITEMS";
 NSString *const BOTCardTypeOrderItems = @"ORDER_ITEM";
+NSString *const BOTCardTypeReturnItems = @"RETURN_ITEM";
+NSString *const BOTCardTypeReorderItems = @"REORDER_ITEM";
 
 // Card List Keys
 NSString *const BOTMessagePartCardTypeKey = @"cardType";
@@ -46,13 +47,17 @@ NSString *const BOTMessagePartListItemsKey = @"listItems";
 NSString *const BOTMessagePartHeaderTitle = @"headerTitle";
 NSString *const BOTMessagePartShipmentTrackingListKey = @"shippmentTrackingList";
 NSString *const BOTMessagePartRewardListKey = @"rewardslistItems";
-NSString *const BOTMessagePartReorderItemKey = @"reorderItem";
+NSString *const BOTMessagePartReorderItemsKey = @"reorderItems";
+NSString *const BOTMessagePartReturnItemsKey = @"returnItems";
 
 typedef NS_ENUM(NSInteger, BOTCellType) {
-    BOTCellTypeBackToSchool = 0,
-    BOTCellTypeShipping = 1,
-    BOTCellTypeRewards = 2,
-    BOTCellTypeOrder = 3,
+    BOTCellTypeUndefined        = 0,
+    BOTCellTypeBackToSchool     = 1,
+    BOTCellTypeShipping         = 2,
+    BOTCellTypeRewards          = 3,
+    BOTCellTypeOrder            = 4,
+    BOTCellTypeReorder          = 5,
+    BOTCellTypeReturn           = 6,
 };
 
 @interface BOTMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -110,6 +115,9 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     
     UINib *reorderNib = [UINib nibWithNibName:@"BOTOrderCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:reorderNib forCellWithReuseIdentifier:[BOTOrderCollectionViewCell reuseIdentifier]];
+    
+    UINib *orderCell = [UINib nibWithNibName:@"BOTOrderCollectionViewCell" bundle:StaplesUIBundle()];
+    [self.collectionView registerNib:orderCell forCellWithReuseIdentifier:[BOTOrderCollectionViewCell reuseIdentifier]];
 }
 
 - (void)layoutCollectionView
@@ -155,7 +163,14 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
         return [BOTShipmentTrackingCollectionViewCell cellHeight];
+    } else if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
+        return [BOTProductCollectionViewCell cellHeightWithButton:NO];
+    }  else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
+        return [BOTOrderCollectionViewCell cellHeight];
+    } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
+        return [BOTOrderCollectionViewCell cellHeight];
     }
+    
     return 260;
 }
 
@@ -169,7 +184,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     
     self.btsHeaderLable.text = @"";
     [self.btsHeaderLable sizeToFit];
-    
+    self.cellType = BOTCellTypeUndefined;
     self.topCollectionViewConstraint.constant = 0;
 }
 
@@ -273,13 +288,31 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             break;
             
         case BOTCellTypeOrder: {
-            NSString *reuseIdentifier = [BOTReorderCollectionViewCell reuseIdentifier];
-            BOTReorderCollectionViewCell *cell = (BOTReorderCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-            BOTOrder *order = self.items[indexPath.row];
+            NSString *reuseIdentifier = [BOTProductCollectionViewCell reuseIdentifier];
+            BOTProductCollectionViewCell *cell = (BOTProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+            BOTProduct *item = self.items[indexPath.row];
+            [cell setProductItem:item];
             returnCell = cell;
         }
             break;
-
+            
+        case BOTCellTypeReorder: {
+            NSString *reuseIdentifier = [BOTOrderCollectionViewCell reuseIdentifier];
+            BOTOrderCollectionViewCell *cell = (BOTOrderCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+            BOTOrder *order = self.items[indexPath.row];
+            [cell setOrder:order];
+            returnCell = cell;
+        }
+            break;
+        case BOTCellTypeReturn: {
+            NSString *reuseIdentifier = [BOTOrderCollectionViewCell reuseIdentifier];
+            BOTOrderCollectionViewCell *cell = (BOTOrderCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+            BOTOrder *order = self.items[indexPath.row];
+            [cell setOrder:order];
+            returnCell = cell;
+        }
+            break;
+            
         default:
             break;
     }
@@ -297,6 +330,12 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
         self.cellType = BOTCellTypeRewards;
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
         self.cellType = BOTCellTypeShipping;
+    } else if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
+        self.cellType = BOTCellTypeOrder;
+    } else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
+        self.cellType = BOTCellTypeReorder;
+    } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
+        self.cellType = BOTCellTypeReturn;
     }
 }
 
@@ -308,21 +347,17 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     
     // Parse Product list Data.
     NSMutableArray *items = [[NSMutableArray alloc] init];
-    if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
+    if ([part.MIMEType isEqualToString:BOTProductListMIMEType] || [part.MIMEType isEqualToString:BOTOrderMIMEType]) {
         if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeBTSItems]) {
             items = [self itemsForBTSFlowWithMessage:message];
         } else  if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeOrderItems]) {
-            items = [self itemsForOrderFlowWithMessage:message];
+            items = [self itemsForProductWithMessage:message];
         }
     }
 
-    // Parse Reorder Data.
-    if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
-        NSArray *reorderJSON = data[BOTMessagePartReorderItemKey];
-        for (NSDictionary *itemData in reorderJSON) {
-            BOTOrder *order = [BOTOrder orderWithData:itemData];
-            [items addObject:order];
-        }
+    // Parse Order
+    if ([part.MIMEType isEqualToString:BOTReorderMIMEType] || [part.MIMEType isEqualToString:BOTReturnMIMEType]) {
+        items = [self itemsForOrderWithMessage:message];
     }
     
     // Parse Reward Data.
@@ -367,7 +402,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     
     // Parse BTS Title
     NSDictionary *data = json[BOTMessagePartDataKey];
-    NSDictionary *part1Data = data[BOTMessagePartBTSItemsKey];
+    NSDictionary *part1Data = data[BOTMessagePartCartItemsKey];
     
     // Update View
     self.btsHeaderLable.text = part1Data[BOTMessagePartHeaderTitle];
@@ -389,8 +424,6 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
         if (data[BOTMessagePartListItemsKey]) {
             itemsData = data[BOTMessagePartListItemsKey];
         }
-        
-        
         for (NSDictionary *itemData in itemsData) {
             BOTProduct *item = [BOTProduct productWithData:itemData];
             [items addObject:item];
@@ -399,7 +432,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     return items;
 }
 
-- (NSMutableArray *)itemsForOrderFlowWithMessage:(LYRMessage *)message
+- (NSMutableArray *)itemsForProductWithMessage:(LYRMessage *)message
 {
     LYRMessagePart *part = message.parts[0];
     NSDictionary *json = [self parseDataForMessagePart:part];
@@ -416,7 +449,29 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     return items;
 }
 
-#pragma mark - BTS View All Button Tap
+- (NSMutableArray *)itemsForOrderWithMessage:(LYRMessage *)message
+{
+    LYRMessagePart *part = message.parts[0];
+    NSDictionary *json = [self parseDataForMessagePart:part];
+    
+    // Parse BTS Title
+    NSDictionary *data = json[BOTMessagePartDataKey];
+    NSDictionary *orderItems;
+    if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeReturnItems]) {
+        orderItems = data[BOTMessagePartReturnItemsKey];
+    } else if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeReorderItems]) {
+        orderItems = data[BOTMessagePartReorderItemsKey];
+    }
+    
+    NSMutableArray *items = [NSMutableArray new];
+    for (NSDictionary *itemData in orderItems) {
+        BOTOrder *order = [BOTOrder orderWithData:itemData];
+        [items addObject:order];
+    }
+    return items;
+}
+
+#pragma mark -g BTS View All Button Tap
 
 - (void)viewAllButtonWasTapped:(UIButton *)sender
 {

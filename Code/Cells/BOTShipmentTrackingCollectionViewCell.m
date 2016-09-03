@@ -67,11 +67,15 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
     self.lineNumber2.backgroundColor = BOTBlueColor();
     self.lineNumber3.backgroundColor = BOTBlueColor();
     
-    // Initialization code
+    self.cellContainerView.layer.cornerRadius = 4.0f;
+    self.cellContainerView.layer.masksToBounds = NO;
+    self.cellContainerView.layer.borderWidth = 1.0f;
     self.cellContainerView.layer.borderColor = BOTLightGrayColor().CGColor;
-    self.cellContainerView.layer.cornerRadius = 4;
-    self.cellContainerView.layer.borderWidth = 2;
-    self.cellContainerView.clipsToBounds = YES;
+    
+    self.cellContainerView.layer.shadowColor = BOTLightGrayColor().CGColor;
+    self.cellContainerView.layer.shadowOpacity = 0.5;
+    self.cellContainerView.layer.shadowRadius = 3;
+    self.cellContainerView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     self.cellContainerView.userInteractionEnabled = NO;
     
     self.orderNumberLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightThin];

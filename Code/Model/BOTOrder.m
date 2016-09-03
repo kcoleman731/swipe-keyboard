@@ -12,7 +12,6 @@ NSString *const BOTOrderMIMEType = @"application/json+listorder";
 NSString *const BOTReorderMIMEType = @"application/json+listreorder";
 NSString *const BOTReturnMIMEType = @"application/json+listreturn";
 
-NSString *const BOTReorderItem = @"reorderItem";
 NSString *const BOTOrderNumber = @"orderNumber";
 NSString *const BOTOrderTotalPrice = @"totalPrice";
 NSString *const BOTOrderETA = @"eta";

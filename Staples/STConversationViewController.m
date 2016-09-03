@@ -14,6 +14,7 @@
 #import "BOTMultiSelectionBar.h"
 #import "BOTMessageInputToolbar.h"
 #import "BOTShipment.h"
+#import "BOTUtilities.h"
 
 // Cells
 #import "BOTMultipleProductBaseCollectionViewCell.h"
@@ -37,7 +38,7 @@
 
 @interface STConversationViewController () <BOTMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource, ATLConversationViewControllerDelegate, BOTMessageInputToolbarDelegate, BOTMultiSelectionBarDelegate>
 
-@property (nonatomic, strong) BOTMultipleActionInputView *inputView;
+@property (nonatomic, strong) BOTMultipleActionInputView *multiInputView;
 @property (nonatomic, strong) BOTMultiSelectionBar *multiSelectionBar;
 @property (nonatomic, strong) NSLayoutConstraint *muliSelectionBarBottomConstraint;
 
@@ -54,6 +55,7 @@ NSString *const STOptionCell = @"Option Cell";
     self.dataSource = self;
     self.delegate = self;
     self.shouldDisplayAvatarItemForOneOtherParticipant = NO;
+    self.shouldDisplayAvatarItemForAuthenticatedUser = NO;
 
     [self createNewConversation];
     [self configureCollectionViewCells];
@@ -71,10 +73,6 @@ NSString *const STOptionCell = @"Option Cell";
 {
     // Product Cell
     [self.collectionView registerClass:[BOTMultipleProductBaseCollectionViewCell class] forCellWithReuseIdentifier:[BOTMultipleProductBaseCollectionViewCell reuseIdentifier]];
-    
-    // Order Cell
-    UINib *orderCell = [UINib nibWithNibName:@"BOTOrderCollectionViewCell" bundle:StaplesUIBundle()];
-    [self.collectionView registerNib:orderCell forCellWithReuseIdentifier:[BOTOrderCollectionViewCell reuseIdentifier]];
     
     // Receipt Cell
     UINib *receiptCell = [UINib nibWithNibName:@"BOTReceiptCollectionViewCell" bundle:StaplesUIBundle()];
@@ -143,10 +141,14 @@ NSString *const STOptionCell = @"Option Cell";
         return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
-    } else if ([part.MIMEType isEqualToString:BOTReorderCollectionViewCellMimeType]) {
-        return [BOTReorderCollectionViewCell cellHeight];
-    } else if ([part.MIMEType isEqualToString:BOTOrderCollectionViewCellMimeType]) {
-        return [BOTOrderCollectionViewCell cellHeight];
+    } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
+        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+    } else if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
+        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+    } else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
+        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+    } else if ([part.MIMEType isEqualToString:BOTActionMIMEType]) {
+        return [BOTActionCollectionViewCell cellHeightForMessage:message inView:self.view];
     }
     return 0;
 }
@@ -156,7 +158,6 @@ NSString *const STOptionCell = @"Option Cell";
 - (nullable NSString *)conversationViewController:(ATLConversationViewController *)viewController reuseIdentifierForMessage:(LYRMessage *)message
 {
     LYRMessagePart *part = message.parts[0];
-    NSLog(@"mime type: %@", part.MIMEType);
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
         return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTAddressMIMEType]) {
@@ -167,10 +168,14 @@ NSString *const STOptionCell = @"Option Cell";
         return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
-    } else if ([part.MIMEType isEqualToString:BOTReorderCollectionViewCellMimeType]) {
-        return [BOTReorderCollectionViewCell reuseIdentifier];
-    } else if ([part.MIMEType isEqualToString:BOTOrderCollectionViewCellMimeType]) {
-        return [BOTOrderCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
+        return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:BOTOrderMIMEType ]) {
+        return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
+        return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+    } else if ([part.MIMEType isEqualToString:BOTActionMIMEType]) {
+        return [BOTActionCollectionViewCell reuseIdentifier];
     }
     
     return nil;
@@ -196,16 +201,16 @@ NSString *const STOptionCell = @"Option Cell";
     CGFloat screenWidth             = [[UIScreen mainScreen] bounds].size.width;
     
     // Create Custom Keyboard w/ Selection list.
-    self.inputView = [[BOTMultipleActionInputView alloc] initWithSelectionTitles:[self selectionItems]];
-    self.inputView.frame = (CGRect){0.0, 0.0, screenWidth, 216.0f};
-    self.inputView.delegate = self;
+    self.multiInputView = [[BOTMultipleActionInputView alloc] init];
+    self.multiInputView.frame       = (CGRect){0.0, 0.0, screenWidth, 216.0f};
+    self.multiInputView.delegate    = self;
+    [self.multiInputView setSelectionTitles:[self selectionItems]];
     
     // Create Toolbar
     BOTMessageInputToolbar *toolbar = [[BOTMessageInputToolbar alloc] init];
     toolbar.customDelegate = self;
-    toolbar.multiInputView = self.inputView;
-    toolbar.textInputView.inputView = self.inputView;
-    [toolbar.listAccessoryButton setSelected:YES];
+    toolbar.multiInputView = self.multiInputView;
+    toolbar.textInputView.inputView = self.multiInputView;
     
     return toolbar;
 }
@@ -276,6 +281,11 @@ NSString *const STOptionCell = @"Option Cell";
                          [self.view layoutIfNeeded];
                      }
                      completion:nil];
+}
+
+- (BOOL)shouldDisplayAvatarItem
+{
+    return NO;
 }
 
 #pragma mark - FAKE DATA

@@ -479,12 +479,18 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
 
 - (void)multiSelectionBar:(BOTMultiSelectionBar *)bar leftSelectionHitWithTitle:(NSString *)title
 {
-    [self.customDelegate messageInputToolbar:self multiSelectionBarTappedWithTitle:title];
+    [self displayMultiSelectionInputBar:NO];
+    if ([self.customDelegate respondsToSelector:@selector(messageInputToolbar:multiSelectionBarTappedWithTitle:)]) {
+        [self.customDelegate messageInputToolbar:self multiSelectionBarTappedWithTitle:title];
+    }
 }
 
 - (void)multiSelectionBar:(BOTMultiSelectionBar *)bar rightSelectionHitWithTitle:(NSString *)title
 {
-    [self.customDelegate messageInputToolbar:self multiSelectionBarTappedWithTitle:title];
+    [self displayMultiSelectionInputBar:NO];
+    if ([self.customDelegate respondsToSelector:@selector(messageInputToolbar:multiSelectionBarTappedWithTitle:)]) {
+        [self.customDelegate messageInputToolbar:self multiSelectionBarTappedWithTitle:title];
+    }
 }
 
 #pragma mark - Dealloc

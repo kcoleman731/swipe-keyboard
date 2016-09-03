@@ -15,7 +15,6 @@
 
 NSString *const BOTOrderCollectionViewCellCellReuseIdentifier = @"BOTOrderCollectionViewCellCellReuseIdentifier";
 NSString *const BOTOrderCollectionViewCellTitle               = @"Reorder Cell";
-NSString *const BOTOrderCollectionViewCellMimeType            = @"application/json+listreorder";
 
 @interface BOTOrderCollectionViewCell ()
 
@@ -78,10 +77,17 @@ NSString *const BOTOrderCollectionViewCellMimeType            = @"application/js
     [self setupCollectionView];
     
     self.contentView.backgroundColor = [UIColor clearColor];
-    self.bgView.backgroundColor      = [UIColor whiteColor];
-    self.bgView.layer.borderColor    = BOTLightGrayColor().CGColor;
-    self.bgView.layer.cornerRadius   = 4;
-    self.bgView.layer.borderWidth    = 2;
+    
+    self.bgView.layer.cornerRadius = 4.0f;
+    self.bgView.layer.masksToBounds = NO;
+    self.bgView.layer.borderWidth = 1.0f;
+    self.bgView.layer.borderColor = BOTLightGrayColor().CGColor;
+    
+    self.bgView.layer.shadowColor = BOTLightGrayColor().CGColor;
+    self.bgView.layer.shadowOpacity = 0.5;
+    self.bgView.layer.shadowRadius = 3;
+    self.bgView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    self.bgView.userInteractionEnabled = NO;
 }
 
 - (void)setupCollectionView
@@ -91,31 +97,8 @@ NSString *const BOTOrderCollectionViewCellMimeType            = @"application/js
     self.collectionView.delegate = self.layout;
     self.collectionView.dataSource = self.datasource;
     self.collectionView.collectionViewLayout = self.layout;
-    self.collectionView.backgroundColor = [UIColor grayColor];
+    self.collectionView.backgroundColor = BOTLightGrayColor();
     self.collectionView.showsHorizontalScrollIndicator = NO;
-}
-
-#pragma mark - ATL Parsing
-
-- (void)presentMessage:(LYRMessage *)message
-{
-    NSDictionary *payload   = [self parseDataForMessagePart:message.parts[0]];
-    NSDictionary *orderDict = payload[@"data"][@"reorderItem"][0][@"order"];
-    BOTOrder *order         = [BOTOrder orderWithData:orderDict];
-    [self setOrder:order];
-}
-
-- (NSDictionary *)parseDataForMessagePart:(LYRMessagePart *)part
-{
-    NSString *dataString = [[NSString alloc] initWithData:part.data encoding:NSUTF8StringEncoding];
-    NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSError *error;
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-    if (error) {
-        return nil;
-    }
-    return json;
 }
 
 #pragma mark - Setter

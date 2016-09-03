@@ -35,10 +35,16 @@ NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollecti
 {
     [super awakeFromNib];
     
+    self.view.layer.cornerRadius = 4.0f;
+    self.view.layer.masksToBounds = NO;
+    self.view.layer.borderWidth = 1.0f;
     self.view.layer.borderColor = BOTLightGrayColor().CGColor;
-    self.view.layer.cornerRadius = 4;
-    self.view.layer.borderWidth = 2;
-    self.view.clipsToBounds = YES;
+    
+    self.view.layer.shadowColor = BOTLightGrayColor().CGColor;
+    self.view.layer.shadowOpacity = 0.5;
+    self.view.layer.shadowRadius = 3;
+    self.view.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    self.view.userInteractionEnabled = NO;
     
     [self.viewButton setTitle:@"View" forState:UIControlStateNormal];
     self.viewButton.hidden = YES;

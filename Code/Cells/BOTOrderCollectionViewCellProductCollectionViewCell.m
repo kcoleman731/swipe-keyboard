@@ -63,10 +63,10 @@ NSString *const BOTOrderCollectionViewCellProductCollectionViewCellReuseIdentifi
 
 - (void)layoutImageView
 {
-    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.productImageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:self.productImageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.productImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:self.productImageView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.productImageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:6.0];
+    NSLayoutConstraint *left = [NSLayoutConstraint constraintWithItem:self.productImageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:6.0];
+    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.productImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-6.0];
+    NSLayoutConstraint *right = [NSLayoutConstraint constraintWithItem:self.productImageView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-6.0];
     [self addConstraints:@[top, left, bottom, right]];
 }
 

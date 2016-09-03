@@ -10,6 +10,8 @@
 #import <Atlas/Atlas.h>
 #import "BOTOrder.h"
 
+extern NSString *const BOTReturnCollectionViewCellMimeType;
+
 /**
  The title of the cell. Used for testing purposes.
  */
@@ -39,6 +41,6 @@ extern NSString *const BOTOrderCollectionViewCellReuseIdentifier;
  */
 + (NSString *)reuseIdentifier;
 
-+ (NSString *)reuseIdentifier;
+- (void)setOrder:(BOTOrder *)order;
 
 @end

@@ -27,7 +27,7 @@ NSString *const BOTProductCollectionViewCellReuseIdentifier = @"BOTProductCollec
 
 @implementation BOTProductCollectionViewCell
 
-CGFloat const BOTProductCollectionViewCellHeight = 232;
+CGFloat const BOTProductCollectionViewCellHeight = 210;
 CGFloat const BOTAddToCartButtonHeight = 52;
 
 - (void)awakeFromNib
@@ -40,10 +40,17 @@ CGFloat const BOTAddToCartButtonHeight = 52;
 {
     self.contentView.backgroundColor = [UIColor clearColor];
     self.backgroundColor = [UIColor whiteColor];
+    
+    self.layer.cornerRadius = 4.0f;
+    self.layer.masksToBounds = NO;
+    self.layer.borderWidth = 1.0f;
     self.layer.borderColor = BOTLightGrayColor().CGColor;
-    self.layer.cornerRadius = 4;
-    self.layer.borderWidth = 2;
-    self.clipsToBounds = YES;
+    
+    self.layer.shadowColor = BOTLightGrayColor().CGColor;
+    self.layer.shadowOpacity = 0.5;
+    self.layer.shadowRadius = 3;
+    self.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    self.userInteractionEnabled = NO;
     
     self.addToCartButton = [UIButton new];
     self.addToCartButton.translatesAutoresizingMaskIntoConstraints = NO;

@@ -33,10 +33,17 @@ NSString *const BOTReceiptCollectionViewCellReuseIdentifier = @"BOTReceiptCollec
 {
     [super awakeFromNib];
     
+    self.cellContainerView.layer.cornerRadius = 4.0f;
+    self.cellContainerView.layer.masksToBounds = NO;
+    self.cellContainerView.layer.borderWidth = 1.0f;
     self.cellContainerView.layer.borderColor = BOTLightGrayColor().CGColor;
-    self.cellContainerView.layer.cornerRadius = 4;
-    self.cellContainerView.layer.borderWidth = 2;
-    self.cellContainerView.clipsToBounds = YES;
+    
+    self.cellContainerView.layer.shadowColor = BOTLightGrayColor().CGColor;
+    self.cellContainerView.layer.shadowOpacity = 0.5;
+    self.cellContainerView.layer.shadowRadius = 3;
+    self.cellContainerView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    self.cellContainerView.userInteractionEnabled = NO;
+    
     self.seperator.backgroundColor = BOTLightGrayColor();
     
     self.deliverToLabel.text = @"Deliver To:";
