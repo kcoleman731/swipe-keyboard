@@ -32,7 +32,8 @@ NSString *const BOTShipmentSelectedNotification = @"BOTShipmentSelectedNotificat
 NSString *const BOTRewardSelectedNotification = @"BOTRewardSelectedNotification";
 
 // Card Type Keys
-NSString *const BOTCardTypeBTSItems = @"CART_ITEMS";
+NSString *const BOTCardTypeBTSItems = @"BTS_ITEMS";
+NSString *const BOTCardTypeCartItems = @"CART_ITEMS";
 NSString *const BOTCardTypeOrderItems = @"ORDER_ITEM";
 NSString *const BOTCardTypeReturnItems = @"RETURN_ITEM";
 NSString *const BOTCardTypeReorderItems = @"REORDER_ITEM";
@@ -352,6 +353,8 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             items = [self itemsForBTSFlowWithMessage:message];
         } else  if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeOrderItems]) {
             items = [self itemsForProductWithMessage:message];
+        } else  if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeCartItems]) {
+            items = [self itemsForCartFlowWithMessage:message];
         }
     }
 
@@ -396,6 +399,43 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 }
 
 - (NSMutableArray *)itemsForBTSFlowWithMessage:(LYRMessage *)message
+{
+    LYRMessagePart *part = message.parts[0];
+    NSDictionary *json = [self parseDataForMessagePart:part];
+    
+    // Parse BTS Title
+    NSDictionary *data = json[BOTMessagePartDataKey];
+    NSDictionary *part1Data = data[BOTMessagePartBTSItemsKey];
+    
+    // Update View
+    self.btsHeaderLable.text = part1Data[BOTMessagePartHeaderTitle];
+    [self.btsHeaderLable sizeToFit];
+    
+    [self.viewAllButton setTitle:@"View All" forState:UIControlStateNormal];
+    [self.viewAllButton sizeToFit];
+    
+    self.topCollectionViewConstraint.constant = BOTCollectionViewTopInset;
+    
+    //BTS items and cart items are coming in mupltiple part, so Handled number of parts Parse BTS Items
+    NSMutableArray *items = [NSMutableArray new];
+    for (int i = 1; i < self.message.parts.count; i++){
+        LYRMessagePart *part = self.message.parts[i];
+        NSDictionary *json = [self parseDataForMessagePart:part];
+        
+        NSDictionary *itemsData;
+        NSDictionary *data = json[BOTMessagePartDataKey];
+        if (data[BOTMessagePartListItemsKey]) {
+            itemsData = data[BOTMessagePartListItemsKey];
+        }
+        for (NSDictionary *itemData in itemsData) {
+            BOTProduct *item = [BOTProduct productWithData:itemData];
+            [items addObject:item];
+        }
+    }
+    return items;
+}
+
+- (NSMutableArray *)itemsForCartFlowWithMessage:(LYRMessage *)message
 {
     LYRMessagePart *part = message.parts[0];
     NSDictionary *json = [self parseDataForMessagePart:part];
