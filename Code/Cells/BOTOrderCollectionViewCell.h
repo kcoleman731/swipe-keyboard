@@ -27,7 +27,7 @@ extern NSString *const BOTOrderCollectionViewCellMimeType;
  */
 extern NSString *const BOTOrderCollectionViewCellReuseIdentifier;
 
-@interface BOTOrderCollectionViewCell : ATLIncomingMessageCollectionViewCell
+@interface BOTOrderCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) BOTOrder *order;
 

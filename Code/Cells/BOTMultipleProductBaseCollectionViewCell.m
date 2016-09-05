@@ -158,7 +158,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
-        return [BOTProductCollectionViewCell cellHeightWithButton:NO];
+        return [BOTProductCollectionViewCell cellHeightWithButton:YES];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
@@ -207,7 +207,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 
 - (void)shouldDisplayAvatarItem:(BOOL)shouldDisplayAvatarItem
 {
-    // Nothing to do
+    
 }
 
 #pragma mark - UICollectionViewDataSource

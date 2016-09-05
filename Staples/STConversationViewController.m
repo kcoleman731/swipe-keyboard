@@ -61,6 +61,11 @@ NSString *const STOptionCell = @"Option Cell";
     [self configureCollectionViewCells];
     [self registerForNotifications];
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.queryController.paginationWindow = -40;
+}
 
 - (void)registerForNotifications
 {
@@ -201,10 +206,9 @@ NSString *const STOptionCell = @"Option Cell";
     CGFloat screenWidth             = [[UIScreen mainScreen] bounds].size.width;
     
     // Create Custom Keyboard w/ Selection list.
-    self.multiInputView = [[BOTMultipleActionInputView alloc] init];
+    self.multiInputView = [[BOTMultipleActionInputView alloc] initWithSelectionTitles:[self selectionItems]];
     self.multiInputView.frame       = (CGRect){0.0, 0.0, screenWidth, 216.0f};
     self.multiInputView.delegate    = self;
-    [self.multiInputView setSelectionTitles:[self selectionItems]];
     
     // Create Toolbar
     BOTMessageInputToolbar *toolbar = [[BOTMessageInputToolbar alloc] init];

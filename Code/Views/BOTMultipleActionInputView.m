@@ -67,7 +67,8 @@ static const CGFloat PAGING_CONTROL_DEFAULT_HEIGHT = 30.0f;
     self.pageControl = [[UIPageControl alloc] init];
     self.pageControl.translatesAutoresizingMaskIntoConstraints = false;
     self.pageControl.numberOfPages = self.inputScrollView.numberOfPages;
-    self.pageControl.pageIndicatorTintColor = BOTBlueColor();
+    self.pageControl.pageIndicatorTintColor = BOTLightGrayColor();
+    self.pageControl.currentPageIndicatorTintColor = BOTBlueColor();
     self.pageControl.currentPageIndicatorTintColor = self.tintColor;
     [self addSubview:self.pageControl];
     

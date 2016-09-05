@@ -68,7 +68,7 @@ NSString *const BOTOrderCollectionViewCellTitle               = @"Reorder Cell";
 
 - (void)commonInit
 {
-    self.bubbleView.hidden = YES;
+    
 }
 
 - (void)awakeFromNib
