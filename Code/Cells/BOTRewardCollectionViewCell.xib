@@ -43,9 +43,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Orb-7K-eIf">
-                                <rect key="frame" x="291" y="60" width="160" height="108"/>
+                                <rect key="frame" x="306" y="60" width="140" height="108"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="9R8-B9-KrP"/>
+                                    <constraint firstAttribute="width" constant="140" id="9R8-B9-KrP"/>
                                     <constraint firstAttribute="height" constant="108" id="ooA-4h-r3X"/>
                                 </constraints>
                             </imageView>
@@ -61,13 +61,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="urI-rr-eXc">
-                                <rect key="frame" x="24" y="68" width="257" height="24"/>
+                                <rect key="frame" x="24" y="68" width="272" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6HP-Ug-Mi5">
-                                <rect key="frame" x="351" y="176" width="41.5" height="20.5"/>
+                                <rect key="frame" x="356" y="176" width="41.5" height="20.5"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="6A0-uE-L8U"/>
@@ -103,7 +103,7 @@
                             <constraint firstItem="ZAN-tN-0B6" firstAttribute="leading" secondItem="XtD-gA-8aV" secondAttribute="leading" constant="24" id="P3F-RS-wud"/>
                             <constraint firstAttribute="trailing" secondItem="ZES-uv-qE0" secondAttribute="trailing" constant="60" id="PXY-6F-run"/>
                             <constraint firstAttribute="trailing" secondItem="iJT-id-ijF" secondAttribute="trailing" constant="20" id="UZV-Lc-8qU"/>
-                            <constraint firstAttribute="trailing" secondItem="Orb-7K-eIf" secondAttribute="trailing" id="X09-fG-67E"/>
+                            <constraint firstAttribute="trailing" secondItem="Orb-7K-eIf" secondAttribute="trailing" constant="5" id="X09-fG-67E"/>
                             <constraint firstItem="urI-rr-eXc" firstAttribute="top" secondItem="zW1-C5-63E" secondAttribute="bottom" constant="32" id="ba1-NE-TjG"/>
                             <constraint firstItem="nZZ-Vd-tLX" firstAttribute="top" secondItem="zW1-C5-63E" secondAttribute="bottom" constant="12" id="dRZ-Ys-Ku5"/>
                             <constraint firstItem="6HP-Ug-Mi5" firstAttribute="centerX" secondItem="Orb-7K-eIf" secondAttribute="centerX" id="g61-DN-ikS"/>
