@@ -34,7 +34,7 @@ NSString *const ShipmentTrackingPayloadListKey = @"shippmentTrackingList";
  */
 + (CGFloat)cellHeight
 {
-    return 200.0f;
+    return 220.0f;
 }
 
 /**
