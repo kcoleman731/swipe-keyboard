@@ -102,7 +102,7 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
     NSString *dateString = [dateFormatter stringFromDate:date];
     
-    NSString *orderNumberText = [NSString stringWithFormat:@"Order Number: %@", shipment.orderNumber];
+    NSString *orderNumberText = [NSString stringWithFormat:@"Order Number: %@", shipment.order.orderNumber];
     self.orderNumberLabel.attributedText = [self attributedTextForOrderNumber:orderNumberText];
     NSString *boxCount = [NSString stringWithFormat:@"%@",shipment.boxCount];
     if([boxCount isEqual:@"1"])
