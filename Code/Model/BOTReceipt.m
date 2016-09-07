@@ -9,7 +9,7 @@
 #import "BOTReceipt.h"
 #import "BOTUtilities.h"
 
-NSString *const BOTReceiptMIMEType = @"application/receiptObject";
+NSString *const BOTReceiptMIMEType = @"application/receiptobject";
 
 NSString *const BOTReceiptDetails = @"receiptDetails";
 NSString *const BOTReceiptOrderNumber = @"orderNumber";

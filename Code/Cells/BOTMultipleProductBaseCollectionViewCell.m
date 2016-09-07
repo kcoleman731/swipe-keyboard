@@ -34,9 +34,9 @@ NSString *const BOTRewardSelectedNotification = @"BOTRewardSelectedNotification"
 // Card Type Keys
 NSString *const BOTCardTypeBTSItems = @"BTS_ITEMS";
 NSString *const BOTCardTypeCartItems = @"CART_ITEMS";
-NSString *const BOTCardTypeOrderItems = @"ORDER_ITEM";
-NSString *const BOTCardTypeReturnItems = @"RETURN_ITEM";
-NSString *const BOTCardTypeReorderItems = @"REORDER_ITEM";
+NSString *const BOTCardTypeOrderItems = @"ORDER_ITEMS";
+NSString *const BOTCardTypeReturnItems = @"RETURN_ITEMS";
+NSString *const BOTCardTypeReorderItems = @"REORDER_ITEMS";
 
 // Card List Keys
 NSString *const BOTMessagePartCardTypeKey = @"cardType";
