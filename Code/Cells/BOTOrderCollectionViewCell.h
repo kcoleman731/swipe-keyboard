@@ -10,7 +10,6 @@
 #import <Atlas/Atlas.h>
 #import "BOTOrder.h"
 
-extern NSString *const BOTReturnCollectionViewCellMimeType;
 
 /**
  The title of the cell. Used for testing purposes.

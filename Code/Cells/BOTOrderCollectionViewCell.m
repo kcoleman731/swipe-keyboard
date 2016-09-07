@@ -68,7 +68,7 @@ NSString *const BOTOrderCollectionViewCellTitle               = @"Reorder Cell";
 
 - (void)commonInit
 {
-    
+    // Nada for now
 }
 
 - (void)awakeFromNib

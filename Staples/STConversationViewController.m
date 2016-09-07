@@ -24,7 +24,9 @@
 #import "BOTReorderCollectionViewCell.h"
 #import "BOTOrderCollectionViewCell.h"
 #import "BOTShipmentTrackingCollectionViewCell.h"
+#import "BOTOrderStatusViewCell.h"
 #import "BOTRewardCollectionViewCell.h"
+#import "BOTOrderStatusBaseCollectionViewCell.h"
 //#import "BOTReturnCollectionViewCell.h"
 #import "BOTActionCollectionViewCell.h"
 
@@ -78,6 +80,9 @@ NSString *const STOptionCell = @"Option Cell";
 {
     // Product Cell
     [self.collectionView registerClass:[BOTMultipleProductBaseCollectionViewCell class] forCellWithReuseIdentifier:[BOTMultipleProductBaseCollectionViewCell reuseIdentifier]];
+    
+    // Order Status
+    [self.collectionView registerClass:[BOTOrderStatusBaseCollectionViewCell class] forCellWithReuseIdentifier:[BOTOrderStatusBaseCollectionViewCell reuseIdentifier]];
     
     // Receipt Cell
     UINib *receiptCell = [UINib nibWithNibName:@"BOTReceiptCollectionViewCell" bundle:StaplesUIBundle()];
@@ -143,7 +148,7 @@ NSString *const STOptionCell = @"Option Cell";
     } else if ([part.MIMEType isEqualToString:BOTReceiptMIMEType]) {
         return [BOTReceiptCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
-        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+        return [BOTOrderStatusBaseCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
@@ -170,7 +175,7 @@ NSString *const STOptionCell = @"Option Cell";
     } else if ([part.MIMEType isEqualToString:BOTReceiptMIMEType]) {
         return [BOTReceiptCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
-        return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+        return [BOTOrderStatusBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {

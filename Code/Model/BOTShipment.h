@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <LayerKit/LayerKit.h>
+#import "BOTOrder.h"
 
 /**
  The MIMEType used for shipment message parts.
@@ -34,6 +35,6 @@ extern NSString *const BOTShipmentMIMEType;
 @property (nonatomic) NSString *number;
 @property (nonatomic) NSString *boxCount;
 @property (nonatomic) NSString *type;
-@property (nonatomic) NSString *orderNumber;
+@property (nonatomic) BOTOrder *order;
 
 @end
