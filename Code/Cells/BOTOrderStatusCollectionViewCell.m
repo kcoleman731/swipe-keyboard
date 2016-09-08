@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mesh. All rights reserved.
 //
 
-#import "BOTOrderStatusViewCell.h"
+#import "BOTOrderStatusCollectionViewCell.h"
 #import "BOTOrderStatusViewCellBottomBorderView.h"
 #import "BOTOrderStatusViewCellTopBorderView.h"
 #import "BOTUtilities.h"
@@ -24,7 +24,7 @@ NSString *const blueColorCode  = @"4a90e2";
 NSString *const greenColorCode = @"77a53b";
 NSString *const grayColorCode  = @"9b9b9b";
 
-@interface BOTOrderStatusViewCell()
+@interface BOTOrderStatusCollectionViewCell()
 
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet BOTOrderStatusViewCellBottomBorderView *trackShipmentBottomButton;
@@ -43,7 +43,7 @@ NSString *const grayColorCode  = @"9b9b9b";
 
 @end
 
-@implementation BOTOrderStatusViewCell
+@implementation BOTOrderStatusCollectionViewCell
 
 #pragma mark - Class Methods
 
@@ -97,24 +97,23 @@ NSString *const grayColorCode  = @"9b9b9b";
     self.topBorderView.backgroundColor = [UIColor whiteColor];
     self.trackShipmentBottomButton.backgroundColor = [UIColor whiteColor];
     
-    // Style BG
-    self.bgView.layer.cornerRadius = 4.0f;
-    self.bgView.layer.masksToBounds = YES;
-    self.bgView.layer.borderWidth = 1.0f;
-    self.bgView.layer.borderColor = BOTLightGrayColor().CGColor;
-    self.bgView.layer.shadowColor = BOTLightGrayColor().CGColor;
-    self.bgView.layer.shadowOpacity = 0.5;
-    self.bgView.layer.shadowRadius = 3;
-    self.bgView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
-    self.bgView.userInteractionEnabled = NO;
+    self.clipsToBounds = NO;
+    self.backgroundColor = [UIColor whiteColor];
+    self.contentView.backgroundColor = [UIColor clearColor];
+
+    self.layer.cornerRadius = 4.0f;
+    self.layer.masksToBounds = NO;
+    self.layer.borderWidth = 1.0f;
+    self.layer.borderColor = BOTLightGrayColor().CGColor;
     
-    // kill shadows
-    self.productImageView.layer.shadowRadius = 0.0;
-    self.trackShipmentBottomButton.imageView.layer.shadowRadius = 0.0;
+    self.layer.shadowColor = BOTLightGrayColor().CGColor;
+    self.layer.shadowOpacity = 0.5;
+    self.layer.shadowRadius = 3;
+    self.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     
     // Add Targets
     [self.viewAllButton addTarget:self action:@selector(viewAllWasTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self.trackShipmentBottomButton addTarget:self action:@selector(trackMyShipmentWasTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.trackShipmentBottomButton addTarget:self action:@selector(trackShipmentBottomButtonWasTapped:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - ATLMessagePresentingConformance
@@ -137,31 +136,16 @@ NSString *const grayColorCode  = @"9b9b9b";
         // Set Shipment Info
         self.shipmentStatusLabel.text = shipment.status;
         self.estimatedDeliveryDateLabel.text = shipment.deliveryDate;
-        [self setItemLabelsWithOrders:shipment.order.items];
-        [self setOrderStatusTextAndGlyphWithStatus:shipment.status];
-    }
-}
-
-- (void)setItemLabelsWithOrders:(NSArray <BOTProduct *> *)items
-{
-    // Fill the order details w/ the shipment's order
-    if (items) {
-        BOTProduct *product         = [items firstObject];
-        self.productTitleLabel.text = product.name;
-        [self setProductImage:product.imageURL];
-        
-        // More items label
-        if (items.count > 1) {
-            NSString *moreItemsText  = [NSString stringWithFormat:@"+ %i More Items", (int)items.count];
+        self.productTitleLabel.text = shipment.heroProductName;
+        if ([shipment.boxCount integerValue] > 2) {
+            NSString *moreItemsText  = [NSString stringWithFormat:@"+ %li More Items", ([shipment.boxCount integerValue] - 1)];
             self.moreItemsLabel.text = moreItemsText;
         } else {
             self.moreItemsLabel.text = @"No Additional Items";
         }
+        [self setProductImage:shipment.heroProductImageURL];
+        [self setOrderStatusTextAndGlyphWithStatus:shipment.status];
         [self setNeedsLayout];
-    } else {
-        self.productImageView.image = nil;
-        self.productTitleLabel.text = @"No Products Found";
-        self.moreItemsLabel.text    = @"";
     }
 }
 
@@ -169,24 +153,23 @@ NSString *const grayColorCode  = @"9b9b9b";
 {
     NSString *lCaseShipmentStatus = [shipmentStatus lowercaseString];
     if ([lCaseShipmentStatus isEqualToString:@"processing"]) {
-        self.shipmentStatusImageView.image = [UIImage imageNamed:@"processing"];
+        self.shipmentStatusImageView.image = [UIImage imageNamed:@"processing" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
         self.shipmentStatusLabel.textColor = [UIColor colorWithHexString:blueColorCode];
     } else if ([lCaseShipmentStatus isEqualToString:@"in transit"]) {
-        self.shipmentStatusImageView.image = [UIImage imageNamed:@"intransit"];
+        self.shipmentStatusImageView.image = [UIImage imageNamed:@"intransit" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
         self.shipmentStatusLabel.textColor = [UIColor colorWithHexString:greenColorCode];
     } else if ([lCaseShipmentStatus isEqualToString:@"delivered"]) {
-        self.shipmentStatusImageView.image = [UIImage imageNamed:@"delivered"];
+        self.shipmentStatusImageView.image = [UIImage imageNamed:@"delivered" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
         self.shipmentStatusLabel.textColor = [UIColor colorWithHexString:greenColorCode];
     } else if ([lCaseShipmentStatus isEqualToString:@"ready for pickup"]) {
-        self.shipmentStatusImageView.image = [UIImage imageNamed:@"readyforpickup"];
+        self.shipmentStatusImageView.image = [UIImage imageNamed:@"readyforpickup" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
         self.shipmentStatusLabel.textColor = [UIColor colorWithHexString:greenColorCode];
     } else if ([lCaseShipmentStatus isEqualToString:@"did not pick up"]) {
-        self.shipmentStatusImageView.image = [UIImage imageNamed:@"didnotpickup"];
+        self.shipmentStatusImageView.image = [UIImage imageNamed:@"didnotpickup" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil];
         self.shipmentStatusLabel.textColor = [UIColor colorWithHexString:grayColorCode];
     } else {
         self.shipmentStatusImageView.image = nil;
     }
-    
     self.shipmentStatusLabel.text = shipmentStatus;
 }
 
@@ -212,14 +195,14 @@ NSString *const grayColorCode  = @"9b9b9b";
 
 #pragma mark - Target Action Responders
 
-- (void)viewAllWasTapped:(UIButton *)btn
+- (void)viewAllWasTapped:(UIButton *)viewAllButton
 {
-    [self.delegate orderStatusCell:self viewAllWasTappedWithShipment:self.shipment];
+    [[NSNotificationCenter defaultCenter] postNotificationName:BOTViewAllOrdersButtonTapNotification object:self.shipment];
 }
 
-- (void)trackMyShipmentWasTapped:(UIButton *)btn
+- (void)trackShipmentBottomButtonWasTapped:(BOTOrderStatusViewCellBottomBorderView *)trackShipmentBottomButton
 {
-    [self.delegate orderStatusCell:self trackShipmentWasTappedWithShipment:self.shipment];
+    [[NSNotificationCenter defaultCenter] postNotificationName:BOTTrackOrderShipmentButtonTapNotification object:self.shipment];
 }
 
 @end

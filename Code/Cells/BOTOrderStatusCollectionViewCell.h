@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "BOTShipment.h"
-#import "BOTOrderStatusViewCellProtocol.h"
 
+/**
+ Posted when the `Track Shipment` button is tapped.
+ */
 extern NSString *const BOTTrackOrderShipmentButtonTapNotification;
+
+/**
+ Posted when the `View All` button is tapped.
+ */
 extern NSString *const BOTViewAllOrdersButtonTapNotification;
 
 /**
@@ -28,9 +34,11 @@ extern NSString *const BOTOrderStatusCollectionViewCellMimeType;
  */
 extern NSString *const BOTOrderStatusCollectionViewCellReuseIdentifier;
 
-@interface BOTOrderStatusViewCell : UICollectionViewCell
+@interface BOTOrderStatusCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, weak) id <BOTOrderStatusViewCellDelegate> delegate;
+/**
+ The shipment for the cell.
+ */
 @property (nonatomic, strong) BOTShipment *shipment;
 
 /**

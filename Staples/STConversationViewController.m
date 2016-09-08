@@ -24,9 +24,8 @@
 #import "BOTReorderCollectionViewCell.h"
 #import "BOTOrderCollectionViewCell.h"
 #import "BOTShipmentTrackingCollectionViewCell.h"
-#import "BOTOrderStatusViewCell.h"
+#import "BOTOrderStatusCollectionViewCell.h"
 #import "BOTRewardCollectionViewCell.h"
-#import "BOTOrderStatusBaseCollectionViewCell.h"
 //#import "BOTReturnCollectionViewCell.h"
 #import "BOTActionCollectionViewCell.h"
 
@@ -66,7 +65,7 @@ NSString *const STOptionCell = @"Option Cell";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.queryController.paginationWindow = -40;
+    self.queryController.paginationWindow = -10;
 }
 
 - (void)registerForNotifications
@@ -80,9 +79,6 @@ NSString *const STOptionCell = @"Option Cell";
 {
     // Product Cell
     [self.collectionView registerClass:[BOTMultipleProductBaseCollectionViewCell class] forCellWithReuseIdentifier:[BOTMultipleProductBaseCollectionViewCell reuseIdentifier]];
-    
-    // Order Status
-    [self.collectionView registerClass:[BOTOrderStatusBaseCollectionViewCell class] forCellWithReuseIdentifier:[BOTOrderStatusBaseCollectionViewCell reuseIdentifier]];
     
     // Receipt Cell
     UINib *receiptCell = [UINib nibWithNibName:@"BOTReceiptCollectionViewCell" bundle:StaplesUIBundle()];

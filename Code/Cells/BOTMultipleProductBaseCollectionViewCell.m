@@ -15,7 +15,7 @@
 #import "BOTProductCollectionViewCell.h"
 #import "BOTRewardCollectionViewCell.h"
 #import "BOTOrderCollectionViewCell.h"
-#import "BOTOrderStatusViewCell.h"
+#import "BOTOrderStatusCollectionViewCell.h"
 
 // Modesl
 #import "BOTProduct.h"
@@ -107,8 +107,8 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     UINib *productNib = [UINib nibWithNibName:@"BOTProductCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[BOTProductCollectionViewCell reuseIdentifier]];
 
-    UINib *orderStatusNib = [UINib nibWithNibName:@"BOTOrderStatusViewCell" bundle:StaplesUIBundle()];
-    [self.collectionView registerNib:orderStatusNib forCellWithReuseIdentifier:[BOTOrderStatusViewCell reuseIdentifier]];
+    UINib *orderStatusNib = [UINib nibWithNibName:@"BOTOrderStatusCollectionViewCell" bundle:StaplesUIBundle()];
+    [self.collectionView registerNib:orderStatusNib forCellWithReuseIdentifier:[BOTOrderStatusCollectionViewCell reuseIdentifier]];
     
     UINib *rewardNib = [UINib nibWithNibName:@"BOTRewardCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:rewardNib forCellWithReuseIdentifier:[BOTRewardCollectionViewCell reuseIdentifier]];
@@ -142,7 +142,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.collectionViewLayout = self.collectionViewLayout;
-    self.collectionView.backgroundColor = [UIColor greenColor];
+    self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.showsHorizontalScrollIndicator = NO;
 
     [self addSubview:self.collectionView];
@@ -162,7 +162,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
-        return [BOTOrderStatusViewCell cellHeight];
+        return [BOTOrderStatusCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
         return [BOTProductCollectionViewCell cellHeightWithButton:NO];
     }  else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
@@ -234,6 +234,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             break;
         case BOTCellTypeBackToSchool:
         case BOTCellTypeShipping:
+            width = 0.9f;
         case BOTCellTypeOrder:
         case BOTCellTypeReorder:
         case BOTCellTypeReturn:
@@ -292,8 +293,8 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 
             break;
         case BOTCellTypeShipping: {
-            NSString *reuseIdentifier = [BOTOrderStatusViewCell reuseIdentifier];
-            BOTOrderStatusViewCell *cell = (BOTOrderStatusViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+            NSString *reuseIdentifier = [BOTOrderStatusCollectionViewCell reuseIdentifier];
+            BOTOrderStatusCollectionViewCell *cell = (BOTOrderStatusCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
             BOTShipment *shipment = self.items[indexPath.row];
             [cell setShipment:shipment];
             returnCell = cell;
