@@ -34,9 +34,9 @@ NSString *const BOTRewardSelectedNotification = @"BOTRewardSelectedNotification"
 // Card Type Keys
 NSString *const BOTCardTypeBTSItems = @"BTS_ITEMS";
 NSString *const BOTCardTypeCartItems = @"CART_ITEMS";
-NSString *const BOTCardTypeOrderItems = @"ORDER_ITEM";
-NSString *const BOTCardTypeReturnItems = @"RETURN_ITEM";
-NSString *const BOTCardTypeReorderItems = @"REORDER_ITEM";
+NSString *const BOTCardTypeOrderItems = @"ORDER_ITEMS";
+NSString *const BOTCardTypeReturnItems = @"RETURN_ITEMS";
+NSString *const BOTCardTypeReorderItems = @"REORDER_ITEMS";
 
 // Card List Keys
 NSString *const BOTMessagePartCardTypeKey = @"cardType";
@@ -228,7 +228,20 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(collectionView.bounds.size.width * 0.8f, collectionView.bounds.size.height * 0.95f);
+    CGFloat width = 0.8f;
+    switch (self.cellType) {
+        case BOTCellTypeRewards:
+            width = 0.9f;
+            break;
+        case BOTCellTypeBackToSchool:
+        case BOTCellTypeShipping:
+        case BOTCellTypeOrder:
+        case BOTCellTypeReorder:
+        case BOTCellTypeReturn:
+        default:
+            break;
+    }
+    return CGSizeMake(collectionView.bounds.size.width * width, collectionView.bounds.size.height * 0.95f);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath

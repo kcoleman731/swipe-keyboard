@@ -57,7 +57,7 @@ NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollecti
 
 + (CGFloat)cellHeight
 {
-    return 230;
+    return 248;
 }
 
 - (void)setReward:(BOTReward *)reward

@@ -50,7 +50,7 @@ CGFloat const BOTAddToCartButtonHeight = 42;
     self.layer.shadowOpacity = 0.5;
     self.layer.shadowRadius = 3;
     self.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
-    self.userInteractionEnabled = NO;
+    self.userInteractionEnabled = YES;
     
     self.addToCartButton = [UIButton new];
     self.addToCartButton.translatesAutoresizingMaskIntoConstraints = NO;

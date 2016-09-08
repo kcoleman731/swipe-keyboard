@@ -9,7 +9,7 @@
 #import "BOTAddress.h"
 #import "BOTUtilities.h"
 
-NSString *const BOTAddressMIMEType = @"application/addressObject";
+NSString *const BOTAddressMIMEType = @"application/addressobject";
 
 NSString *const BOTAddressDetails = @"addressDetails";
 NSString *const BOTAddressFirstName = @"firstName";
