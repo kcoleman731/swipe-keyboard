@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BOTShipment.h"
+#import "BOTOrderStatusViewCellProtocol.h"
 
 /**
  The title of the cell. Used for testing purposes.
@@ -23,17 +24,6 @@ extern NSString *const BOTOrderStatusCollectionViewCellMimeType;
  The reuse identifier for the cell.
  */
 extern NSString *const BOTOrderStatusCollectionViewCellReuseIdentifier;
-
-// Fwd Decl
-@class BOTOrderStatusViewCell;
-
-@protocol BOTOrderStatusViewCellDelegate <NSObject>
-
-- (void)orderStatusCell:(BOTOrderStatusViewCell *)cell viewAllWasTappedWithShipment:(BOTShipment *)shipment;
-- (void)orderStatusCell:(BOTOrderStatusViewCell *)cell trackShipmentWasTappedWithShipment:(BOTShipment *)shipment;
-- (void)orderStatusCell:(BOTOrderStatusViewCell *)cell cellWasTappedWithShipment:(BOTShipment *)shipment;
-
-@end
 
 @interface BOTOrderStatusViewCell : UICollectionViewCell
 

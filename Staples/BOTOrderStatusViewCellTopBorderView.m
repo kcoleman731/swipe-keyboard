@@ -22,6 +22,7 @@
     
     // Ctx
     [[[UIColor grayColor] colorWithAlphaComponent:0.3f] setStroke];
+    [bottomBorder setLineWidth:borderThickness];
     
     // Draw!
     [bottomBorder stroke];

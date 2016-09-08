@@ -78,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		341806A81D81CB7300D24998 /* BOTOrderStatusViewCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTOrderStatusViewCellProtocol.h; sourceTree = "<group>"; };
 		34FBEBE41D8068180010DA0C /* BOTOrderStatusViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BOTOrderStatusViewCell.xib; sourceTree = "<group>"; };
 		34FBEBE61D8068430010DA0C /* BOTOrderStatusViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTOrderStatusViewCell.h; sourceTree = "<group>"; };
 		34FBEBE71D8068430010DA0C /* BOTOrderStatusViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTOrderStatusViewCell.m; sourceTree = "<group>"; };
@@ -225,6 +226,14 @@
 			name = BOTOrderCollectionViewCellDataSource;
 			sourceTree = "<group>";
 		};
+		341806A71D81CB5300D24998 /* BOTOrderStatusViewCellProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				341806A81D81CB7300D24998 /* BOTOrderStatusViewCellProtocol.h */,
+			);
+			name = BOTOrderStatusViewCellProtocol;
+			sourceTree = "<group>";
+		};
 		3486CD011D6779130041E2F7 /* BOTMultipleProductCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +356,7 @@
 		34FBEBF11D80904B0010DA0C /* BOTOrderStatusBaseCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				341806A71D81CB5300D24998 /* BOTOrderStatusViewCellProtocol */,
 				34FBEBE31D8068000010DA0C /* BOTOrderStatusViewCell */,
 				34FBEBF91D8090C90010DA0C /* BOTOrderStatusBaseCollectionViewCellDataSource */,
 				34FBEBF51D8090650010DA0C /* BOTOrderStatusBaseCollectionViewCellLayout */,
