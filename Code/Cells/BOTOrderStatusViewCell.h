@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BOTShipment.h"
 
+extern NSString *const BOTTrackOrderShipmentButtonTapNotification;
+extern NSString *const BOTViewAllOrdersButtonTapNotification;
+
 /**
  The title of the cell. Used for testing purposes.
  */

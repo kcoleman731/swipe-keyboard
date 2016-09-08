@@ -15,11 +15,11 @@
 #import "BOTProductCollectionViewCell.h"
 #import "BOTRewardCollectionViewCell.h"
 #import "BOTOrderCollectionViewCell.h"
+#import "BOTOrderStatusViewCell.h"
 
 // Modesl
 #import "BOTProduct.h"
 #import "BOTOrder.h"
-
 #import "BOTUtilities.h"
 
 NSString *const BOTMultipleProductBaseCollectionViewCellTitle = @"Product Cell";
@@ -67,7 +67,6 @@ typedef NS_ENUM(NSInteger, BOTCellType) {
 @property (nonatomic) BOTCellType cellType;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) BOTMultipleProductsCollectionViewLayout *collectionViewLayout;
-@property (nonatomic, strong) NSArray *items;
 @property (nonatomic, strong) UILabel *btsHeaderLable;
 @property (nonatomic, strong) UIButton *viewAllButton;
 @property (nonatomic, strong) NSLayoutConstraint *topCollectionViewConstraint;
@@ -108,9 +107,9 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     UINib *productNib = [UINib nibWithNibName:@"BOTProductCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[BOTProductCollectionViewCell reuseIdentifier]];
 
-    UINib *shippingNib = [UINib nibWithNibName:@"BOTShipmentTrackingCollectionViewCell" bundle:StaplesUIBundle()];
-    [self.collectionView registerNib:shippingNib forCellWithReuseIdentifier:[BOTShipmentTrackingCollectionViewCell reuseIdentifier]];
-
+    UINib *orderStatusNib = [UINib nibWithNibName:@"BOTOrderStatusViewCell" bundle:StaplesUIBundle()];
+    [self.collectionView registerNib:orderStatusNib forCellWithReuseIdentifier:[BOTOrderStatusViewCell reuseIdentifier]];
+    
     UINib *rewardNib = [UINib nibWithNibName:@"BOTRewardCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:rewardNib forCellWithReuseIdentifier:[BOTRewardCollectionViewCell reuseIdentifier]];
     
@@ -143,7 +142,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.collectionViewLayout = self.collectionViewLayout;
-    self.collectionView.backgroundColor = [UIColor clearColor];
+    self.collectionView.backgroundColor = [UIColor greenColor];
     self.collectionView.showsHorizontalScrollIndicator = NO;
 
     [self addSubview:self.collectionView];
@@ -163,7 +162,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
-        return [BOTShipmentTrackingCollectionViewCell cellHeight];
+        return [BOTOrderStatusViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
         return [BOTProductCollectionViewCell cellHeightWithButton:NO];
     }  else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
@@ -293,11 +292,17 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 
             break;
         case BOTCellTypeShipping: {
-            NSString *reuseIdentifier = [BOTShipmentTrackingCollectionViewCell reuseIdentifier];
-            BOTShipmentTrackingCollectionViewCell *cell = (BOTShipmentTrackingCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+            NSString *reuseIdentifier = [BOTOrderStatusViewCell reuseIdentifier];
+            BOTOrderStatusViewCell *cell = (BOTOrderStatusViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
             BOTShipment *shipment = self.items[indexPath.row];
             [cell setShipment:shipment];
             returnCell = cell;
+            
+//            NSString *reuseIdentifier = [BOTShipmentTrackingCollectionViewCell reuseIdentifier];
+//            BOTShipmentTrackingCollectionViewCell *cell = (BOTShipmentTrackingCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+//            BOTShipment *shipment = self.items[indexPath.row];
+//            [cell setShipment:shipment];
+//            returnCell = cell;
         }
             break;
             

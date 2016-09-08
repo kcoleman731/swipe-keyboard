@@ -36,6 +36,8 @@ extern NSString *const BOTRewardSelectedNotification;
  */
 @interface BOTMultipleProductBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
+@property (nonatomic, strong) NSArray *items;
+
 /**
  Reuse Identifier
  */

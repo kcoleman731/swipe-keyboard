@@ -15,6 +15,8 @@
 NSString *const BOTOrderStatusCollectionViewCellTitle           = @"BOTOrderStatusCollectionViewCellTitle";
 NSString *const BOTOrderStatusCollectionViewCellMimeType        = @"BOTOrderStatusCollectionViewCellMimeType";
 NSString *const BOTOrderStatusCollectionViewCellReuseIdentifier = @"BOTOrderStatusCollectionViewCellReuseIdentifier";
+NSString *const BOTTrackOrderShipmentButtonTapNotification      = @"BOTTrackOrderShipmentButtonTapNotification";
+NSString *const BOTViewAllOrdersButtonTapNotification           = @"BOTViewAllOrdersButtonTapNotification";
 
 @interface BOTOrderStatusViewCell()
 
@@ -41,7 +43,7 @@ NSString *const BOTOrderStatusCollectionViewCellReuseIdentifier = @"BOTOrderStat
  */
 + (CGFloat)cellHeight
 {
-    return 200.0f;
+    return 237.0f;
 }
 
 /**
@@ -96,6 +98,9 @@ NSString *const BOTOrderStatusCollectionViewCellReuseIdentifier = @"BOTOrderStat
     self.bgView.layer.shadowRadius = 3;
     self.bgView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     self.bgView.userInteractionEnabled = NO;
+    
+    [self.viewAllButton addTarget:self action:@selector(viewAllButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.trackShipmentBottomButton addTarget:self action:@selector(trackShipmentBottomButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - ATLMessagePresentingConformance
@@ -118,16 +123,8 @@ NSString *const BOTOrderStatusCollectionViewCellReuseIdentifier = @"BOTOrderStat
         // Set Shipment Info
         self.shipmentStatusLabel.text = shipment.status;
         self.estimatedDeliveryDateLabel.text = shipment.deliveryDate;
-        
-        // Fill the order details w/ the shipment's order
-        if (shipment.order.items) {
-            BOTProduct *product = [shipment.order.items firstObject];
-            [self setProductImage:product.imageURL];
-            self.productTitleLabel.text = product.name;
-        } else {
-            self.productImageView.image = nil;
-            self.productTitleLabel.text = @"No Products Found";
-        }
+        self.productTitleLabel.text = shipment.heroProductName;
+        [self setProductImage:shipment.heroProductImageURL];
     }
 }
 
@@ -149,6 +146,18 @@ NSString *const BOTOrderStatusCollectionViewCellReuseIdentifier = @"BOTOrderStat
     } else {
         [self.productImageView setImage:nil];
     }
+}
+
+#pragma mark - Action Handlers
+
+- (void)viewAllButtonTapped:(UIButton *)viewAllButton
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:BOTViewAllOrdersButtonTapNotification object:self.shipment];
+}
+
+- (void)trackShipmentBottomButtonTapped:(UIButton *)trackShipmentBottomButton
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:BOTTrackOrderShipmentButtonTapNotification object:self.shipment];
 }
 
 @end

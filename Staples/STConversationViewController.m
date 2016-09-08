@@ -148,7 +148,7 @@ NSString *const STOptionCell = @"Option Cell";
     } else if ([part.MIMEType isEqualToString:BOTReceiptMIMEType]) {
         return [BOTReceiptCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
-        return [BOTOrderStatusBaseCollectionViewCell cellHeight];
+        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
@@ -175,7 +175,7 @@ NSString *const STOptionCell = @"Option Cell";
     } else if ([part.MIMEType isEqualToString:BOTReceiptMIMEType]) {
         return [BOTReceiptCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
-        return [BOTOrderStatusBaseCollectionViewCell reuseIdentifier];
+        return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
