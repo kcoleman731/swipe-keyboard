@@ -24,8 +24,20 @@ extern NSString *const BOTOrderStatusCollectionViewCellMimeType;
  */
 extern NSString *const BOTOrderStatusCollectionViewCellReuseIdentifier;
 
+// Fwd Decl
+@class BOTOrderStatusViewCell;
+
+@protocol BOTOrderStatusViewCellDelegate <NSObject>
+
+- (void)orderStatusCell:(BOTOrderStatusViewCell *)cell viewAllWasTappedWithShipment:(BOTShipment *)shipment;
+- (void)orderStatusCell:(BOTOrderStatusViewCell *)cell trackShipmentWasTappedWithShipment:(BOTShipment *)shipment;
+- (void)orderStatusCell:(BOTOrderStatusViewCell *)cell cellWasTappedWithShipment:(BOTShipment *)shipment;
+
+@end
+
 @interface BOTOrderStatusViewCell : UICollectionViewCell
 
+@property (nonatomic, weak) id <BOTOrderStatusViewCellDelegate> delegate;
 @property (nonatomic, strong) BOTShipment *shipment;
 
 /**

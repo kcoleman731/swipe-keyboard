@@ -91,8 +91,8 @@ NSString *const ShipmentTrackingPayloadListKey = @"shippmentTrackingList";
 
 - (void)presentMessage:(LYRMessage *)message
 {
-    LYRMessagePart *part  = message.parts[0];
-    NSDictionary *data    = DataForMessagePart(part);
+    LYRMessagePart *part   = message.parts[0];
+    NSDictionary *data     = DataForMessagePart(part);
     NSArray *jsonShipments = data[@"data"][ShipmentTrackingPayloadListKey];
     NSMutableArray <BOTShipment *> *shipments = [[NSMutableArray alloc] init];
     for (NSDictionary *shipmentDict in jsonShipments) {
@@ -115,10 +115,38 @@ NSString *const ShipmentTrackingPayloadListKey = @"shippmentTrackingList";
 
 - (void)addCollectionViewConstraints
 {
-    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.collectionView
+                                                               attribute:NSLayoutAttributeLeading
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self
+                                                               attribute:NSLayoutAttributeLeading
+                                                              multiplier:1.0
+                                                                constant:0.0];
+    
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.collectionView
+                                                                attribute:NSLayoutAttributeTrailing
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:self
+                                                                attribute:NSLayoutAttributeTrailing
+                                                               multiplier:1.0
+                                                                 constant:0.0];
+    
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.collectionView
+                                                           attribute:NSLayoutAttributeTop 
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:self
+                                                           attribute:NSLayoutAttributeTop
+                                                          multiplier:1.0
+                                                            constant:0.0];
+    
+    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.collectionView
+                                                              attribute:NSLayoutAttributeBottom
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self
+                                                              attribute:NSLayoutAttributeBottom
+                                                             multiplier:1.0
+                                                               constant:0.0];
+    
     [self addConstraints:@[leading, trailing, top, bottom]];
 }
 

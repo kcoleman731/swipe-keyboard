@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ATLMessagePresenting.h"
+#import "BOTOrderStatusViewCell.h"
 
 /**
  The title of the cell. Used for testing purposes.
@@ -25,6 +26,8 @@ extern NSString *const BOTOrderStatusBaseCollectionViewCellMimeType;
 extern NSString *const BOTOrderStatusBaseCollectionViewCellReuseIdentifier;
 
 @interface BOTOrderStatusBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
+
+@property (nonatomic, weak) id <BOTOrderStatusViewCellDelegate> delegate;
 
 /**
  Cell height

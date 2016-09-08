@@ -7,19 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BOTOrderStatusViewCell.h"
 #import <UIKit/UIKit.h>
 #import "BOTShipment.h"
-
-@protocol BOTOrderStatusBaseCollectionViewCellDataSourceDelegate
-
-- (void)shipmentWasTapped:(BOTShipment *)shipment;
-
-@end
 
 @interface BOTOrderStatusBaseCollectionViewCellDataSource : NSObject <UICollectionViewDataSource>
 
 @property (nonatomic, strong) NSArray <BOTShipment *> *shipments;
-@property (nonatomic, weak) id <BOTOrderStatusBaseCollectionViewCellDataSourceDelegate> delegate;
+@property (nonatomic, weak) id <BOTOrderStatusViewCellDelegate> delegate;
 
 /**
  *  Init
