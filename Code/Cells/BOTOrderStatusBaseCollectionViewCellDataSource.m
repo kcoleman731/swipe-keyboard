@@ -6,7 +6,6 @@
 //  Copyright © 2016 Mesh. All rights reserved.
 //
 
-#import "BOTOrderStatusViewCell.h"
 #import "BOTOrderStatusBaseCollectionViewCellDataSource.h"
 #import "BOTOrderCollectionViewCellProductCollectionViewCell.h"
 
@@ -56,13 +55,14 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     BOTOrderStatusViewCell *cell = (BOTOrderStatusViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    [self.delegate shipmentWasTapped:cell.shipment];
+    [self.delegate orderStatusCell:cell cellWasTappedWithShipment:cell.shipment];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     BOTOrderStatusViewCell *cell = (BOTOrderStatusViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:[BOTOrderStatusViewCell reuseIdentifier] forIndexPath:indexPath];
     [cell setShipment:self.shipments[indexPath.row]];
+    cell.delegate = self.delegate;
     return cell;
 }
 

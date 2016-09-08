@@ -11,12 +11,18 @@
 #import "BOTOrderStatusViewCellTopBorderView.h"
 #import "BOTUtilities.h"
 #import "UIImageView+WebCache.h"
+#import "EDColor.h"
 
 NSString *const BOTOrderStatusCollectionViewCellTitle           = @"BOTOrderStatusCollectionViewCellTitle";
 NSString *const BOTOrderStatusCollectionViewCellMimeType        = @"BOTOrderStatusCollectionViewCellMimeType";
 NSString *const BOTOrderStatusCollectionViewCellReuseIdentifier = @"BOTOrderStatusCollectionViewCellReuseIdentifier";
 NSString *const BOTTrackOrderShipmentButtonTapNotification      = @"BOTTrackOrderShipmentButtonTapNotification";
 NSString *const BOTViewAllOrdersButtonTapNotification           = @"BOTViewAllOrdersButtonTapNotification";
+
+// UI Color Hexs
+NSString *const blueColorCode  = @"4a90e2";
+NSString *const greenColorCode = @"77a53b";
+NSString *const grayColorCode  = @"9b9b9b";
 
 @interface BOTOrderStatusViewCell()
 
@@ -31,6 +37,9 @@ NSString *const BOTViewAllOrdersButtonTapNotification           = @"BOTViewAllOr
 @property (weak, nonatomic) IBOutlet UILabel *estimatedDeliveryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *estimatedDeliveryDateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *viewAllButton;
+
+// Constraints
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *productTitleLabelTopConstraint;
 
 @end
 
@@ -76,31 +85,36 @@ NSString *const BOTViewAllOrdersButtonTapNotification           = @"BOTViewAllOr
 
 - (void)commonInit
 {
-
+    // Nada for now
 }
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     
+    // Vairous Stylings
     self.contentView.backgroundColor = [UIColor clearColor];
-    
     self.topBorderView.backgroundColor = [UIColor whiteColor];
     self.trackShipmentBottomButton.backgroundColor = [UIColor whiteColor];
     
+    // Style BG
     self.bgView.layer.cornerRadius = 4.0f;
     self.bgView.layer.masksToBounds = YES;
     self.bgView.layer.borderWidth = 1.0f;
     self.bgView.layer.borderColor = BOTLightGrayColor().CGColor;
-    
     self.bgView.layer.shadowColor = BOTLightGrayColor().CGColor;
     self.bgView.layer.shadowOpacity = 0.5;
     self.bgView.layer.shadowRadius = 3;
     self.bgView.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     self.bgView.userInteractionEnabled = NO;
     
-    [self.viewAllButton addTarget:self action:@selector(viewAllButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self.trackShipmentBottomButton addTarget:self action:@selector(trackShipmentBottomButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    // kill shadows
+    self.productImageView.layer.shadowRadius = 0.0;
+    self.trackShipmentBottomButton.imageView.layer.shadowRadius = 0.0;
+    
+    // Add Targets
+    [self.viewAllButton addTarget:self action:@selector(viewAllWasTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.trackShipmentBottomButton addTarget:self action:@selector(trackMyShipmentWasTapped:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - ATLMessagePresentingConformance
@@ -123,9 +137,57 @@ NSString *const BOTViewAllOrdersButtonTapNotification           = @"BOTViewAllOr
         // Set Shipment Info
         self.shipmentStatusLabel.text = shipment.status;
         self.estimatedDeliveryDateLabel.text = shipment.deliveryDate;
-        self.productTitleLabel.text = shipment.heroProductName;
-        [self setProductImage:shipment.heroProductImageURL];
+        [self setItemLabelsWithOrders:shipment.order.items];
+        [self setOrderStatusTextAndGlyphWithStatus:shipment.status];
     }
+}
+
+- (void)setItemLabelsWithOrders:(NSArray <BOTProduct *> *)items
+{
+    // Fill the order details w/ the shipment's order
+    if (items) {
+        BOTProduct *product         = [items firstObject];
+        self.productTitleLabel.text = product.name;
+        [self setProductImage:product.imageURL];
+        
+        // More items label
+        if (items.count > 1) {
+            NSString *moreItemsText  = [NSString stringWithFormat:@"+ %i More Items", (int)items.count];
+            self.moreItemsLabel.text = moreItemsText;
+        } else {
+            self.moreItemsLabel.text = @"No Additional Items";
+        }
+        [self setNeedsLayout];
+    } else {
+        self.productImageView.image = nil;
+        self.productTitleLabel.text = @"No Products Found";
+        self.moreItemsLabel.text    = @"";
+    }
+}
+
+- (void)setOrderStatusTextAndGlyphWithStatus:(NSString *)shipmentStatus
+{
+    NSString *lCaseShipmentStatus = [shipmentStatus lowercaseString];
+    if ([lCaseShipmentStatus isEqualToString:@"processing"]) {
+        self.shipmentStatusImageView.image = [UIImage imageNamed:@"processing"];
+        self.shipmentStatusLabel.textColor = [UIColor colorWithHexString:blueColorCode];
+    } else if ([lCaseShipmentStatus isEqualToString:@"in transit"]) {
+        self.shipmentStatusImageView.image = [UIImage imageNamed:@"intransit"];
+        self.shipmentStatusLabel.textColor = [UIColor colorWithHexString:greenColorCode];
+    } else if ([lCaseShipmentStatus isEqualToString:@"delivered"]) {
+        self.shipmentStatusImageView.image = [UIImage imageNamed:@"delivered"];
+        self.shipmentStatusLabel.textColor = [UIColor colorWithHexString:greenColorCode];
+    } else if ([lCaseShipmentStatus isEqualToString:@"ready for pickup"]) {
+        self.shipmentStatusImageView.image = [UIImage imageNamed:@"readyforpickup"];
+        self.shipmentStatusLabel.textColor = [UIColor colorWithHexString:greenColorCode];
+    } else if ([lCaseShipmentStatus isEqualToString:@"did not pick up"]) {
+        self.shipmentStatusImageView.image = [UIImage imageNamed:@"didnotpickup"];
+        self.shipmentStatusLabel.textColor = [UIColor colorWithHexString:grayColorCode];
+    } else {
+        self.shipmentStatusImageView.image = nil;
+    }
+    
+    self.shipmentStatusLabel.text = shipmentStatus;
 }
 
 - (void)setProductImage:(NSString *)productImageURL
@@ -148,16 +210,16 @@ NSString *const BOTViewAllOrdersButtonTapNotification           = @"BOTViewAllOr
     }
 }
 
-#pragma mark - Action Handlers
+#pragma mark - Target Action Responders
 
-- (void)viewAllButtonTapped:(UIButton *)viewAllButton
+- (void)viewAllWasTapped:(UIButton *)btn
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:BOTViewAllOrdersButtonTapNotification object:self.shipment];
+    [self.delegate orderStatusCell:self viewAllWasTappedWithShipment:self.shipment];
 }
 
-- (void)trackShipmentBottomButtonTapped:(UIButton *)trackShipmentBottomButton
+- (void)trackMyShipmentWasTapped:(UIButton *)btn
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:BOTTrackOrderShipmentButtonTapNotification object:self.shipment];
+    [self.delegate orderStatusCell:self trackShipmentWasTappedWithShipment:self.shipment];
 }
 
 @end
