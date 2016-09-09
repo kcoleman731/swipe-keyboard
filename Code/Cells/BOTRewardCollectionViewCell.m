@@ -64,8 +64,8 @@ NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollecti
 {
     self.titleLabel.text = @"Staples Rewards";
     self.nameLabel.text = reward.userName;
-    self.memberTypeLabel.text = @"Plus Member";
-    self.ammountLabel.text = [NSString stringWithFormat:@"$%@",reward.amount];
+    self.memberTypeLabel.text = reward.memberType;
+    self.ammountLabel.text = [NSString stringWithFormat:@"$%@",reward.totalAmount];
     self.rewardTypeLabel.text = @"Redeemable";
     self.barcodeNumber.text = [NSString stringWithFormat:@"#%@",reward.number];
     [self setBarCode:reward.number];

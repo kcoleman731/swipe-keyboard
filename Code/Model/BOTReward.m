@@ -20,6 +20,7 @@ NSString *const BOTRewardsStartDateKey = @"rewardsStartDate";
 NSString *const BOTRewardsTotalAmountKey = @"rewardsTotalAmount";
 NSString *const BOTRewardsTypeKey = @"rewardsType";
 NSString *const BOTRewardsUserNameKey = @"userName";
+NSString *const BOTRewardMemberType = @"memberType";
 
 @implementation BOTReward
 
@@ -42,6 +43,7 @@ NSString *const BOTRewardsUserNameKey = @"userName";
         self.totalAmount = data[BOTRewardsTotalAmountKey];
         self.type = data[BOTRewardsTypeKey];
         self.userName = data[BOTRewardsUserNameKey];
+        self.memberType = data[BOTRewardMemberType];
     }
     return self;
 }

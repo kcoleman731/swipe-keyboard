@@ -19,6 +19,7 @@ NSString *const BOTShipmentOrderKey = @"order";
 NSString *const BOTShipmentOrderNumberKey = @"orderNumber";
 NSString *const BOTShipmentProductNameKey = @"productName";
 NSString *const BOTShipmentProductURLKey = @"productImageUrl";
+NSString *const BOTNumberOfShipments = @"numberOfShipments";
 
 @implementation BOTShipment
 
@@ -35,9 +36,10 @@ NSString *const BOTShipmentProductURLKey = @"productImageUrl";
         _deliveryDate = data[BOTShipmentDeliveryDataKey];
         _number = data[BOTShipmentNumberKey];
         _boxCount = data[BOTShipmentBoxesKey];
-        _type = data[BOTShipmentTypeKey];
+        _shipmentType = data[BOTShipmentTypeKey];
         _heroProductName = data[BOTShipmentProductNameKey];
         _heroProductImageURL = data[BOTShipmentProductURLKey];
+        _numberOfShipments = data[BOTNumberOfShipments];
         
         BOTOrder *order = [BOTOrder new];
         order.orderNumber = data[BOTShipmentOrderNumberKey];

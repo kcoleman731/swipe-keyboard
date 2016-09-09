@@ -52,5 +52,6 @@ extern NSString *const BOTRewardsUserNameKey;
 @property (strong, nonatomic) NSString *totalAmount;
 @property (strong, nonatomic) NSString *type;
 @property (strong, nonatomic) NSString *userName;
+@property (strong, nonatomic) NSString *memberType;
 
 @end

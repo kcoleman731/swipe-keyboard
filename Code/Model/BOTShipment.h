@@ -34,9 +34,10 @@ extern NSString *const BOTShipmentMIMEType;
 @property (nonatomic) NSString *deliveryDate;
 @property (nonatomic) NSString *number;
 @property (nonatomic) NSString *boxCount;
-@property (nonatomic) NSString *type;
+@property (nonatomic) NSString *shipmentType;
 @property (nonatomic) BOTOrder *order;
 @property (nonatomic) NSString *heroProductName;
 @property (nonatomic) NSString *heroProductImageURL;
+@property (nonatomic) NSString *numberOfShipments;
 
 @end

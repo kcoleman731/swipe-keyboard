@@ -131,7 +131,15 @@ NSString *const grayColorCode  = @"9b9b9b";
         
         // Set Shipment Info
         self.shipmentStatusLabel.text = shipment.status;
-        self.estimatedDeliveryDateLabel.text = shipment.deliveryDate;
+        
+        NSDateFormatter *formatter = [NSDateFormatter new];
+        formatter.dateFormat = @"EEE MMM d HH:mm:ss zzz yyyy";
+        NSDate *date = [formatter dateFromString:shipment.deliveryDate];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"EEE d MMM yyyy"];
+        NSString *dateString = [dateFormatter stringFromDate:date];
+        self.estimatedDeliveryDateLabel.text = dateString;
+        
         self.productTitleLabel.text = shipment.heroProductName;
         if ([shipment.boxCount integerValue] > 2) {
             NSString *moreItemsText  = [NSString stringWithFormat:@"+ %li More Items", ([shipment.boxCount integerValue] - 1)];
