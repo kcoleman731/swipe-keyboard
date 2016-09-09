@@ -136,7 +136,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     
     self.collectionViewLayout = [[BOTMultipleProductsCollectionViewLayout alloc] init];
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.collectionViewLayout];
-    self.collectionView.contentInset = UIEdgeInsetsMake(0.0, 10.0, 0.0, 0.0);
+    self.collectionView.contentInset = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0);
     self.collectionView.contentOffset = CGPointMake(16.0, 0.0);
     self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     self.collectionView.delegate = self;
