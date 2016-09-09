@@ -7,8 +7,6 @@
 //
 
 #import "BOTOrderStatusCollectionViewCell.h"
-#import "BOTOrderStatusViewCellBottomBorderView.h"
-#import "BOTOrderStatusViewCellTopBorderView.h"
 #import "BOTUtilities.h"
 #import "UIImageView+WebCache.h"
 #import "EDColor.h"
@@ -27,8 +25,7 @@ NSString *const grayColorCode  = @"9b9b9b";
 @interface BOTOrderStatusCollectionViewCell()
 
 @property (weak, nonatomic) IBOutlet UIView *bgView;
-@property (weak, nonatomic) IBOutlet BOTOrderStatusViewCellBottomBorderView *trackShipmentBottomButton;
-@property (weak, nonatomic) IBOutlet BOTOrderStatusViewCellTopBorderView *topBorderView;
+@property (weak, nonatomic) IBOutlet UIButton *trackShipmentBottomButton;
 @property (weak, nonatomic) IBOutlet UIImageView *productImageView;
 @property (weak, nonatomic) IBOutlet UILabel *productTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *moreItemsLabel;
@@ -52,7 +49,7 @@ NSString *const grayColorCode  = @"9b9b9b";
  */
 + (CGFloat)cellHeight
 {
-    return 237.0f;
+    return 246.0f;
 }
 
 /**
@@ -94,7 +91,6 @@ NSString *const grayColorCode  = @"9b9b9b";
     
     // Vairous Stylings
     self.contentView.backgroundColor = [UIColor clearColor];
-    self.topBorderView.backgroundColor = [UIColor whiteColor];
     self.trackShipmentBottomButton.backgroundColor = [UIColor whiteColor];
     
     self.clipsToBounds = NO;
@@ -200,7 +196,7 @@ NSString *const grayColorCode  = @"9b9b9b";
     [[NSNotificationCenter defaultCenter] postNotificationName:BOTViewAllOrdersButtonTapNotification object:self.shipment];
 }
 
-- (void)trackShipmentBottomButtonWasTapped:(BOTOrderStatusViewCellBottomBorderView *)trackShipmentBottomButton
+- (void)trackShipmentBottomButtonWasTapped:(UIButton *)trackShipmentBottomButton
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:BOTTrackOrderShipmentButtonTapNotification object:self.shipment];
 }

@@ -12,8 +12,6 @@
 		D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71BC1D6B7482005F2546 /* STLayerService.m */; };
 		D6675F0E1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6675F0C1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.m */; };
 		D6675F0F1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6675F0D1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.xib */; };
-		D6675F121D821D5000DEFE41 /* BOTOrderStatusViewCellBottomBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6675F111D821D5000DEFE41 /* BOTOrderStatusViewCellBottomBorderView.m */; };
-		D6675F151D821D5A00DEFE41 /* BOTOrderStatusViewCellTopBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6675F141D821D5A00DEFE41 /* BOTOrderStatusViewCellTopBorderView.m */; };
 		D672ED7E1D7B35DD00B721C1 /* BOTOrderCollectionViewCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D672ED7D1D7B35DD00B721C1 /* BOTOrderCollectionViewCellLayout.m */; };
 		D672ED811D7B35E400B721C1 /* BOTOrderCollectionViewCellDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D672ED801D7B35E400B721C1 /* BOTOrderCollectionViewCellDataSource.m */; };
 		D672ED841D7B35EB00B721C1 /* BOTOrderCollectionViewCellProductCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D672ED831D7B35EB00B721C1 /* BOTOrderCollectionViewCellProductCollectionViewCell.m */; };
@@ -88,10 +86,6 @@
 		D6675F0B1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTOrderStatusCollectionViewCell.h; path = Code/Cells/BOTOrderStatusCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
 		D6675F0C1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTOrderStatusCollectionViewCell.m; path = Code/Cells/BOTOrderStatusCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
 		D6675F0D1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BOTOrderStatusCollectionViewCell.xib; path = Code/Cells/BOTOrderStatusCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
-		D6675F101D821D5000DEFE41 /* BOTOrderStatusViewCellBottomBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTOrderStatusViewCellBottomBorderView.h; path = Code/Cells/BOTOrderStatusViewCellBottomBorderView.h; sourceTree = SOURCE_ROOT; };
-		D6675F111D821D5000DEFE41 /* BOTOrderStatusViewCellBottomBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTOrderStatusViewCellBottomBorderView.m; path = Code/Cells/BOTOrderStatusViewCellBottomBorderView.m; sourceTree = SOURCE_ROOT; };
-		D6675F131D821D5A00DEFE41 /* BOTOrderStatusViewCellTopBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTOrderStatusViewCellTopBorderView.h; path = Code/Cells/BOTOrderStatusViewCellTopBorderView.h; sourceTree = SOURCE_ROOT; };
-		D6675F141D821D5A00DEFE41 /* BOTOrderStatusViewCellTopBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTOrderStatusViewCellTopBorderView.m; path = Code/Cells/BOTOrderStatusViewCellTopBorderView.m; sourceTree = SOURCE_ROOT; };
 		D672ED7C1D7B35DD00B721C1 /* BOTOrderCollectionViewCellLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTOrderCollectionViewCellLayout.h; path = Code/Cells/BOTOrderCollectionViewCellLayout.h; sourceTree = SOURCE_ROOT; };
 		D672ED7D1D7B35DD00B721C1 /* BOTOrderCollectionViewCellLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTOrderCollectionViewCellLayout.m; path = Code/Cells/BOTOrderCollectionViewCellLayout.m; sourceTree = SOURCE_ROOT; };
 		D672ED7F1D7B35E400B721C1 /* BOTOrderCollectionViewCellDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTOrderCollectionViewCellDataSource.h; path = Code/Cells/BOTOrderCollectionViewCellDataSource.h; sourceTree = SOURCE_ROOT; };
@@ -311,28 +305,8 @@
 				D6675F0B1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.h */,
 				D6675F0C1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.m */,
 				D6675F0D1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.xib */,
-				34FBEBEA1D8073800010DA0C /* BOTOrderStatusViewCellBottomBorderView */,
-				34FBEBE91D80736D0010DA0C /* BOTOrderStatusViewCellTopBorderView */,
 			);
 			name = BOTOrderStatusCollectionViewCell;
-			sourceTree = "<group>";
-		};
-		34FBEBE91D80736D0010DA0C /* BOTOrderStatusViewCellTopBorderView */ = {
-			isa = PBXGroup;
-			children = (
-				D6675F131D821D5A00DEFE41 /* BOTOrderStatusViewCellTopBorderView.h */,
-				D6675F141D821D5A00DEFE41 /* BOTOrderStatusViewCellTopBorderView.m */,
-			);
-			name = BOTOrderStatusViewCellTopBorderView;
-			sourceTree = "<group>";
-		};
-		34FBEBEA1D8073800010DA0C /* BOTOrderStatusViewCellBottomBorderView */ = {
-			isa = PBXGroup;
-			children = (
-				D6675F101D821D5000DEFE41 /* BOTOrderStatusViewCellBottomBorderView.h */,
-				D6675F111D821D5000DEFE41 /* BOTOrderStatusViewCellBottomBorderView.m */,
-			);
-			name = BOTOrderStatusViewCellBottomBorderView;
 			sourceTree = "<group>";
 		};
 		5D7BC486E268FE80EA4B3D58 /* Pods */ = {
@@ -843,7 +817,6 @@
 				D6EB8ABD1D6F55CC00BF4BE1 /* BOTShipmentTrackingCollectionViewCell.m in Sources */,
 				D69E94E41D7512640064BF8B /* BOTMessageInputToolbar.m in Sources */,
 				D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */,
-				D6675F121D821D5000DEFE41 /* BOTOrderStatusViewCellBottomBorderView.m in Sources */,
 				D69E94DB1D75124B0064BF8B /* BOTMultiSelectionBar.m in Sources */,
 				D69761711D660AEE00F3369F /* main.m in Sources */,
 				D69E94FA1D7512880064BF8B /* BOTReward.m in Sources */,
@@ -851,7 +824,6 @@
 				D69E94EC1D7512720064BF8B /* BOTActionInputView.m in Sources */,
 				D69E94E71D75126B0064BF8B /* BOTInvertedButton.m in Sources */,
 				D69E94FC1D7512880064BF8B /* BOTPrice.m in Sources */,
-				D6675F151D821D5A00DEFE41 /* BOTOrderStatusViewCellTopBorderView.m in Sources */,
 				D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */,
 				D69E94FB1D7512880064BF8B /* BOTProduct.m in Sources */,
 				D69E950A1D7512B30064BF8B /* BOTCellContainerView.m in Sources */,
