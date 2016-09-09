@@ -46,10 +46,10 @@ NSString *const grayColorCode  = @"9b9b9b";
 
 /**
  Cell height
- */
+ */g
 + (CGFloat)cellHeight
 {
-    return 246.0f;
+    return 238.0f;
 }
 
 /**
