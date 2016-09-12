@@ -47,7 +47,9 @@ NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollecti
     self.view.userInteractionEnabled = NO;
     
     [self.viewButton setTitle:@"View" forState:UIControlStateNormal];
-    self.viewButton.hidden = YES;
+    [self.viewButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    self.viewButton.hidden = NO;
+    self.viewButton.userInteractionEnabled = NO;
 }
 
 + (NSString *)reuseIdentifier
@@ -57,12 +59,12 @@ NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollecti
 
 + (CGFloat)cellHeight
 {
-    return 248;
+    return 220;
 }
 
 - (void)setReward:(BOTReward *)reward
 {
-    self.titleLabel.text = @"Staples Rewards";
+    self.titleLabel.text = @"Staples Rewards \u00AE";
     self.nameLabel.text = reward.userName;
     self.memberTypeLabel.text = reward.memberType;
     self.ammountLabel.text = [NSString stringWithFormat:@"$%@",reward.totalAmount];
@@ -79,8 +81,8 @@ NSString *const BOTRewardCollectionViewCellReuseIdentifier = @"BOTRewardCollecti
         
         ZXBitMatrix *result = [writer encode:barCode
                                       format:kBarcodeFormatCode128
-                                       width:self.frame.size.width
-                                      height:self.frame.size.height
+                                       width:self.barcodeImage.frame.size.width
+                                      height:self.barcodeImage.frame.size.height
                                        error:&error];
         if (result) {
             CGImageRef image = [[ZXImage imageWithMatrix:result] cgimage];
