@@ -8,6 +8,7 @@
 
 #import "BOTShipmentTrackingCollectionViewCell.h"
 #import "ATLMessagingUtilities.h"
+#import "BOTCircleImageView.h"
 #import "BOTUtilities.h"
 
 NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShipmentTrackingCollectionViewCellReuseIdentifier";
@@ -19,10 +20,10 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
 @property (weak, nonatomic) IBOutlet UILabel *orderDetailLabel;
 
 // State Image Views
-@property (strong, nonatomic) IBOutlet UIImageView *placedImageView;
-@property (strong, nonatomic) IBOutlet UIImageView *shippedImageView;
-@property (strong, nonatomic) IBOutlet UIImageView *outForDeliveryImageView;
-@property (strong, nonatomic) IBOutlet UIImageView *completeImageView;
+@property (strong, nonatomic) IBOutlet BOTCircleImageView *placedImageView;
+@property (strong, nonatomic) IBOutlet BOTCircleImageView *shippedImageView;
+@property (strong, nonatomic) IBOutlet BOTCircleImageView *outForDeliveryImageView;
+@property (strong, nonatomic) IBOutlet BOTCircleImageView *completeImageView;
 
 // State Labels
 @property (strong, nonatomic) IBOutlet UILabel *placedLabel;
@@ -43,22 +44,19 @@ NSString *const BOTShipmentTrackingCollectionViewCellReuseIdentifier = @"BOTShip
     [super awakeFromNib];
     
     // State Config
-    self.placedImageView.layer.cornerRadius = 20;
     self.placedImageView.layer.borderWidth = 4;
     self.placedImageView.layer.borderColor = BOTBlueColor().CGColor;
     self.placedLabel.text = @"PLACED";
     
-    self.shippedImageView.layer.cornerRadius = 20;
     self.shippedImageView.layer.borderWidth = 4;
     self.shippedImageView.layer.borderColor = BOTBlueColor().CGColor;
+    self.shippedImageView.layer.masksToBounds = YES;
     self.shippedLabel.text = @"SHIPPED";
     
-    self.outForDeliveryImageView.layer.cornerRadius = 20;
     self.outForDeliveryImageView.layer.borderWidth = 4;
     self.outForDeliveryImageView.layer.borderColor = BOTBlueColor().CGColor;
     self.outForDeliveryLabel.text = @"OUT FOR DELIVERY";
     
-    self.completeImageView.layer.cornerRadius = 20;
     self.completeImageView.layer.borderWidth = 4;
     self.completeImageView.layer.borderColor = BOTBlueColor().CGColor;
     self.completedLabel.text = @"COMPLETE";
