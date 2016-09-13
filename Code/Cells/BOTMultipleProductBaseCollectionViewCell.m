@@ -107,11 +107,11 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     UINib *productNib = [UINib nibWithNibName:@"BOTProductCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[BOTProductCollectionViewCell reuseIdentifier]];
 
-//    UINib *orderStatusNib = [UINib nibWithNibName:@"BOTOrderStatusCollectionViewCell" bundle:StaplesUIBundle()];
-//    [self.collectionView registerNib:orderStatusNib forCellWithReuseIdentifier:[BOTOrderStatusCollectionViewCell reuseIdentifier]];
+    UINib *orderStatusNib = [UINib nibWithNibName:@"BOTOrderStatusCollectionViewCell" bundle:StaplesUIBundle()];
+    [self.collectionView registerNib:orderStatusNib forCellWithReuseIdentifier:[BOTOrderStatusCollectionViewCell reuseIdentifier]];
     
-    UINib *shippingNib = [UINib nibWithNibName:@"BOTShipmentTrackingCollectionViewCell" bundle:StaplesUIBundle()];
-    [self.collectionView registerNib:shippingNib forCellWithReuseIdentifier:[BOTShipmentTrackingCollectionViewCell reuseIdentifier]];
+//    UINib *shippingNib = [UINib nibWithNibName:@"BOTShipmentTrackingCollectionViewCell" bundle:StaplesUIBundle()];
+//    [self.collectionView registerNib:shippingNib forCellWithReuseIdentifier:[BOTShipmentTrackingCollectionViewCell reuseIdentifier]];
     
     UINib *rewardNib = [UINib nibWithNibName:@"BOTRewardCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:rewardNib forCellWithReuseIdentifier:[BOTRewardCollectionViewCell reuseIdentifier]];
@@ -165,7 +165,8 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
-        return [BOTShipmentTrackingCollectionViewCell cellHeight];
+          return [BOTOrderStatusCollectionViewCell cellHeight];
+//        return [BOTShipmentTrackingCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
         return [BOTProductCollectionViewCell cellHeightWithButton:NO];
     }  else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
@@ -296,17 +297,17 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 
             break;
         case BOTCellTypeShipping: {
-//            NSString *reuseIdentifier = [BOTOrderStatusCollectionViewCell reuseIdentifier];
-//            BOTOrderStatusCollectionViewCell *cell = (BOTOrderStatusCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-//            BOTShipment *shipment = self.items[indexPath.row];
-//            [cell setShipment:shipment];
-//            returnCell = cell;
-            
-            NSString *reuseIdentifier = [BOTShipmentTrackingCollectionViewCell reuseIdentifier];
-            BOTShipmentTrackingCollectionViewCell *cell = (BOTShipmentTrackingCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+            NSString *reuseIdentifier = [BOTOrderStatusCollectionViewCell reuseIdentifier];
+            BOTOrderStatusCollectionViewCell *cell = (BOTOrderStatusCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
             BOTShipment *shipment = self.items[indexPath.row];
             [cell setShipment:shipment];
             returnCell = cell;
+            
+//            NSString *reuseIdentifier = [BOTShipmentTrackingCollectionViewCell reuseIdentifier];
+//            BOTShipmentTrackingCollectionViewCell *cell = (BOTShipmentTrackingCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+//            BOTShipment *shipment = self.items[indexPath.row];
+//            [cell setShipment:shipment];
+//            returnCell = cell;
         }
             break;
             
