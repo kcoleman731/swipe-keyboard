@@ -18,15 +18,12 @@ end
 desc "Initialize the project for development and testing"
 task :init do
 
-  puts green("Update submodules...")
-  run("git submodule update --init --recursive")
-
   puts green("Checking for Homebrew...")
   run("which brew > /dev/null && brew update; true")
   run("which brew > /dev/null || ruby -e \"$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)\"")
 
   puts green("Bundling Homebrew packages...")
-  packages = %w{rbenv ruby-build rbenv-gem-rehash rbenv-binstubs xctool thrift}
+  packages = %w{rbenv ruby-build rbenv-binstubs xctool thrift}
   packages.each { |package| run("brew install #{package} || brew upgrade #{package}") }
 
   puts green("Checking rbenv version...")
@@ -38,11 +35,11 @@ task :init do
   puts green("Bundling Ruby Gems...")
   run("rbenv exec bundle install --binstubs .bundle/bin --quiet")
 
-  puts green("Ensuring Layer Specs repository")
-  run("[ -d ~/.cocoapods/repos/layer ] || rbenv exec bundle exec pod repo add layer git@github.com:layerhq/cocoapods-specs.git")
+  puts green("Ensuring Staples Specs repository")
+  run("[ -d ~/.cocoapods/repos/staples ] || rbenv exec bundle exec pod repo add staples git@bitbucket.org:tanvishah/staples-cocoapods.git")
 
   puts green("Installing CocoaPods...")
-  run("rbenv exec bundle exec pod install --verbose")
+  run("rbenv exec bundle exec pod install")
 
   puts green("Checking rbenv configuration...")
   system <<-SH
@@ -58,7 +55,9 @@ end
 
 desc "Prints the current version of Atlas"
 task :version do
-  puts atlas_version
+  path = File.join(File.dirname(__FILE__), 'staples-chat-ui.podspec')
+  version = File.read(path).match(/\.version\s+=\s+['"](.+)['"]$/)[1]
+  puts version
 end
 
 namespace :version do
@@ -87,7 +86,7 @@ namespace :version do
     system("git diff --cached") if agree("Review package diff? (y/n) ")
     system("bundle exec pod update") if agree("Run `pod update`? (y/n) ")
     system("git commit -m 'Updating version to #{version}' staples-chat-ui.podspec Podfile.lock") if agree("Commit package artifacts? (y/n) ")
-    system("git push origin HEAD") if agree("Push version update to origin? (y/n)")
+    system("git push origin HEAD") if agree("Push version update to origin? (y/n) ")
   end
 end
 
@@ -121,39 +120,8 @@ task :release => [:fetch_origin] do
     existing_tag = `git tag -l v#{version}`.chomp
     fail "Unable to find tag v#{version}" unless existing_tag
 
-    #Rake::Task["publish_github_release"].invoke
+    Rake::Task["publish_github_release"].invoke
   end
-end
-
-desc "Publishes a Github release including the changelog"
-task :publish_github_release do
-  if ENV['GITHUB_TOKEN']
-    require 'json'
-    run "rm -rf ~/Library/Caches/com.layer.Atlas"
-    version = ENV['VERSION'] || current_version
-    version_tag = "v#{version}"
-    release_notes = changelog_for_version(version)
-    puts "Creating Github release #{version_tag}..."
-    puts "Release Notes:\n#{release_notes}"
-    release = { tag_name: version_tag, body: release_notes }
-    uri = URI('https://api.github.com/repos/layerhq/Atlas-iOS/releases')
-    request = Net::HTTP::Post.new(uri)
-    request.basic_auth ENV['GITHUB_TOKEN'], 'x-oauth-basic'
-    request.body = JSON.generate(release)
-    request["Content-Type"] = "application/json"
-    http = Net::HTTP.new(uri.hostname, uri.port)
-    http.use_ssl = true
-    response = http.request(request)
-    puts "Got response: #{response}"
-    release = JSON.parse(response.body)
-    puts "Created release: #{release.inspect}"
-  else
-    puts "!! Cannot create Github release on releases-ios: Please configure a personal Github token and export it as the `GITHUB_TOKEN` environment variable."
-  end
-end
-
-task :extract_changelog do
-  puts changelog_for_version(current_version)
 end
 
 task :fetch_origin do
@@ -176,11 +144,6 @@ def run(command, options = {})
   end
 end
 
-def atlas_version
-  path = File.join(File.dirname(__FILE__), 'Atlas.podspec')
-  version = File.read(path).match(/\.version\s+=\s+['"](.+)['"]$/)[1]
-end
-
 def green(string)
  "\033[1;32m* #{string}\033[0m"
 end
@@ -191,29 +154,4 @@ end
 
 def grey(string)
  "\033[0;37m#{string}\033[0m"
-end
-
-def changelog_for_version(version)
-  capturing = false
-  Array.new.tap do |release_notes|
-    File.read('./CHANGELOG.md').each_line do |line|
-      if line =~ /^\#\#\s#{Regexp.escape(version)}$/
-        capturing = true
-      else
-        if line =~ /^\#\#\s[\d\.]+$/
-          capturing = false
-        else
-          if capturing
-            release_notes << line
-          end
-        end
-      end
-    end
-  end.join
-end
-
-def current_version
-  root_dir = File.expand_path(File.dirname(__FILE__))
-  path = File.join(root_dir, 'Atlas.podspec')
-  File.read(path).match(/\.version\s+=\s+['"](.+)['"]$/)[1]
 end

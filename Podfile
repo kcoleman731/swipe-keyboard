@@ -5,6 +5,7 @@ target 'Staples' do
 
   use_frameworks!
 
+  pod 'LayerKit', '0.22.0'
   pod 'Atlas', '~> 1.0.26'
   pod 'SDWebImage', '~> 3.8.1'
   pod 'EDColor', '~> 1.0.0'
@@ -17,6 +18,7 @@ target 'StaplesTests' do
 
   use_frameworks!
 
+  pod 'LayerKit', '0.22.0'
   pod 'Atlas', '~> 1.0.26'
   pod 'SDWebImage', '~> 3.8.1'
   pod 'EDColor', '~> 1.0.0'
