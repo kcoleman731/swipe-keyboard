@@ -68,7 +68,7 @@ namespace :version do
       fail "You must specify a VERSION"
     end
 
-    existing_tag = `git tag -l v#{version}`.chomp
+    existing_tag = `git tag -l #{version}`.chomp
     if existing_tag != ''
       fail "A tag already exists for version v#{version}: please specify a unique release version."
     end
@@ -105,22 +105,27 @@ task :release => [:fetch_origin] do
 
     puts "Fetching remote tags from origin..."
     run "git fetch origin --tags"
-    existing_tag = `git tag -l v#{version}`.chomp
+    existing_tag = `git tag -l #{version}`.chomp
     if existing_tag != ''
       fail "A tag already exists for version v#{version}: Maybe you need to run `rake version:set`?"
     end
 
-    puts green("Tagging staples-chat-ui v#{version}")
-    run("git tag v#{version}")
+    puts green("Tagging staples-chat-ui #{version}")
+    run("git tag #{version}")
     run("git push origin --tags")
 
     root_dir = File.expand_path(File.dirname(__FILE__))
     path = File.join(root_dir, 'staples-chat-ui.podspec')
     version = File.read(path).match(/\.version\s+=\s+['"](.+)['"]$/)[1]
-    existing_tag = `git tag -l v#{version}`.chomp
-    fail "Unable to find tag v#{version}" unless existing_tag
+    existing_tag = `git tag -l #{version}`.chomp
+    fail "Unable to find tag #{version}" unless existing_tag
 
-    Rake::Task["publish_github_release"].invoke
+    puts "Validating staples-chat-ui.podspec"
+    run("pod spec lint --allow-warnings staples-chat-ui.podspec")
+
+    puts "Pushing staples-chat-ui.podspec to Staples specs repo"
+    run("pod repo push --allow-warnings staples staples-chat-ui.podspec")
+
   end
 end
 
