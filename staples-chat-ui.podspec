@@ -4,10 +4,11 @@ Pod::Spec.new do |s|
   s.summary                     = "Staples cards for the Staples App."
   s.homepage                    = 'https://www.staples.com/'
   s.license                     = 'Staples'
-  s.author                      = { 'Kevin Coleman'   => 'kcoleman731@gmail.com',
+  s.author                      = {
+                                    'Kevin Coleman'   => 'kcoleman731@gmail.com',
                                     'Taylor Halliday' => 'tayhalla@gmail.com',
                                   }
-  s.source                      = { git: "https://github.com/kcoleman731/swipe-keyboard.git", tag: "#{s.version}" }
+  s.source                      = { git: "git@bitbucket.org:kevcoleman/staples-chat-ui.git", tag: "#{s.version}" }
   s.platform                    = :ios, '8.0'
 
   s.requires_arc                = true

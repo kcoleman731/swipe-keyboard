@@ -103,16 +103,16 @@ task :release => [:fetch_origin] do
       fail "Unable to locate CHANGELOG section for version #{version}"
     end
 
-    puts "Fetching remote tags from origin..."
-    run "git fetch origin --tags"
-    existing_tag = `git tag -l #{version}`.chomp
-    if existing_tag != ''
-      fail "A tag already exists for version v#{version}: Maybe you need to run `rake version:set`?"
-    end
-
-    puts green("Tagging staples-chat-ui #{version}")
-    run("git tag #{version}")
-    run("git push origin --tags")
+    # puts "Fetching remote tags from origin..."
+    # run "git fetch origin --tags"
+    # existing_tag = `git tag -l #{version}`.chomp
+    # if existing_tag != ''
+    #   fail "A tag already exists for version v#{version}: Maybe you need to run `rake version:set`?"
+    # end
+    #
+    # puts green("Tagging staples-chat-ui #{version}")
+    # run("git tag #{version}")
+    # run("git push origin --tags")
 
     root_dir = File.expand_path(File.dirname(__FILE__))
     path = File.join(root_dir, 'staples-chat-ui.podspec')
