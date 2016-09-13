@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                        = "staples-chat-ui"
-  s.version                     = '0.1.0'
+  s.version                     = '0.2.0'
   s.summary                     = "Staples cards for the Staples App."
   s.homepage                    = 'https://www.staples.com/'
   s.license                     = 'Staples'
