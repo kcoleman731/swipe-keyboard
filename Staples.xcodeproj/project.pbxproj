@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3414E0202F8AD103A56840B2 /* Pods_Staples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCAFA925975ACD65020CCDD /* Pods_Staples.framework */; };
 		620E15FA3F1DD1FB26C366C1 /* Pods_StaplesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */; };
+		D621CAB01D887A30009CDFE4 /* BOTCircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D621CAAF1D887A30009CDFE4 /* BOTCircleImageView.m */; };
 		D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71BC1D6B7482005F2546 /* STLayerService.m */; };
 		D6675F0E1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6675F0C1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.m */; };
 		D6675F0F1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6675F0D1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.xib */; };
@@ -79,6 +80,8 @@
 		9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StaplesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B72ABA2CB0359A53DA8545 /* Pods-Staples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Staples/Pods-Staples.debug.xcconfig"; sourceTree = "<group>"; };
 		D5B93285FFEE36FC4B96057A /* Pods-StaplesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaplesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StaplesTests/Pods-StaplesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D621CAAE1D887A30009CDFE4 /* BOTCircleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOTCircleImageView.h; path = Code/Views/BOTCircleImageView.h; sourceTree = SOURCE_ROOT; };
+		D621CAAF1D887A30009CDFE4 /* BOTCircleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOTCircleImageView.m; path = Code/Views/BOTCircleImageView.m; sourceTree = SOURCE_ROOT; };
 		D65F71BB1D6B7482005F2546 /* STLayerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLayerService.h; sourceTree = "<group>"; };
 		D65F71BC1D6B7482005F2546 /* STLayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLayerService.m; sourceTree = "<group>"; };
 		D65F71CB1D6BA164005F2546 /* StaplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StaplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -342,6 +345,15 @@
 			name = BOTOrderCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		D621CAAD1D887A00009CDFE4 /* BOTCircleImageView */ = {
+			isa = PBXGroup;
+			children = (
+				D621CAAE1D887A30009CDFE4 /* BOTCircleImageView.h */,
+				D621CAAF1D887A30009CDFE4 /* BOTCircleImageView.m */,
+			);
+			name = BOTCircleImageView;
+			sourceTree = "<group>";
+		};
 		D65F71C01D6B7A27005F2546 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,6 +476,7 @@
 		D68FEF151D6CBA32006AEFC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D621CAAD1D887A00009CDFE4 /* BOTCircleImageView */,
 				34A8A4A91D6CB81A00245773 /* BOTMultiSelectionBar */,
 				D65F71C21D6B7A6C005F2546 /* BOTMessageInputToolbar */,
 				D65F71C11D6B7A3B005F2546 /* BOTMultipleActionInputView */,
@@ -827,6 +840,7 @@
 				D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */,
 				D69E94FB1D7512880064BF8B /* BOTProduct.m in Sources */,
 				D69E950A1D7512B30064BF8B /* BOTCellContainerView.m in Sources */,
+				D621CAB01D887A30009CDFE4 /* BOTCircleImageView.m in Sources */,
 				D6829C641D791B9000FB485F /* BOTOrder.m in Sources */,
 				D69E95151D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.m in Sources */,
 				D69E94F91D7512880064BF8B /* BOTShipment.m in Sources */,
