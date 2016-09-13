@@ -1,12 +1,12 @@
 PODS:
-  - Atlas (1.0.26):
+  - Atlas (1.0.27):
     - LayerKit (>= 0.22.0)
   - EDColor (1.0.0)
   - LayerKit (0.23.0)
   - Reveal-iOS-SDK (1.6.2)
-  - SDWebImage (3.8.1):
-    - SDWebImage/Core (= 3.8.1)
-  - SDWebImage/Core (3.8.1)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - ZXingObjC (3.1.0):
     - ZXingObjC/All (= 3.1.0)
   - ZXingObjC/All (3.1.0)
@@ -19,11 +19,11 @@ DEPENDENCIES:
   - ZXingObjC (~> 3.0)
 
 SPEC CHECKSUMS:
-  Atlas: 201d37a7b90a2ba717e666bf417ca2c5d104dd31
+  Atlas: d31854826e5dfa4da8ab5c95b05f16d04c02c1cb
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
   LayerKit: 3c170d719037aff8d321619564c6fb43823ac224
   Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
-  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   ZXingObjC: bf15b3814f7a105b6d99f47da2333c93a063650a
 
 PODFILE CHECKSUM: ee17f189495647d0f822a05455431b7fb57c3ede
