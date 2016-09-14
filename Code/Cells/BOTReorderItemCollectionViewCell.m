@@ -8,6 +8,7 @@
 
 #import "BOTReorderItemCollectionViewCell.h"
 #import "UIImageView+WebCache.h"
+#import "BOTUtilities.h"
 
 NSString *const BOTReorderItemCollectionViewCellReuseIdentifier = @"BOTReorderItemCollectionViewCellReuseIdentifier";
 
@@ -45,7 +46,7 @@ NSString *const BOTReorderItemCollectionViewCellReuseIdentifier = @"BOTReorderIt
         NSURL *picURL = [NSURL URLWithString:imageURL];
         __weak typeof(self) wSelf = self;
         [self.itemImageView sd_setImageWithURL:picURL
-                              placeholderImage:nil
+                              placeholderImage:[UIImage imageNamed:@"GhostImage" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil]
                                      completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                          if (image && cacheType == SDImageCacheTypeNone) {
                                              [UIView animateWithDuration:0.3
@@ -55,7 +56,7 @@ NSString *const BOTReorderItemCollectionViewCellReuseIdentifier = @"BOTReorderIt
                                          }
                                      }];
     } else {
-        [self.itemImageView setImage:nil];
+        [self.itemImageView setImage:[UIImage imageNamed:@"GhostImage" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil]];
     }
 }
 

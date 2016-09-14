@@ -183,7 +183,7 @@ NSString *const grayColorCode  = @"9b9b9b";
         NSURL *picURL = [NSURL URLWithString:productImageURL];
         __weak typeof(self) wSelf = self;
         [self.productImageView sd_setImageWithURL:picURL
-                              placeholderImage:nil
+                              placeholderImage:[UIImage imageNamed:@"GhostImage" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil]
                                      completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                          if (image && cacheType == SDImageCacheTypeNone) {
                                              [UIView animateWithDuration:0.3
@@ -193,8 +193,9 @@ NSString *const grayColorCode  = @"9b9b9b";
                                          }
                                      }];
     } else {
-        [self.productImageView setImage:nil];
+        [self.productImageView setImage:[UIImage imageNamed:@"GhostImage" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil]];
     }
+
 }
 
 #pragma mark - Target Action Responders

@@ -93,7 +93,7 @@ IB_DESIGNABLE
         NSURL *picURL = [NSURL URLWithString:imageURL];
         __weak typeof(self) wSelf = self;
         [self.productImageView sd_setImageWithURL:picURL
-                                 placeholderImage:nil
+                                 placeholderImage:[UIImage imageNamed:@"GhostImage" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil]
                                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                             if (image && cacheType == SDImageCacheTypeNone) {
                                                 [UIView animateWithDuration:0.3
@@ -103,7 +103,7 @@ IB_DESIGNABLE
                                             }
                                         }];
     } else {
-        [self.productImageView setImage:nil];
+        [self.productImageView setImage:[UIImage imageNamed:@"GhostImage" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil]];
     }
 }
 
