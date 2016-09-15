@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
                                     'Kevin Coleman'   => 'kcoleman731@gmail.com',
                                     'Taylor Halliday' => 'tayhalla@gmail.com',
                                   }
-  s.source                      = { git: "https://github.com/kcoleman731/swipe-keyboard.git", tag: "#{s.version}" }
+  s.source                      = { git: "https://tanvishah@bitbucket.org/kevcoleman/staples-chat-ui.git", tag: "#{s.version}" }
   s.platform                    = :ios, '8.0'
 
   s.requires_arc                = true
