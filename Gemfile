@@ -1,5 +1,5 @@
 source "http://rubygems.org"
-ruby '2.3.1'
+ruby '2.3.0'
 
 gem "rake", ">= 10.3.2"
 gem 'cocoapods', '~> 1.0.1'
