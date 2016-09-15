@@ -13,6 +13,9 @@
 
 extern NSString *const ATLMessageInputToolbarCameraButton;
 
+// KVO Text Input View Frame Context
+static void *TextInputViewFrameKVOCtx = &TextInputViewFrameKVOCtx;
+
 // Kevin Coleman: Redeclaring these constants here, as they are private to the Atlas superclass.
 // Note, these values are subject to change in the super.
 static CGFloat const ATLLeftButtonHorizontalMargin = 6.0f;
@@ -76,6 +79,8 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
         
         // Setup trigger for post initial pass
         self.firstAppearance = YES;
+        
+        [self.textInputView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:TextInputViewFrameKVOCtx];
     }
     return self;
 }
@@ -236,7 +241,7 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     
     // Disable if no text
     self.rightAccessoryButton.enabled = self.textInputView.text.length;
-
+    
     // Remove the layout constraint for height attempting to lock this at 44.0
     for (NSLayoutConstraint *constraint in self.constraints) {
         if (constraint.firstAttribute == NSLayoutAttributeHeight && constraint.constant == 44.0) {
@@ -264,7 +269,7 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     listButtonToRect.size.width  = ATLButtonHeight;
     listButtonToRect.origin.x    = ATLLeftButtonHorizontalMargin;
     listButtonToRect.origin.y    = self.bounds.size.height - vertPadding - listButtonToRect.size.height;
-
+    
     // Left Button
     leftButtonToRect.size.height = ATLButtonHeight;
     leftButtonToRect.size.width  = ATLButtonHeight;
@@ -319,7 +324,7 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     // Getting the text input view frame here so we can bypass the call to super
     CGRect textViewRect = self.textInputView.frame;
     CGRect prevTextViewRect = textViewRect;
-
+    
     // Calc TextView Vert Area
     [self.textInputView sizeToFit];
     [self.textInputView layoutIfNeeded];
@@ -353,7 +358,7 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
         [self.textInputView reloadInputViews];
         [self.listAccessoryButton setSelected:NO];
     }
-
+    
     // Return YES if the touch is within bounds or multiaction view
     if (CGRectContainsPoint(self.bounds, point) || CGRectContainsPoint(self.multiActionInputView.frame, point)) {
         return YES;
@@ -498,6 +503,14 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.textInputView removeObserver:self forKeyPath:@"frame"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
+{
+    if (context == TextInputViewFrameKVOCtx) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidBeginEditingNotification object:self.textInputView];
+    }
 }
 
 @end
