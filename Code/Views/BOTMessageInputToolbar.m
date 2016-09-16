@@ -54,7 +54,6 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     if (self) {
         // Register for text change note
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resizeTextViewAndFrame) name:UITextViewTextDidChangeNotification object:self.textInputView];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:self.textInputView];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidEndEditing:) name:UITextViewTextDidEndEditingNotification object:self.textInputView];
         
         // Adding target for right accessory btn
@@ -110,6 +109,7 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
 - (void)displayMultiSelectionInputBar:(BOOL)displayBar;
 {
     self.isShowingMultiSelectionBar = displayBar;
+    [self.listAccessoryButton setSelected:displayBar];
 }
 
 - (void)setIsShowingMultiSelectionBar:(BOOL)isShowingMultiSelectionBar
@@ -302,15 +302,6 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
         self.firstAppearance = NO;
         [self setupTextInputViewConstraints];
         [self resizeTextViewAndFrame];
-    }
-}
-
-- (void)textViewDidBeginEditing:(NSNotification *)sender
-{
-    if (!self.textInputView.inputView) {
-        [self.listAccessoryButton setSelected:NO];
-    } else {
-        [self.listAccessoryButton setSelected:YES];
     }
 }
 
