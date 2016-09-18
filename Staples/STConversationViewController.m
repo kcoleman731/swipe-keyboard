@@ -62,10 +62,17 @@ NSString *const STOptionCell = @"Option Cell";
     [self configureCollectionViewCells];
     [self registerForNotifications];
 }
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.queryController.paginationWindow = -10;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.messageInputToolbar.textInputView becomeFirstResponder];
 }
 
 - (void)registerForNotifications
