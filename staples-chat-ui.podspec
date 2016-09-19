@@ -19,8 +19,8 @@ Pod::Spec.new do |s|
   s.ios.frameworks              = %w{ UIKit }
   s.ios.deployment_target       = '8.0'
 
-  s.dependency                  'LayerKit', '>= 0.22.0'
-  s.dependency                  'Atlas', '>= 0.26.0'
+  s.dependency                  'LayerKit', '0.22.0'
+  s.dependency                  'Atlas', '0.26.0'
   s.dependency                  'SDWebImage', '~> 3.8.1'
   s.dependency                  'EDColor', '~> 1.0.0'
   s.dependency                  'ZXingObjC', '~> 3.0'
