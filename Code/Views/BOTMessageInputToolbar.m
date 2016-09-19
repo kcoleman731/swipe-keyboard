@@ -40,9 +40,9 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
 @interface BOTMessageInputToolbar () <BOTMultiSelectionBarDelegate, ATLMessageInputToolbarDelegate>
 
 @property (nonatomic) UIImage *listAccessoryButtonImage;
-@property (nonnull, strong) NSLayoutConstraint *inputTextViewHeightConstraint;
-@property (nonnull, strong) NSLayoutConstraint *multiSelectionHeightConstraint;
-@property (nonnull, strong) BOTMultiSelectionBar *multiActionInputView;;
+@property (nonatomic, strong) NSLayoutConstraint *inputTextViewHeightConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *multiSelectionHeightConstraint;
+@property (nonatomic, strong) BOTMultiSelectionBar *multiActionInputView;;
 
 @end
 
@@ -55,6 +55,7 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
         // Register for text change note
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resizeTextViewAndFrame) name:UITextViewTextDidChangeNotification object:self.textInputView];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidEndEditing:) name:UITextViewTextDidEndEditingNotification object:self.textInputView];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
         
         // Adding target for right accessory btn
         [self.rightAccessoryButton addTarget:self action:@selector(rightAccessoryButtonTappedEvent) forControlEvents:UIControlEventAllTouchEvents];
@@ -336,6 +337,15 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
     // Notify of height change
     if (prevTextViewRect.size.height != toFrame.size.height) {
         [[NSNotificationCenter defaultCenter] postNotificationName:ATLMessageInputToolbarDidChangeHeightNotification object:self];
+    }
+}
+
+- (void)keyboardDidShow:(NSNotification *)note
+{
+    if (self.textInputView.isFirstResponder && self.textInputView.inputView == self.multiInputView) {
+        [self.listAccessoryButton setSelected:YES];
+    } else {
+        [self.listAccessoryButton setSelected:NO];
     }
 }
 
