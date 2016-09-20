@@ -515,6 +515,7 @@
 				5D7BC486E268FE80EA4B3D58 /* Pods */,
 				D65F71CC1D6BA164005F2546 /* StaplesTests */,
 				CA827BFF73C5DF49B48F4351 /* Frameworks */,
+				DF2CA411584BAAD46463FE15 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -591,6 +592,13 @@
 			);
 			name = Cells;
 			path = Staples;
+			sourceTree = "<group>";
+		};
+		DF2CA411584BAAD46463FE15 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -670,7 +678,7 @@
 				Base,
 			);
 			mainGroup = D69761631D660AEE00F3369F;
-			productRefGroup = D697616D1D660AEE00F3369F /* Products */;
+			productRefGroup = DF2CA411584BAAD46463FE15 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

@@ -120,9 +120,6 @@ task :release => [:fetch_origin] do
     existing_tag = `git tag -l #{version}`.chomp
     fail "Unable to find tag #{version}" unless existing_tag
 
-    puts "Validating staples-chat-ui.podspec"
-    run("pod spec lint --allow-warnings staples-chat-ui.podspec")
-
     puts "Pushing staples-chat-ui.podspec to Staples specs repo"
     run("pod repo push --allow-warnings staples staples-chat-ui.podspec")
 

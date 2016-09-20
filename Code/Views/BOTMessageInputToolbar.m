@@ -81,6 +81,11 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
         self.firstAppearance = YES;
         
         [self.textInputView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:TextInputViewFrameKVOCtx];
+        
+        // KC BugFix for iOS 10.
+        if ([[[UIDevice currentDevice] systemVersion] intValue] >= 10.0) {
+            self.backgroundColor = [UIColor whiteColor];
+        }
     }
     return self;
 }
