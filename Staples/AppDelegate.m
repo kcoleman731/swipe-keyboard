@@ -34,14 +34,16 @@ NSString *const STLayerAppID = @"layer:///apps/staging/4e426158-68b0-11e6-9b8d-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self connectLayer];
-    
-    STConversationViewController *controller = [STConversationViewController conversationViewControllerWithLayerClient:self.layerClient];
-    UINavigationController *root = [[UINavigationController alloc] initWithRootViewController:controller];
-    
-    self.window = [UIWindow new];
-    self.window.frame = [[UIScreen mainScreen] bounds];
-    self.window.rootViewController = root;
-    [self.window makeKeyAndVisible];
+    g
+    if (self.layerClient.authenticatedUser) {
+        STConversationViewController *controller = [STConversationViewController conversationViewControllerWithLayerClient:self.layerClient];
+        UINavigationController *root = [[UINavigationController alloc] initWithRootViewController:controller];
+        
+        self.window = [UIWindow new];
+        self.window.frame = [[UIScreen mainScreen] bounds];
+        self.window.rootViewController = root;
+        [self.window makeKeyAndVisible];
+    }
     
     UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
     [application registerUserNotificationSettings:notificationSettings];
