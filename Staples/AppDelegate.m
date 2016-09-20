@@ -26,6 +26,7 @@ NSString *const STLayerAppID = @"layer:///apps/staging/4e426158-68b0-11e6-9b8d-c
 {
     NSString *userID = @"1234-1234-1234-1234";
     self.layerService = [STLayerService serviceWithAppID:[NSURL URLWithString:STLayerAppID] apiToken:@"" userID:userID];
+    
     [self connectLayer];
     
     return YES;
@@ -34,16 +35,6 @@ NSString *const STLayerAppID = @"layer:///apps/staging/4e426158-68b0-11e6-9b8d-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self connectLayer];
-    g
-    if (self.layerClient.authenticatedUser) {
-        STConversationViewController *controller = [STConversationViewController conversationViewControllerWithLayerClient:self.layerClient];
-        UINavigationController *root = [[UINavigationController alloc] initWithRootViewController:controller];
-        
-        self.window = [UIWindow new];
-        self.window.frame = [[UIScreen mainScreen] bounds];
-        self.window.rootViewController = root;
-        [self.window makeKeyAndVisible];
-    }
     
     UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
     [application registerUserNotificationSettings:notificationSettings];
@@ -63,11 +54,6 @@ NSString *const STLayerAppID = @"layer:///apps/staging/4e426158-68b0-11e6-9b8d-c
     }
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-{
-    
-}
-
 - (LYRClient *)layerClient
 {
     if (!_layerClient) {
@@ -79,14 +65,18 @@ NSString *const STLayerAppID = @"layer:///apps/staging/4e426158-68b0-11e6-9b8d-c
 
 - (void)connectLayer
 {
-    [self.layerClient connectWithCompletion:^(BOOL success, NSError *error) {
-        if (success) {
-            NSLog(@"Layer Connected!");
-        } else {
-            NSLog(@"Layer connecting failed with error.");
-        }
+    if (self.layerClient.isConnected) {
         [self authenticateLayerIfNeeded];
-    }];
+        return;
+    } else if (!self.layerClient.isConnecting) {
+        [self.layerClient connectWithCompletion:^(BOOL success, NSError *error) {
+            if (success) {
+                NSLog(@"Layer Connected!");
+            } else {
+                NSLog(@"Layer connecting failed with error.");
+            }
+        }];
+    }
 }
 
 - (void)authenticateLayerIfNeeded
@@ -111,6 +101,8 @@ NSString *const STLayerAppID = @"layer:///apps/staging/4e426158-68b0-11e6-9b8d-c
                 NSLog(@"Failed to request nonce with error: %@", error);
             }
         }];
+    } else {
+        [self presentConversationViewController];
     }
 }
 
@@ -132,6 +124,16 @@ NSString *const STLayerAppID = @"layer:///apps/staging/4e426158-68b0-11e6-9b8d-c
 }
 
 - (void)layerClient:(LYRClient *)client didAuthenticateAsUserID:(NSString *)userID
+{
+    [self presentConversationViewController];
+}
+
+- (void)layerClientDidConnect:(nonnull LYRClient *)client
+{
+    [self authenticateLayerIfNeeded];
+}
+
+- (void)presentConversationViewController
 {
     if (![self.window.rootViewController isKindOfClass:[UINavigationController class]]) {
         STConversationViewController *controller = [STConversationViewController conversationViewControllerWithLayerClient:self.layerClient];
