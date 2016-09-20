@@ -1,5 +1,12 @@
 # Staples Chat UI
 
+## 0.3.4
+
+### Bug Fixes
+
+* Fixed issue that would cause `BOTMessageInputToolbar` to have transparent background in iOS10.
+  [Kevin Coleman](https://github.com/kcoleman731)
+
 ## 0.3.3
 
 ### Bug Fixes
