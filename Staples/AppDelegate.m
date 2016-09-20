@@ -20,28 +20,29 @@
 
 @implementation AppDelegate
 
+NSString *const STLayerAppID = @"layer:///apps/staging/4e426158-68b0-11e6-9b8d-cc1001002ef3";
+
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     NSString *userID = @"1234-1234-1234-1234";
-    NSURL *appID = [NSURL URLWithString:@"layer:///apps/staging/4e426158-68b0-11e6-9b8d-cc1001002ef3"];
-    self.layerService = [STLayerService serviceWithAppID:appID apiToken:@"" userID:userID];
-    self.layerClient = [LYRClient clientWithAppID:appID delegate:self options:nil];
+    self.layerService = [STLayerService serviceWithAppID:[NSURL URLWithString:STLayerAppID] apiToken:@"" userID:userID];
     [self connectLayer];
+    
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if (self.layerClient.authenticatedUser) {
-        STConversationViewController *controller = [STConversationViewController conversationViewControllerWithLayerClient:self.layerClient];
-        UINavigationController *root = [[UINavigationController alloc] initWithRootViewController:controller];
-        
-        self.window = [UIWindow new];
-        self.window.frame = [[UIScreen mainScreen] bounds];
-        self.window.rootViewController = root;
-        [self.window makeKeyAndVisible];
-    }
-
+    [self connectLayer];
+    
+    STConversationViewController *controller = [STConversationViewController conversationViewControllerWithLayerClient:self.layerClient];
+    UINavigationController *root = [[UINavigationController alloc] initWithRootViewController:controller];
+    
+    self.window = [UIWindow new];
+    self.window.frame = [[UIScreen mainScreen] bounds];
+    self.window.rootViewController = root;
+    [self.window makeKeyAndVisible];
+    
     UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
     [application registerUserNotificationSettings:notificationSettings];
     [application registerForRemoteNotifications];
@@ -63,6 +64,15 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     
+}
+
+- (LYRClient *)layerClient
+{
+    if (!_layerClient) {
+        NSURL *appID = [NSURL URLWithString:@"layer:///apps/staging/4e426158-68b0-11e6-9b8d-cc1001002ef3"];
+        _layerClient = [LYRClient clientWithAppID:appID delegate:self options:nil];
+    }
+    return _layerClient;
 }
 
 - (void)connectLayer
