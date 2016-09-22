@@ -1,5 +1,12 @@
 # Staples Chat UI
 
+## 0.3.6
+
+### Enhancements
+
+* Changing product cell height.
+  [Kevin Coleman](https://github.com/kcoleman731)
+
 ## 0.3.5
 
 ### Enhancements
