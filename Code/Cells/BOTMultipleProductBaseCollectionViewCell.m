@@ -110,9 +110,6 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     UINib *orderStatusNib = [UINib nibWithNibName:@"BOTOrderStatusCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:orderStatusNib forCellWithReuseIdentifier:[BOTOrderStatusCollectionViewCell reuseIdentifier]];
     
-//    UINib *shippingNib = [UINib nibWithNibName:@"BOTShipmentTrackingCollectionViewCell" bundle:StaplesUIBundle()];
-//    [self.collectionView registerNib:shippingNib forCellWithReuseIdentifier:[BOTShipmentTrackingCollectionViewCell reuseIdentifier]];
-    
     UINib *rewardNib = [UINib nibWithNibName:@"BOTRewardCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:rewardNib forCellWithReuseIdentifier:[BOTRewardCollectionViewCell reuseIdentifier]];
     
@@ -166,7 +163,6 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
           return [BOTOrderStatusCollectionViewCell cellHeight];
-//        return [BOTShipmentTrackingCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
         return [BOTProductCollectionViewCell cellHeightWithButton:NO];
     }  else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
@@ -302,12 +298,6 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             BOTShipment *shipment = self.items[indexPath.row];
             [cell setShipment:shipment];
             returnCell = cell;
-            
-//            NSString *reuseIdentifier = [BOTShipmentTrackingCollectionViewCell reuseIdentifier];
-//            BOTShipmentTrackingCollectionViewCell *cell = (BOTShipmentTrackingCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-//            BOTShipment *shipment = self.items[indexPath.row];
-//            [cell setShipment:shipment];
-//            returnCell = cell;
         }
             break;
             

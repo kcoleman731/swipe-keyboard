@@ -142,7 +142,7 @@ NSString *const grayColorCode  = @"9b9b9b";
         
         self.productTitleLabel.text = shipment.heroProductName;
         if ([shipment.boxCount integerValue] > 1) {
-            NSString *moreItemsText  = [NSString stringWithFormat:@"+ %i More Items", ([shipment.boxCount integerValue] - 1)];
+            NSString *moreItemsText  = [NSString stringWithFormat:@"+ %li More Items", ([shipment.boxCount integerValue] - 1)];
             self.moreItemsLabel.text = moreItemsText;
         } else {
             self.moreItemsLabel.text = @"No Additional Items";
