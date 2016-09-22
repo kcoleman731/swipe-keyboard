@@ -37,8 +37,6 @@ NSUInteger const STCornerRadius = 6;
 {
     self = [super init];
     if (self) {
-        NSLog(@"actions :%@",actions);
-        NSLog(@"titles :%@",titles);
         self.titles = titles;
         self.actions = actions;
         
@@ -84,11 +82,11 @@ NSUInteger const STCornerRadius = 6;
 
 - (void)buttonTapped:(UIButton *)sender
 {
-    NSString *actionTitle = [self.actions objectAtIndex:sender.tag];
-    
-    if(actionTitle.length == 0) {
-        actionTitle = @"";
+    NSString *actionTitle = @"";
+    if (self.actions.count > sender.tag) {
+       actionTitle = [self.actions objectAtIndex:sender.tag];
     }
+    
     if ([self.delegate respondsToSelector:@selector(actionInputView:didSelectTitle:actions:)]) {
         [self.delegate actionInputView:self didSelectTitle:sender.titleLabel.text actions:actionTitle] ;
     }
