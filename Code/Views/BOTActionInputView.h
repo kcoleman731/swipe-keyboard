@@ -43,8 +43,6 @@
  
  @return An initialized `STActionInputView`.
  */
-- (id)initWithSelectionTitles:(NSArray <NSString *> *)titles;
-
 - (id)initWithSelectionTitles:(NSArray *)titles actions:(NSArray *)actions;
 
 @end

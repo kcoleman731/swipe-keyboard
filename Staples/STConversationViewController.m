@@ -109,7 +109,7 @@ NSString *const STOptionCell = @"Option Cell";
     [self addConstraintsToSelectionBar];
 }
 
-- (void)multipleActionInputView:(BOTMultipleActionInputView *)multipleActionInputView didSelectTitle:(NSString *)title
+- (void)multipleActionInputView:(BOTMultipleActionInputView *)multipleActionInputView didSelectTitle:(NSString *)title actions:(NSString *)action
 {
     BOTMessageInputToolbar *toolbar = (BOTMessageInputToolbar *)self.messageInputToolbar;
     [toolbar.textInputView resignFirstResponder];
@@ -214,7 +214,7 @@ NSString *const STOptionCell = @"Option Cell";
     CGFloat screenWidth             = [[UIScreen mainScreen] bounds].size.width;
     
     // Create Custom Keyboard w/ Selection list.
-    self.multiInputView = [[BOTMultipleActionInputView alloc] initWithSelectionTitles:[self selectionItems]];
+    self.multiInputView = [[BOTMultipleActionInputView alloc] initWithSelectionTitles:[self selectionItems] actions:@[]];
     self.multiInputView.frame       = (CGRect){0.0, 0.0, screenWidth, 216.0f};
     self.multiInputView.delegate    = self;
     

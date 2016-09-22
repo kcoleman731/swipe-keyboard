@@ -21,15 +21,8 @@
  @param actionInputScrollView The `STMultipleActionInputScrollView` instance.
  @param item The selection title that was selected.
  */
-- (void)actionInputScrollView:(BOTMultipleActionInputScrollView *)actionInputScrollView didSelectTitle:(NSString *)title;
-
-/**
- Notifies the receiver that an title has been selected.
- 
- @param actionInputScrollView The `STMultipleActionInputScrollView` instance.
- @param item The selection title that was selected.
- */
 - (void)actionInputScrollView:(BOTMultipleActionInputScrollView *)actionInputScrollView didSelectTitle:(NSString *)title action:(NSString *)action;
+
 @end
 
 /**
@@ -57,7 +50,6 @@
  
  @discussion Setting selection titles will remove any existing titles from the view.
  */
-- (void)setSelectionTitles:(NSArray <NSString *> *)titles;
 - (void)setSelectionTitles:(NSArray <NSString *> *)titles actions:(NSArray <NSString *> *)actions;
 
 /**
