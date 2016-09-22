@@ -31,7 +31,7 @@ static const CGFloat PAGING_CONTROL_DEFAULT_HEIGHT = 30.0f;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self commonInitWithTitles:nil];
+        [self commonInitWithTitles:nil actions:nil];
     }
     return self;
 }
@@ -40,25 +40,25 @@ static const CGFloat PAGING_CONTROL_DEFAULT_HEIGHT = 30.0f;
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self commonInitWithTitles:nil];
+        [self commonInitWithTitles:nil actions:nil];
     }
     return self;
 }
 
-- (instancetype)initWithSelectionTitles:(NSArray *)titles
+- (instancetype)initWithSelectionTitles:(NSArray *)titles actions:(NSArray *)actions
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        [self commonInitWithTitles:titles];
+        [self commonInitWithTitles:titles actions:nil];
     }
     return self;
 }
 
-- (void)commonInitWithTitles:(NSArray *)titles
+- (void)commonInitWithTitles:(NSArray *)titles actions:(NSArray *)actions
 {
     self.backgroundColor = [UIColor whiteColor];
     
-    self.inputScrollView = [[BOTMultipleActionInputScrollView alloc] initWithSelectionTitles:titles];
+    self.inputScrollView = [[BOTMultipleActionInputScrollView alloc] initWithSelectionTitles:titles actions:actions];
     self.inputScrollView.translatesAutoresizingMaskIntoConstraints = NO;
     self.inputScrollView.delegate = self;
     self.inputScrollView.actionInputScrollViewDelegate = self;
@@ -78,9 +78,9 @@ static const CGFloat PAGING_CONTROL_DEFAULT_HEIGHT = 30.0f;
 
 #pragma mark Selection Item Configuration
 
-- (void)setSelectionTitles:(NSArray <NSString *> *)titles
+- (void)setSelectionTitles:(NSArray <NSString *> *)titles actions:(NSArray<NSString *> *)actions
 {
-    [self.inputScrollView setSelectionTitles:titles];
+    [self.inputScrollView setSelectionTitles:titles actions:actions];
     self.pageControl.numberOfPages = self.inputScrollView.numberOfPages;
     [self displayPagingControl:self.inputScrollView.numberOfPages > 1];
 }
@@ -94,11 +94,12 @@ static const CGFloat PAGING_CONTROL_DEFAULT_HEIGHT = 30.0f;
 }
 
 #pragma mark STMultipleActionScrollViewDelegate
-- (void)actionInputScrollView:(BOTMultipleActionInputScrollView *)actionInputView didSelectTitle:(NSString *)title
+- (void)actionInputScrollView:(BOTMultipleActionInputScrollView *)actionInputView didSelectTitle:(NSString *)title action:(NSString *)action
 {
-    [self.delegate multipleActionInputView:self didSelectTitle:title];
+    [self.delegate multipleActionInputView:self didSelectTitle:title actions:action];
     [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
+
 
 #pragma mark Auto Layout
 

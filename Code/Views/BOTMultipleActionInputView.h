@@ -21,7 +21,7 @@
  @param multipleActionInputView The `STMultipleActionInputView` instance.
  @param item The selection item that was selected.
  */
-- (void)multipleActionInputView:(BOTMultipleActionInputView *)multipleActionInputView didSelectTitle:(NSString *)title;
+- (void)multipleActionInputView:(BOTMultipleActionInputView *)multipleActionInputView didSelectTitle:(NSString *)title actions:(NSString*)action;
 
 @end
 
@@ -40,7 +40,8 @@
  
  @param items An array of `NSStrings` representing the titles to be displayed for each selection.
  */
-- (instancetype)initWithSelectionTitles:(NSArray *)titles;
+- (instancetype)initWithSelectionTitles:(NSArray *)titles actions:(NSArray*)actions;
+
 
 /**
  Sets the selection titles for the view.
@@ -49,6 +50,6 @@
  
  @discussion Setting selection titles will remove any existing titles from the view.
  */
-- (void)setSelectionTitles:(NSArray <NSString *> *)titles;
+- (void)setSelectionTitles:(NSArray <NSString *> *)titles actions:(NSArray<NSString *> *)actions;
 
 @end
