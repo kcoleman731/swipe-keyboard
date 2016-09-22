@@ -25,7 +25,7 @@ static const int MAX_OPTIONS_PER_PAGE = 4.0f;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self commonInitWithOptionTitles:nil];
+        [self commonInitWithOptionTitles:nil actions:nil];
     }
     return self;
 }
@@ -34,25 +34,25 @@ static const int MAX_OPTIONS_PER_PAGE = 4.0f;
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self commonInitWithOptionTitles:nil];
+        [self commonInitWithOptionTitles:nil actions:nil];
     }
     return self;
 }
 
-- (instancetype)initWithSelectionTitles:(NSArray *)titles
+- (instancetype)initWithSelectionTitles:(NSArray *)titles actions:(NSArray *)actions
 {
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        [self commonInitWithOptionTitles:titles];
+        [self commonInitWithOptionTitles:titles actions:actions];
     }
     return self;
 }
 
-- (void)commonInitWithOptionTitles:(NSArray *)titles
+- (void)commonInitWithOptionTitles:(NSArray *)titles actions:(NSArray *)actions
 {
     // Init iVars
     self.inputViews = @[];
-    [self setSelectionTitles:titles];
+    [self setSelectionTitles:titles actions:actions];
     self.backgroundColor = [UIColor whiteColor];
     
     // Configure scrollview and layout input views
@@ -62,7 +62,7 @@ static const int MAX_OPTIONS_PER_PAGE = 4.0f;
 
 #pragma mark Selection Item Configuration
 
-- (void)setSelectionTitles:(NSArray <NSString *> *)titles
+- (void)setSelectionTitles:(NSArray <NSString *> *)titles actions:(NSArray <NSString *> *)actions
 {
     // Remove any existing
     [self removeAllExistingActionViews];
@@ -79,7 +79,7 @@ static const int MAX_OPTIONS_PER_PAGE = 4.0f;
         NSRange subRange                   = NSMakeRange(begIdx, length);
         NSArray *subSectionOfTitles        = [titles subarrayWithRange:subRange];
         
-        BOTActionInputView *actionInputView = [[BOTActionInputView alloc] initWithSelectionTitles:subSectionOfTitles];
+        BOTActionInputView *actionInputView = [[BOTActionInputView alloc] initWithSelectionTitles:subSectionOfTitles actions:actions];
         actionInputView.tintColor          = self.tintColor;
         actionInputView.delegate           = self;
         
@@ -142,9 +142,9 @@ static const int MAX_OPTIONS_PER_PAGE = 4.0f;
 
 #pragma mark STActionInputViewDelegate
 
-- (void)actionInputView:(BOTActionInputView *)actionInputView didSelectTitle:(NSString *)title
+- (void)actionInputView:(BOTActionInputView *)actionInputView didSelectTitle:(NSString *)title actions:(NSString *)action
 {
-    [self.actionInputScrollViewDelegate actionInputScrollView:self didSelectTitle:title];
+    [self.actionInputScrollViewDelegate actionInputScrollView:self didSelectTitle:title action:action];
 }
 
 @end

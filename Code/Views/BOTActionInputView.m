@@ -13,6 +13,7 @@
 @interface BOTActionInputView ()
 
 @property (nonatomic) NSArray *titles;
+@property (nonatomic) NSArray *actions;
 @property (nonatomic) NSArray *buttonItems;
 @property (nonatomic) BOTActionButton *button1;
 @property (nonatomic) BOTActionButton *button2;
@@ -32,12 +33,14 @@ NSUInteger const STPickerRowHeight = 52;
 CGFloat const STBorderWidth = 1.0;
 NSUInteger const STCornerRadius = 6;
 
-- (id)initWithSelectionTitles:(NSArray *)titles
+- (id)initWithSelectionTitles:(NSArray *)titles actions:(NSArray *)actions
 {
     self = [super init];
     if (self) {
-        
+        NSLog(@"actions :%@",actions);
+        NSLog(@"titles :%@",titles);
         self.titles = titles;
+        self.actions = actions;
         
         UIColor *blue = BOTBlueColor();
         self.layer.borderColor = blue.CGColor;
@@ -49,24 +52,28 @@ NSUInteger const STCornerRadius = 6;
         if (titles.count > 0) {
             _button1 = [BOTActionButton initWithTitle:(NSString *)titles[0]];
             [_button1 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+            _button1.tag = 0;
             [self addSubview:_button1];
         }
         
         if (titles.count > 1) {
             _button2 = [BOTActionButton initWithTitle:(NSString *)titles[1]];
             [_button2 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+            _button1.tag = 1;
             [self addSubview:_button2];
         }
         
         if (titles.count > 2) {
             _button3 = [BOTActionButton initWithTitle:(NSString *)titles[2]];
             [_button3 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+            _button3.tag = 2;
             [self addSubview:_button3];
         }
         
         if (titles.count > 3) {
             _button4 = [BOTActionButton initWithTitle:(NSString *)titles[3]];
             [_button4 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+            _button4.tag = 3;
             [self addSubview:_button4];
         }
         
@@ -77,8 +84,13 @@ NSUInteger const STCornerRadius = 6;
 
 - (void)buttonTapped:(UIButton *)sender
 {
-    if ([self.delegate respondsToSelector:@selector(actionInputView:didSelectTitle:)]) {
-        [self.delegate actionInputView:self didSelectTitle:sender.titleLabel.text];
+    NSString *actionTitle = [self.actions objectAtIndex:sender.tag];
+    
+    if(actionTitle.length == 0) {
+        actionTitle = @"";
+    }
+    if ([self.delegate respondsToSelector:@selector(actionInputView:didSelectTitle:actions:)]) {
+        [self.delegate actionInputView:self didSelectTitle:sender.titleLabel.text actions:actionTitle] ;
     }
 }
 
