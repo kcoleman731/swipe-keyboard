@@ -27,7 +27,7 @@ NSString *const BOTProductCollectionViewCellReuseIdentifier = @"BOTProductCollec
 
 @implementation BOTProductCollectionViewCell
 
-CGFloat const BOTProductCollectionViewCellHeight = 190;
+CGFloat const BOTProductCollectionViewCellHeight = 172;
 CGFloat const BOTAddToCartButtonHeight = 42;
 
 - (void)awakeFromNib
