@@ -78,7 +78,7 @@ NSUInteger const STCornerRadius = 6;
         [self configureAutoLayoutConstraints];
     }
     return self;
-}
+} 
 
 - (void)buttonTapped:(UIButton *)sender
 {
