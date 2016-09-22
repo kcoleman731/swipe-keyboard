@@ -1,5 +1,12 @@
 # Staples Chat UI
 
+## 0.3.5
+
+### Enhancements
+
+* Added logic to handle `actions` for the guided list items.
+  [Jayashree Varpe](https://github.com/jayashree)
+
 ## 0.3.4
 
 ### Bug Fixes
