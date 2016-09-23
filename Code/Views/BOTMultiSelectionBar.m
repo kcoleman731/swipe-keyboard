@@ -107,8 +107,7 @@ static NSString *const jordyBlueCode = @"#76AAE3";
 
 #pragma mark - Button Title Setters
 
-- (void)setLeftSelectionTitle:(NSString *)leftSelectionTitle
-          rightSelectionTitle:(NSString *)rightSelectionTitle
+- (void)setLeftSelectionTitle:(NSString *)leftSelectionTitle rightSelectionTitle:(NSString *)rightSelectionTitle
 {
     [self.leftButton setTitle:leftSelectionTitle forState:UIControlStateNormal];
     [self.rightButton setTitle:rightSelectionTitle forState:UIControlStateNormal];
@@ -118,14 +117,20 @@ static NSString *const jordyBlueCode = @"#76AAE3";
 
 - (void)leftButtonHit
 {
-    [self.delegate multiSelectionBar:self
-           leftSelectionHitWithTitle:self.leftButton.titleLabel.text];
+    [self.delegate multiSelectionBar:self leftSelectionHitWithTitle:self.leftButton.titleLabel.text];
+    [self unhighlightButtons];
 }
 
 - (void)rightButtonHit
 {
-    [self.delegate multiSelectionBar:self
-          rightSelectionHitWithTitle:self.rightButton.titleLabel.text];
+    [self.delegate multiSelectionBar:self rightSelectionHitWithTitle:self.rightButton.titleLabel.text];
+    [self unhighlightButtons];
+}
+
+- (void)unhighlightButtons
+{
+    [self.leftButton setHighlighted:NO];
+    [self.rightButton setHighlighted:NO];
 }
 
 #pragma mark - Constraints

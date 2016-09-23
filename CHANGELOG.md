@@ -1,5 +1,12 @@
 # Staples Chat UI
 
+## 0.3.7
+
+### Enhancements
+
+* Preventing multi-selection bar buttons from staying highlighted.
+  [Kevin Coleman](https://github.com/kcoleman731)
+
 ## 0.3.6
 
 ### Enhancements
