@@ -115,7 +115,6 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
 - (void)displayMultiSelectionInputBar:(BOOL)displayBar;
 {
     self.isShowingMultiSelectionBar = displayBar;
-    [self.listAccessoryButton setSelected:displayBar];
 }
 
 - (void)setIsShowingMultiSelectionBar:(BOOL)isShowingMultiSelectionBar
