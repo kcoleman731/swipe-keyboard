@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Atlas/Atlas.h>
 
-extern NSString *const BOTMultipleProductBaseCollectionViewCellTitle;
+extern NSString *const BOTMultipleCardBaseCollectionViewCellTitle;
 
 /**
  Posted when a `Back To School` View All button is selected. The `object` of the notification will be an array containing the BTS products.
@@ -34,7 +34,7 @@ extern NSString *const BOTRewardSelectedNotification;
 /**
  The `STMultipleProductBaseCollectionViewCell` displays a horizontally scrolling collection view used to display multiple `Bot Cards`within a single cell.
  */
-@interface BOTMultipleProductBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
+@interface BOTMultipleCardBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
 @property (nonatomic, strong) NSArray *items;
 

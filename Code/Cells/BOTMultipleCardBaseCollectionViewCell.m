@@ -6,7 +6,7 @@
 //  Copyright © 2016 Mesh. All rights reserved.
 //
 
-#import "BOTMultipleProductBaseCollectionViewCell.h"
+#import "BOTMultipleCardBaseCollectionViewCell.h"
 #import "BOTMultipleProductsCollectionViewLayout.h"
 
 // Cells
@@ -22,8 +22,8 @@
 #import "BOTOrder.h"
 #import "BOTUtilities.h"
 
-NSString *const BOTMultipleProductBaseCollectionViewCellTitle = @"Product Cell";
-NSString *const BOTMultipleProductBaseCollectionViewCellId = @"BOTMultipleProductBaseCollectionViewCellId";
+NSString *const BOTMultipleCardBaseCollectionViewCellTitle = @"Product Cell";
+NSString *const BOTMultipleCardBaseCollectionViewCellId = @"BOTMultipleCardBaseCollectionViewCellId";
 
 // NSNotificationKeys
 NSString *const BOTBackToSchoolViewAllSelectedNotification = @"BOTBackToSchoolViewAllSelectedNotification";
@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, BOTCellType) {
     BOTCellTypeReturn           = 6,
 };
 
-@interface BOTMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface BOTMultipleCardBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic) LYRMessage *message;
 @property (nonatomic) BOTCellType cellType;
@@ -73,7 +73,7 @@ typedef NS_ENUM(NSInteger, BOTCellType) {
 
 @end
 
-@implementation BOTMultipleProductBaseCollectionViewCell
+@implementation BOTMultipleCardBaseCollectionViewCell
 
 CGFloat const BOTHeaderLabelTopInset = 8.0f;
 CGFloat const BOTHeaderLabelHorizontalInset = 20.0f;

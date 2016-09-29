@@ -34,6 +34,7 @@ extern NSString *const BOTOrderStatusCollectionViewCellMimeType;
  */
 extern NSString *const BOTOrderStatusCollectionViewCellReuseIdentifier;
 
+
 @interface BOTOrderStatusCollectionViewCell : UICollectionViewCell
 
 /**
