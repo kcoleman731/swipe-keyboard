@@ -34,7 +34,9 @@ extern NSString *const BOTOrderStatusCollectionViewCellMimeType;
  */
 extern NSString *const BOTOrderStatusCollectionViewCellReuseIdentifier;
 
-
+/**
+ The `BOTOrderStatusCollectionViewCell` displays an `BOT Card` with information about a staples order status.
+ */
 @interface BOTOrderStatusCollectionViewCell : UICollectionViewCell
 
 /**

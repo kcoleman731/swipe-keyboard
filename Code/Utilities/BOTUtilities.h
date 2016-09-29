@@ -41,7 +41,6 @@ extern NSString *const BOTOptionJournals;
 extern NSString *const BOTOptionStaplers;
 
 // Message Data Parsing
-
 extern NSString *const BOTMessagePartDataKey;
 
 @interface BOTUtilities : NSObject

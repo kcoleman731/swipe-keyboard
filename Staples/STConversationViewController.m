@@ -21,9 +21,7 @@
 #import "BOTProductCollectionViewCell.h"
 #import "BOTAddressCollectionViewCell.h"
 #import "BOTReceiptCollectionViewCell.h"
-#import "BOTReorderCollectionViewCell.h"
 #import "BOTOrderCollectionViewCell.h"
-#import "BOTShipmentTrackingCollectionViewCell.h"
 #import "BOTOrderStatusCollectionViewCell.h"
 #import "BOTRewardCollectionViewCell.h"
 //#import "BOTReturnCollectionViewCell.h"
@@ -85,7 +83,7 @@ NSString *const STOptionCell = @"Option Cell";
 - (void)configureCollectionViewCells
 {
     // Product Cell
-    [self.collectionView registerClass:[BOTMultipleProductBaseCollectionViewCell class] forCellWithReuseIdentifier:[BOTMultipleProductBaseCollectionViewCell reuseIdentifier]];
+    [self.collectionView registerClass:[BOTMultipleCardBaseCollectionViewCell class] forCellWithReuseIdentifier:[BOTMultipleCardBaseCollectionViewCell reuseIdentifier]];
     
     // Receipt Cell
     UINib *receiptCell = [UINib nibWithNibName:@"BOTReceiptCollectionViewCell" bundle:StaplesUIBundle()];

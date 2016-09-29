@@ -11,21 +11,9 @@
 #import <LayerKit/LayerKit.h>
 
 /**
- The MIMEType used for reward message parts.
+ The MIMEType representing a message containing reward information.
  */
 extern NSString *const BOTRewardMIMEType;
-
-// Message Part Data Keys
-extern NSString *const BOTRewardAmmountKey;
-extern NSString *const BOTRewardLastUpdateKey;
-extern NSString *const BOTRewardEndsKey;
-extern NSString *const BOTRewardsMessageKey;
-extern NSString *const BOTRewardsNumberKey;
-extern NSString *const BOTRewardsPromoImageKey;
-extern NSString *const BOTRewardsStartDateKey;
-extern NSString *const BOTRewardsTotalAmountKey;
-extern NSString *const BOTRewardsTypeKey;
-extern NSString *const BOTRewardsUserNameKey;
 
 /**
  BOTReward is a convenience model used for parsing Reward info from a BOT `LYRMessagePart` payload.
@@ -40,7 +28,7 @@ extern NSString *const BOTRewardsUserNameKey;
 + (instancetype)rewardWithData:(NSDictionary *)data;
 
 /**
- * Reward Attributes
+ Model Attributes
  */
 @property (strong, nonatomic) NSString *amount;
 @property (strong, nonatomic) NSString *lastUpdate;

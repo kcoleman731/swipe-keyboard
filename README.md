@@ -6,11 +6,19 @@ The project also provides rake automation tasks to help developers version and d
 
 ## Usage
 
+The `staples-chat-ui` framework is built as a [CocoaPod](https://cocoapods.org/) using a [private specs repository](https://guides.cocoapods.org/making/private-cocoapods.html). In order to integrate the Pod into your project, put the following line at the top of your `Podfile`.
+
 ```
 source 'https://bitbucket.org/tanvishah/staples-cocoapods.git'
-
-pod 'staples-chat-ui'
 ```
+
+Add the `staples-chat-ui` pod.
+
+```
+pod "staples-chat-ui", "0.3.7"
+```
+
+Run `pod install` to install the dependency.
 
 ## Development
 
@@ -22,12 +30,14 @@ Initialize the project and its dependencies with the following command.
 rake init
 ```
 
+## Releases
+
 ### Versions
 
-Set a version for a release via the following:
+In order to release a new version of the `staples-chat-ui` pod, you must first set a new version. Set a version for a release via the following:
 
 ```
-rake version:set VERSION=<version_number>
+rake version:set VERSION={version_number}
 ```
 
 ### Releases

@@ -10,7 +10,7 @@
 #import "BOTPrice.h"
 
 /**
- The MIMEType used for product message parts.
+ The MIMEType representing a message containing product information.
  */
 extern NSString *const BOTProductListMIMEType;
 
@@ -32,7 +32,7 @@ extern NSString *const BOTProductListMIMEType;
 - (id)objectForKey:(NSString *)key;
 
 /**
- Product Attributes
+ Model Attributes
  */
 @property (nonatomic, strong) NSString *quatity;
 @property (nonatomic, strong) NSString *imageURL;

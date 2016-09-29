@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Atlas/Atlas.h>
-#import "BOTCellContainerView.h"
 #import "BOTShipment.h"
 
 extern NSString *const BOTShippingCollectionViewCellTitle;
 
+/**
+ The `BOTReceiptCollectionViewCell` displays an `BOT Card` with information about a Staples customer receipt.
+ */
 @interface BOTReceiptCollectionViewCell : UICollectionViewCell
 
 /**
