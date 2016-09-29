@@ -24,7 +24,7 @@ Run `pod install` to install the dependency.
 
 ### Setup
 
-Initialize the project and its dependencies with the following command.
+The `staples-chat-ui` project relies on multiple Ruby tools for dependency management (CocoaPods, Bundler) and automation (Rake). In order to ensure that your machine has all of the proper dependencies installed, initialize the project by running the following command. This will install any missing dependencies and update versions as needed.
 
 ```
 rake init
@@ -34,11 +34,17 @@ rake init
 
 ### Versions
 
-In order to release a new version of the `staples-chat-ui` pod, you must first set a new version. Set a version for a release via the following:
+In order to release a new version of the `staples-chat-ui` pod, you must first set a new version. The `staples-chat-ui` project uses [semantic versioning](http://semver.org/).
+
+Set a version for a release via the following:
 
 ```
 rake version:set VERSION={version_number}
 ```
+
+### CHANGELOG
+
+After bumping the version number, you must also add an entry to the CHANGELOG.md. CHANGELOG entries should be descriptive of the changes that are included in the release.
 
 ### Releases
 
