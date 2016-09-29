@@ -1,8 +1,13 @@
 # Staples Chat UI
 
-This repository contains the source code for the `staples-chat-ui` pod. This pod is used to display custom Chat UI on top of the LayerKit SDK within the core Staples application.
+This repository contains the source code for the `staples-chat-ui` pod. This pod is used to display custom Chat UI cards within the core Staples application.
 
-The project also provides rake automation tasks to help developers version and deploy new releases (tags). Run `rake -T` to see what is available.
+The core application relies on two third party frameworks to power its chat functionality:
+
+* [LayerKit](https://github.com/layerhq/releases-ios) - Messaging SDK that powers the messaging infrastructure and data synchronization.  
+* [Atlas](https://github.com/layerhq/Atlas-iOS)-  UI framework that powers the actual chat UI.
+
+The `Atlas` UI framework provides simple out of the box messaging UI, but requires applications to provide custom `UICollectionViewCell`s for more advanced usage. The `staples-chat-ui` pod provides a number of custom collection view cells that handle displaying the Staples BOT cards. The framework leverages the `Atlas` customization hooks in order to do so.
 
 ## Usage
 
@@ -29,6 +34,8 @@ The `staples-chat-ui` project relies on multiple Ruby tools for dependency manag
 ```
 rake init
 ```
+
+This project provides numerous `rake` automation tasks to help developers version and deploy new releases (tags). Run `rake -T` to see what is available.
 
 ## Releases
 
