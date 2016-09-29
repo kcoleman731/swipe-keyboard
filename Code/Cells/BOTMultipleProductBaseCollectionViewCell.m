@@ -106,7 +106,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     
     UINib *productNib = [UINib nibWithNibName:@"BOTProductCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:productNib forCellWithReuseIdentifier:[BOTProductCollectionViewCell reuseIdentifier]];
-
+    
     UINib *orderStatusNib = [UINib nibWithNibName:@"BOTOrderStatusCollectionViewCell" bundle:StaplesUIBundle()];
     [self.collectionView registerNib:orderStatusNib forCellWithReuseIdentifier:[BOTOrderStatusCollectionViewCell reuseIdentifier]];
     
@@ -144,7 +144,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     self.collectionView.collectionViewLayout = self.collectionViewLayout;
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.showsHorizontalScrollIndicator = NO;
-
+    
     [self addSubview:self.collectionView];
     [self addCollecitonViewConstraints];
 }
@@ -162,7 +162,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
-          return [BOTOrderStatusCollectionViewCell cellHeight];
+        return [BOTOrderStatusCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
         return [BOTProductCollectionViewCell cellHeightWithButton:NO];
     }  else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
@@ -195,7 +195,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     self.message = message;
     LYRMessagePart *part = message.parts[0];
     [self setCellTypeForMessagePart:part];
-
+    
     self.items = [self cellItemsForMessage:message];
     [self.collectionView reloadData];
 }
@@ -234,7 +234,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             break;
         case BOTCellTypeBackToSchool:
         case BOTCellTypeShipping:
-            width = 0.8f;
+            width = 0.9f;
         case BOTCellTypeOrder:
         case BOTCellTypeReorder:
         case BOTCellTypeReturn:
@@ -252,19 +252,19 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             [[NSNotificationCenter defaultCenter] postNotification:notification];
         }
             break;
-
+            
         case BOTCellTypeRewards: {
             NSNotification *notification = [NSNotification notificationWithName:BOTRewardSelectedNotification object:self.items[indexPath.row]];
             [[NSNotificationCenter defaultCenter] postNotification:notification];
         }
             break;
-
+            
         case BOTCellTypeShipping: {
             NSNotification *notification = [NSNotification notificationWithName:BOTShipmentSelectedNotification object:self.items[indexPath.row]];
             [[NSNotificationCenter defaultCenter] postNotification:notification];
         }
             break;
-
+            
         default:
             break;
     }
@@ -281,7 +281,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             [cell setProductItem:item];
             returnCell = cell;
         }
-
+            
             break;
         case BOTCellTypeRewards: {
             NSString *reuseIdentifier = [BOTRewardCollectionViewCell reuseIdentifier];
@@ -290,7 +290,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             [cell setReward:item];
             returnCell = cell;
         }
-
+            
             break;
         case BOTCellTypeShipping: {
             NSString *reuseIdentifier = [BOTOrderStatusCollectionViewCell reuseIdentifier];
@@ -330,7 +330,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
         default:
             break;
     }
-
+    
     return returnCell;
 }
 
@@ -370,7 +370,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             items = [self itemsForCartFlowWithMessage:message];
         }
     }
-
+    
     // Parse Order
     if ([part.MIMEType isEqualToString:BOTReorderMIMEType] || [part.MIMEType isEqualToString:BOTReturnMIMEType]) {
         items = [self itemsForOrderWithMessage:message];
@@ -384,7 +384,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             [items addObject:reward];
         }
     }
-
+    
     // Parse Shipping Data.
     if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
         NSArray *shipmentJSON = data[BOTMessagePartShipmentTrackingListKey];
@@ -402,7 +402,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 {
     NSString *dataString = [[NSString alloc] initWithData:part.data encoding:NSUTF8StringEncoding];
     NSData *data = [dataString dataUsingEncoding:NSUTF8StringEncoding];
-
+    
     NSError *error;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
     if (error) {
