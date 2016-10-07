@@ -485,39 +485,45 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 
 - (NSMutableArray *)itemsForProductWithMessage:(LYRMessage *)message
 {
-    LYRMessagePart *part = message.parts[0];
-    NSDictionary *json = [self parseDataForMessagePart:part];
-    
-    // Parse BTS Title
-    NSDictionary *data = json[BOTMessagePartDataKey];
-    NSDictionary *orderItems = data[BOTMessagePartOrderItemsKey];
-    
+    //handled multiparts of the message
     NSMutableArray *items = [NSMutableArray new];
-    for (NSDictionary *itemData in orderItems) {
-        BOTProduct *item = [BOTProduct productWithData:itemData];
-        [items addObject:item];
+    for (int i = 0; i < self.message.parts.count; i++){
+        LYRMessagePart *part = self.message.parts[i];
+        NSDictionary *json = [self parseDataForMessagePart:part];
+        
+        NSDictionary *orderItems;
+        NSDictionary *data = json[BOTMessagePartDataKey];
+        if (data[BOTMessagePartOrderItemsKey]) {
+            orderItems = data[BOTMessagePartOrderItemsKey];
+        }
+        for (NSDictionary *itemData in orderItems) {
+            BOTProduct *item = [BOTProduct productWithData:itemData];
+            [items addObject:item];
+        }
     }
     return items;
 }
 
+
 - (NSMutableArray *)itemsForOrderWithMessage:(LYRMessage *)message
 {
-    LYRMessagePart *part = message.parts[0];
-    NSDictionary *json = [self parseDataForMessagePart:part];
-    
-    // Parse BTS Title
-    NSDictionary *data = json[BOTMessagePartDataKey];
-    NSDictionary *orderItems;
-    if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeReturnItems]) {
-        orderItems = data[BOTMessagePartReturnItemsKey];
-    } else if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeReorderItems]) {
-        orderItems = data[BOTMessagePartReorderItemsKey];
-    }
-    
+    //handled multiparts of the message
     NSMutableArray *items = [NSMutableArray new];
-    for (NSDictionary *itemData in orderItems) {
-        BOTOrder *order = [BOTOrder orderWithData:itemData];
-        [items addObject:order];
+    for (int i = 0; i < self.message.parts.count; i++){
+        LYRMessagePart *part = self.message.parts[i];
+        NSDictionary *json = [self parseDataForMessagePart:part];
+        
+        NSDictionary *orderItems;
+        NSDictionary *data = json[BOTMessagePartDataKey];
+        if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeReturnItems]) {
+            orderItems = data[BOTMessagePartReturnItemsKey];
+        } else if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeReorderItems]) {
+            orderItems = data[BOTMessagePartReorderItemsKey];
+        }
+        for (NSDictionary *itemData in orderItems) {
+            BOTOrder *order = [BOTOrder orderWithData:itemData];
+            [items addObject:order];
+        }
     }
     return items;
 }
