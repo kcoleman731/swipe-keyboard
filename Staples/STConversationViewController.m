@@ -17,13 +17,11 @@
 #import "BOTUtilities.h"
 
 // Cells
-#import "BOTMultipleProductBaseCollectionViewCell.h"
+#import "BOTMultipleCardBaseCollectionViewCell.h"
 #import "BOTProductCollectionViewCell.h"
 #import "BOTAddressCollectionViewCell.h"
 #import "BOTReceiptCollectionViewCell.h"
-#import "BOTReorderCollectionViewCell.h"
 #import "BOTOrderCollectionViewCell.h"
-#import "BOTShipmentTrackingCollectionViewCell.h"
 #import "BOTOrderStatusCollectionViewCell.h"
 #import "BOTRewardCollectionViewCell.h"
 //#import "BOTReturnCollectionViewCell.h"
@@ -85,7 +83,7 @@ NSString *const STOptionCell = @"Option Cell";
 - (void)configureCollectionViewCells
 {
     // Product Cell
-    [self.collectionView registerClass:[BOTMultipleProductBaseCollectionViewCell class] forCellWithReuseIdentifier:[BOTMultipleProductBaseCollectionViewCell reuseIdentifier]];
+    [self.collectionView registerClass:[BOTMultipleCardBaseCollectionViewCell class] forCellWithReuseIdentifier:[BOTMultipleCardBaseCollectionViewCell reuseIdentifier]];
     
     // Receipt Cell
     UINib *receiptCell = [UINib nibWithNibName:@"BOTReceiptCollectionViewCell" bundle:StaplesUIBundle()];
@@ -145,21 +143,21 @@ NSString *const STOptionCell = @"Option Cell";
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
-        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+        return [BOTMultipleCardBaseCollectionViewCell cellHeightForMessage:message];
     } else if ([part.MIMEType isEqualToString:BOTAddressMIMEType]) {
         return [BOTAddressCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTReceiptMIMEType]) {
         return [BOTReceiptCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
-        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+        return [BOTMultipleCardBaseCollectionViewCell cellHeightForMessage:message];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
-        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+        return [BOTMultipleCardBaseCollectionViewCell cellHeightForMessage:message];
     } else if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
-        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+        return [BOTMultipleCardBaseCollectionViewCell cellHeightForMessage:message];
     } else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
-        return [BOTMultipleProductBaseCollectionViewCell cellHeightForMessage:message];
+        return [BOTMultipleCardBaseCollectionViewCell cellHeightForMessage:message];
     } else if ([part.MIMEType isEqualToString:BOTActionMIMEType]) {
         return [BOTActionCollectionViewCell cellHeightForMessage:message inView:self.view];
     }
@@ -172,21 +170,21 @@ NSString *const STOptionCell = @"Option Cell";
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
-        return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+        return [BOTMultipleCardBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTAddressMIMEType]) {
         return [BOTAddressCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTReceiptMIMEType]) {
         return [BOTReceiptCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
-        return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+        return [BOTMultipleCardBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
-        return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+        return [BOTMultipleCardBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
-        return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+        return [BOTMultipleCardBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTOrderMIMEType ]) {
-        return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+        return [BOTMultipleCardBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
-        return [BOTMultipleProductBaseCollectionViewCell reuseIdentifier];
+        return [BOTMultipleCardBaseCollectionViewCell reuseIdentifier];
     } else if ([part.MIMEType isEqualToString:BOTActionMIMEType]) {
         return [BOTActionCollectionViewCell reuseIdentifier];
     }

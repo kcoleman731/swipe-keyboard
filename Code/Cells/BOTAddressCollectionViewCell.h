@@ -10,9 +10,9 @@
 #import <MapKit/MapKit.h>
 #import <Atlas/Atlas.h>
 
-extern NSString *const BOTAddressCollectionViewCellTitle;
-extern NSString *const BOTAddressCollectionViewCellMimeType;
-
+/**
+ The `BOTOrderStatusCollectionViewCell` displays an `BOT Card` with information about a Staples customer address.
+ */
 @interface BOTAddressCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
 /**

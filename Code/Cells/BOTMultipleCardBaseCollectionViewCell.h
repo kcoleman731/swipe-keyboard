@@ -1,5 +1,5 @@
 //
-//  STMultipleProductsBaseCollectionViewCell.h
+//  STMultipleCardBaseCollectionViewCell.h
 //  Staples
 //
 //  Created by Taylor Halliday on 8/19/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <Atlas/Atlas.h>
-
-extern NSString *const BOTMultipleProductBaseCollectionViewCellTitle;
 
 /**
  Posted when a `Back To School` View All button is selected. The `object` of the notification will be an array containing the BTS products.
@@ -32,10 +30,13 @@ extern NSString *const BOTShipmentSelectedNotification;
 extern NSString *const BOTRewardSelectedNotification;
 
 /**
- The `STMultipleProductBaseCollectionViewCell` displays a horizontally scrolling collection view used to display multiple `Bot Cards`within a single cell.
+ The `STMultipleCardBaseCollectionViewCell` displays a horizontally scrolling collection view used to display multiple `Bot Cards` within a single cell.
  */
-@interface BOTMultipleProductBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
+@interface BOTMultipleCardBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>
 
+/**
+ The items to display in the cards.
+ */
 @property (nonatomic, strong) NSArray *items;
 
 /**

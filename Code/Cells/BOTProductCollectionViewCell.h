@@ -15,7 +15,7 @@
 extern NSString *const BOTBackToSchoolViewCartButtonTappedNotification;
 
 /**
- The `BOTProductCollectionViewCell` displays a product card in a conversation UI.
+ The `BOTOrderStatusCollectionViewCell` displays an `BOT Card` with information about a single product.
  */
 @interface BOTProductCollectionViewCell : UICollectionViewCell
 
@@ -32,7 +32,7 @@ extern NSString *const BOTBackToSchoolViewCartButtonTappedNotification;
 /**
  Cell Height
  
- @param button Determines whether or not the cell should display a `View Cart` button.
+ @param button Determines whether or not the cell should display an action button at the bottom of the cell.
  */
 + (CGFloat)cellHeightWithButton:(BOOL)button;
 

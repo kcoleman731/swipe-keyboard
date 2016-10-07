@@ -6,24 +6,33 @@
 //  Copyright © 2016 Mesh. All rights reserved.
 //
 
-#import "BOTMultipleProductBaseCollectionViewCell.h"
+#import "BOTMultipleCardBaseCollectionViewCell.h"
 #import "BOTMultipleProductsCollectionViewLayout.h"
 
 // Cells
-#import "BOTShipmentTrackingCollectionViewCell.h"
-#import "BOTReorderCollectionViewCell.h"
 #import "BOTProductCollectionViewCell.h"
 #import "BOTRewardCollectionViewCell.h"
 #import "BOTOrderCollectionViewCell.h"
 #import "BOTOrderStatusCollectionViewCell.h"
 
-// Modesl
+// Model
 #import "BOTProduct.h"
 #import "BOTOrder.h"
 #import "BOTUtilities.h"
 
-NSString *const BOTMultipleProductBaseCollectionViewCellTitle = @"Product Cell";
-NSString *const BOTMultipleProductBaseCollectionViewCellId = @"BOTMultipleProductBaseCollectionViewCellId";
+// Card Type Enum
+typedef NS_ENUM(NSInteger, BOTCellType) {
+    BOTCellTypeUndefined        = 0,
+    BOTCellTypeBackToSchool     = 1,
+    BOTCellTypeShipping         = 2,
+    BOTCellTypeRewards          = 3,
+    BOTCellTypeOrder            = 4,
+    BOTCellTypeReorder          = 5,
+    BOTCellTypeReturn           = 6,
+};
+
+// Reuse Identifier
+NSString *const BOTMultipleProductBaseCollectionViewCellReuseIdentifier = @"BOTMultipleProductBaseCollectionViewCellReuseIdentifier";
 
 // NSNotificationKeys
 NSString *const BOTBackToSchoolViewAllSelectedNotification = @"BOTBackToSchoolViewAllSelectedNotification";
@@ -38,42 +47,31 @@ NSString *const BOTCardTypeOrderItems = @"ORDER_ITEMS";
 NSString *const BOTCardTypeReturnItems = @"RETURN_ITEMS";
 NSString *const BOTCardTypeReorderItems = @"REORDER_ITEMS";
 
-// Card List Keys
+// JSON Keys
 NSString *const BOTMessagePartCardTypeKey = @"cardType";
 NSString *const BOTMessagePartCartItemsKey = @"cartItems";
 NSString *const BOTMessagePartBTSItemsKey = @"btsItems";
 NSString *const BOTMessagePartOrderItemsKey = @"orderItems";
 NSString *const BOTMessagePartListItemsKey = @"listItems";
-
 NSString *const BOTMessagePartHeaderTitle = @"headerTitle";
 NSString *const BOTMessagePartShipmentTrackingListKey = @"shippmentTrackingList";
 NSString *const BOTMessagePartRewardListKey = @"rewardslistItems";
 NSString *const BOTMessagePartReorderItemsKey = @"reorderItems";
 NSString *const BOTMessagePartReturnItemsKey = @"returnItems";
 
-typedef NS_ENUM(NSInteger, BOTCellType) {
-    BOTCellTypeUndefined        = 0,
-    BOTCellTypeBackToSchool     = 1,
-    BOTCellTypeShipping         = 2,
-    BOTCellTypeRewards          = 3,
-    BOTCellTypeOrder            = 4,
-    BOTCellTypeReorder          = 5,
-    BOTCellTypeReturn           = 6,
-};
-
-@interface BOTMultipleProductBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface BOTMultipleCardBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic) LYRMessage *message;
 @property (nonatomic) BOTCellType cellType;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) BOTMultipleProductsCollectionViewLayout *collectionViewLayout;
-@property (nonatomic, strong) UILabel *btsHeaderLable;
+@property (nonatomic, strong) UILabel *btsHeaderLabel;
 @property (nonatomic, strong) UIButton *viewAllButton;
 @property (nonatomic, strong) NSLayoutConstraint *topCollectionViewConstraint;
 
 @end
 
-@implementation BOTMultipleProductBaseCollectionViewCell
+@implementation BOTMultipleCardBaseCollectionViewCell
 
 CGFloat const BOTHeaderLabelTopInset = 8.0f;
 CGFloat const BOTHeaderLabelHorizontalInset = 20.0f;
@@ -122,10 +120,10 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 
 - (void)layoutCollectionView
 {
-    self.btsHeaderLable = [UILabel new];
-    self.btsHeaderLable.font = [UIFont systemFontOfSize:15 weight:UIFontWeightThin];
-    self.btsHeaderLable.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.btsHeaderLable];
+    self.btsHeaderLabel = [UILabel new];
+    self.btsHeaderLabel.font = [UIFont systemFontOfSize:15 weight:UIFontWeightThin];
+    self.btsHeaderLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.btsHeaderLabel];
     
     self.viewAllButton = [UIButton new];
     self.viewAllButton.translatesAutoresizingMaskIntoConstraints = NO;
@@ -151,7 +149,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 
 + (NSString *)reuseIdentifier
 {
-    return BOTMultipleProductBaseCollectionViewCellId;
+    return BOTMultipleProductBaseCollectionViewCellReuseIdentifier;
 }
 
 + (CGFloat)cellHeightForMessage:(LYRMessage *)message
@@ -182,8 +180,8 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     [self.viewAllButton setTitle:@"" forState:UIControlStateNormal];
     [self.viewAllButton sizeToFit];
     
-    self.btsHeaderLable.text = @"";
-    [self.btsHeaderLable sizeToFit];
+    self.btsHeaderLabel.text = @"";
+    [self.btsHeaderLabel sizeToFit];
     self.cellType = BOTCellTypeUndefined;
     self.topCollectionViewConstraint.constant = 0;
 }
@@ -207,7 +205,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 
 - (void)shouldDisplayAvatarItem:(BOOL)shouldDisplayAvatarItem
 {
-    
+    // Nothing to do.
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -421,8 +419,8 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     NSDictionary *part1Data = data[BOTMessagePartBTSItemsKey];
     
     // Update View
-    self.btsHeaderLable.text = part1Data[BOTMessagePartHeaderTitle];
-    [self.btsHeaderLable sizeToFit];
+    self.btsHeaderLabel.text = part1Data[BOTMessagePartHeaderTitle];
+    [self.btsHeaderLabel sizeToFit];
     
     [self.viewAllButton setTitle:@"View All" forState:UIControlStateNormal];
     [self.viewAllButton sizeToFit];
@@ -458,8 +456,8 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     NSDictionary *part1Data = data[BOTMessagePartCartItemsKey];
     
     // Update View
-    self.btsHeaderLable.text = part1Data[BOTMessagePartHeaderTitle];
-    [self.btsHeaderLable sizeToFit];
+    self.btsHeaderLabel.text = part1Data[BOTMessagePartHeaderTitle];
+    [self.btsHeaderLabel sizeToFit];
     
     [self.viewAllButton setTitle:@"View All" forState:UIControlStateNormal];
     [self.viewAllButton sizeToFit];
@@ -535,17 +533,18 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 
 - (void)addCollecitonViewConstraints
 {
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btsHeaderLable attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:BOTHeaderLabelTopInset]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btsHeaderLable attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:BOTHeaderLabelHorizontalInset]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewAllButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.btsHeaderLable attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
+    // Label constraints
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btsHeaderLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:BOTHeaderLabelTopInset]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.btsHeaderLabel attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:BOTHeaderLabelHorizontalInset]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewAllButton attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.btsHeaderLabel attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewAllButton attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:-BOTHeaderLabelHorizontalInset]];
     
-    self.topCollectionViewConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
-    [self addConstraint:self.topCollectionViewConstraint];
+    // Collection View Constraints
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0]];
+    self.topCollectionViewConstraint = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
+    [self addConstraint:self.topCollectionViewConstraint];
 }
 
 @end

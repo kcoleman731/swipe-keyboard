@@ -11,7 +11,7 @@
 #import "BOTOrder.h"
 
 /**
- The MIMEType used for shipment message parts.
+ The MIMEType representing a message containing shipment information.
  */
 extern NSString *const BOTShipmentMIMEType;
 

@@ -20,8 +20,8 @@
  
  @param actionInputView The `STActionInputView` instance.
  @param item The selection title that was selected.
+ @param action The selection action that was selected.
  */
-//- (void)actionInputView:(BOTActionInputView *)actionInputView didSelectTitle:(NSString *)title;
 - (void)actionInputView:(BOTActionInputView *)actionInputView didSelectTitle:(NSString *)title actions:(NSString*)actions;
 
 @end

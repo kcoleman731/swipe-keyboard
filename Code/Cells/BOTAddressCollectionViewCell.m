@@ -10,7 +10,6 @@
 #import "BOTUtilities.h"
 #import "BOTAddress.h"
 
-NSString *const BOTAddressCollectionViewCellTitle= @"Address Cell";
 NSString *const BOTAddressCollectionViewCellMimeType = @"json/address";
 NSString *const BOTAddressCollectionViewCellReuseIdentifier = @"STAddressCollectionViewCellReuseIdentifier";
 

@@ -21,7 +21,7 @@
 + (instancetype)priceWithData:(NSDictionary *)data;
 
 /**
- Price Attirbutes
+ Model Attirbutes
  */
 @property (nonatomic) NSString *unitOfMeasure;
 @property (nonatomic) NSString *price;

@@ -15,7 +15,7 @@ NSString *const BOTReceiptCollectionViewCellReuseIdentifier = @"BOTReceiptCollec
 
 @interface BOTReceiptCollectionViewCell ()
 
-@property (strong, nonatomic) IBOutlet BOTCellContainerView *cellContainerView;
+@property (strong, nonatomic) IBOutlet UIView *cellContainerView;
 @property (strong, nonatomic) IBOutlet UILabel *orderNumberLabel;
 @property (strong, nonatomic) IBOutlet UILabel *priceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *itemLabel;

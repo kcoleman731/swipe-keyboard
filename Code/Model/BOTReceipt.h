@@ -10,17 +10,11 @@
 #import "BOTAddress.h"
 
 /**
- The MIMEType used for receipt message parts.
+ The MIMEType representing a message containing receipt information.
  */
 extern NSString *const BOTReceiptMIMEType;
 
 @interface BOTReceipt : NSObject
-
-@property (nonatomic, strong) NSString *orderNumber;
-@property (nonatomic, strong) NSString *price;
-@property (nonatomic, strong) NSString *eta;
-@property (nonatomic, strong) NSString *itemsCount;
-@property (nonatomic, strong) BOTAddress *address;
 
 /**
  Returns an new `BOTReceipt` object hydratd with the supplied data.
@@ -28,5 +22,14 @@ extern NSString *const BOTReceiptMIMEType;
  @param data An `NSDictionary` containing the receipt data.
  */
 + (instancetype)receiptWithData:(NSDictionary *)data;
+
+/**
+ Model Attributes
+ */
+@property (nonatomic, strong) NSString *orderNumber;
+@property (nonatomic, strong) NSString *price;
+@property (nonatomic, strong) NSString *eta;
+@property (nonatomic, strong) NSString *itemsCount;
+@property (nonatomic, strong) BOTAddress *address;
 
 @end
