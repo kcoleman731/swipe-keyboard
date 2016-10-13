@@ -39,6 +39,6 @@ extern NSString *const BOTBackToSchoolViewCartButtonTappedNotification;
 /**
  Product Item Setter
  */
-- (void)setProductItem:(BOTProduct *)item;
+- (void)setProductItem:(BOTProduct *)item showAddToCartButton:(BOOL)showAddToCartButton;
 
 @end

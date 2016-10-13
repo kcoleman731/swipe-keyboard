@@ -156,13 +156,13 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
-        return [BOTProductCollectionViewCell cellHeightWithButton:YES];
+        return [BOTProductCollectionViewCell cellHeightWithButton:NO];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
         return [BOTOrderStatusCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
-        return [BOTProductCollectionViewCell cellHeightWithButton:NO];
+        return [BOTProductCollectionViewCell cellHeightWithButton:YES];
     }  else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
         return [BOTOrderCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
@@ -276,7 +276,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             NSString *reuseIdentifier = [BOTProductCollectionViewCell reuseIdentifier];
             BOTProductCollectionViewCell *cell = (BOTProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
             BOTProduct *item = self.items[indexPath.row];
-            [cell setProductItem:item];
+            [cell setProductItem:item showAddToCartButton:NO];
             returnCell = cell;
         }
             
@@ -303,7 +303,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             NSString *reuseIdentifier = [BOTProductCollectionViewCell reuseIdentifier];
             BOTProductCollectionViewCell *cell = (BOTProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
             BOTProduct *item = self.items[indexPath.row];
-            [cell setProductItem:item];
+            [cell setProductItem:item showAddToCartButton:YES];
             returnCell = cell;
         }
             break;
