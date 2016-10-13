@@ -15,6 +15,11 @@
 extern NSString *const BOTBackToSchoolViewCartButtonTappedNotification;
 
 /**
+ The `BOTProductCollectionViewCellDelegate` protocol provides for informing object when selections have been made in the `BOTProductCollectionViewCell`.
+ */
+@protocol BOTProductCollectionViewCellDelegate;
+
+/**
  The `BOTOrderStatusCollectionViewCell` displays an `BOT Card` with information about a single product.
  */
 @interface BOTProductCollectionViewCell : UICollectionViewCell
@@ -40,5 +45,16 @@ extern NSString *const BOTBackToSchoolViewCartButtonTappedNotification;
  Product Item Setter
  */
 - (void)setProductItem:(BOTProduct *)item showAddToCartButton:(BOOL)showAddToCartButton;
+
+/**
+ Selection delegate for the `BOTProductCollectionViewCell`.
+ */
+@property (nonatomic, weak) id <BOTProductCollectionViewCellDelegate> delegate;
+@end
+
+@protocol BOTProductCollectionViewCellDelegate <NSObject>
+
+@optional
+- (void)productCollectionViewCellDidSelectAddToCart:(BOTProductCollectionViewCell *)cell;
 
 @end

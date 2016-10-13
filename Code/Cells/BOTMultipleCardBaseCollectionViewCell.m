@@ -39,6 +39,7 @@ NSString *const BOTBackToSchoolViewAllSelectedNotification = @"BOTBackToSchoolVi
 NSString *const BOTBackToSchoolItemSelectedNotification = @"BOTBackToSchoolItemSelectedNotification";
 NSString *const BOTShipmentSelectedNotification = @"BOTShipmentSelectedNotification";
 NSString *const BOTRewardSelectedNotification = @"BOTRewardSelectedNotification";
+NSString *const BOTAddToCartNotification = @"BOTAddToCartNotification";
 
 // Card Type Keys
 NSString *const BOTCardTypeBTSItems = @"BTS_ITEMS";
@@ -59,7 +60,7 @@ NSString *const BOTMessagePartRewardListKey = @"rewardslistItems";
 NSString *const BOTMessagePartReorderItemsKey = @"reorderItems";
 NSString *const BOTMessagePartReturnItemsKey = @"returnItems";
 
-@interface BOTMultipleCardBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface BOTMultipleCardBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource, BOTProductCollectionViewCellDelegate>
 
 @property (nonatomic) LYRMessage *message;
 @property (nonatomic) BOTCellType cellType;
@@ -156,7 +157,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
-        return [BOTProductCollectionViewCell cellHeightWithButton:NO];
+        return [BOTProductCollectionViewCell cellHeightWithButton:YES];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
@@ -303,6 +304,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             NSString *reuseIdentifier = [BOTProductCollectionViewCell reuseIdentifier];
             BOTProductCollectionViewCell *cell = (BOTProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
             BOTProduct *item = self.items[indexPath.row];
+            cell.delegate = self;
             [cell setProductItem:item showAddToCartButton:YES];
             returnCell = cell;
         }
@@ -533,6 +535,14 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 - (void)viewAllButtonWasTapped:(UIButton *)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:BOTBackToSchoolViewAllSelectedNotification object:self.items];
+}
+
+#pragma mark - BOTProductCollectionViewCellDelegate method
+
+- (void) productCollectionViewCellDidSelectAddToCart:(BOTProductCollectionViewCell *)cell{
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    NSNotification *notification = [NSNotification notificationWithName:BOTAddToCartNotification object:self.items[indexPath.row]];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
 #pragma mark - NSLayoutConstraints For UI

@@ -128,7 +128,9 @@ CGFloat const BOTAddToCartButtonHeight = 42;
 
 - (void)viewInCartButtonTapped:(UIButton *)button
 {
-    // nothing yet
+    if ([self.delegate respondsToSelector:@selector(productCollectionViewCellDidSelectAddToCart:)]) {
+        [self.delegate productCollectionViewCellDidSelectAddToCart:self];
+    }
 }
 
 @end
