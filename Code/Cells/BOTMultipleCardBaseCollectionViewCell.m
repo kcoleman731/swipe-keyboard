@@ -157,7 +157,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
-        return [BOTProductCollectionViewCell cellHeightWithButton:YES];
+        return [BOTProductCollectionViewCell cellHeightWithButton:NO];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
