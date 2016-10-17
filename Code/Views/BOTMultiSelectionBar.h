@@ -48,4 +48,9 @@
  */
 - (void)setLeftSelectionTitle:(NSString *)leftSelectionTitle rightSelectionTitle:(NSString *)rightSelectionTitle;
 
+/**
+ Configures the single title for the `BOTMultiSelectionBar`.
+ */
+- (void)setSingleSelectionTitle:(NSString *)SelectionTitle ;
+
 @end

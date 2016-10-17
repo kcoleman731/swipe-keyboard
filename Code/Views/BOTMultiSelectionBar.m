@@ -69,8 +69,10 @@ static NSString *const jordyBlueCode = @"#76AAE3";
     self.leftButton.titleLabel.font = [UIFont systemFontOfSize:16.0 weight:UIFontWeightThin];
     self.leftButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.leftButton];
-
+    
     // Right Button
+    
+    CGRect frame = self.bounds;
     self.rightButton = [[BOTInvertedButton alloc] init];
     [self.rightButton setTitleColor:self.rightButton.tintColor forState:UIControlStateNormal];
     [self.rightButton addTarget:self action:@selector(rightButtonHit) forControlEvents:UIControlEventTouchUpInside];
@@ -109,8 +111,20 @@ static NSString *const jordyBlueCode = @"#76AAE3";
 
 - (void)setLeftSelectionTitle:(NSString *)leftSelectionTitle rightSelectionTitle:(NSString *)rightSelectionTitle
 {
+    self.bevel.tag = 2;
+    [self.bevel drawRect:CGRectZero];
     [self.leftButton setTitle:leftSelectionTitle forState:UIControlStateNormal];
+    [self addConstraintsForLeftButton];
     [self.rightButton setTitle:rightSelectionTitle forState:UIControlStateNormal];
+    [self addConstraintsForRightButton];
+}
+
+- (void)setSingleSelectionTitle:(NSString *)SelectionTitle {
+    self.bevel.tag = 1;
+    [self.bevel drawRect:CGRectZero];
+    [self.leftButton removeFromSuperview];
+    [self.rightButton setTitle:SelectionTitle forState:UIControlStateNormal];
+    [self addConstraintsForSingleButton];
 }
 
 #pragma mark - Target / Action
@@ -159,6 +173,15 @@ static NSString *const jordyBlueCode = @"#76AAE3";
     NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.bevel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
     NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.bevel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
     NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.bevel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
+    [self addConstraints:@[leading, trailing, top, bottom]];
+}
+- (void)addConstraintsForSingleButton
+{
+    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.rightButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:-([[UIScreen mainScreen] bounds].size.width / 2)];
+    
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.rightButton attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.rightButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.rightButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
     [self addConstraints:@[leading, trailing, top, bottom]];
 }
 

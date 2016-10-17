@@ -42,7 +42,7 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
 @property (nonatomic) UIImage *listAccessoryButtonImage;
 @property (nonatomic, strong) NSLayoutConstraint *inputTextViewHeightConstraint;
 @property (nonatomic, strong) NSLayoutConstraint *multiSelectionHeightConstraint;
-@property (nonatomic, strong) BOTMultiSelectionBar *multiActionInputView;;
+@property (nonatomic, strong) BOTMultiSelectionBar *multiActionInputView;
 
 @end
 
@@ -105,11 +105,19 @@ NSString *const RightMultiActionInputViewButtonTapped = @"RightMultiActionInputV
 - (void)setupMultiSelectionBar
 {
     self.multiActionInputView          = [[BOTMultiSelectionBar alloc] init];
-    [self.multiActionInputView setLeftSelectionTitle:@"Continue shopping" rightSelectionTitle:@"Customize in cart"];
     self.multiActionInputView.delegate = self;
     self.multiActionInputView.alpha    = 0.0;
     self.multiActionInputView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.multiActionInputView];
+}
+
+- (void)setTitlesforMultiSelectionBar:(NSString *)leftButtonTitle rightButtonTitle:(NSString *)rightButtonTitle
+{
+    [self.multiActionInputView setLeftSelectionTitle:leftButtonTitle rightSelectionTitle:rightButtonTitle];
+}
+
+- (void)setTitleforMultiSelectionBar:(NSString *)ButtonTitle{
+    [self.multiActionInputView setSingleSelectionTitle:ButtonTitle];
 }
 
 - (void)displayMultiSelectionInputBar:(BOOL)displayBar;
