@@ -40,6 +40,7 @@ NSString *const BOTBackToSchoolItemSelectedNotification = @"BOTBackToSchoolItemS
 NSString *const BOTShipmentSelectedNotification = @"BOTShipmentSelectedNotification";
 NSString *const BOTRewardSelectedNotification = @"BOTRewardSelectedNotification";
 NSString *const BOTAddToCartNotification = @"BOTAddToCartNotification";
+NSString *const BOTOrderNewSuppliesItemSelectedNotification = @"BOTOrderNewSuppliesItemSelectedNotification";
 
 // Card Type Keys
 NSString *const BOTCardTypeBTSItems = @"BTS_ITEMS";
@@ -264,6 +265,12 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
         }
             break;
             
+        case BOTCellTypeOrder: {
+            NSNotification *notification = [NSNotification notificationWithName:BOTOrderNewSuppliesItemSelectedNotification object:self.items[indexPath.row]];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+        }
+            break;
+            
         default:
             break;
     }
@@ -318,6 +325,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             returnCell = cell;
         }
             break;
+            
         case BOTCellTypeReturn: {
             NSString *reuseIdentifier = [BOTOrderCollectionViewCell reuseIdentifier];
             BOTOrderCollectionViewCell *cell = (BOTOrderCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
