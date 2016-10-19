@@ -19,6 +19,7 @@ static NSString *const jordyBlueCode = @"#76AAE3";
 // Buttons
 @property (nonatomic, strong) BOTInvertedButton *leftButton;
 @property (nonatomic, strong) BOTInvertedButton *rightButton;
+@property (nonatomic, strong) BOTInvertedButton *singleButton;
 
 // Bevel
 @property (nonatomic, strong) BOTMultiSelectionBarBevelView *bevel;
@@ -72,7 +73,6 @@ static NSString *const jordyBlueCode = @"#76AAE3";
     
     // Right Button
     
-    CGRect frame = self.bounds;
     self.rightButton = [[BOTInvertedButton alloc] init];
     [self.rightButton setTitleColor:self.rightButton.tintColor forState:UIControlStateNormal];
     [self.rightButton addTarget:self action:@selector(rightButtonHit) forControlEvents:UIControlEventTouchUpInside];
@@ -80,8 +80,17 @@ static NSString *const jordyBlueCode = @"#76AAE3";
     self.rightButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.rightButton];
     
+    self.singleButton = [[BOTInvertedButton alloc] init];
+    [self.singleButton setTitleColor:self.singleButton.tintColor forState:UIControlStateNormal];
+    [self.singleButton addTarget:self action:@selector(rightButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    self.singleButton.titleLabel.font = [UIFont systemFontOfSize:16.0 weight:UIFontWeightThin];
+    self.singleButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.singleButton];
+    
+    
     [self addConstraintsForLeftButton];
     [self addConstraintsForRightButton];
+    [self addConstraintsForSingleButton];
 }
 
 - (void)constructBevel
@@ -103,8 +112,10 @@ static NSString *const jordyBlueCode = @"#76AAE3";
     self.bevel.tintColor       = tintColor;
     self.leftButton.tintColor  = tintColor;
     self.rightButton.tintColor = tintColor;
+    self.singleButton.tintColor = tintColor;
     [self.leftButton setTitleColor:tintColor forState:UIControlStateNormal];
     [self.rightButton setTitleColor:tintColor forState:UIControlStateNormal];
+    [self.singleButton setTitleColor:tintColor forState:UIControlStateNormal];
 }
 
 #pragma mark - Button Title Setters
@@ -112,7 +123,10 @@ static NSString *const jordyBlueCode = @"#76AAE3";
 - (void)setLeftSelectionTitle:(NSString *)leftSelectionTitle rightSelectionTitle:(NSString *)rightSelectionTitle
 {
     self.bevel.tag = 2;
-    [self.bevel drawRect:CGRectZero];
+    [self.bevel drawRect:self.bounds];
+    self.singleButton.hidden = YES;
+    self.leftButton.hidden = NO;
+    self.rightButton.hidden = NO;
     [self.leftButton setTitle:leftSelectionTitle forState:UIControlStateNormal];
     [self addConstraintsForLeftButton];
     [self.rightButton setTitle:rightSelectionTitle forState:UIControlStateNormal];
@@ -121,9 +135,11 @@ static NSString *const jordyBlueCode = @"#76AAE3";
 
 - (void)setSingleSelectionTitle:(NSString *)SelectionTitle {
     self.bevel.tag = 1;
-    [self.bevel drawRect:CGRectZero];
-    [self.leftButton removeFromSuperview];
-    [self.rightButton setTitle:SelectionTitle forState:UIControlStateNormal];
+    [self.bevel drawRect:self.bounds];
+    self.singleButton.hidden = NO;
+    self.leftButton.hidden = YES;
+    self.rightButton.hidden = YES;
+    [self.singleButton setTitle:SelectionTitle forState:UIControlStateNormal];
     [self addConstraintsForSingleButton];
 }
 
@@ -145,6 +161,7 @@ static NSString *const jordyBlueCode = @"#76AAE3";
 {
     [self.leftButton setHighlighted:NO];
     [self.rightButton setHighlighted:NO];
+    [self.singleButton setHighlighted:NO];
 }
 
 #pragma mark - Constraints
@@ -177,11 +194,11 @@ static NSString *const jordyBlueCode = @"#76AAE3";
 }
 - (void)addConstraintsForSingleButton
 {
-    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.rightButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:-([[UIScreen mainScreen] bounds].size.width / 2)];
+    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.singleButton attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:-([[UIScreen mainScreen] bounds].size.width / 2)];
     
-    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.rightButton attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.rightButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.rightButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.singleButton attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.singleButton attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:self.singleButton attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
     [self addConstraints:@[leading, trailing, top, bottom]];
 }
 
