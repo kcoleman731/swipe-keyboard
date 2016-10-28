@@ -56,7 +56,7 @@ static const CGFloat PAGING_CONTROL_DEFAULT_HEIGHT = 30.0f;
 
 - (void)commonInitWithTitles:(NSArray *)titles actions:(NSArray *)actions
 {
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor colorWithRed:247.0f/255.0f green:247.0f/255.0f blue:247.0f/255.0f alpha:1.0f];
     
     self.inputScrollView = [[BOTMultipleActionInputScrollView alloc] initWithSelectionTitles:titles actions:actions];
     self.inputScrollView.translatesAutoresizingMaskIntoConstraints = NO;

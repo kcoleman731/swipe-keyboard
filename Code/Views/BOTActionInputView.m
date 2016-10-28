@@ -40,13 +40,6 @@ NSUInteger const STCornerRadius = 6;
         self.titles = titles;
         self.actions = actions;
         
-        UIColor *blue = BOTBlueColor();
-        self.layer.borderColor = blue.CGColor;
-        self.layer.borderWidth = STBorderWidth;
-        self.layer.cornerRadius = STCornerRadius;
-        self.clipsToBounds = YES;
-        self.backgroundColor = blue;
-        
         if (titles.count > 0) {
             _button1 = [BOTActionButton initWithTitle:(NSString *)titles[0]];
             [_button1 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];

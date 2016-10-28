@@ -53,7 +53,7 @@ static const int MAX_OPTIONS_PER_PAGE = 4.0f;
     // Init iVars
     self.inputViews = @[];
     [self setSelectionTitles:titles actions:actions];
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor clearColor];
     
     // Configure scrollview and layout input views
     self.pagingEnabled                  = YES;
