@@ -9,17 +9,24 @@
 #import "BOTActionButton.h"
 #import "BOTUtilities.h"
 
+@interface BOTActionButton ()
+
+@property NSUInteger verticalOffset;
+
+@end
+
 @implementation BOTActionButton
 
-+ (instancetype)initWithTitle:(NSString *)title
++ (instancetype)initWithTitle:(NSString *)title verticalOffset:(NSUInteger)offset
 {
-    return [[self alloc] initWithTitle:title];
+    return [[self alloc] initWithTitle:title veritcalOffset:offset];
 }
 
-- (id)initWithTitle:(NSString *)title
+- (id)initWithTitle:(NSString *)title veritcalOffset:(NSUInteger)offset
 {
     self = [super init];
     if (self) {
+        self.verticalOffset = offset;
         self.translatesAutoresizingMaskIntoConstraints = NO;
         self.backgroundColor = [UIColor clearColor];
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
@@ -33,8 +40,8 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    NSUInteger horizontalOffset = 60;
-    NSUInteger verticalOffset = 4;
+    NSUInteger horizontalOffset = 80;
+    NSUInteger verticalOffset = self.verticalOffset;
     NSUInteger curveOffset = (self.frame.size.height - (verticalOffset * 2)) / 2;
     
     NSUInteger left = horizontalOffset;

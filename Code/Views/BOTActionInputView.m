@@ -40,38 +40,43 @@ NSUInteger const STCornerRadius = 6;
         self.titles = titles;
         self.actions = actions;
         
+        NSMutableArray *titles = self.titles.mutableCopy;
+        [titles removeObjectAtIndex:3];
+        self.titles = titles;
+        
+        NSUInteger offset = 8;
         if (titles.count > 0) {
-            _button1 = [BOTActionButton initWithTitle:(NSString *)titles[0]];
+            _button1 = [BOTActionButton initWithTitle:(NSString *)titles[0] verticalOffset:offset];
             [_button1 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
             _button1.tag = 0;
             [self addSubview:_button1];
         }
         
         if (titles.count > 1) {
-            _button2 = [BOTActionButton initWithTitle:(NSString *)titles[1]];
+            _button2 = [BOTActionButton initWithTitle:(NSString *)titles[1] verticalOffset:offset];
             [_button2 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
             _button1.tag = 1;
             [self addSubview:_button2];
         }
         
         if (titles.count > 2) {
-            _button3 = [BOTActionButton initWithTitle:(NSString *)titles[2]];
+            _button3 = [BOTActionButton initWithTitle:(NSString *)titles[2] verticalOffset:offset];
             [_button3 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
             _button3.tag = 2;
             [self addSubview:_button3];
         }
         
-        if (titles.count > 3) {
-            _button4 = [BOTActionButton initWithTitle:(NSString *)titles[3]];
-            [_button4 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
-            _button4.tag = 3;
-            [self addSubview:_button4];
-        }
+//        if (titles.count > 3) {
+//            _button4 = [BOTActionButton initWithTitle:(NSString *)titles[3] verticalOffset:offset];
+//            [_button4 addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
+//            _button4.tag = 3;
+//            [self addSubview:_button4];
+//        }
         
         [self configureAutoLayoutConstraints];
     }
     return self;
-} 
+}
 
 - (void)buttonTapped:(UIButton *)sender
 {
@@ -114,14 +119,14 @@ NSUInteger const STCornerRadius = 6;
         [self addConstraint:self.btn3HeightConstraint];
     }
     
-    // Button 3
-    if (self.titles.count > 3) {
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.button4 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.button4 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0]];
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.button4 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.button3 attribute:NSLayoutAttributeBottom multiplier:1.0 constant:STBorderWidth]];
-        self.btn4HeightConstraint = [NSLayoutConstraint constraintWithItem:self.button4 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:0.0f constant:0.0f];
-        [self addConstraint:self.btn4HeightConstraint];
-    }
+//    // Button 3
+//    if (self.titles.count > 3) {
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.button4 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0]];
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.button4 attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0]];
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.button4 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.button3 attribute:NSLayoutAttributeBottom multiplier:1.0 constant:STBorderWidth]];
+//        self.btn4HeightConstraint = [NSLayoutConstraint constraintWithItem:self.button4 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:0.0f constant:0.0f];
+//        [self addConstraint:self.btn4HeightConstraint];
+//    }
 }
 
 - (void)layoutSubviews

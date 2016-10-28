@@ -10,6 +10,6 @@
 
 @interface BOTActionButton : UIButton
 
-+ (instancetype)initWithTitle:(NSString *)title;
++ (instancetype)initWithTitle:(NSString *)title verticalOffset:(NSUInteger)offset;
 
 @end
