@@ -40,10 +40,6 @@ NSUInteger const STCornerRadius = 6;
         self.titles = titles;
         self.actions = actions;
         
-        NSMutableArray *titles = self.titles.mutableCopy;
-        [titles removeObjectAtIndex:3];
-        self.titles = titles;
-        
         NSUInteger offset = 8;
         if (titles.count > 0) {
             _button1 = [BOTActionButton initWithTitle:(NSString *)titles[0] verticalOffset:offset];
@@ -131,7 +127,7 @@ NSUInteger const STCornerRadius = 6;
 
 - (void)layoutSubviews
 {
-    CGFloat height = self.frame.size.height / self.titles.count;
+    CGFloat height = self.frame.size.height / 3;
     self.btn1HeightConstraint.constant = height;
     self.btn2HeightConstraint.constant = height;
     self.btn3HeightConstraint.constant = height;
