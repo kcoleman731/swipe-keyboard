@@ -40,7 +40,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    NSUInteger horizontalOffset = 80;
+    NSUInteger horizontalOffset = 2;
     NSUInteger verticalOffset = self.verticalOffset;
     NSUInteger curveOffset = (self.frame.size.height - (verticalOffset * 2)) / 2;
     
@@ -71,8 +71,9 @@
     [path addQuadCurveToPoint:CGPointMake((left + curveOffset), top) controlPoint:CGPointMake(left, top)];
     [path closePath];
     [color setStroke];
-    
+
     path.lineWidth = 1;
     [path stroke];
 }
+
 @end

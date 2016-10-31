@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3414E0202F8AD103A56840B2 /* Pods_Staples.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BCAFA925975ACD65020CCDD /* Pods_Staples.framework */; };
 		620E15FA3F1DD1FB26C366C1 /* Pods_StaplesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */; };
+		D6545EE51DC7C9B300F3DCE9 /* BOTCollectionViewFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = D6545EE41DC7C9B300F3DCE9 /* BOTCollectionViewFooter.m */; };
+		D6545EE91DC7CB6400F3DCE9 /* BOTCollectionViewFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6545EE81DC7CB6400F3DCE9 /* BOTCollectionViewFooterCell.m */; };
+		D6545EEC1DC7D45300F3DCE9 /* BOTCollectionViewFooterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D6545EEB1DC7D45300F3DCE9 /* BOTCollectionViewFooterLayout.m */; };
 		D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F71BC1D6B7482005F2546 /* STLayerService.m */; };
 		D6675F0E1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6675F0C1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.m */; };
 		D6675F0F1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6675F0D1D821D4300DEFE41 /* BOTOrderStatusCollectionViewCell.xib */; };
@@ -72,6 +75,12 @@
 		9A6FE70533FF01DB0B851460 /* Pods_StaplesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StaplesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B72ABA2CB0359A53DA8545 /* Pods-Staples.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Staples.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Staples/Pods-Staples.debug.xcconfig"; sourceTree = "<group>"; };
 		D5B93285FFEE36FC4B96057A /* Pods-StaplesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StaplesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StaplesTests/Pods-StaplesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D6545EE31DC7C9B300F3DCE9 /* BOTCollectionViewFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTCollectionViewFooter.h; sourceTree = "<group>"; };
+		D6545EE41DC7C9B300F3DCE9 /* BOTCollectionViewFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTCollectionViewFooter.m; sourceTree = "<group>"; };
+		D6545EE71DC7CB6400F3DCE9 /* BOTCollectionViewFooterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTCollectionViewFooterCell.h; sourceTree = "<group>"; };
+		D6545EE81DC7CB6400F3DCE9 /* BOTCollectionViewFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTCollectionViewFooterCell.m; sourceTree = "<group>"; };
+		D6545EEA1DC7D45300F3DCE9 /* BOTCollectionViewFooterLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BOTCollectionViewFooterLayout.h; sourceTree = "<group>"; };
+		D6545EEB1DC7D45300F3DCE9 /* BOTCollectionViewFooterLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BOTCollectionViewFooterLayout.m; sourceTree = "<group>"; };
 		D65F71BB1D6B7482005F2546 /* STLayerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLayerService.h; sourceTree = "<group>"; };
 		D65F71BC1D6B7482005F2546 /* STLayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLayerService.m; sourceTree = "<group>"; };
 		D65F71CB1D6BA164005F2546 /* StaplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StaplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -324,6 +333,19 @@
 			name = BOTOrderCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		D6545EE61DC7C9BB00F3DCE9 /* BOTCollectionViewFooter */ = {
+			isa = PBXGroup;
+			children = (
+				D6545EE31DC7C9B300F3DCE9 /* BOTCollectionViewFooter.h */,
+				D6545EE41DC7C9B300F3DCE9 /* BOTCollectionViewFooter.m */,
+				D6545EEA1DC7D45300F3DCE9 /* BOTCollectionViewFooterLayout.h */,
+				D6545EEB1DC7D45300F3DCE9 /* BOTCollectionViewFooterLayout.m */,
+				D6545EE71DC7CB6400F3DCE9 /* BOTCollectionViewFooterCell.h */,
+				D6545EE81DC7CB6400F3DCE9 /* BOTCollectionViewFooterCell.m */,
+			);
+			name = BOTCollectionViewFooter;
+			sourceTree = "<group>";
+		};
 		D65F71C11D6B7A3B005F2546 /* BOTMultipleActionInputView */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +448,7 @@
 		D68FEF151D6CBA32006AEFC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D6545EE61DC7C9BB00F3DCE9 /* BOTCollectionViewFooter */,
 				34A8A4A91D6CB81A00245773 /* BOTMultiSelectionBar */,
 				D65F71C21D6B7A6C005F2546 /* BOTMessageInputToolbar */,
 				D65F71C11D6B7A3B005F2546 /* BOTMultipleActionInputView */,
@@ -758,16 +781,19 @@
 				D69E94ED1D7512720064BF8B /* BOTActionButton.m in Sources */,
 				D69E94E41D7512640064BF8B /* BOTMessageInputToolbar.m in Sources */,
 				D69761881D660FBA00F3369F /* STConversationViewController.m in Sources */,
+				D6545EEC1DC7D45300F3DCE9 /* BOTCollectionViewFooterLayout.m in Sources */,
 				D69E94DB1D75124B0064BF8B /* BOTMultiSelectionBar.m in Sources */,
 				D69761711D660AEE00F3369F /* main.m in Sources */,
 				D69E94FA1D7512880064BF8B /* BOTReward.m in Sources */,
 				D69E95281D7512FF0064BF8B /* BOTRewardCollectionViewCell.m in Sources */,
+				D6545EE51DC7C9B300F3DCE9 /* BOTCollectionViewFooter.m in Sources */,
 				D69E94EC1D7512720064BF8B /* BOTActionInputView.m in Sources */,
 				D69E94E71D75126B0064BF8B /* BOTInvertedButton.m in Sources */,
 				D69E94FC1D7512880064BF8B /* BOTPrice.m in Sources */,
 				D65F71BD1D6B7482005F2546 /* STLayerService.m in Sources */,
 				D69E94FB1D7512880064BF8B /* BOTProduct.m in Sources */,
 				D6829C641D791B9000FB485F /* BOTOrder.m in Sources */,
+				D6545EE91DC7CB6400F3DCE9 /* BOTCollectionViewFooterCell.m in Sources */,
 				D69E95151D7512CB0064BF8B /* BOTMultipleProductsCollectionViewLayout.m in Sources */,
 				D69E94F91D7512880064BF8B /* BOTShipment.m in Sources */,
 				D69E94F01D75127B0064BF8B /* BOTMultiSelectionBarBevelView.m in Sources */,
