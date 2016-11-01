@@ -122,17 +122,12 @@ static const CGFloat PAGING_CONTROL_DEFAULT_HEIGHT = 30.0f;
 
 - (void)displayPagingControl:(BOOL)displayControl
 {
-    CGFloat toPageControlHeight          = 0.0;
-    CGFloat toMultiSelectionBottomOffset = -PAGING_CONTROL_DEFAULT_HEIGHT / 2.0;
     BOOL pagingVisible                   = NO;
     if (displayControl) {
         pagingVisible                        = YES;
+        self.pageControl.hidden              = !pagingVisible;
         return;
     }
-
-    // Set constants and relayout
-    self.pagingHeightConstraint.constant         = toPageControlHeight;
-    self.multiSelectionBottomConstraint.constant = toMultiSelectionBottomOffset;
     self.pageControl.hidden                      = !pagingVisible;
 }
 

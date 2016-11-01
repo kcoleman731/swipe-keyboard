@@ -27,7 +27,7 @@ NSString *const BOTProductCollectionViewCellReuseIdentifier = @"BOTProductCollec
 
 @implementation BOTProductCollectionViewCell
 
-CGFloat const BOTProductCollectionViewCellHeight = 172;
+CGFloat const BOTProductCollectionViewCellHeight = 200;
 CGFloat const BOTAddToCartButtonHeight = 42;
 
 - (void)awakeFromNib
@@ -75,7 +75,7 @@ CGFloat const BOTAddToCartButtonHeight = 42;
     return BOTProductCollectionViewCellReuseIdentifier;
 }
 
-- (void)setProductItem:(BOTProduct *)item
+- (void)setProductItem:(BOTProduct *)item showAddToCartButton:(BOOL)showAddToCartButton
 {
     self.item = item;
     
@@ -86,7 +86,11 @@ CGFloat const BOTAddToCartButtonHeight = 42;
     self.deliveryLabel.hidden = YES;
     [self setProductImageURL:item.imageURL];
     
-    self.addToCartButton.alpha = 0.0f;
+    if(showAddToCartButton){
+        self.addToCartButton.hidden = NO;
+    }else{
+        self.addToCartButton.hidden = YES;
+    }
 }
 
 /**
@@ -100,15 +104,15 @@ CGFloat const BOTAddToCartButtonHeight = 42;
         NSURL *picURL = [NSURL URLWithString:imageURL];
         __weak typeof(self) wSelf = self;
         [self.itemImageView sd_setImageWithURL:picURL
-                                 placeholderImage:[UIImage imageNamed:@"GhostImage" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil]
-                                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                            if (image && cacheType == SDImageCacheTypeNone) {
-                                                [UIView animateWithDuration:0.3
-                                                                 animations:^{
-                                                                     wSelf.itemImageView.alpha = 1.0;
-                                                                 }];
-                                            }
-                                        }];
+                              placeholderImage:[UIImage imageNamed:@"GhostImage" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil]
+                                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                         if (image && cacheType == SDImageCacheTypeNone) {
+                                             [UIView animateWithDuration:0.3
+                                                              animations:^{
+                                                                  wSelf.itemImageView.alpha = 1.0;
+                                                              }];
+                                         }
+                                     }];
     } else {
         [self.itemImageView setImage:[UIImage imageNamed:@"GhostImage" inBundle:StaplesUIBundle() compatibleWithTraitCollection:nil]];
     }
@@ -124,7 +128,9 @@ CGFloat const BOTAddToCartButtonHeight = 42;
 
 - (void)viewInCartButtonTapped:(UIButton *)button
 {
-    // nothing yet
+    if ([self.delegate respondsToSelector:@selector(productCollectionViewCellDidSelectAddToCart:)]) {
+        [self.delegate productCollectionViewCellDidSelectAddToCart:self];
+    }
 }
 
 @end

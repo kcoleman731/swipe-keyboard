@@ -54,6 +54,18 @@ extern NSString *const RightMultiActionInputViewButtonTapped;
  */
 - (void)resizeTextViewAndFrame;
 
+/**
+ *  To set titles for the left and right button of the multiselection bar
+ *
+ */
+- (void)setTitlesforMultiSelectionBar:(NSString *)leftButtonTitle rightButtonTitle:(NSString *)rightButtonTitle;
+
+/**
+ *  To set title sinlge button of the multiselection bar
+ *
+ */
+- (void)setTitleforMultiSelectionBar:(NSString *)ButtonTitle;
+
 @property (nonatomic) BOOL isShowingMultiSelectionBar;
 
 @end

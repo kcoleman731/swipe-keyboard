@@ -30,6 +30,16 @@ extern NSString *const BOTShipmentSelectedNotification;
 extern NSString *const BOTRewardSelectedNotification;
 
 /**
+ Posted when a `Add to cart` button is tapped from product cell. The `object` of the notification will be the corresponding `Product` object.
+ */
+extern NSString *const BOTAddToCartNotification;
+
+/**
+ Posted when a 'Order New supplies' product card is selected. The 'object' of the notification will be the corresponding 'Product' object.
+ */
+extern NSString *const BOTOrderNewSuppliesItemSelectedNotification;
+
+/**
  The `STMultipleCardBaseCollectionViewCell` displays a horizontally scrolling collection view used to display multiple `Bot Cards` within a single cell.
  */
 @interface BOTMultipleCardBaseCollectionViewCell : UICollectionViewCell <ATLMessagePresenting>

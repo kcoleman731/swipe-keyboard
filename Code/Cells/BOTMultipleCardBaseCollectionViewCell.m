@@ -39,6 +39,8 @@ NSString *const BOTBackToSchoolViewAllSelectedNotification = @"BOTBackToSchoolVi
 NSString *const BOTBackToSchoolItemSelectedNotification = @"BOTBackToSchoolItemSelectedNotification";
 NSString *const BOTShipmentSelectedNotification = @"BOTShipmentSelectedNotification";
 NSString *const BOTRewardSelectedNotification = @"BOTRewardSelectedNotification";
+NSString *const BOTAddToCartNotification = @"BOTAddToCartNotification";
+NSString *const BOTOrderNewSuppliesItemSelectedNotification = @"BOTOrderNewSuppliesItemSelectedNotification";
 
 // Card Type Keys
 NSString *const BOTCardTypeBTSItems = @"BTS_ITEMS";
@@ -59,7 +61,7 @@ NSString *const BOTMessagePartRewardListKey = @"rewardslistItems";
 NSString *const BOTMessagePartReorderItemsKey = @"reorderItems";
 NSString *const BOTMessagePartReturnItemsKey = @"returnItems";
 
-@interface BOTMultipleCardBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface BOTMultipleCardBaseCollectionViewCell () <UICollectionViewDelegate, UICollectionViewDataSource, BOTProductCollectionViewCellDelegate>
 
 @property (nonatomic) LYRMessage *message;
 @property (nonatomic) BOTCellType cellType;
@@ -156,13 +158,13 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 {
     LYRMessagePart *part = message.parts[0];
     if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
-        return [BOTProductCollectionViewCell cellHeightWithButton:YES];
+        return [BOTProductCollectionViewCell cellHeightWithButton:NO];
     } else if ([part.MIMEType isEqualToString:BOTRewardMIMEType]) {
         return [BOTRewardCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTShipmentMIMEType]) {
         return [BOTOrderStatusCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
-        return [BOTProductCollectionViewCell cellHeightWithButton:NO];
+        return [BOTProductCollectionViewCell cellHeightWithButton:YES];
     }  else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
         return [BOTOrderCollectionViewCell cellHeight];
     } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
@@ -263,6 +265,12 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
         }
             break;
             
+        case BOTCellTypeOrder: {
+            NSNotification *notification = [NSNotification notificationWithName:BOTOrderNewSuppliesItemSelectedNotification object:self.items[indexPath.row]];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+        }
+            break;
+            
         default:
             break;
     }
@@ -276,7 +284,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             NSString *reuseIdentifier = [BOTProductCollectionViewCell reuseIdentifier];
             BOTProductCollectionViewCell *cell = (BOTProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
             BOTProduct *item = self.items[indexPath.row];
-            [cell setProductItem:item];
+            [cell setProductItem:item showAddToCartButton:NO];
             returnCell = cell;
         }
             
@@ -303,7 +311,8 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             NSString *reuseIdentifier = [BOTProductCollectionViewCell reuseIdentifier];
             BOTProductCollectionViewCell *cell = (BOTProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
             BOTProduct *item = self.items[indexPath.row];
-            [cell setProductItem:item];
+            cell.delegate = self;
+            [cell setProductItem:item showAddToCartButton:YES];
             returnCell = cell;
         }
             break;
@@ -316,6 +325,7 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             returnCell = cell;
         }
             break;
+            
         case BOTCellTypeReturn: {
             NSString *reuseIdentifier = [BOTOrderCollectionViewCell reuseIdentifier];
             BOTOrderCollectionViewCell *cell = (BOTOrderCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
@@ -485,39 +495,45 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 
 - (NSMutableArray *)itemsForProductWithMessage:(LYRMessage *)message
 {
-    LYRMessagePart *part = message.parts[0];
-    NSDictionary *json = [self parseDataForMessagePart:part];
-    
-    // Parse BTS Title
-    NSDictionary *data = json[BOTMessagePartDataKey];
-    NSDictionary *orderItems = data[BOTMessagePartOrderItemsKey];
-    
+    //handled multiparts of the message
     NSMutableArray *items = [NSMutableArray new];
-    for (NSDictionary *itemData in orderItems) {
-        BOTProduct *item = [BOTProduct productWithData:itemData];
-        [items addObject:item];
+    for (int i = 0; i < self.message.parts.count; i++){
+        LYRMessagePart *part = self.message.parts[i];
+        NSDictionary *json = [self parseDataForMessagePart:part];
+        
+        NSDictionary *orderItems;
+        NSDictionary *data = json[BOTMessagePartDataKey];
+        if (data[BOTMessagePartOrderItemsKey]) {
+            orderItems = data[BOTMessagePartOrderItemsKey];
+        }
+        for (NSDictionary *itemData in orderItems) {
+            BOTProduct *item = [BOTProduct productWithData:itemData];
+            [items addObject:item];
+        }
     }
     return items;
 }
 
+
 - (NSMutableArray *)itemsForOrderWithMessage:(LYRMessage *)message
 {
-    LYRMessagePart *part = message.parts[0];
-    NSDictionary *json = [self parseDataForMessagePart:part];
-    
-    // Parse BTS Title
-    NSDictionary *data = json[BOTMessagePartDataKey];
-    NSDictionary *orderItems;
-    if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeReturnItems]) {
-        orderItems = data[BOTMessagePartReturnItemsKey];
-    } else if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeReorderItems]) {
-        orderItems = data[BOTMessagePartReorderItemsKey];
-    }
-    
+    //handled multiparts of the message
     NSMutableArray *items = [NSMutableArray new];
-    for (NSDictionary *itemData in orderItems) {
-        BOTOrder *order = [BOTOrder orderWithData:itemData];
-        [items addObject:order];
+    for (int i = 0; i < self.message.parts.count; i++){
+        LYRMessagePart *part = self.message.parts[i];
+        NSDictionary *json = [self parseDataForMessagePart:part];
+        
+        NSDictionary *orderItems;
+        NSDictionary *data = json[BOTMessagePartDataKey];
+        if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeReturnItems]) {
+            orderItems = data[BOTMessagePartReturnItemsKey];
+        } else if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeReorderItems]) {
+            orderItems = data[BOTMessagePartReorderItemsKey];
+        }
+        for (NSDictionary *itemData in orderItems) {
+            BOTOrder *order = [BOTOrder orderWithData:itemData];
+            [items addObject:order];
+        }
     }
     return items;
 }
@@ -527,6 +543,14 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
 - (void)viewAllButtonWasTapped:(UIButton *)sender
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:BOTBackToSchoolViewAllSelectedNotification object:self.items];
+}
+
+#pragma mark - BOTProductCollectionViewCellDelegate method
+
+- (void) productCollectionViewCellDidSelectAddToCart:(BOTProductCollectionViewCell *)cell{
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    NSNotification *notification = [NSNotification notificationWithName:BOTAddToCartNotification object:self.items[indexPath.row]];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
 #pragma mark - NSLayoutConstraints For UI

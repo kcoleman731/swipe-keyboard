@@ -26,8 +26,13 @@
     [bezPath addLineToPoint:CGPointMake(CGRectGetMaxX(rect), CGRectGetMinY(rect) + (0.5f * lineWidth))];
     
     // Vert
-    [bezPath moveToPoint:CGPointMake(CGRectGetMidX(rect), CGRectGetMinY(rect))];
-    [bezPath addLineToPoint:CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect))];
+    if(self.tag == 1){
+        [bezPath moveToPoint:CGPointMake(CGRectGetMidX(rect), CGRectGetMinY(rect))];
+        [self setNeedsDisplay];
+    }else{
+        [bezPath moveToPoint:CGPointMake(CGRectGetMidX(rect), CGRectGetMinY(rect))];
+        [bezPath addLineToPoint:CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect))];
+    }
     
     [self.tintColor setStroke];
     [[UIColor clearColor] setFill];
