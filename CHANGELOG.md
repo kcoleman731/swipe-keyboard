@@ -1,5 +1,10 @@
 # Staples Chat UI
 
+## 0.3.9
+
+* New designs for List Picker.
+  [Kevin Coleman](https://github.com/kcoleman731)
+
 ## 0.3.7
 
 ### Enhancements

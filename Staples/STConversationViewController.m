@@ -24,8 +24,8 @@
 #import "BOTOrderCollectionViewCell.h"
 #import "BOTOrderStatusCollectionViewCell.h"
 #import "BOTRewardCollectionViewCell.h"
-//#import "BOTReturnCollectionViewCell.h"
 #import "BOTActionCollectionViewCell.h"
+#import "BOTCollectionViewFooter.h"
 
 // Models
 #import "BOTReward.h"
@@ -34,6 +34,12 @@
 #import "BOTShipment.h"
 #import "BOTReward.h"
 #import "BOTOrder.h"
+
+@interface ATLConversationViewController () <UICollectionViewDataSource>
+
+@property (nonatomic) NSHashTable *sectionFooters;
+
+@end
 
 @interface STConversationViewController () <BOTMultipleActionInputViewDelegate, ATLConversationViewControllerDataSource, ATLConversationViewControllerDelegate, BOTMessageInputToolbarDelegate, BOTMultiSelectionBarDelegate>
 
@@ -95,6 +101,10 @@ NSString *const STOptionCell = @"Option Cell";
     
     // Action Cell
     [self registerClass:[BOTActionCollectionViewCell class] forMessageCellWithReuseIdentifier:BOTActionCollectionViewCellReuseIdentifier];
+    
+    [self.collectionView registerClass:[BOTCollectionViewFooter class]
+            forSupplementaryViewOfKind:UICollectionElementKindSectionFooter
+                   withReuseIdentifier:[BOTCollectionViewFooter reuseIdentifier]];
 }
 
 - (void)layoutMultiSelectionBar
@@ -225,7 +235,26 @@ NSString *const STOptionCell = @"Option Cell";
     return toolbar;
 }
 
-#pragma mark - Message Input Toolbar Delegate 
+#pragma mark - CollectionViewDelegate Overrides
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if (kind == UICollectionElementKindSectionFooter) {
+        NSString *reuseIdentifier = [BOTCollectionViewFooter reuseIdentifier];
+        BOTCollectionViewFooter *footer = (BOTCollectionViewFooter *)[self.collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+        [footer updateWithSelectionTitle:[self selectionItems]];
+        [self.sectionFooters addObject:footer];
+        return (UICollectionReusableView *)footer;
+    }
+    return [super collectionView:collectionView viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+{
+    return CGSizeMake(320, 46);
+}
+
+#pragma mark - Message Input Toolbar Delegate
 
 - (void)messageInputToolbar:(BOTMessageInputToolbar *)messageInputToolbar didTapListAccessoryButton:(UIButton *)listAccessoryButton
 {
