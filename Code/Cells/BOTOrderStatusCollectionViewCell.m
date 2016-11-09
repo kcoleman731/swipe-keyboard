@@ -153,6 +153,11 @@ NSString *const grayColorCode  = @"9b9b9b";
     }
 }
 
+- (void)setOrder:(BOTOrder *)order
+{
+    _order = order;
+}
+
 - (void)setOrderStatusTextAndGlyphWithStatus:(NSString *)shipmentStatus
 {
     NSString *lCaseShipmentStatus = [shipmentStatus lowercaseString];

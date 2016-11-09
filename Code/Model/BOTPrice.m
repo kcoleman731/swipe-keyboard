@@ -27,7 +27,7 @@ NSString *const STPriceBuyMoreSaveMoreImageKey = @"buyMoreSaveMoreImage";
     self = [super init];
     if (self) {
         _unitOfMeasure = data[STPriceUnitOfMeasuerKey];
-        _price = data[STPricePriceKey];
+        _price = data[STPriceFinalPriceKey];
         _finalPrice = data[STPriceFinalPriceKey];
         _displayWasPricing = [data[STPriceDisplayWasPricingKey] boolValue];
         _displayRegularPricing = [data[STPriceDisplayRegularPricingKey] boolValue];

@@ -32,6 +32,7 @@ NSString *const BOTNumberOfShipments = @"numberOfShipments";
 {
     self = [super init];
     if (self) {
+        NSLog(@"Data: %@", data);
         _status = data[BOTShipmentStatusKey];
         _deliveryDate = data[BOTShipmentDeliveryDataKey];
         _number = data[BOTShipmentNumberKey];

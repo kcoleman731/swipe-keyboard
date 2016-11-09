@@ -27,7 +27,7 @@ NSString *const BOTProductCollectionViewCellReuseIdentifier = @"BOTProductCollec
 
 @implementation BOTProductCollectionViewCell
 
-CGFloat const BOTProductCollectionViewCellHeight = 200;
+CGFloat const BOTProductCollectionViewCellHeight = 220;
 CGFloat const BOTAddToCartButtonHeight = 42;
 
 - (void)awakeFromNib
@@ -78,7 +78,7 @@ CGFloat const BOTAddToCartButtonHeight = 42;
 - (void)setProductItem:(BOTProduct *)item showAddToCartButton:(BOOL)showAddToCartButton
 {
     self.item = item;
-    
+    showAddToCartButton = NO;
     // Set UI
     self.descriptionLabel.text = item.name;
     self.priceLabel.text = [NSString stringWithFormat:@"$%@", item.price.finalPrice];

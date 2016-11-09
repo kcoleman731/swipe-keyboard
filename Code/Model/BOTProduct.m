@@ -27,11 +27,41 @@ NSString *const BOTProductNameKey = @"productName";
 {
     self = [super init];
     if (self) {
+
         self.quatity = data[BOTProductQuantityKey];
+        if (!self.quatity) {
+            self.quatity = data[@"orderedQuantity"];
+        }
+        
         self.imageURL = data[BOTProductImageURLKey];
+        if (!self.imageURL) {
+            self.imageURL = data[@"productImageUrl"];
+        }
+        
         self.skuNumber = data[BOTProductSKUNumberKey];
-        self.price = [BOTPrice priceWithData:data[BOTProductPriceKey]];
+        if (!self.skuNumber) {
+            self.skuNumber = data[@"sku"];
+            if (!self.skuNumber) {
+                self.skuNumber = data[@"skuNuber"];
+            }
+        }
+        
         self.name = data[BOTProductNameKey];
+        if (!self.name) {
+            self.name = data[@"title"];
+            if (!self.name) {
+                self.name = data[@"productName"];
+            }
+        }
+        
+        id price = data[BOTProductPriceKey];
+        if (price && [price isKindOfClass:[NSDictionary class]]) {
+            self.price = [BOTPrice priceWithData:price];
+        } else {
+            self.price = [BOTPrice new];
+            self.price.finalPrice = data[@"price"];
+        }
+        
     }
     return self;
 }

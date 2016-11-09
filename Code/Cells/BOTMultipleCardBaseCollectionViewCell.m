@@ -57,7 +57,7 @@ NSString *const BOTMessagePartOrderItemsKey = @"orderItems";
 NSString *const BOTMessagePartListItemsKey = @"listItems";
 NSString *const BOTMessagePartHeaderTitle = @"headerTitle";
 NSString *const BOTMessagePartShipmentTrackingListKey = @"shippmentTrackingList";
-NSString *const BOTMessagePartRewardListKey = @"rewardslistItems";
+NSString *const BOTMessagePartRewardListKey = @"rewardsSummaryList";
 NSString *const BOTMessagePartReorderItemsKey = @"reorderItems";
 NSString *const BOTMessagePartReturnItemsKey = @"returnItems";
 
@@ -308,11 +308,10 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
             break;
             
         case BOTCellTypeOrder: {
-            NSString *reuseIdentifier = [BOTProductCollectionViewCell reuseIdentifier];
-            BOTProductCollectionViewCell *cell = (BOTProductCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-            BOTProduct *item = self.items[indexPath.row];
-            cell.delegate = self;
-            [cell setProductItem:item showAddToCartButton:YES];
+            NSString *reuseIdentifier = [BOTOrderCollectionViewCell reuseIdentifier];
+            BOTOrderCollectionViewCell *cell = (BOTOrderCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+            BOTOrder *item = self.items[indexPath.row];
+            [cell setOrder:item];
             returnCell = cell;
         }
             break;
@@ -354,10 +353,6 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
         self.cellType = BOTCellTypeShipping;
     } else if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
         self.cellType = BOTCellTypeOrder;
-    } else if ([part.MIMEType isEqualToString:BOTReorderMIMEType]) {
-        self.cellType = BOTCellTypeReorder;
-    } else if ([part.MIMEType isEqualToString:BOTReturnMIMEType]) {
-        self.cellType = BOTCellTypeReturn;
     }
 }
 
@@ -369,14 +364,17 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     
     // Parse Product list Data.
     NSMutableArray *items = [[NSMutableArray alloc] init];
-    if ([part.MIMEType isEqualToString:BOTProductListMIMEType] || [part.MIMEType isEqualToString:BOTOrderMIMEType]) {
+
+    if ([part.MIMEType isEqualToString:BOTProductListMIMEType]) {
         if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeBTSItems]) {
             items = [self itemsForBTSFlowWithMessage:message];
-        } else  if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeOrderItems]) {
-            items = [self itemsForProductWithMessage:message];
         } else  if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeCartItems]) {
             items = [self itemsForCartFlowWithMessage:message];
         }
+    }
+    
+    if ([part.MIMEType isEqualToString:BOTOrderMIMEType]) {
+        items = [self itemsForOrderWithMessage:message];
     }
     
     // Parse Order
@@ -500,7 +498,6 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
     for (int i = 0; i < self.message.parts.count; i++){
         LYRMessagePart *part = self.message.parts[i];
         NSDictionary *json = [self parseDataForMessagePart:part];
-        
         NSDictionary *orderItems;
         NSDictionary *data = json[BOTMessagePartDataKey];
         if (data[BOTMessagePartOrderItemsKey]) {
@@ -524,15 +521,13 @@ CGFloat const BOTCollectionViewTopInset = 26.0f;
         NSDictionary *json = [self parseDataForMessagePart:part];
         
         NSDictionary *orderItems;
-        NSDictionary *data = json[BOTMessagePartDataKey];
-        if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeReturnItems]) {
-            orderItems = data[BOTMessagePartReturnItemsKey];
-        } else if ([data[BOTMessagePartCardTypeKey] isEqualToString:BOTCardTypeReorderItems]) {
-            orderItems = data[BOTMessagePartReorderItemsKey];
+        if (json[BOTMessagePartOrderItemsKey] || json[@"shippmentTrackingList"]) {
+            orderItems = json[BOTMessagePartOrderItemsKey] ?  json[BOTMessagePartOrderItemsKey] : json[@"shippmentTrackingList"];
         }
+    
         for (NSDictionary *itemData in orderItems) {
-            BOTOrder *order = [BOTOrder orderWithData:itemData];
-            [items addObject:order];
+            BOTOrder *item = [BOTOrder orderWithData:itemData];
+            [items addObject:item];
         }
     }
     return items;

@@ -107,16 +107,6 @@ NSString *const STOptionCell = @"Option Cell";
                    withReuseIdentifier:[BOTCollectionViewFooter reuseIdentifier]];
 }
 
-- (void)layoutMultiSelectionBar
-{
-    self.multiSelectionBar = [[BOTMultiSelectionBar alloc] init];
-    self.multiSelectionBar.delegate = self;
-    self.multiSelectionBar.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.multiSelectionBar setLeftSelectionTitle:@"Continue Shopping" rightSelectionTitle:@"Checkout"];
-    [self.view addSubview:self.multiSelectionBar];
-    [self addConstraintsToSelectionBar];
-}
-
 - (void)multipleActionInputView:(BOTMultipleActionInputView *)multipleActionInputView didSelectTitle:(NSString *)title actions:(NSString *)action
 {
     BOTMessageInputToolbar *toolbar = (BOTMessageInputToolbar *)self.messageInputToolbar;
@@ -231,6 +221,7 @@ NSString *const STOptionCell = @"Option Cell";
     toolbar.customDelegate = self;
     toolbar.multiInputView = self.multiInputView;
     toolbar.textInputView.inputView = self.multiInputView;
+    [toolbar displayMultiSelectionInputBar:YES];
     
     return toolbar;
 }
@@ -277,18 +268,6 @@ NSString *const STOptionCell = @"Option Cell";
         NSLog(@"Failed to build conversatio with error: %@", error);
     }
     [self setConversation:conversation];
-}
-
-#pragma mark - Constraints
-
-- (void)addConstraintsToSelectionBar
-{
-    NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:44.0f];
-    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0f];
-    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0f];
-    self.muliSelectionBarBottomConstraint = [NSLayoutConstraint constraintWithItem:self.multiSelectionBar attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0f];
-    
-    [self.view addConstraints:@[leading, height, trailing, self.muliSelectionBarBottomConstraint]];
 }
 
 #pragma mark - STMultiSelectionToolbar

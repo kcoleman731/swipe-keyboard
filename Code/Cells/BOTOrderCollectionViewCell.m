@@ -109,9 +109,11 @@ NSString *const BOTOrderCollectionViewCellTitle               = @"Reorder Cell";
         _order = order;
         [self.datasource setOrder:order];
         [self.orderNumberButton setTitle:order.orderNumber forState:UIControlStateNormal];
-        self.priceLabel.text        = order.totalPrice;
+        self.priceLabel.text        = @"$254.65"; //order.totalPrice;
         NSString *formattedDate     = [[[self class] transactionDateFormatter] stringFromDate:order.orderDate];
-        NSString *itemsLabelContent = [NSString stringWithFormat:@"%ld items | %@", (unsigned long)order.items.count, formattedDate];
+//        NSString *itemsLabelContent = [NSString stringWithFormat:@"%ld items | %@", (unsigned long)order.items.count, formattedDate];
+        
+        NSString *itemsLabelContent = [NSString stringWithFormat:@"%ld items | %@", (unsigned long)order.items.count, @"11/02/2016"];
         self.itemsLabel.text        = itemsLabelContent;
     }
 }

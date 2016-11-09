@@ -43,6 +43,7 @@ extern NSString *const BOTOrderStatusCollectionViewCellReuseIdentifier;
  The shipment for the cell.
  */
 @property (nonatomic, strong) BOTShipment *shipment;
+@property (nonatomic, strong) BOTOrder *order;
 
 /**
  Cell height
